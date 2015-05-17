@@ -15,11 +15,12 @@
  * 		node build /Users/Jed/Development/packages/keystone-docs
  */
 
-var fs = require('fs-extra'),
-	path = require('path'),
-	_ = require('lodash'),
-	jade = require('jade'),
-	content = require('./content');
+var _ = require('lodash');
+var fs = require('fs-extra');
+var jade = require('jade');
+var path = require('path');
+
+var content = require('./content');
 
 // Command line arguments
 
@@ -32,7 +33,7 @@ var args = {
 var locals = _.extend({
 	pretty: true,
 	languages: content.languages,
-	version: require('../package.json').version
+	version: require('./package.json').version
 });
 
 console.log('\nBuilding KeystoneJS docs...\n');
