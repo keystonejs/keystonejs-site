@@ -1,2 +1,3 @@
 # keystonejs-site
-keystonejs.com site and docs
+
+[keystonejs.com](http://keystonejs.com) site and docs.
