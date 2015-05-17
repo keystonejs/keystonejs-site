@@ -1,0 +1,27 @@
+{
+  "name": "keystonejs-site",
+  "private": true,
+  "version": "0.3.9",
+  "description": "KeystoneJS.com Website",
+  "author": "Jed Watson",
+  "homepage": "http://keystonejs.com/",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/keystonejs/keystonejs-site.git"
+  },
+  "dependencies": {
+  },
+  "bugs": {
+    "url": "https://github.com/keystonejs/keystonejs-site/issues"
+  },
+  "scripts": {
+    "build": "node build.js",
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": ">= 0.10.28",
+    "npm": ">= 1.4.9"
+  }
+}
