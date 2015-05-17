@@ -3,10 +3,12 @@
  */
 
 var _ = require('lodash');
+var errorHandler = require('errorhandler');
 var express = require('express');
 var favicon = require('serve-favicon');
+var less = require('less-middleware');
 var logger = require('morgan');
-var errorHandler = require('errorhandler');
+
 var content = require('./content');
 
 function view(view, options) {
@@ -25,7 +27,7 @@ app.set('views', 'content');
 app.set('view engine', 'jade');
 
 app.use(favicon('public/favicon.ico'));
-app.use(require('less-middleware')('public'));
+app.use(less('public'));
 app.use(express.static('public'));
 
 app.use(logger('dev'));
@@ -41,7 +43,7 @@ app.use(function(req, res, next) {
 
 // Set up locals and routes
 app.locals.languages = content.languages;
-app.locals.version = require('../package.json').version;
+app.locals.version = require('./package.json').version;
 
 _.each(content.routes, function(options) {
 	app.get(options.path, view(options.template, options));
