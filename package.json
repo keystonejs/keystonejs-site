@@ -12,6 +12,14 @@
     "url": "https://github.com/keystonejs/keystonejs-site.git"
   },
   "dependencies": {
+    "errorhandler": "^1.3.6",
+    "express": "^4.12.3",
+    "fs-extra": "^0.18.3",
+    "jade": "^1.9.2",
+    "less-middleware": "^2.0.1",
+    "lodash": "^3.8.0",
+    "morgan": "^1.5.3",
+    "serve-favicon": "^2.2.1"
   },
   "bugs": {
     "url": "https://github.com/keystonejs/keystonejs-site/issues"
