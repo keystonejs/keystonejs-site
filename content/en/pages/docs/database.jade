@@ -95,50 +95,6 @@ block content
 				col(width=210)
 				col
 				tr
-					td <code>label</code> <code class="data-type">String</code>
-					td The label used for the list in the Admin UI. Defaults to a friendly form of <code class="default-value">key</code>
-				tr
-					td <code>path</code> <code class="data-type">String</code>
-					td The path used for the list in the Admin UI. Defaults to a slugified form of <code class="default-value">key</code>.
-				t
-					td <code>singular</code> <code class="data-type">String</code>
-					td The singular label for the items in the list. Used in the Admin UI, defaults to a singular form of <code class="default-value">label</code>
-				tr
-					td <code>plural</code> <code class="data-type">String</code>
-					td The plural label for the items in the list. Used in the Admin UI, defaults to a plural form of <code class="default-value">singular</code>
-				tr
-					td <code>schema</code> <code class="data-type">String</code>
-					td
-						p Options for the Mongoose Schema for the List. Among other things, this option lets you specify a custom name for the <strong>collection</strong>. See the <a href="http://mongoosejs.com/docs/guide.html#options" target="_blank">mongoose schema docs</a> for a list of available options.
-						p: em Warning: do not modify the <code>id</code> or <code>_id</code> schema options; the default behaviour is required by Keystone
-				tr
-					td <code>drilldown</code> <code class="data-type">String</code>
-					td A space-delimited list of relationships to display as drilldown in the Admin UI
-				tr
-					td <code>inherits</code> <code class="data-type">List</code>
-					td A list object that you would like to inherit fields from.
-				tr
-					td <code>sortable</code> <code class="data-type">Boolean</code>
-					td Adds a hidden field <code>sortOrder</code> to the schema, and enables drag and drop sorting in the Admin UI
-				tr
-					td <code>sortContext</code> <code class="data-type">String</code>
-					td A <code>List:relationship</code> pair to control when drag and drop sorting is available in the Admin UI
-				tr
-					td <code>searchFields</code> <code class="data-type">String</code>
-					td A space-delimited list of paths to use for searching in Admin UI
-				tr
-					td <code>defaultSort</code> <code class="data-type">String</code>
-					td The default column or path to sort on in the Admin UI
-				tr
-					td <code>defaultColumns</code> <code class="data-type">String</code>
-					td A comma-delimited list of default columns to display in the Admin UI List View.
-						|  You can specify width in either pixels or percent after a <code>|</code> pipe character.
-				tr
-					td <code>map</code> <code class="data-type">Object</code>
-					td An object that maps fields to special <strong>list</strong> paths. Each path defaults to its key if a field with that key is added. Mappable paths include
-						ul.options
-							li <code>name</code> - the field that contains the name of the item, for display in the Admin UI
-				tr
 					td <code>autokey</code> <code class="data-type">Object</code>
 					td Adds a plugin to the list that automatically generates a key for each document when it is saved, based on the value of another field or path. The value of the option should be an object with the following keys:
 						ul.options
@@ -147,9 +103,87 @@ block content
 							li <code>unique</code> <code class="data-type">Boolean</code> - whether the key should be unique or not
 							li <code>fixed</code> <code class="data-type">Boolean</code> - the key should be kept if it exists and it's non-empty. Defaults to <code class="data-type">false</code>.
 						| <em>Autokey paths are automatically indexed; you may also want to include them in compound indexes.</em>
+				
+				tr
+					td <code>defaultColumns</code> <code class="data-type">String</code>
+					td A comma-delimited list of default columns to display in the Admin UI List View.
+						|  You can specify width in either pixels or percent after a <code>|</code> pipe character.
+				
+				tr
+					td <code>defaultSort</code> <code class="data-type">String</code>
+					td The default column or path to sort on in the Admin UI
+				
+				tr
+					td <code>drilldown</code> <code class="data-type">String</code>
+					td A space-delimited list of relationships to display as drilldown in the Admin UI
+
+				tr
+					td <code>hidden</code> <code class="data-type">Boolean</code>
+					td Hides the list in the Keystone Admin UI
+
+				tr
+					td <code>inherits</code> <code class="data-type">List</code>
+					td A list object that you would like to inherit fields from.
+
+				tr
+					td <code>label</code> <code class="data-type">String</code>
+					td The label used for the list in the Admin UI. Defaults to a friendly form of <code class="default-value">key</code>
+
+				tr
+					td <code>map</code> <code class="data-type">Object</code>
+					td An object that maps fields to special <strong>list</strong> paths. Each path defaults to its key if a field with that key is added. Mappable paths include
+						ul.options
+							li <code>name</code> - the field that contains the name of the item, for display in the Admin UI
+
+				tr
+					td <code>nocreate</code> <code class="data-type">Boolean</code>
+					td Prevents creation of new items in the list through the Keystone Admin UI
+
+				tr
+					td <code>nodelete</code> <code class="data-type">Boolean</code>
+					td Prevents deletion of items from the list through the Keystone Admin UI
+
+				tr
+					td <code>noedit</code> <code class="data-type">Boolean</code>
+					td Prevents editing of items in the list through the Keystone Admin UI
+
+				tr
+					td <code>path</code> <code class="data-type">String</code>
+					td The path used for the list in the Admin UI. Defaults to a slugified form of <code class="default-value">key</code>.
+
+				tr
+					td <code>perPage</code> <code class="data-type">Number</code>
+					td The number of List items to display per page. Defaults to 50.
+
+				tr
+					td <code>plural</code> <code class="data-type">String</code>
+					td The plural label for the items in the list. Used in the Admin UI, defaults to a plural form of <code class="default-value">singular</code>
+
+				tr
+					td <code>schema</code> <code class="data-type">String</code>
+					td
+						p Options for the Mongoose Schema for the List. Among other things, this option lets you specify a custom name for the <strong>collection</strong>. See the <a href="http://mongoosejs.com/docs/guide.html#options" target="_blank">mongoose schema docs</a> for a list of available options.
+						p: em Warning: do not modify the <code>id</code> or <code>_id</code> schema options; the default behaviour is required by Keystone
+
+				tr
+					td <code>searchFields</code> <code class="data-type">String</code>
+					td A space-delimited list of paths to use for searching in Admin UI
+
+				tr
+					td <code>singular</code> <code class="data-type">String</code>
+					td The singular label for the items in the list. Used in the Admin UI, defaults to a singular form of <code class="default-value">label</code>
+
+				tr
+					td <code>sortContext</code> <code class="data-type">String</code>
+					td A <code>List:relationship</code> pair to control when drag and drop sorting is available in the Admin UI
+
+				tr
+					td <code>sortable</code> <code class="data-type">Boolean</code>
+					td Adds a hidden field <code>sortOrder</code> to the schema, and enables drag and drop sorting in the Admin UI
+
 				tr
 					td <code>track</code> <code class="data-type">Boolean or Object</code>
-					td 
+					td
 						p Adds a plugin to the list that automatically keeps track of when and who (i.e. which Keystone user) created and last updated an item.
 						p When set to <code class="data-type">true</code> all tracking fields are enabled using their default names.
 						p You may also selectively enable each field and optionally specify a custom field name by setting <code>track</code> to an <code class="data-type">object</code> with any or all the following fields:
@@ -164,18 +198,6 @@ block content
 							| item.set({ field1: 'value1', field2: 'value2' });
 							| item._req_user = req.user;
 							| item.save();
-				tr
-					td <code>noedit</code> <code class="data-type">Boolean</code>
-					td Prevents editing of items in the list through the Keystone Admin UI
-				tr
-					td <code>nocreate</code> <code class="data-type">Boolean</code>
-					td Prevents creation of new items in the list through the Keystone Admin UI
-				tr
-					td <code>nodelete</code> <code class="data-type">Boolean</code>
-					td Prevents deletion of items from the list through the Keystone Admin UI
-				tr
-					td <code>hidden</code> <code class="data-type">Boolean</code>
-					td Hides the list in the Keystone Admin UI
 			
 			p.note If you're wondering how to control which navigation area Lists are categorised under in the Admin UI, check out the <code>nav</code> option in the <a href="http://keystonejs.com/docs/configuration/#options-project">KeystoneJS Configuration</a> docs.
 			
