@@ -259,17 +259,17 @@ block content
 				| 
 				| // Handle 404 errors
 				| keystone.set('404', function(req, res, next) {
-				|     res.notfound();
+				|     res.notfound('Error (404)', 'The requested page was not found');
 				| });
 				| 
 				| // Handle other errors
 				| keystone.set('500', function(err, req, res, next) {
-				|     var title, message;
+				|     var message;
 				|     if (err instanceof Error) {
 				|         message = err.message;
 				|         err = err.stack;
 				|     }
-				|     res.err(err, title, message);
+				|     res.err(err, 'Error (500)', message || 'The site has encountered an error');
 				| });
 				| 
 				| // Load Routes
@@ -437,6 +437,33 @@ block content
 				| 
 				| block content
 				|     h1 Hello World
+				
+			p If you haven't noted, we also need <code>templates/views/errors/404.jade</code> and <code>templates/views/errors/500.jade</code> for routes/middleware.js to render correctly when needed.
+
+			p Then, create <code>templates/views/errors/404.jade</code>:
+			
+			.code-header
+				h4 templates/views/errors/404.jade
+				p The template for 404 errors
+			pre
+				| extends ../layouts/base
+				| 
+				| block content
+				|     h1= errorTitle
+				|     p= errorMsg
+
+			p And also create <code>templates/views/errors/500.jade</code>:
+			
+			.code-header
+				h4 templates/views/errors/500.jade
+				p The template for 500 errors
+			pre
+				| extends ../layouts/base
+				| 
+				| block content
+				|     h1= errorTitle
+				|     p= errorMsg
+				|     pre= err
 			
 			p Jade comes with some great features to simplify templates - including using layouts that define regions. We're going to use a layout called <code>../common/templates/layout/base.jade</code>, which is included on the first line of the file above:
 			
