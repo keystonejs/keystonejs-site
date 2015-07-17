@@ -112,6 +112,10 @@ block content
 				| 
 				| require('./models');
 				| 
+				| keystone.set('locals', {
+				|   utils: keystone.utils
+				| });
+				| 
 				| keystone.set('routes', require('./routes'));
 				| 
 				| keystone.start();
