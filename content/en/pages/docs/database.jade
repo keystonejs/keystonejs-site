@@ -808,14 +808,16 @@ block content
 			h3 <code>Location</code>
 			h4 <code class="data-type">Object</code> &mdash; Displayed as a combination of fields in the Admin UI
 			p Contains a standard set of strings for storing an address, and a longitude / latitude point with a <code class="data-type">2dsphere</code> index.
-			p Also provides autocomplete functionality using Google's Places API (requires a Google Maps API Key to be provided, must only be used in accordance with Google's terms of service).
-			p Google Places integration requires the <code>google api key</code> option to be set for Keystone. See the <a href="/docs/configuration#services-google">Google configuration documentation</a> for details.
+			p Also provides autocomplete functionality using Google's Geocoding API. This requires either a Google Maps API key to be provided (see the <a href="/docs/configuration#services-google">Google configuration documentation</a> for details), or the option "<code>geocodeGoogle</code>" to be set to <code>true</code>.
+			p Providing an API key allows you to monitor your application's API usage in the Google Developers Console and enables per-key instead of per-IP-address quota limits.
+			p The Geocoding API may only be used in accordance with the Google Maps API License. 
 			pre: code.language-javascript { type: Types.Location, defaults: { country: 'Australia' } }
 			p.note Note: the schema paths are based on Australian address formats, and should be updated to be more appropriate for other international formats. If you have feedback on how the structure should be internationalised, please open a ticket.
 			.options
 				
 				h5 Options
 				p <code>defaults</code> <code class="data-type">Object</code> - default values for each path in the field schema
+				p <code>geocodeGoogle</code> <code class="data-type">Boolean</code> - activate or deactivate the Google Geocoding API, whether an API key is set or not.
 				
 				h5 Schema
 				p <code>name</code> <code class="data-type">String</code> - building name
