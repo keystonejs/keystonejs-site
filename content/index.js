@@ -21,6 +21,7 @@ module.exports = {
 				{ "value": "getting-started",       "path": "/docs/getting-started",  "label": "Getting Started",  "labelsm": "Starting" },
 				{ "value": "configuration",         "path": "/docs/configuration",    "label": "Configuration",    "labelsm": "Config" },
 				{ "value": "database",              "path": "/docs/database",         "label": "Database",         "labelsm": "Data" },
+				{ "value": "faqs",              	"path": "/docs/faqs",        	  "label": "FAQ's",            "labelsm": "FAQs" }
 				/*{ "value": "views",                 "path": "/docs/views",            "label": "Views",            "labelsm": "Views" }*/
 			]
 		},
@@ -104,6 +105,14 @@ module.exports = {
 			"section": "docs",
 			"docssection": { "value": "database", "path": "/docs/database", "label": "Database" },
 			"title": "Setting up and using Data Models"
+		},
+		{
+			"path": "/docs/faqs",
+			"language": "en",
+			"template": "docs/faqs",
+			"section": "docs",
+			"docssection": { "value": "faqs", "path": "/docs/faqs", "label": "FAQs" },
+			"title": "Frequents Asked Questions"
 		},
 		/* {
 			"path": "/docs/views",
