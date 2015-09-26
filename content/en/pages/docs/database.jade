@@ -82,9 +82,12 @@ block content
 				| Post.defaultColumns = 'title, state|20%, author, publishedAt|15%'
 				| Post.register();
 			
-			p.note This example implements the optional <code>map</code>, <code>autokey</code> and <code>defaultSort</code> options, described below.
-			p.note It also specifies <code>title</code>, <code>state</code>, <code>author</code> and <code>publishedAt</code> as the default columns to display in the Admin UI, with state and publishedAt being given column widths.
-			p.note The <code>author</code> field is a relationship with the <code>User</code> model, as described in the <a href="/guide#models_users">getting started guide</a>.
+			.contextual-note
+				h4 Explanation
+				p This example implements the optional <code>map</code>, <code>autokey</code> and <code>defaultSort</code> options, described below.
+				p The Admin UI will look for <code>map: { name: 'FieldFromDoc'}</code> first, then a document field <code>name</code>, and if those are not available use <code>doc._id</code> as the default column when viewing lists.
+				p Our example also specifies <code>title</code>, <code>state</code>, <code>author</code> and <code>publishedAt</code> as the default columns to display in the Admin UI, with state and publishedAt being given column widths. 
+				p The <code>author</code> field is a relationship with the <code>User</code> model, as described in the <a href="#relationships">Relationships</a> section.  
 			
 			a(name='lists-options')
 			h3 Options

@@ -42,7 +42,10 @@ block content
 				col
 				tr
 					td <code>name</code> <code class="data-type">String</code>
-					td The name of the KeystoneJS application
+					td 
+						p The name of the KeystoneJS application
+						p.note If no <code>mongo</code> option is provided, Keystone will use <code>name</code> as the database name.
+						
 				tr
 					td <code>brand</code> <code class="data-type">String</code>
 					td Displayed in the top left hand corner of the Admin UI
@@ -274,6 +277,7 @@ block content
 					td
 						p The url for your MongoDB connection.
 						p You should typically set this to <code class="default-value">process.env.MONGO_URI || "mongodb://localhost/your-db"</code>
+						p.note If the <code>mongo</code> option is not provided, Keystone will use the <code>name</code> option as the database name. <code class="default-value">mongodb://localhost/keystone</code>
 				tr
 					td <code>model prefix</code> <code class="data-type">String</code>
 					td
