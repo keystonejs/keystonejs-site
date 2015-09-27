@@ -323,11 +323,11 @@ block content
 			
 			.code-header
 				h4 onMount Event
-				p Add error handling with <code>keystone.mount</code>.  Order matters and your error handler should be last.  
+				p Add error handling with <code>keystone.start</code>.  Order matters and your error handler should be last.  
 			pre: code.language-javascript  
 				| // Bind Routes
-				| keystone.mount({
-				|     onMount: {
+				| keystone.start({
+				|     onMount: function() {
 				|	  	  // Error Handling
 				|	  	  keystone.app.use(function(err, req, res) {
 				|	  	 	  res.status(500).send('ERROR MIDDLEWARE');
@@ -335,9 +335,7 @@ block content
 				|	  }
 				| });
 				| 
-				| keystone.start();
-
-
+ 
 			a(name="routesviews-middleware")
 			h3 Common Route Middleware
 			
