@@ -69,7 +69,6 @@ module.exports = {
 				view: [],
 				email: [],
 				list: [],
-				endpoints: []
 			},
 			'0.3.x': {
 				keystone: [],
@@ -77,7 +76,6 @@ module.exports = {
 				email: [],
 				list: [],
 				schema: [],
-				endpoints: []
 			},
 			'0.4.x': {
 				keystone: [],
