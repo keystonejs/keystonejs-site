@@ -1,0 +1,68 @@
+extends ../../../../../common/templates/layout/base
+
+include ../../../../templates/mixins/docsapinav
+
+block intro
+	.page-header
+		.container
+			h1 Class Reference
+			p.lead Current (version 0.3.x)
+	
+block content
+	.container: .row
+		
+		.col-sm-3
+			+docsnav(docssection)
+		
+		.col-sm-9: .docs-content
+			h2
+				a(name='methods')
+				| #{api} complete reference
+				
+			a(name='changelog')
+			h3  0.2.x to 0.3.x Changes
+			include:marked markdown/class/includes/0.2.x-to-0.3.x-Changes.md
+			
+			hr
+			a(name='classKeystone')
+			h3 Keystone	Class
+			p The Keystone instance is a global object.
+			each item2 in apidocs['0.3.x'].keystone
+				a(name='#{item2.name}')
+				!= item2.html
+				hr
+			
+			a(name='classEmail')
+			h3 .Email Class	
+			include:marked markdown/class/includes/Email.md
+			hr 
+			each item3 in apidocs['0.3.x'].email
+				a(name='#{item3.name}')
+				!= item3.html
+				hr
+			
+			a(name='classList')
+			h3 .List Class	
+			include:marked markdown/class/includes/List.md
+			hr  
+			h4 List Schema Helpers
+			each schema in apidocs['0.3.x'].schema
+				a(name='List-schema-#{schema.name}')
+				!= schema.html
+				hr
+			each item4 in apidocs['0.3.x'].list
+				a(name='List-#{item4.name}')
+				!= item4.html
+				hr
+			
+			a(name='classView')
+			h3 .View	Class	
+			include:marked markdown/class/includes/View.md
+			hr 
+			each item5 in apidocs['0.3.x'].view
+				a(name='#{item5.name}')
+				!= item5.html
+				hr
+				
+			input(type="hidden" id="_version" value="0.3.x")
+			input(type="hidden" id="_path" value="#{path}")

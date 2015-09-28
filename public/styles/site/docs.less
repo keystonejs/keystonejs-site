@@ -61,6 +61,13 @@ h2:first-child {
 	margin-top: 0;
 }
 
+// API
+// ------------------------------
+
+.hideCode {
+	display: none;
+}
+
 // ANCHOR LINKS
 // ------------------------------
 
@@ -74,10 +81,15 @@ h2:first-child {
 			display: none;
 			font-size: 1.5em;
 		}
+		span {
+			font-size: @font-size-small;
+			font-style: italic;
+			display: none;
+		}
 	}
-	h2, h3 {
+	h2, h3, h4 {
 		&:hover {
-			.anchor i {
+			.anchor i, .anchor span {
 				display: inline-block;
 			}
 		}	
@@ -206,6 +218,10 @@ h2:first-child {
 		padding-left: 5%;
 		padding-right: 5%;
 	}
+	
+	blockquote {
+		font-size: @font-size-base;
+	}
 }
 .page-header {
 	// #gradient .directional(spin(@link-color, 6%), spin(@link-color, -6%), 120deg);
@@ -317,13 +333,69 @@ h2:first-child {
 		text-transform: uppercase;
 	}
 }
+.warning-note {
+	background-color: mix(white, @brand-danger,96.5%);
+	border-left: 6px solid mix(white, @brand-danger,90%);
+	margin-bottom: 2em;
+	margin-top: 2em;
+	padding: 25px 15px;
+	position: relative;
+	
+	&:before {
+		content: "Warning";
+		color: #aaa;
+		font-size: @font-size-small;
+		font-weight: 500;
+		line-height: 1;
+		position: absolute;
+		top: 7px;
+		text-transform: uppercase;
+	}
+}
+.caution-note {
+	background-color: mix(white, @brand-warning,96%);
+	border-left: 6px solid mix(white, @brand-warning,85%);
+	margin-bottom: 2em;
+	margin-top: 2em;
+	padding: 25px 15px;
+	position: relative;
+	
+	&:before {
+		content: "Caution";
+		color: #aaa;
+		font-size: @font-size-small;
+		font-weight: 500;
+		line-height: 1;
+		position: absolute;
+		top: 7px;
+		text-transform: uppercase;
+	}
+}
+.api-note {
+	background-color: mix(white, @brand-primary,95%);
+	border-left: 6px solid mix(white, @brand-primary,80%);
+	margin-bottom: 2em;
+	margin-top: 2em;
+	padding: 25px 15px;
+	position: relative;
+	
+	&:before {
+		content: "Note";
+		color: #aaa;
+		font-size: @font-size-small;
+		font-weight: 500;
+		line-height: 1;
+		position: absolute;
+		top: 7px;
+		text-transform: uppercase;
+	}
+}
 .contextual-note {
 	background-color: mix(white, @brand-primary,95%);
 	border-left: 6px solid mix(white, @brand-primary,80%);
 	margin-bottom: 2em;
 	margin-top: 2em;
 	padding: 15px;
-	
 	h4 {
 		margin: 0 0 15px;
 	}
@@ -398,7 +470,7 @@ ul.list li {
 .code-header {
 	.border-top-radius( 4px );
 	border: 1px solid darken(@navbar-default-bg, 10%);
-	border-bottom: 0 none;
+	
 	color: @gray;
 	margin: 20px 0 0;
 	padding: 15px;
@@ -433,6 +505,9 @@ ul.list li {
 pre {
 	margin-bottom: 2em;
 	margin-top: 2em;
+	.api {
+		border-top: 0 none;
+	}
 }
 h1 pre, h1 code, h2 pre, h2 code, h3 pre, h3 code, h4 pre, h4 code {
 	font-size: 0.9em !important;
