@@ -18,12 +18,13 @@ module.exports = {
 				{ "section": "examples",            "path": "/examples",              "label": "Examples" }
 			],
 			"docsnav": [
-				{ "value": "getting-started",       "path": "/docs/getting-started",  "label": "Getting Started",  "labelsm": "Starting" },
-				{ "value": "configuration",         "path": "/docs/configuration",    "label": "Configuration",    "labelsm": "Config" },
-				{ "value": "database",              "path": "/docs/database",         "label": "Database",         "labelsm": "Data" },
+				{ "value": "getting-started", "path": "/docs/getting-started", "label": "Getting Started", "labelsm": "Starting" },
+				{ "value": "configuration", "path": "/docs/configuration", "label": "Configuration", "labelsm": "Config" },
+				{ "value": "database", "path": "/docs/database", "label": "Database", "labelsm": "Data" },
+				{ "value": "classapi", "path": "/docs/api/current/class", "label": "Class Reference", "labelsm": "Ref" },
 				{ "value": "faqs",              	"path": "/docs/faqs",        	  "label": "FAQ's",            "labelsm": "FAQs" }
 				/*{ "value": "views",                 "path": "/docs/views",            "label": "Views",            "labelsm": "Views" }*/
-			]
+			],
 		},
 		"zh": {
 			"content": {
@@ -107,12 +108,119 @@ module.exports = {
 			"title": "Setting up and using Data Models"
 		},
 		{
+			"path": "/docs/api",
+			"language": "en",
+			"template": "docs/api",
+			"section": "docs",
+			"docssection": { "value": "api", "path": "/docs/api", "label": "Keystone Api" },
+			"title": "Keystone Api"
+		},
+		{
+			"path": "/docs/api/current",
+			"language": "en",
+			"template": "docs/api/0.3.x/class",
+			"section": "docs",
+			"api": '0.3.x',
+			"docssection": { "version": "0.3.x", "value": "classapi", "path": "/docs/api/current/class", "label": "Class Api" },
+			"title": "Class Api"
+		},
+		{
+			"path": "/docs/api/current/class",
+			"language": "en",
+			"template": "docs/api/0.3.x/class",
+			"section": "docs",
+			"api": '0.3.x',
+			"docssection": { "version": "0.3.x", "value": "classapi", "path": "/docs/api/current/class", "label": "Class Api" },
+			"title": "Class Api"
+		},
+		{
+			"path": "/docs/api/current/endpoint",
+			"language": "en",
+			"template": "docs/api/0.4.x/endpoint",
+			"section": "docs",
+			"api": '0.4.x',
+			"docssection": { "version": "0.4.x", "value": "endpointapi", "path": "/docs/api/current/class", "label": "Class Api" },
+			"title": "Class Api"
+		},
+		{
+			"path": "/docs/api/0.4.x",
+			"language": "en",
+			"template": "docs/api/0.4.x/class",
+			"section": "docs",
+			"api": '0.4.x',
+			"docssection": { "version": "0.4.x", "value": "classapi", "path": "/docs/api/0.4.x/class", "label": "Keystone Api" },
+			"title": "Keystone Api"
+		},
+		{
+			"path": "/docs/api/0.4.x/class",
+			"language": "en",
+			"template": "docs/api/0.4.x/class",
+			"section": "docs",
+			"api": '0.4.x',
+			"docssection": { "version": "0.4.x", "value": "classapi", "path": "/docs/api/0.4.x/class", "label": "Keystone Api" },
+			"title": "Keystone Api"
+		},
+		{
+			"path": "/docs/api/0.4.x/endpoint",
+			"language": "en",
+			"template": "docs/api/0.4.x/endpoint",
+			"section": "docs",
+			"api": '0.4.x',
+			"docssection": { "version": "0.4.x", "value": "endpointapi", "path": "/docs/api/current/endpoint", "label": "Class Api" },
+			"title": "Class Api"
+		},
+		{
+			"path": "/docs/api/0.3.x",
+			"language": "en",
+			"template": "docs/api/0.3.x/class",
+			"section": "docs",
+			"api": '0.3.x',
+			"docssection": { "version": "0.3.x", "value": "classapi", "path": "/docs/api", "label": "Keystone Api" },
+			"title": "Keystone Api"
+		},
+		{
+			"path": "/docs/api/0.3.x/class",
+			"language": "en",
+			"template": "docs/api/0.3.x/class",
+			"section": "docs",
+			"api": '0.3.x',
+			"docssection": { "version": "0.3.x", "value": "classapi", "path": "/docs/api", "label": "Keystone Api" },
+			"title": "Keystone Api"
+		},
+		{
+			"path": "/docs/api/0.2.x",
+			"language": "en",
+			"template": "docs/api/0.2.x/class",
+			"section": "docs",
+			"api": '0.2.x',
+			"docssection": { "version": "0.2.x", "value": "classapi", "path": "/docs/api", "label": "Keystone Api" },
+			"title": "Keystone Api"
+		},
+		{
+			"path": "/docs/api/0.2.x/class",
+			"language": "en",
+			"template": "docs/api/0.2.x/class",
+			"section": "docs",
+			"api": '0.2.x',
+			"docssection": { "version": "0.2.x", "value": "classapi", "path": "/docs/api/0.2.x/class", "label": "Class Api 0.2.x" },
+			"title": "Class Api 0.2.x"
+		},
+		{
+			"path": "/docs/api/0.2.x/endpoint",
+			"language": "en",
+			"template": "docs/api/0.2.x/endpoint",
+			"section": "docs",
+			"api": '0.2.x',
+			"docssection": { "version": "0.2.x", "value": "endpointapi", "path": "/docs/api/0.2.x/class", "label": "Class Api 0.2.x" },
+			"title": "Class Api 0.2.x"
+		},
+		{
 			"path": "/docs/faqs",
 			"language": "en",
 			"template": "docs/faqs",
 			"section": "docs",
 			"docssection": { "value": "faqs", "path": "/docs/faqs", "label": "FAQs" },
-			"title": "Frequents Asked Questions"
+			"title": "Frequently Asked Questions"
 		},
 		/* {
 			"path": "/docs/views",

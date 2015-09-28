@@ -15,6 +15,30 @@ mixin docsnav(docssection)
 			hr
 			ul.sidebar-nav
 				each item in docsnav
+					if (item.value == docssection.value ) && docssection.item == 'classapi3' 
+						ul
+							li: a(href='#introduction-prerequisites') Prerequisites
+							li.nav-label: a(href='#introduction') Email
+							li: a(href='#introduction-productionvsdevelopment') Production vs Development
+							li.nav-label: a(href='#introduction') List
+							li: a(href='#introduction-productionvsdevelopment') Production vs Development
+							li.nav-label: a(href='#introduction') View
+							li: a(href='#introduction-productionvsdevelopment') Production vs Development
+							li
+							li.nav-label: a(href='/docs/api/0.2.x/class') 0.2.x
+					
+					if (item.value == docssection.value ) && docssection.item == 'classapi2' 
+						ul
+							li: a(href='#introduction-prerequisites') Prerequisites
+							li.nav-label: a(href='#introduction') Email
+							li: a(href='#introduction-productionvsdevelopment') Production vs Development
+							li.nav-label: a(href='#introduction') List
+							li: a(href='#introduction-productionvsdevelopment') Production vs Development
+							li.nav-label: a(href='#introduction') View
+							li: a(href='#introduction-productionvsdevelopment') Production vs Development
+							li
+							li.nav-label: a(href='/docs/api/current/class') 0.3.x
+							
 					if (item.value == docssection.value ) && item.value == 'getting-started'
 						ul
 							li.nav-label: a(href='#introduction') Introduction
