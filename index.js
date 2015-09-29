@@ -12,9 +12,9 @@ var logger = require('morgan');
 var content = require('./content');
 
 var Marking = require('./content/common/apiMarked');
-var marked = _.cloneDeep(Marking._marked);;
+var marked = _.cloneDeep(Marking._marked);
 // fill out the api object
-Marking.getApi(marked);
+//Marking.getApi(marked);
 
 function view(view, options) {
 	return function(req, res, next) {
@@ -23,8 +23,12 @@ function view(view, options) {
 		options.prefix = (options.language === 'en') ? '/' : '/' + options.language + '/';
 		_.extend(options, content.languages[options.language]);
 		if(_.contains(['0.2.x','0.3.x','0.4.x'], options.api)) {
-			options.apidocs = marked[options.language];
-			res.render(options.language + '/pages/' + view, options);
+			var sendMarked = _.cloneDeep(Marking._marked);
+			Marking.getApi(sendMarked, function() {
+				options.apidocs = sendMarked[options.language];
+				res.render(options.language + '/pages/' + view, options);
+			});
+			
 		} else {
 			res.render(options.language + '/pages/' + view, options);
 		}

@@ -1,5 +1,5 @@
 /*
- * Inject current code reference
+ * Inject current code reference and sticky menu
  */
 $(function() {
 	var _cached = {}
@@ -55,5 +55,19 @@ $(function() {
 					
 		}
 	});
+	
+	// sticky menu
+	var $stickyMenu = $('.stickyMenu');
+	if (!!$stickyMenu.offset()) { 
+		var stickyTop = $stickyMenu.offset().top;  
+		$(window).scroll(function(){ 
+			var windowTop = $(window).scrollTop(); 
+			if (stickyTop-40 < windowTop){
+				$stickyMenu.css({ position: 'fixed', top: 0, overflow: 'auto', marginTop: '0', paddingBottom: '80px',  height: '100%', width: $stickyMenu.parent().width() });
+			} else {
+				$stickyMenu.css('position','static');
+			}
+		});
+	}
 	
 });

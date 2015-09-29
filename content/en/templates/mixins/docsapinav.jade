@@ -12,7 +12,7 @@ mixin docsnav(docssection)
 		li
 			a(href='/docs').nav-heading Docs
 	
-	nav.docs-sidebar.hidden-xs
+	nav.docs-sidebar.hidden-xs.stickyMenu
 		ul.sidebar-nav
 			if (docssection.value == 'classapi' )
 				li(class=docssection.version == '0.3.x' ? 'active' : null): a(href='/docs/api/current/class').nav-heading Current
@@ -43,15 +43,31 @@ mixin docsnav(docssection)
 						each item3 in apidocs['0.4.x'].email
 							li: a(href='##{item3.name}') .#{item3.name}
 						
+						li.nav-label: a(href='#superField') Keystone.Field
+						each item7 in apidocs['0.4.x'].field
+							li: a(href='#field-#{item7.name}') .#{item7.name}
+							
+						li.nav-label: a(href='#classFieldTypes') Keystone.Field.Types
+						each item8 in apidocs['0.4.x'].fieldTypes
+							li: a(href='#field-types-#{item8.name}') .#{item8.name}
+						
 						li.nav-label: a(href='#classList') Keystone.List
 						each schema in apidocs['0.4.x'].schema
 							li: a(href='#List-schema-#{schema.name}') <i>schemaHelper</i>.#{schema.name}
 						each item4 in apidocs['0.4.x'].list
 							li: a(href='#List-#{item4.name}') .#{item4.name}
 						
+						li.nav-label: a(href='#helpersMiddleware') Keystone.Middleware
+						each mdl in apidocs['0.4.x'].middleware
+							li: a(href='#middleware-#{mdl.name}') .#{mdl.name}
+						
+						li.nav-label: a(href='#helpersSession') Keystone.Session
+						each item6 in apidocs['0.4.x'].session
+							li: a(href='#session-#{item6.name}') .#{item6.name}
+						
 						li.nav-label: a(href='#classView') Keystone.View
 						each item5 in apidocs['0.4.x'].view
-							li: a(href='##{item5.name}') .#{item5.name}
+							li: a(href='#View-#{item5.name}') .#{item5.name}
 					
 					if (item.value == docssection.value ) && docssection.version == '0.3.x' 
 						li.nav-label: a(href='#changelog') 0.2.x to 0.3.x Changes
@@ -64,15 +80,32 @@ mixin docsnav(docssection)
 						each item3 in apidocs['0.3.x'].email
 							li: a(href='##{item3.name}') .#{item3.name}
 						
+						li.nav-label: a(href='#superField') Keystone.Field
+						each item7 in apidocs['0.3.x'].field
+							li: a(href='#field-#{item7.name}') .#{item7.name}
+							
+						li.nav-label: a(href='#classFieldTypes') Keystone.Field.Types
+						each item8 in apidocs['0.3.x'].fieldTypes
+							li: a(href='#field-types-#{item8.name}') .#{item8.name}
+						
 						li.nav-label: a(href='#classList') Keystone.List
 						each schema in apidocs['0.3.x'].schema
 							li: a(href='#List-schema-#{schema.name}') <i>schemaHelper</i>.#{schema.name}
 						each item4 in apidocs['0.3.x'].list
 							li: a(href='#List-#{item4.name}') .#{item4.name}
 						
+						li.nav-label: a(href='#helpersMiddleware') Keystone.Middleware
+						each mdl in apidocs['0.3.x'].middleware
+							li: a(href='#middleware-#{mdl.name}') .#{mdl.name}
+						
+						
+						li.nav-label: a(href='#helpersSession') Keystone.Session
+						each item6 in apidocs['0.3.x'].session
+							li: a(href='#session-#{item6.name}') .#{item6.name}
+						
 						li.nav-label: a(href='#classView') Keystone.View
 						each item5 in apidocs['0.3.x'].view
-							li: a(href='##{item5.name}') .#{item5.name}
+							li: a(href='#View-#{item5.name}') .#{item5.name}
 					
 					if (item.value == docssection.value ) && docssection.version == '0.2.x' 
 						li.nav-label: a(href='#classKeystone') Keystone
@@ -89,6 +122,5 @@ mixin docsnav(docssection)
 						
 						li.nav-label: a(href='#classView') Keystone.View
 						each item5 in apidocs['0.2.x'].view
-							li: a(href='##{item5.name}') .#{item5.name}
-		hr
+							li: a(href='#View-#{item5.name}') .#{item5.name}
 		

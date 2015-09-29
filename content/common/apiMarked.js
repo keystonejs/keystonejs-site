@@ -24,6 +24,18 @@ module.exports = {
 				if(_.isArray(list.email)) {
 					dirs.push({dir: 'content/' + language + '/pages/docs/api/' + version + '/markdown/class/Email', pushTo: marked[language][version].email });
 				}
+				if(_.isArray(list.session)) {
+					dirs.push({dir: 'content/' + language + '/pages/docs/api/' + version + '/markdown/class/Session', pushTo: marked[language][version].session });
+				}
+				if(_.isArray(list.middleware)) {
+					dirs.push({dir: 'content/' + language + '/pages/docs/api/' + version + '/markdown/class/Middleware', pushTo: marked[language][version].middleware });
+				}
+				if(_.isArray(list.field)) {
+					dirs.push({dir: 'content/' + language + '/pages/docs/api/' + version + '/markdown/class/Field', pushTo: marked[language][version].field });
+				}
+				if(_.isArray(list.fieldTypes)) {
+					dirs.push({dir: 'content/' + language + '/pages/docs/api/' + version + '/markdown/class/FieldTypes', pushTo: marked[language][version].fieldTypes });
+				}
 				if(_.isArray(list.endpoints)) {
 					dirs.push({dir: 'content/' + language + '/pages/docs/api/' + version + '/markdown/endpoints/', pushTo: marked[language][version].endpoints });
 				}
@@ -76,6 +88,10 @@ module.exports = {
 				email: [],
 				list: [],
 				schema: [],
+				session: [],
+				field: [],
+				fieldTypes: [],
+				middleware: [],
 			},
 			'0.4.x': {
 				keystone: [],
@@ -83,6 +99,10 @@ module.exports = {
 				email: [],
 				list: [],
 				schema: [],
+				session: [],
+				field: [],
+				fieldTypes: [],
+				middleware: [],
 				endpoints: []
 			},
 		},
