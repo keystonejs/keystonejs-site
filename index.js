@@ -12,7 +12,7 @@ var logger = require('morgan');
 var content = require('./content');
 
 var Marking = require('./content/common/apiMarked');
-var marked = _.cloneDeep(Marking._marked);
+//var marked = _.cloneDeep(Marking._marked);
 // fill out the api object
 //Marking.getApi(marked);
 
@@ -23,9 +23,9 @@ function view(view, options) {
 		options.prefix = (options.language === 'en') ? '/' : '/' + options.language + '/';
 		_.extend(options, content.languages[options.language]);
 		if(_.contains(['0.2.x','0.3.x','0.4.x'], options.api)) {
-			var sendMarked = _.cloneDeep(Marking._marked);
-			Marking.getApi(sendMarked, function() {
-				options.apidocs = sendMarked[options.language];
+			var sendMarked = _.cloneDeep(Marking._marked[options.language][options.api]);
+			Marking.getApi(sendMarked, options.language, options.api, function(err, marked) {
+				options.apidocs = sendMarked;
 				res.render(options.language + '/pages/' + view, options);
 			});
 			

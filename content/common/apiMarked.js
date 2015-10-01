@@ -5,134 +5,149 @@ var _ = require('lodash');
 var async = require('async');
 
 module.exports = {
-	getApi: function getApi(marked, callback) {
+	getApi: function getApi(marked, language, version, callback) {
 		var dirs = [];
-		_.each(marked, function(v, language) {
-			_.each(v, function(list, version) {
-				if(_.isArray(list.keystone)) {
-					dirs.push({dir: 'content/' + language + '/pages/docs/api/' + version + '/markdown/class/', pushTo: marked[language][version].keystone });
-				}
-				if(_.isArray(list.view)) {
-					dirs.push({dir: 'content/' + language + '/pages/docs/api/' + version + '/markdown/class/View', pushTo: marked[language][version].view });
-				}
-				if(_.isArray(list.list)) {
-					dirs.push({dir: 'content/' + language + '/pages/docs/api/' + version + '/markdown/class/List', pushTo: marked[language][version].list });
-				}
-				if(_.isArray(list.schema)) {
-					dirs.push({dir: 'content/' + language + '/pages/docs/api/' + version + '/markdown/class/List/schema', pushTo: marked[language][version].schema });
-				}
-				if(_.isArray(list.email)) {
-					dirs.push({dir: 'content/' + language + '/pages/docs/api/' + version + '/markdown/class/Email', pushTo: marked[language][version].email });
-				}
-				if(_.isArray(list.session)) {
-					dirs.push({dir: 'content/' + language + '/pages/docs/api/' + version + '/markdown/class/Session', pushTo: marked[language][version].session });
-				}
-				if(_.isArray(list.middleware)) {
-					dirs.push({dir: 'content/' + language + '/pages/docs/api/' + version + '/markdown/class/Middleware', pushTo: marked[language][version].middleware });
-				}
-				if(_.isArray(list.field)) {
-					dirs.push({dir: 'content/' + language + '/pages/docs/api/' + version + '/markdown/class/Field', pushTo: marked[language][version].field });
-				}
-				if(_.isArray(list.fieldTypes)) {
-					dirs.push({dir: 'content/' + language + '/pages/docs/api/' + version + '/markdown/class/FieldTypes', pushTo: marked[language][version].fieldTypes });
-				}
-				if(_.isArray(list.endpoints)) {
-					dirs.push({dir: 'content/' + language + '/pages/docs/api/' + version + '/markdown/endpoints/', pushTo: marked[language][version].endpoints });
-				}
-			});
-		});
-		async.eachSeries(dirs, function(obj, next) {
-			var dir = obj.dir;
-			var pushTo = obj.pushTo;
-			fs.readdir(dir, function (err, files) {
-				if (err) {
-					next(err);
-				} else {
-					async.eachSeries(files, function(file, done) {
-						file =  path.join(dir, file);
-						if(fs.statSync(file).isFile()) {
-							fs.readFile(file, function (err, data) {
-								if (!err) {
-									pushTo.push({name: path.basename(file,'.md'), html: markdown(data.toString())})
-								}
-								done();
-							});
-						} else {
-							done();
+		// recursively add reference docs
+		function addDir(item, lang, ver, key, pushTo, key2) {
+			var path = 'content/' + lang + '/pages/docs/api/' + ver + '/markdown/class/';
+			if(key2) {
+				path = 'content/' + lang + '/pages/docs/api/' + ver + '/markdown/class/' + key.charAt(0).toUpperCase() + key.slice(1) + '/' + key2;
+			} else if(key !== 'keystone') {
+				path = 'content/' + language + '/pages/docs/api/' + version + '/markdown/class/' + key.charAt(0).toUpperCase() + key.slice(1);
+			}
+			dirs.push({key: key2 || key, main: item.main, pre: item.pre, header: item.header, menuHeader: item.menuHeader, dir: path, pushTo: pushTo });
+			
+		}
+		function recur(ref, callback) {
+			
+			async.forEachOf(ref, function(list, key, finished) {
+				addDir(list, language, version, key, list.list);
+				if(list.add) {
+					_.each(list, function(list2, k) {
+						if(_.isObject(list2) && !_.isArray(list2)) {
+							addDir(list2, language, version, key, list.list, k)
 						}
-					}, function(err) {
-						next();
 					});
+				}	
+				finished();
+			}, function() {
+				callback(dirs);
+			});	
+		}
+		recur(marked, function(dirs) { 
+			async.eachSeries(dirs, function(obj, next) {
+				var dir = obj.dir;
+				var pushTo = obj.pushTo;
+				if(obj.main) {
+					var main = 'content/' + language + '/pages/docs/api/' + version + '/' + obj.main;
+					if(fs.statSync(main).isFile()) {
+						fs.readFile(main, function (err, data) {
+							if (!err) {
+								pushTo.push({keys: obj.key, header: obj.header, menuHeader: obj.menuHeader, main: obj.key,   html: markdown(data.toString())})
+							}
+						});
+					}
+				}
+				fs.readdir(dir, function (err, files) {
+					if (err) {
+						next(err);
+					} else {
+						async.eachSeries(files, function(file, done) {
+							file =  path.join(dir, file);
+							if(fs.statSync(file).isFile()) {
+								fs.readFile(file, function (err, data) {
+									if (!err) {
+										var name = obj.pre ? '<i>' + obj.pre + '</i>.' + path.basename(file,'.md') : path.basename(file,'.md');
+										pushTo.push({ keys: obj.key, header: obj.header, menuHeader: obj.menuHeader,  name: name,  html: markdown(data.toString()) })
+									}
+									done();
+								});
+							} else {
+								done();
+							}
+						}, function(err) {
+							next();
+						});
+					}
+				});
+			}, function(err) {
+				if(err) {
+					//console.log(err);
+				}
+				//console.log(marked)
+				if(_.isFunction(callback)) {
+					callback(null, marked);
 				}
 			});
-		}, function(err) {
-			if(err) {
-				//console.log(err);
-			}
-			if(_.isFunction(callback)) {
-				callback(null, marked);
-			}
 		});
-	},	
+	},
 	_marked: {
 		"en": {
 			'0.2.x': {
-				keystone: [],
-				view: [],
-				email: [],
-				list: [],
+				keystone: createList('markdown/class/Classes/Keystone.md', 'Keystone Class', 'keystone'),
+				email: createList('markdown/class/Classes/Email.md', '.Email Class', 'keystone.email'),
+				list: {
+					list:[],
+					pre: null,
+					main: 'markdown/class/Classes/List.md',
+					header: '.List Class',
+					menuHeader: 'keystone.list',
+					add: true,
+					schema: createList(false,false,false,'schemaHelper')
+				},
+				session: createList('markdown/class/Helpers/Session.md', '.session helper', 'keystone.session'),
+				view: createList('markdown/class/Classes/View.md', '.View Class', 'keystone.view'),
 			},
 			'0.3.x': {
-				keystone: [],
-				view: [],
-				email: [],
-				list: [],
-				schema: [],
-				session: [],
-				field: [],
-				fieldTypes: [],
-				middleware: [],
+				keystone: createList('markdown/class/Classes/Keystone.md', 'Keystone Class', 'keystone'),
+				email: createList('markdown/class/Classes/Email.md', '.Email Class', 'keystone.email'),
+				
+				field: createList('markdown/class/Classes/Field.md', '.Field super', 'keystone.field'),
+				fieldTypes: createList('markdown/class/Classes/FieldTypes.md', '.Field.Types Classes', 'keystone.field.types'),
+				list: {
+					list:[],
+					pre: null,
+					main: 'markdown/class/Classes/List.md',
+					header: '.List Class',
+					menuHeader: 'keystone.list',
+					add: true,
+					schema: createList(false,false,false,'schemaHelper')
+				},
+				middleware: createList('markdown/class/Helpers/Middleware.md', '.middleware helper', 'keystone.middleware'),
+				session: createList('markdown/class/Helpers/Session.md', '.session helper', 'keystone.session'),
+				view: createList('markdown/class/Classes/View.md', '.View Class', 'keystone.view'),
 			},
 			'0.4.x': {
-				keystone: [],
-				view: [],
-				email: [],
-				list: [],
-				schema: [],
-				session: [],
-				field: [],
-				fieldTypes: [],
-				middleware: [],
-				endpoints: []
+				keystone: createList('markdown/class/Classes/Keystone.md', 'Keystone Class', 'keystone'),
+				email: createList('markdown/class/Classes/Email.md', '.Email Class', 'keystone.email'),
+				
+				field: createList('markdown/class/Classes/Field.md', '.Field super', 'keystone.field'),
+				fieldTypes: createList('markdown/class/Classes/FieldTypes.md', '.Field.Types Classes', 'keystone.field.types'),
+				list: {
+					list:[],
+					pre: null,
+					main: 'markdown/class/Classes/List.md',
+					header: '.List Class',
+					menuHeader: 'keystone.list',
+					add: true,
+					schema: createList(false,false,false,'schemaHelper')
+				},
+				middleware: createList('markdown/class/Helpers/Middleware.md', '.middleware helper', 'keystone.middleware'),
+				session: createList('markdown/class/Helpers/Session.md', '.session helper', 'keystone.session'),
+				view: createList('markdown/class/Classes/View.md', '.View Class', 'keystone.view'),
+				endpoints: createList()
 			},
 		},
-		/*
-		"zn": {
-			'0.2.x': {
-				keystone: [],
-				view: [],
-				email: [],
-				list: [],
-				schema: [],
-				endpoints: []
-			},
-			'0.3.x': {
-				keystone: [],
-				view: [],
-				email: [],
-				list: [],
-				schema: [],
-				endpoints: []
-			},
-			'0.4.x': {
-				keystone: [],
-				view: [],
-				email: [],
-				list: [],
-				schema: [],
-				endpoints: []
-			},
-		}
-		*/
+		//"zn": {}
 	}
 }
+
+function createList(main,  header, menuHeader, pre) {
+	return {
+		list: [],
+		main: main,
+		pre: pre,
+		header: header,
+		menuHeader: menuHeader
+	};
+}	

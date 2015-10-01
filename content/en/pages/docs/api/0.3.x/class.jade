@@ -6,7 +6,7 @@ block intro
 	.page-header
 		.container
 			h1 Class Reference
-			p.lead Current (version 0.3.x)
+			p.lead Current (#{branch})
 	
 block content
 	.container: .row
@@ -22,85 +22,20 @@ block content
 			a(name='changelog')
 			h3  0.2.x to 0.3.x Changes
 			include:marked markdown/class/static/0.2.x-to-0.3.x-Changes.md
-			
 			hr
-			a(name='classKeystone')
-			h3 Keystone	Class
-			p The Keystone instance is a global object.
-			each item2 in apidocs['0.3.x'].keystone
-				a(name='#{item2.name}')
-				!= item2.html
-				hr
-			
-			a(name='classEmail')
-			h3 .Email Class	
-			include:marked markdown/class/Classes/Email.md
-			hr 
-			each item3 in apidocs['0.3.x'].email
-				a(name='#{item3.name}')
-				!= item3.html
-				hr
-			
-			a(name='superField')
-			h3 .Field super	
-			include:marked markdown/class/Helpers/Field.md
-			hr  
-			each ff in apidocs['0.3.x'].field
-				a(name='field-#{ff.name}')
-				!= ff.html
-				hr
-			
-			a(name='classFieldTypes')
-			h3 .Field.Types Classes
-			include:marked markdown/class/Classes/FieldTypes.md
-			hr  
-			each fft in apidocs['0.3.x'].fieldTypes
-				a(name='field-types-#{fft.name}')
-				!= fft.html
-				hr
-			
-			a(name='classList')
-			h3 .List Class	
-			include:marked markdown/class/Classes/List.md
-			hr  
-			h4 List Schema Helpers
-			each schema in apidocs['0.3.x'].schema
-				a(name='List-schema-#{schema.name}')
-				!= schema.html
-				hr
-			each item4 in apidocs['0.3.x'].list
-				a(name='List-#{item4.name}')
-				!= item4.html
-				hr
-			
-			a(name='helpersMiddleware')
-			h3 .middleware helpers	
-			include:marked markdown/class/Helpers/Middleware.md
-			hr  
-			each middle in apidocs['0.3.x'].middleware
-				a(name='middleware-#{middle.name}')
-				!= middle.html
-				hr
-			
-			a(name='helpersSession')
-			h3 .session helpers	
-			include:marked markdown/class/Helpers/Session.md
-			hr  
-			each item8 in apidocs['0.3.x'].session
-				a(name='session-#{item8.name}')
-				!= item8.html
-				hr
-			
-			a(name='classView')
-			h3 .View Class	
-			include:marked markdown/class/Classes/View.md
-			hr 
-			each item5 in apidocs['0.3.x'].view
-				a(name='View-#{item5.name}')
-				!= item5.html
-				hr
-				
-			input(type="hidden" id="_version" value="0.3.x")
+			each val, ref in apidocs
+				each item in val.list
+					unless item.name
+						a(name='main-#{item.keys}')
+						h3 !{item.header}
+						!= item.html
+						hr
+					unless item.main
+						a(name='#{item.keys}-#{item.name}')
+						!= item.html
+						hr
+			input(type="hidden" id="_version" value="#{api}")
 			input(type="hidden" id="_path" value="#{path}")
+			input(type="hidden" id="_api" value="#{api}")
+			input(type="hidden" id="_branch" value="#{branch}")
 			
-			div(style="height:400px;width:1px") 

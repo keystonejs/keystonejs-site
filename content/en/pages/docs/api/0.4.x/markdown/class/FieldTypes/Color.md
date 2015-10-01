@@ -4,10 +4,8 @@
 > *@param* **options** _{Object}_  - options   
 > *@api* **public**  
 
-
-
-<div class="code-header"> <h4>Example</h4></div><pre class=" language-javascript"><code class="language-javascript">
-
-</code></pre>
+<div class="code-header"> <h4>defaults</h4></div><pre class=" language-javascript"><code class="language-javascript">this._nativeType = String;
+this._underscoreMethods = [];
+this._fixedSize = 'small';</code></pre>
 
 <div class="code-header addGitHubLink" data-file="fields/types/color/ColorType.js"> <a href="#" class="loadCode"> code</a></div><pre class=" language-javascript hideCode api"></pre> 

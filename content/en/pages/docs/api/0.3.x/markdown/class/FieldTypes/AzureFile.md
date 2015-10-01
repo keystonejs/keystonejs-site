@@ -13,7 +13,7 @@ this._fixedSize = 'full';</code></pre>
 <span class="subMethod"> .Field.Types.AzureFile.azurefileconfig   
 > *@api* **public**    
 
-Exposes the custom or keystone s3 config settings.  
+Exposes the custom or keystone azure config settings.  
 <div class="code-header addGitHubLink" data-file="fields/types/azurefile/AzureFileType.js#L67-L75">&nbsp; </div><pre class=" language-javascript hideCode api"></pre>  
 
 ---

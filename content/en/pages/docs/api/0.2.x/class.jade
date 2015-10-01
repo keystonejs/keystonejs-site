@@ -6,7 +6,7 @@ block intro
 	.page-header
 		.container
 			h1 Class Reference
-			p.lead version 0.2.x
+			p.lead legacy (#{branch})
 	
 block content
 	.container: .row
@@ -19,38 +19,18 @@ block content
 				a(name='methods')
 				| #{api} complete reference
 			
-			a(name='classKeystone')
-			h3 Keystone	Class
-			p The Keystone instance is a global object.  
-			p You must call <code>.init()</code> or <code>.connect(mongoose)</code> in order to make use of the library.
-			each item2 in apidocs['0.2.x'].keystone
-				a(name='#{item2.name}')
-				!= item2.html
-				hr
-			
-			a(name='classEmail')
-			h3 .Email Class
-			include:marked markdown/class/includes/Email.md
-			hr 	
-			each item3 in apidocs['0.2.x'].email
-				a(name='#{item3.name}')
-				!= item3.html
-				hr
-			
-			a(name='classList')
-			h3 .List	Class
-			each item4 in apidocs['0.2.x'].list
-				a(name='List-#{item4.name}')
-				!= item4.html
-				hr
-			
-			a(name='classView')
-			h3 .View	Class
-			include:marked markdown/class/includes/View.md
-			hr 
-			each item5 in apidocs['0.2.x'].view
-				a(name='#{item5.name}')
-				!= item5.html
-				hr
-			input(type="hidden" id="_version" value="0.2.x")
+			each val, ref in apidocs
+				each item in val.list
+					unless item.name
+						a(name='main-#{item.keys}')
+						h3 !{item.header}
+						!= item.html
+						hr
+					unless item.main
+						a(name='#{item.keys}-#{item.name}')
+						!= item.html
+						hr
+			input(type="hidden" id="_version" value="#{api}")
 			input(type="hidden" id="_path" value="#{path}")
+			input(type="hidden" id="_api" value="#{api}")
+			input(type="hidden" id="_branch" value="#{branch}")

@@ -9,20 +9,17 @@ $(function() {
 			link = '<a class="anchor" href="#' + name + '"><i class="entypo entypo-link"></i></a><a class="anchor" href="#top"><i class="entypo entypo-up"></i></a>',
 			$next = $anchor.next();
 		
-		var versions = ['0.2.x', '0.3.x'],
-			$version = $('#_version').val(),
-			$path = $('#_path').val();
+		var versions = ['0.2.x', 'current', 'incoming'],
+			version = $('#_version').val(),
+			path = $('#_path').val();
 
-		if($path) {
+		if(path) {
 			link += '<i class="anchor" style="padding-right: 0px;"><span>switch to:</span></i>';
 			versions.forEach(function(v) {
-				if(v !== $version) {
-					if($path.search('current') != -1) {
-						var path = $path.replace('current', v);
-					} else {
-						var path = $path.replace($version, v);
-					}
-					link += '<a style="padding-left: 8px;padding-right: 8px;"class="anchor" href="' + path + '/#' + name + '"><span>' + v + '</span></a>';
+				if(v !== version) {
+					var newpath = path.replace(version, v);
+					console.log(path, newpath,v,version)
+					link += '<a style="padding-left: 8px;padding-right: 8px;"class="anchor" href="' + newpath + '/#' + name + '"><span>' + v + '</span></a>';
 				}
 			});
 		}	
