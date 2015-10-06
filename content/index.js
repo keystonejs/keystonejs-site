@@ -62,6 +62,13 @@ module.exports = {
 			"title": "Node.js cms and web application platform built on Express and MongoDB"
 		},
 		{
+			"path": "/quick-start",
+			"language": "en",
+			"template": "starting",
+			"section": "starting",
+			"title": "Quick Start"
+		},
+		{
 			"path": "/getting-started",
 			"language": "en",
 			"template": "starting",
