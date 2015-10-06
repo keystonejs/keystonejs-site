@@ -25,8 +25,8 @@ Registers the field on the List's Mongoose Schema.
 
 ---
 <span class="subMethod"> .Field.Types.Password.addFilterToQuery( filter, query )  </span> 
-> *@param* **filter** {Object} - valid filter object
-> *@param* **query** {Object} - valid query object  
+> *@param* **filter** {Object} - valid filter object  
+> *@param* **query** {Object} - valid query object   
 > *@api* **public**   
   
 Add filters to a query.  
