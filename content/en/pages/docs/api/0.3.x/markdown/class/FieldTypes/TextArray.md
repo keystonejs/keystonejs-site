@@ -12,8 +12,8 @@ this._underscoreMethods = ['crop'];</code></pre>
 <div class="code-header addGitHubLink" data-file="fields/types/textarray/TextArrayType.js"> <a href="#" class="loadCode"> code</a></div><pre class=" language-javascript hideCode api"></pre>  
 
 <span class="subMethod"> .Field.Types.TextArray.validateInput( data [, required, item ]) </span>  
-> *@param* **data** {Object} - valid filter object   
-> *@param* **required** {Boolean} - required or not 
+> *@param* **data** {Object} - valid filter object    
+> *@param* **required** {Boolean} - required or not   
 > *@param* **item** {Object} - valid query object     
 > *@api* **public**     
 
