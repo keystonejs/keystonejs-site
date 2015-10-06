@@ -1,4 +1,5 @@
-#### Field.isModified(  )    
+#### Field.isModified( item )   
+> *@param* **item** {Object} - valid item object  
 > *@api* **private**  
 
 Default method to detect whether the field has been modified in an item.  

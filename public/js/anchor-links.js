@@ -18,7 +18,6 @@ $(function() {
 			versions.forEach(function(v) {
 				if(v !== version) {
 					var newpath = path.replace(version, v);
-					console.log(path, newpath,v,version)
 					link += '<a style="padding-left: 8px;padding-right: 8px;"class="anchor" href="' + newpath + '/#' + name + '"><span>' + v + '</span></a>';
 				}
 			});
@@ -26,7 +25,7 @@ $(function() {
 		var $link = $(link);
 		
 		// only append links to H2/H3/H4 tags
-		if ($next.prop("tagName") === "H2" || $next.prop("tagName") === "H3" || $next.prop("tagName") === "H4") {
+		if (["H2", "H3", "H4"].indexOf($next.prop("tagName")) > -1) {
 			$next.append($link);
 		}
 	});

@@ -1,4 +1,5 @@
-#### Field.getData(  )   
+#### Field.getData( data )   
+> *@param* **data** {Object} - valid data object   
 > *@api* **private**  
 
 Gets the field's data from an Item, as used by the React components

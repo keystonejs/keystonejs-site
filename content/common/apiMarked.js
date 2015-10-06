@@ -71,10 +71,6 @@ module.exports = {
 					}
 				});
 			}, function(err) {
-				if(err) {
-					//console.log(err);
-				}
-				//console.log(marked)
 				if(_.isFunction(callback)) {
 					callback(null, marked);
 				}
@@ -84,8 +80,13 @@ module.exports = {
 	_marked: {
 		"en": {
 			'0.2.x': {
-				keystone: createList('markdown/class/Classes/Keystone.md', 'Keystone Class', 'keystone'),
+				keystone: createList('markdown/class/Classes/Keystone.md', 'Keystone', 'keystone'),
+				content: createList('markdown/class/Classes/Content.md', '.content Class', 'keystone.content'),
+				contentPage: createList('markdown/class/Classes/ContentPage.md', '.content.Page Class', 'keystone.content.Page'),
+				contentType: createList('markdown/class/Classes/ContentType.md', '.content.Type Class', 'keystone.content.Type'),
 				email: createList('markdown/class/Classes/Email.md', '.Email Class', 'keystone.email'),
+				field: createList('markdown/class/Classes/Field.md', '.Field super', 'keystone.field'),
+				fieldTypes: createList('markdown/class/Classes/FieldTypes.md', '.Field.Types Classes','keystone.field.types'), 
 				list: {
 					list:[],
 					pre: null,
@@ -93,13 +94,17 @@ module.exports = {
 					header: '.List Class',
 					menuHeader: 'keystone.list',
 					add: true,
-					schema: createList(false,false,false,'schemaHelper')
+					schema: createList(false,false,false,'schemaPlugins')
 				},
+				security: createList('markdown/class/Helpers/Security.md', '.security.csrf helper', 'keystone.security.csrf'),
 				session: createList('markdown/class/Helpers/Session.md', '.session helper', 'keystone.session'),
 				view: createList('markdown/class/Classes/View.md', '.View Class', 'keystone.view'),
 			},
 			'0.3.x': {
 				keystone: createList('markdown/class/Classes/Keystone.md', 'Keystone Class', 'keystone'),
+				content: createList('markdown/class/Classes/Content.md', '.content Class', 'keystone.content'),
+				contentPage: createList('markdown/class/Classes/ContentPage.md', '.content.Page Class', 'keystone.content.Page'),
+				contentType: createList('markdown/class/Classes/ContentType.md', '.content.Type Class', 'keystone.content.Type'),
 				email: createList('markdown/class/Classes/Email.md', '.Email Class', 'keystone.email'),
 				
 				field: createList('markdown/class/Classes/Field.md', '.Field super', 'keystone.field'),
@@ -111,14 +116,18 @@ module.exports = {
 					header: '.List Class',
 					menuHeader: 'keystone.list',
 					add: true,
-					schema: createList(false,false,false,'schemaHelper')
+					schema: createList(false,false,false,'schemaPlugins')
 				},
 				middleware: createList('markdown/class/Helpers/Middleware.md', '.middleware helper', 'keystone.middleware'),
+				security: createList('markdown/class/Helpers/Security.md', '.security.csrf helper', 'keystone.security.csrf'),
 				session: createList('markdown/class/Helpers/Session.md', '.session helper', 'keystone.session'),
 				view: createList('markdown/class/Classes/View.md', '.View Class', 'keystone.view'),
 			},
 			'0.4.x': {
 				keystone: createList('markdown/class/Classes/Keystone.md', 'Keystone Class', 'keystone'),
+				content: createList('markdown/class/Classes/Content.md', '.content Class', 'keystone.content'),
+				contentPage: createList('markdown/class/Classes/ContentPage.md', '.content.Page Class', 'keystone.content.Page'),
+				contentType: createList('markdown/class/Classes/ContentType.md', '.content.Type Class', 'keystone.content.Type'),
 				email: createList('markdown/class/Classes/Email.md', '.Email Class', 'keystone.email'),
 				
 				field: createList('markdown/class/Classes/Field.md', '.Field super', 'keystone.field'),
@@ -130,9 +139,10 @@ module.exports = {
 					header: '.List Class',
 					menuHeader: 'keystone.list',
 					add: true,
-					schema: createList(false,false,false,'schemaHelper')
+					schema: createList(false,false,false,'schemaPlugins')
 				},
 				middleware: createList('markdown/class/Helpers/Middleware.md', '.middleware helper', 'keystone.middleware'),
+				security: createList('markdown/class/Helpers/Security.md', '.security.csrf helper', 'keystone.security.csrf'),
 				session: createList('markdown/class/Helpers/Session.md', '.session helper', 'keystone.session'),
 				view: createList('markdown/class/Classes/View.md', '.View Class', 'keystone.view'),
 				endpoints: createList()

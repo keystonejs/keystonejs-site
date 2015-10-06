@@ -11,6 +11,6 @@ Helper to simplify view logic in a Keystone application
 	view.render('index');
 ```  
 
-<div class="code-header addGitHubLink" data-file="lib/view.js"> <a href="#" class="loadCode">relevant code</a></div><pre class=" language-javascript hideCode api"></pre> 
+<div class="code-header addGitHubLink" data-file="lib/view.js"> <a href="#" class="loadCode">code</a></div><pre class=" language-javascript hideCode api"></pre> 
 
 

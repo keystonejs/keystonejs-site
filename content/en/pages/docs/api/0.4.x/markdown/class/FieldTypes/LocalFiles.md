@@ -92,7 +92,7 @@ Uploads the files for this field.
 ---
 <span class="subMethod"> .Field.Types.LocalFiles.getRequestHandler( item, req [, paths, callback] )  </span>
 > *@param* **item** {Object} - valid field object  
-> *@param* **req** {Object} - valid file object  
+> *@param* **req** {Object} - express req object    
 > *@param* **paths** {Object} - valid field paths (optional)  
 > *@param* **callback** {Function} - optional callback (optional)  
 > *@api* **public**  
@@ -106,7 +106,7 @@ Expected form parts are:
 ---
 <span class="subMethod"> .Field.Types.LocalFiles.handleRequest( item, req [, paths, callback] )  </span> 
 > *@param* **item** {Object} - valid field object  
-> *@param* **req** {Object} - valid file object  
+> *@param* **req** {Object} - express req object    
 > *@param* **paths** {Object} - valid field paths (optional)  
 > *@param* **callback** {Function} - optional callback (optional)  
 > *@api* **public**  

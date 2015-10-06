@@ -14,4 +14,4 @@ User.model.find().exec(function(docs,err) {
 <p class="api-note">To retrieve a list that may return `undefined` you should use `keystone.lists[key]`.  Using `.list()` will throw a `ReferenceError` if the arg is not a valid `List` or the `key` for a valid `List` </p> `  
 
 
-<div class="code-header addGitHubLink" data-file="lib/core/list.js"> <a href="#" class="loadCode">relevant code</a> </div><pre class=" language-javascript hideCode api"></pre> 
+<div class="code-header addGitHubLink" data-file="lib/core/list.js"> <a href="#" class="loadCode"> code</a> </div><pre class=" language-javascript hideCode api"></pre> 

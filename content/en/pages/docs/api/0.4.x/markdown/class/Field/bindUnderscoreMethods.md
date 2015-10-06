@@ -1,4 +1,5 @@
-#### Field.bindUnderscoreMethods(  )  
+#### Field.bindUnderscoreMethods( methods )  
+> *@param* **methods** {Array}    
 > *@api* **private**  
 
 Automatically bind underscore methods specified by the _underscoreMethods property.

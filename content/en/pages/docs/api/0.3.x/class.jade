@@ -17,7 +17,7 @@ block content
 		.col-sm-9: .docs-content
 			h2
 				a(name='methods')
-				| #{api} complete reference
+				| #{version} complete reference
 				
 			a(name='changelog')
 			h3  0.2.x to 0.3.x Changes
@@ -34,7 +34,7 @@ block content
 						a(name='#{item.keys}-#{item.name}')
 						!= item.html
 						hr
-			input(type="hidden" id="_version" value="#{api}")
+			input(type="hidden" id="_version" value="#{_version}")
 			input(type="hidden" id="_path" value="#{path}")
 			input(type="hidden" id="_api" value="#{api}")
 			input(type="hidden" id="_branch" value="#{branch}")

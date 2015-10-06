@@ -1,4 +1,5 @@
-#### Field.format(  )   
+#### Field.format( item )   
+> *@param* **item** {Object} - valid item object   
 > *@api* **private**  
 
 Default method to format the field value for display.  

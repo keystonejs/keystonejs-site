@@ -10,4 +10,4 @@ keystone.set('mongo','mongodb://localhost/keystone');
 
 keystone.set('custom key',{key1:'key1'});
 ```
-<div class="code-header addGitHubLink" data-file="lib/core/options.js#L21-L99"> &nbsp;</div><pre class=" language-javascript hideCode api"></pre> 
+<div class="code-header addGitHubLink" data-file="lib/core/options.js#L41-L145"> &nbsp;</div><pre class=" language-javascript hideCode api"></pre> 

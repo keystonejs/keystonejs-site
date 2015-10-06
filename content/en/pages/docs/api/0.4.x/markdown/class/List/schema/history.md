@@ -1,4 +1,4 @@
-#### _schemaHelper_.history (  )  
+#### List _schemaPlugins_.history (  )  
 > _@api_ **private**   
 
 <div class="code-header"> 
@@ -9,4 +9,4 @@ Revisions are noted on all `Save` and `Remove` operations.
 
 Uses <code class="default-value"> list.schema.pre('save'...) </code> and <code class="default-value"> list.schema.pre('remove'...) </code>to alter documents.
 
-<div class="code-header addGitHubLink" data-file="lib/schemaPlugins/history.js"><a href="#" class="loadCode">relevant code</a></div><pre class=" language-javascript hideCode api"></pre> 
+<div class="code-header addGitHubLink" data-file="lib/schemaPlugins/history.js"><a href="#" class="loadCode">code</a></div><pre class=" language-javascript hideCode api"></pre> 

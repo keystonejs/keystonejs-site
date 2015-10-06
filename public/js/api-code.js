@@ -22,17 +22,17 @@ $(function() {
 		
 		if(target.file) {
 			var branch = $('#_branch').val();
-			create_cached(version);
+			create_cached(branch);
 			var url = 'https://raw.githubusercontent.com/keystonejs/keystone/BRANCH/FILE'.replace('BRANCH',branch).replace('FILE', target.file);
 			var $pre = $this.parent().next();
-			if(_cached[version][target.file]) {
-				$pre.text(_cached[version][target.file]);
+			if(_cached[branch][target.file]) {
+				$pre.text(_cached[branch][target.file]);
 			} else {
 				$.ajax({
 					url: url,
 					dataType: 'text',
 					success: function(results) {
-						_cached[version][target.file] = results;
+						_cached[branch][target.file] = results;
 						$pre.text(results);
 					}
 				});

@@ -69,7 +69,7 @@ Updates the value for this field in the item from a data object
 ---
 <span class="subMethod"> .Field.Types.CloudinaryImages.getRequestHandler( item, req [, paths, callback] )  </span>
 > *@param* **item** {Object} - valid field object  
-> *@param* **req** {Object} - valid file object  
+> *@param* **req** {Object} - express req object    
 > *@param* **paths** {Object} - valid field paths (optional)  
 > *@param* **callback** {Function} - optional callback (optional)  
 > *@api* **public**  
@@ -83,7 +83,7 @@ Expected form parts are:
 ---
 <span class="subMethod"> .Field.Types.CloudinaryImages.handleRequest( item, req [, paths, callback] )  </span> 
 > *@param* **item** {Object} - valid field object  
-> *@param* **req** {Object} - valid file object  
+> *@param* **req** {Object} - express req object    
 > *@param* **paths** {Object} - valid field paths (optional)  
 > *@param* **callback** {Function} - optional callback (optional)  
 > *@api* **public**  

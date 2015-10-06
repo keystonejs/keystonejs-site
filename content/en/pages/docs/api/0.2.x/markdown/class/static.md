@@ -9,4 +9,4 @@ Can be included before other middleware (e.g. session management, logging, etc) 
 var app = express();
 keystone.static(app);
 ```
-<div class="code-header addGitHubLink" data-file="lib/core/static.js"> <a href="#" class="loadCode">relevant code</a> </div><pre class=" language-javascript hideCode api"></pre> 
+<div class="code-header addGitHubLink" data-file="lib/core/static.js"> <a href="#" class="loadCode"> code</a> </div><pre class=" language-javascript hideCode api"></pre> 

@@ -1,4 +1,5 @@
-#### Field.getValueFromData(  )   
+#### Field.getValueFromData( data ) 
+> *@param* **data** {Object} - valid data object     
 > *@api* **private**    
 
 Retrieves the value from an object, whether the path is nested or flattened.  

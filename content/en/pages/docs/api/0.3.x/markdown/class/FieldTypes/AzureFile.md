@@ -84,7 +84,7 @@ Uploads the file for this field.
 ---
 <span class="subMethod"> .Field.Types.AzureFile.getRequestHandler( item, req [, paths, callback] )  </span>
 > *@param* **item** {Object} - valid field object  
-> *@param* **req** {Object} - valid file object  
+> *@param* **req** {Object} - express req object    
 > *@param* **paths** {Object} - valid field paths (optional)  
 > *@param* **callback** {Function} - optional callback (optional)  
 > *@api* **public**  
@@ -98,7 +98,7 @@ Expected form parts are:
 ---
 <span class="subMethod"> .Field.Types.AzureFile.handleRequest( item, req [, paths, callback] )  </span> 
 > *@param* **item** {Object} - valid field object  
-> *@param* **req** {Object} - valid file object  
+> *@param* **req** {Object} - express req object    
 > *@param* **paths** {Object} - valid field paths (optional)  
 > *@param* **callback** {Function} - optional callback (optional)  
 > *@api* **public**  

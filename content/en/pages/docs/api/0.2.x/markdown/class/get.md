@@ -9,4 +9,4 @@ var brand = keystone.get('brand');
 // >> KeystoneJS
 ```
 
-<div class="code-header addGitHubLink" data-file="lib/core/options.js#L129-L140"> &nbsp;</div><pre class=" language-javascript hideCode api"></pre> 
+<div class="code-header addGitHubLink" data-file="lib/core/options.js#L177-L188"> &nbsp;</div><pre class=" language-javascript hideCode api"></pre> 

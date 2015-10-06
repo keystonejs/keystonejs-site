@@ -1,4 +1,6 @@
-#### Field.underscoreMethod(  )    
+#### Field.underscoreMethod( path, fn )   
+> *@param* **path** {String} 
+> *@param* **item** {Function} 
 > *@api* **private**   
 
 Adds a method to the underscoreMethods collection on the field's list, with a path prefix to match this field's path and bound to the document.  

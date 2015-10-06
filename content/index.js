@@ -123,7 +123,7 @@ module.exports = {
 			"section": "docs",
 			"api": '0.3.x',
 			"branch": 'v0.3.x',
-			"version": "current",
+			"_version": "current",
 			"docssection": { "version": "0.3.x", "value": "classapi", "path": "/docs/api/current/class", "label": "Class Reference" },
 			"title": "Class Reference"
 		},
@@ -134,7 +134,7 @@ module.exports = {
 			"section": "docs",
 			"api": '0.3.x',
 			"branch": 'v0.3.x',
-			"version": "current",
+			"_version": "current",
 			"docssection": { "version": "0.3.x", "value": "classapi", "path": "/docs/api/current/class", "label": "Class Reference" },
 			"title": "Class Reference"
 		},
@@ -144,7 +144,7 @@ module.exports = {
 			"template": "docs/api/0.4.x/class",
 			"section": "docs",
 			"api": '0.4.x',
-			"version": "incoming",
+			"_version": "incoming",
 			"branch": 'master',
 			"docssection": { "version": "0.4.x", "value": "classapi", "path": "/docs/api/incoming/class", "label": "Class Reference" },
 			"title": "Class Reference"
@@ -156,7 +156,7 @@ module.exports = {
 			"section": "docs",
 			"api": '0.4.x',
 			"branch": 'master',
-			"version": "incoming",
+			"_version": "incoming",
 			"docssection": { "version": "0.4.x", "value": "classapi", "path": "/docs/api/incoming/class", "label": "Class Reference" },
 			"title": "Class Reference"
 		},
@@ -167,7 +167,7 @@ module.exports = {
 			"section": "docs",
 			"api": '0.4.x',
 			"branch": 'master',
-			"version": "incoming",
+			"_version": "incoming",
 			"docssection": { "version": "0.4.x", "value": "endpointapi", "path": "/docs/api/current/class", "label": "Class Api" },
 			"title": "Class Api"
 		},
@@ -178,7 +178,7 @@ module.exports = {
 			"section": "docs",
 			"api": '0.4.x',
 			"branch": 'master',
-			"version": "incoming",
+			"_version": "incoming",
 			"docssection": { "version": "0.4.x", "value": "classapi", "path": "/docs/api/0.4.x/class", "label": "Keystone Class Reference" },
 			"title": "Keystone Class Reference"
 		},
@@ -189,7 +189,7 @@ module.exports = {
 			"section": "docs",
 			"api": '0.4.x',
 			"branch": 'master',
-			"version": "incoming",
+			"_version": "incoming",
 			"docssection": { "version": "0.4.x", "value": "classapi", "path": "/docs/api/0.4.x/class", "label": "Keystone Class Reference" },
 			"title": "Keystone Class Reference"
 		},
@@ -200,7 +200,7 @@ module.exports = {
 			"section": "docs",
 			"api": '0.4.x',
 			"branch": 'master',
-			"version": "incoming",
+			"_version": "incoming",
 			"docssection": { "version": "0.4.x", "value": "endpointapi", "path": "/docs/api/current/endpoint", "label": "Class Reference" },
 			"title": "Class Reference"
 		},
@@ -211,7 +211,7 @@ module.exports = {
 			"section": "docs",
 			"api": '0.3.x',
 			"branch": 'v0.3.x',
-			"version": "current",
+			"_version": "current",
 			"docssection": { "version": "0.3.x", "value": "classapi", "path": "/docs/api", "label": "Keystone Class Reference" },
 			"title": "Keystone Class Reference"
 		},
@@ -222,7 +222,7 @@ module.exports = {
 			"section": "docs",
 			"api": '0.3.x',
 			"branch": 'v0.3.x',
-			"version": "current",
+			"_version": "current",
 			"docssection": { "version": "0.3.x", "value": "classapi", "path": "/docs/api", "label": "Keystone Class Reference" },
 			"title": "Keystone Class Reference"
 		},
@@ -233,7 +233,7 @@ module.exports = {
 			"section": "docs",
 			"api": '0.2.x',
 			"branch": '0.2.x',
-			"version": "0.2.x",
+			"_version": "0.2.x",
 			"docssection": { "version": "0.2.x", "value": "classapi", "path": "/docs/api", "label": "Keystone Class Reference" },
 			"title": "Keystone Class Reference"
 		},
@@ -244,7 +244,7 @@ module.exports = {
 			"section": "docs",
 			"api": '0.2.x',
 			"branch": '0.2.x',
-			"version": "0.2.x",
+			"_version": "0.2.x",
 			"docssection": { "version": "0.2.x", "value": "classapi", "path": "/docs/api/0.2.x/class", "label": "Class Reference 0.2.x" },
 			"title": "Class Reference 0.2.x"
 		},

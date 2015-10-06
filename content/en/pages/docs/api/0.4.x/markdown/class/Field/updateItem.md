@@ -1,4 +1,6 @@
-#### Field.updateItem(  )  
+#### Field.updateItem( item, data )
+> *@param* **item** {Object} - valid item object   
+> *@param* **data** {Object}    
 > *@api* **private**  
 
 Updates the value for this field in the item from a data object

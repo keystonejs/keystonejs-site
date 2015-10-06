@@ -1,4 +1,7 @@
-#### Field.validateInput(  )   
+#### Field.validateInput( data [, required, item ] )   
+> *@param* **data** {Object} - valid data object  
+> *@param* **required** {Boolean} - true if this is a required field  
+> *@param* **item** {Object} - valid item object  
 > *@api* **private**  
 
 Validates that a value for this field has been provided in a data object

@@ -1,4 +1,4 @@
-#### Email.send( [ _locals_ ,] options [, _callback_ ] ) 
+#### Email.send( [ _locals _ ,] options [, _callback_ ] ) 
 > *@param* **locals** _{Object}_  - backwards compatibility   
 > *@param* **options** _{Object}_  - passed to `Email.render()`  
 > *@param* **callback** _{Object}_  - callback(err, info)    
