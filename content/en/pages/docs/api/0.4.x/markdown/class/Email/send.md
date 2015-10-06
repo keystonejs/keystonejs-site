@@ -10,7 +10,7 @@
 
  * **mandrill** - Initialised Mandrill API instance
  * **templateMandrillName** - the immutable name or slug of a template that exists in the user's account. For backwards-compatibility, the template name may also be used but the immutable slug is preferred.  Validation: required.  
- * **templateMandrillContent** - an array of template content to send. Each item in the array should be an object with two keys - name: the name of the content block to set the content for, and content: the actual content to put into the block
+ * **templateMandrillContent** - an **Array** of template content to send. Adds to existing blocks set on Instance creation.  Each item in the array should be an object with two keys - name: the name of the content block to set the content for, and content: the actual content to put into the block
  ```javascript 
 	options.templateMandrillContent = [
 		{
