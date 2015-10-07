@@ -287,6 +287,13 @@ module.exports = {
 			"title": "入门"
 		},
 		{
+			"path": "/zh/quick-start",
+			"language": "zh",
+			"template": "starting",
+			"section": "starting",
+			"title": "入门"
+		},
+		{
 			"path": "/zh/examples",
 			"language": "zh",
 			"template": "examples",
