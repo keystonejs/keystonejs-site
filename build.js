@@ -21,6 +21,7 @@ var jade = require('jade');
 var path = require('path');
 
 var content = require('./content');
+var classReference = require('./content/common/apiMarked');
 
 // Command line arguments
 
@@ -43,8 +44,20 @@ content.routes.forEach(function(route) {
 	var options = _.extend(route, locals);
 	options.prefix = (options.language === 'en') ? '/' : '/' + options.language + '/';
 	_.extend(options, content.languages[options.language]);
+
 	
-	var html = jade.renderFile('./content/' + options.language + '/pages/' + route.template + '.jade', options);
+	if(_.contains(['0.2.x','0.3.x','0.4.x'], options.api)) {
+		var sendMarked = _.cloneDeep(classReference._marked[options.language][options.api]);
+		classReference.getApi(sendMarked, options.language, options.api, function(err, marked) {
+			options.apidocs = sendMarked;
+			var html = jade.renderFile('./content/' + options.language + '/pages/' + route.template + '.jade', options);
+		});
+		
+	} else {
+		var html = jade.renderFile('./content/' + options.language + '/pages/' + route.template + '.jade', options);
+	}
+	
+	
 	var filename = route.path.substr(1).replace(/\//g, '_') || 'index';
 	var filepath = args.dest + '/' + filename + '.html';
 	
