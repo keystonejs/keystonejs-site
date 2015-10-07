@@ -15,4 +15,4 @@ The path `__name__` is automatically mapped to the namePath of the List.
  
 The field or path for the name of the item (defaults to ID if not set or detected) is automatically prepended if not explicitly included.  
 
-<div class="code-header addGitHubLink" data-file="lib/list/expandColumns.js"> <a href="#" class="loadCode">relevant code</a></div><pre class=" language-javascript hideCode api"></pre> 
+<div class="code-header addGitHubLink" data-file="lib/list/expandColumns.js"> <a href="#" class="loadCode">code</a></div><pre class=" language-javascript hideCode api"></pre> 

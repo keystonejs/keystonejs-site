@@ -5,4 +5,4 @@
 
 Updates every document in a List, setting the provided data on each.  
 
-<div class="code-header addGitHubLink" data-file="lib/list/updateAll.js"><a href="#" class="loadCode">relevant code</a></div><pre class=" language-javascript hideCode api"></pre> 
+<div class="code-header addGitHubLink" data-file="lib/list/updateAll.js"><a href="#" class="loadCode"> code</a></div><pre class=" language-javascript hideCode api"></pre> 

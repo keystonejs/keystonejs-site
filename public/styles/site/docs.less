@@ -45,6 +45,7 @@ h4 {
 h5 {
 	margin: 20px 0;
 }
+
 @media (min-width: @screen-sm-min) {
 	h1 {
 		font-size: 60px;
@@ -191,7 +192,24 @@ h2:first-child {
 }
 
 
-
+// low menu
+.lowMenu {
+	position: fixed;
+	display: none;
+	bottom: 0;
+	left: 0;
+	width:100%;
+	z-index: 1002;
+	height:50px;
+	border-top:1px solid @gray;
+	background: @gray-light;
+	.icon {
+		width: 100%;
+		height: 100%;
+		color: #5797DF;
+	}
+	
+}
 
 
 // content
@@ -310,7 +328,11 @@ h2:first-child {
 }
 
 
-
+// subMethods
+span.subMethod {
+	color: #825300;
+	font-weight: bold;
+}
 
 // notes
 .note {
@@ -491,6 +513,12 @@ ul.list li {
 		
 		& + p {
 			margin: 15px 0 0;
+		}
+	}
+	
+	&.addGitHubLink {
+		@media (max-width: @screen-sm-min) {
+			font-size:11px;
 		}
 	}
 	

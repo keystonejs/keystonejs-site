@@ -7,4 +7,4 @@ Expands a path to include moduleRoot if it is relative
 ```javascript
 var path = keystone.expandPath(keystone.get('views'));
 ```
-<div class="code-header addGitHubLink" data-file="lib/core/options.js#L158-L170"> &nbsp; </div><pre class=" language-javascript hideCode api"></pre> 
+<div class="code-header addGitHubLink" data-file="lib/core/options.js#L190-L204"> &nbsp; </div><pre class=" language-javascript hideCode api"></pre> 

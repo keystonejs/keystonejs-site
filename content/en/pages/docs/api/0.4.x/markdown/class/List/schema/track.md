@@ -1,4 +1,4 @@
-#### _schemaHelper_.track (  )  
+#### List _schemaPlugins_.track (  )  
 > _@api_ **private**   
 
 <div class="code-header"><h4>Adds tracking fields to a collection</h4></div><pre class=" language-javascript"><code class="language-javascript"> track: true </code></pre>  

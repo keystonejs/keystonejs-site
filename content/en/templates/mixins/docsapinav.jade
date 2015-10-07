@@ -1,94 +1,65 @@
 mixin docsnav(docssection)
 	.visible-xs: ul.nav-toggle
+		li
+			a(href='/docs').nav-heading Docs
 		if (docssection.value == 'classapi' )
 			li(class=docssection.version == '0.3.x' ? 'active' : null): a(href='/docs/api/current/class').nav-heading Current
+			li(class=docssection.version == '0.4.x' ? 'active' : null): a(href='/docs/api/incoming/class').nav-heading Incoming
 			li(class=docssection.version == '0.2.x' ? 'active' : null): a(href='/docs/api/0.2.x/class').nav-heading 0.2.x	
-			li
-				a(href='/docs/api/current/endpoint').nav-heading Api
+			if docssection.version == '0.4.x'
+				li
+					a(href='/docs/api/current/endpoint').nav-heading Api
 		if (docssection.value == 'endpointapi' )
 			li(class=docssection.version == '0.4.x' ? 'active' : null): a(href='/docs/api/current/endpoint').nav-heading 0.4.x
 			li
 				a(href='/docs/api/current/class').nav-heading Reference
-		li
-			a(href='/docs').nav-heading Docs
+		
+	.visible-xs.lowMenu
+		.col-xs-2
+			span.glyphicon.glyphicon-menu-hamburger.icon
+		.col-xs-10
+			ul.sidebar-nav
+				if docssection.version == '0.4.x' 
+					li.nav-label: a(href='#changelog') 0.3.x to 0.4.x Changes
+				if docssection.version == '0.3.x' 
+					li.nav-label: a(href='#changelog') 0.2.x to 0.3.x Changes
+				each val, ref in apidocs
+					each item in val.list
+						unless item.name
+							li.nav-label: a(href='#main-#{item.keys}') !{item.menuHeader}
+						unless item.main
+							li: a(href='##{item.keys}-#{item.name}') .!{item.name}
+
 	
-	nav.docs-sidebar.hidden-xs
+	nav.docs-sidebar.hidden-xs.stickyMenu
 		ul.sidebar-nav
+			li
+				a(href='/docs').nav-heading Docs Home
 			if (docssection.value == 'classapi' )
 				li(class=docssection.version == '0.3.x' ? 'active' : null): a(href='/docs/api/current/class').nav-heading Current
+				li(class=docssection.version == '0.4.x' ? 'active' : null): a(href='/docs/api/incoming/class').nav-heading Incoming
 				li(class=docssection.version == '0.2.x' ? 'active' : null): a(href='/docs/api/0.2.x/class').nav-heading 0.2.x
-				li
-					a(href='/docs/api/current/endpoint').nav-heading Endpoint Api
+				if docssection.version == '0.4.x'	
+					li
+						a(href='/docs/api/current/endpoint').nav-heading Endpoint Api
 				
 			if (docssection.value == 'endpointapi' )
 				li(class=docssection.version == '0.4.x' ? 'active' : null): a(href='/docs/api/current/endpoint').nav-heading 0.4.x
 				li
 					a(href='/docs/api/current/class').nav-heading Class Reference
-			li
-				a(href='/docs').nav-heading Docs Home
+			
 
 		hr  
 		
-		if docssection.value != 'introduction'
-			ul.sidebar-nav
-				each item in docsnav
-					if (item.value == docssection.value ) && docssection.version == '0.4.x' 
-						li.nav-label: a(href='#changelog') 0.3.x to 0.4.x Changes
-						
-						li.nav-label: a(href='#classKeystone') Keystone
-						each item2 in apidocs['0.4.x'].keystone
-							li: a(href='##{item2.name}') .#{item2.name}
-						
-						li.nav-label: a(href='#classEmail') Keystone.Email
-						each item3 in apidocs['0.4.x'].email
-							li: a(href='##{item3.name}') .#{item3.name}
-						
-						li.nav-label: a(href='#classList') Keystone.List
-						each schema in apidocs['0.4.x'].schema
-							li: a(href='#List-schema-#{schema.name}') <i>schemaHelper</i>.#{schema.name}
-						each item4 in apidocs['0.4.x'].list
-							li: a(href='#List-#{item4.name}') .#{item4.name}
-						
-						li.nav-label: a(href='#classView') Keystone.View
-						each item5 in apidocs['0.4.x'].view
-							li: a(href='##{item5.name}') .#{item5.name}
-					
-					if (item.value == docssection.value ) && docssection.version == '0.3.x' 
-						li.nav-label: a(href='#changelog') 0.2.x to 0.3.x Changes
-						
-						li.nav-label: a(href='#classKeystone') Keystone
-						each item2 in apidocs['0.3.x'].keystone
-							li: a(href='##{item2.name}') .#{item2.name}
-						
-						li.nav-label: a(href='#classEmail') Keystone.Email
-						each item3 in apidocs['0.3.x'].email
-							li: a(href='##{item3.name}') .#{item3.name}
-						
-						li.nav-label: a(href='#classList') Keystone.List
-						each schema in apidocs['0.3.x'].schema
-							li: a(href='#List-schema-#{schema.name}') <i>schemaHelper</i>.#{schema.name}
-						each item4 in apidocs['0.3.x'].list
-							li: a(href='#List-#{item4.name}') .#{item4.name}
-						
-						li.nav-label: a(href='#classView') Keystone.View
-						each item5 in apidocs['0.3.x'].view
-							li: a(href='##{item5.name}') .#{item5.name}
-					
-					if (item.value == docssection.value ) && docssection.version == '0.2.x' 
-						li.nav-label: a(href='#classKeystone') Keystone
-						each item2 in apidocs['0.2.x'].keystone
-							li: a(href='##{item2.name}') .#{item2.name}
-						
-						li.nav-label: a(href='#classEmail') Keystone.Email
-						each item3 in apidocs['0.2.x'].email
-							li: a(href='##{item3.name}') .#{item3.name}
-						
-						li.nav-label: a(href='#classList') Keystone.List
-						each item4 in apidocs['0.2.x'].list
-							li: a(href='#List-#{item4.name}') .#{item4.name}
-						
-						li.nav-label: a(href='#classView') Keystone.View
-						each item5 in apidocs['0.2.x'].view
-							li: a(href='##{item5.name}') .#{item5.name}
-		hr
+		ul.sidebar-nav
+			if docssection.version == '0.4.x' 
+				li.nav-label: a(href='#changelog') 0.3.x to 0.4.x Changes
+			if docssection.version == '0.3.x' 
+				li.nav-label: a(href='#changelog') 0.2.x to 0.3.x Changes
+			each val, ref in apidocs
+				each item in val.list
+					unless item.name
+						li.nav-label: a(href='#main-#{item.keys}') !{item.menuHeader}
+					unless item.main
+						li: a(href='##{item.keys}-#{item.name}') .!{item.name}
 		

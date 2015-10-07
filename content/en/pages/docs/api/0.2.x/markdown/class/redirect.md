@@ -11,4 +11,4 @@ keystone.redirect({
     'old-route': 'new-route'
 });
 ```
-<div class="code-header addGitHubLink" data-file="lib/core/redirect.js"> <a href="#" class="loadCode">relevant code</a> </div><pre class=" language-javascript hideCode api"></pre> 
+<div class="code-header addGitHubLink" data-file="lib/core/redirect.js"> <a href="#" class="loadCode"> code</a> </div><pre class=" language-javascript hideCode api"></pre> 
