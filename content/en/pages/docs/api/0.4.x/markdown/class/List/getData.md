@@ -6,4 +6,4 @@
 
 Gets the data from an Item ready to be serialised for client-side use, as used by the React components  
 
-<div class="code-header addGitHubLink" data-file="lib/list/getData.js"><a href="#" class="loadCode">relevant code</a></div><pre class=" language-javascript hideCode api"></pre> 
+<div class="code-header addGitHubLink" data-file="lib/list/getData.js"><a href="#" class="loadCode">code</a></div><pre class=" language-javascript hideCode api"></pre> 

@@ -5,7 +5,7 @@
 
 Adds a method (or array of methods) to be executed in parallel to the `init`, `action` or `render` queue.
 
-#### Argument Options
+##### argument `on` options
 * **init** - Init events are always fired in series, before any other actions
 ```javascript  
 view.on('init', function (next) {

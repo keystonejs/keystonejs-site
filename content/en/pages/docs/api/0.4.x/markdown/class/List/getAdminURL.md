@@ -9,4 +9,4 @@ Gets the Admin URL to view the list (or an item if provided)
 	var itemURL = list.getAdminURL(item)  
 ```  
 
-<div class="code-header addGitHubLink" data-file="lib/list/getAdminURL.js"><a href="#" class="loadCode">relevant code</a></div><pre class=" language-javascript hideCode api"></pre> 
+<div class="code-header addGitHubLink" data-file="lib/list/getAdminURL.js"><a href="#" class="loadCode">code</a></div><pre class=" language-javascript hideCode api"></pre> 

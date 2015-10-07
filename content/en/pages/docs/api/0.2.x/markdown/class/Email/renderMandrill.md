@@ -1,4 +1,4 @@
-#### Email.renderMandrill( [_locals_ ], options [, _callback_ ] ) 
+#### Email.renderMandrill( [_locals_ ,] options [, _callback_ ] ) 
 > *@param* **locals** _{Object}_  - backwards compatibility    
 > *@param* **options** _{Object}_  - locals options object   
 > *@param* **callback** _{Object}_  - callback(err, info)      

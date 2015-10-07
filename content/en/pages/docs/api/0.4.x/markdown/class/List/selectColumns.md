@@ -5,4 +5,4 @@
 
 Specified select and populate options for a query based the provided columns.  
 
-<div class="code-header addGitHubLink" data-file="lib/list/selectColumns.js"><a href="#" class="loadCode">relevant code</a></div><pre class=" language-javascript hideCode api"></pre> 
+<div class="code-header addGitHubLink" data-file="lib/list/selectColumns.js"><a href="#" class="loadCode"> code</a></div><pre class=" language-javascript hideCode api"></pre> 

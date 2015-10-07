@@ -7,4 +7,4 @@ Set multiple Keystone option/value pair.
 ```javascript
 keystone.options({test: value});
 ```
-<div class="code-header addGitHubLink" data-file="lib/core/options.js#L102-L126"> </div><pre class=" language-javascript hideCode api"></pre> 
+<div class="code-header addGitHubLink" data-file="lib/core/options.js#L148-L174"> </div><pre class=" language-javascript hideCode api"></pre> 

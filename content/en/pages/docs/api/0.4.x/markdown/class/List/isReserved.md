@@ -25,4 +25,4 @@ Check whether or not a `path` is a reserved path. This restricts the use of `Obj
 	];
 </code></pre>  
  
-<div class="code-header addGitHubLink" data-file="lib/list/isReserved.js"><a href="#" class="loadCode">relevant code</a></div><pre class=" language-javascript hideCode api"></pre> 
+<div class="code-header addGitHubLink" data-file="lib/list/isReserved.js"><a href="#" class="loadCode"> code</a></div><pre class=" language-javascript hideCode api"></pre> 

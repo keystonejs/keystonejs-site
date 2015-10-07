@@ -8,4 +8,4 @@ Gets an expanded path option, expanded to include moduleRoot if it is relative.
 ```javascript
 var path = keystone.getPath('views', 'templates/views');
 ```
-<div class="code-header addGitHubLink" data-file="lib/core/options.js#L142-L156"> &nbsp; </div><pre class=" language-javascript hideCode api"></pre> 
+<div class="code-header addGitHubLink" data-file="lib/core/options.js#L206-L218"> &nbsp; </div><pre class=" language-javascript hideCode api"></pre> 
