@@ -4,10 +4,23 @@
 
 // Keystone hero
 .home-header {
+	&.back-key {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		background-size: 400% 400%;
+		#gradient .directional( spin(@link-color,-30%), spin(@link-color,15%), 240deg );
+		-webkit-animation: backKeyed 20s ease infinite;
+		-moz-animation: backKeyed 20s ease infinite;
+		animation: backKeyed 20s ease infinite;
+	}
 	#gradient .directional( spin(@link-color,-15%), spin(@link-color,15%), 160deg );
 	background-color: @link-color;
 	color: white;
 	text-align: center;
+	
 	
 	.container {
 		padding-bottom: 20px;

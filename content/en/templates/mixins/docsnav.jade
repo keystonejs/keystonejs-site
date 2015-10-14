@@ -5,40 +5,27 @@ mixin docsnav(docssection)
 				a(href=item.path).nav-heading= item.labelsm
 		
 	nav.docs-sidebar.hidden-xs
-		ul.sidebar-nav
-			li(class=docssection.value == 'introduction' ? 'active' : null)
-				a(href='/docs').nav-heading Welcome
-			each item in docsnav
-				li(class=docssection.value == item.value ? 'active' : null)
-					a(href=item.path).nav-heading= item.label
 		if docssection.value != 'introduction'
-			hr
 			ul.sidebar-nav
-				each item in docsnav
-					if (item.value == docssection.value ) && docssection.item == 'classapi3' 
+				each item in docsnav						
+					if (item.value == docssection.value ) && item.value == 'learn'
 						ul
-							li: a(href='#introduction-prerequisites') Prerequisites
-							li.nav-label: a(href='#introduction') Email
-							li: a(href='#introduction-productionvsdevelopment') Production vs Development
-							li.nav-label: a(href='#introduction') List
-							li: a(href='#introduction-productionvsdevelopment') Production vs Development
-							li.nav-label: a(href='#introduction') View
-							li: a(href='#introduction-productionvsdevelopment') Production vs Development
-							li
-							li.nav-label: a(href='/docs/api/0.2.x/class') 0.2.x
-					
-					if (item.value == docssection.value ) && docssection.item == 'classapi2' 
-						ul
-							li: a(href='#introduction-prerequisites') Prerequisites
-							li.nav-label: a(href='#introduction') Email
-							li: a(href='#introduction-productionvsdevelopment') Production vs Development
-							li.nav-label: a(href='#introduction') List
-							li: a(href='#introduction-productionvsdevelopment') Production vs Development
-							li.nav-label: a(href='#introduction') View
-							li: a(href='#introduction-productionvsdevelopment') Production vs Development
-							li
-							li.nav-label: a(href='/docs/api/current/class') 0.3.x
+							li.nav-label: a(href='/docs/learn') Learn
+							li: a(href='/docs/learn/es6') ES6 Rewrite
+							li: a(href='/docs/learn/code') Code Examples
+							li: a(href='/docs/learn/resources') Resources
 							
+							//- test links
+							li.nav-label: a(href='/docs/learn/code') Fetch Examples
+							li: a(href="/fetch") noscript
+							li: a(href="/body") body noscript
+							li: a(href="/text") clean text
+							li: a(href="/json/code") json code
+							li: a(href="/markdown") markdown 
+							li: a(href="/fail") failure 
+							li: a(href="/lost-link") should 404  
+							li: a(href="/quick-start").notspa should reload
+							li: a(href="https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade") should leave
 					if (item.value == docssection.value ) && item.value == 'getting-started'
 						ul
 							li.nav-label: a(href='#introduction') Introduction
@@ -135,4 +122,11 @@ mixin docsnav(docssection)
 							li: a(href='#fieldtypes-embedly') Embedly
 							li: a(href='#fieldtypes-localfile') LocalFile
 							li: a(href='#fieldtypes-s3file') S3 File
+			hr
+		ul.sidebar-nav
+			li(class=docssection.value == 'introduction' ? 'active' : null)
+				a(href='/docs').nav-heading Welcome
+			each item in docsnav
+				li(class=docssection.value == item.value ? 'active' : null)
+					a(href=item.path).nav-heading= item.label
 							

@@ -5,7 +5,7 @@ var less = require('less');
 var async = require('async');
 var _ = require('lodash');
 var fs = require('fs.extra');
-var gh-pages = require('gh-pages');
+var ghpages = require('gh-pages');
 
 var classReference = require('./apiMarked');
 var sendMarked = _.cloneDeep(classReference._marked);
@@ -102,10 +102,20 @@ function runBuild() {
 		// gh-pages
 		function(done) {
 			showMsg('start gh-pages clone')
-			ghpages.publish(path.join(__dirname, 'build'), function() {
+			ghpages.publish(
+				path.join(__dirname, '../build'),
+				{
+					logger: function(message) {
+						console.log(message);
+					},
+					branch: 'master',
+					repo: 'https://github.com/snowkeeper/snowkeeper.github.io.git'
+				},
+				function() {
 					showMsg('gh-pages cloned');
 					done();
-			});
+				}
+			);
 		},
 		// bundle html for dev 
 		function(done) {

@@ -6,9 +6,11 @@ logs
 pids
 *.pid
 *.seed
+*.git
 
 # Dependency directory
 node_modules
+public/systemjs/jspm_packages
 
 # Build folder
 build

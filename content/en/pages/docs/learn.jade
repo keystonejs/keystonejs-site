@@ -1,0 +1,32 @@
+include ../../templates/mixins/docsnav
+
+block intro
+	.page-header
+		.container
+			h1 Learn
+			p.lead Learn how to build database-driven websites, applications and APIs in Node.js.
+	
+block content
+	.container: .row
+		
+		.col-sm-3
+			+docsnav(docssection)
+		
+		.col-sm-9: .docs-content
+			p.lead Articles, code examples and more resources
+			.row
+				.col-sm-12.col-md-4
+					.feature-panel
+						.feature-content
+							h4: a(href='/docs/learn/es6') ES6 & System.js
+							p We converted this site to use <a href="https://github.com/systemjs/systemjs" target="_blank">System.js</a>, <a href="http://babeljs.io" target="_blank">Babel</a> and <a href="https://facebook.github.io/react/" target="_blank">React</a>
+				.col-sm-12.col-md-4
+					.feature-panel
+						.feature-content
+							h4: a(href='/docs/learn/code') Code Examples
+							p View code examples for Email, socket.io support and more.
+				.col-sm-12.col-md-4
+					.feature-panel
+						.feature-content
+							h4: a(href='/docs/learn/resources') Resources
+							p Goodies about everything from MongoDB, mongoose, React, System.js, Keystone and more.
