@@ -1,4 +1,4 @@
-const languages = {
+exports.languages = {
 	"en": {
 		"content": {
 			"toggle_navigation": "Toggle navigation"
@@ -48,8 +48,7 @@ const languages = {
 		]
 	}
 }
-export default languages	
-const routes = [
+exports.routes = [
 	// Language: en
 	{
 		"path": "/404",
@@ -393,8 +392,8 @@ const routes = [
 	},*/
 ]
 
-let getFileName = (url) => {
-	let urls = {}
+exports.getFileName = function getFileName(url){
+	var urls = {}
 	urls.segments = url.split('/');
 	//remove the protocol
 	url = url.replace(/.*?:\/\//g, "");
@@ -414,12 +413,11 @@ let getFileName = (url) => {
 	//return
 	return urls;
 }
-let cleanPath = (path) => {
+exports.cleanPath = function(path) {
 	return path[path.length-1] === '/' ? path.slice(0,-1) : path;
 }
-const config = {
+exports.config = {
 	location: location,
 	versions: ['0.2.x', 'current', 'incoming'],
 	language: "en"
 }
-export {cleanPath, routes, getFileName, config};

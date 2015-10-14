@@ -13,11 +13,13 @@
   },
   "dependencies": {
     "async": "^1.4.2",
-    "babel": "^5.8.23",
     "errorhandler": "^1.3.6",
     "express": "^4.12.3",
     "fs-extra": "^0.18.3",
+    "fs.extra": "^1.3.2",
+    "gh-pages": "^0.4.0",
     "github": "^0.2.4",
+    "http2": "^3.2.0",
     "jade": "^1.9.2",
     "jstransformer-marked": "^1.0.1",
     "keystone": "^0.3.14",
@@ -25,21 +27,49 @@
     "lodash": "^3.8.0",
     "marked": "^0.3.5",
     "morgan": "^1.5.3",
-    "react": "^0.13.3",
-    "react-router": "^1.0.0-rc1",
     "serve-favicon": "^2.2.1",
-    "systemjs": "^0.19.3",
-    "typescript": "^1.6.2"
+    "uglify-js": "^2.4.24"
   },
   "bugs": {
     "url": "https://github.com/keystonejs/keystonejs-site/issues"
   },
   "scripts": {
-    "build": "node build.js",
-    "start": "node index.js"
+    "build": "cd dev && node ./testbuild.js",
+    "start": "cd dev && node ./server.js"
   },
   "engines": {
+    "iojs": ">= 3.3.1",
     "node": ">= 0.10.28",
     "npm": ">= 1.4.9"
+  },
+  "devDependencies": {
+    "jspm": "^0.16.12",
+    "less": "^2.5.3" 
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "public/systemjs"
+    },
+    "dependencies": {
+      "bootstrap": "github:twbs/bootstrap@3.1.0",
+      "fetch": "npm:whatwg-fetch@^0.10.0",
+      "history": "npm:history@^1.12.4",
+      "jade-runtime": "npm:jade-runtime@^1.1.0",
+      "jquery": "github:components/jquery@1.10.2",
+      "lodash": "npm:lodash@^3.10.1",
+      "md": "github:guybedford/system-md@^0.0.2",
+      "prism": "github:PrismJS/prism@^1.2.0",
+      "react": "npm:react@^0.14.0",
+      "react-addons-test-utils": "npm:react-addons-test-utils@^0.14.0",
+      "react-dom": "npm:react-dom@^0.14.0",
+      "react-router": "npm:react-router@^1.0.0-rc3",
+      "showdown": "github:showdownjs/showdown@^1.2.3",
+      "striptags": "npm:striptags@^2.0.4"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
   }
 }

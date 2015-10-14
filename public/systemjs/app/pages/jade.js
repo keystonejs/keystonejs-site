@@ -2,7 +2,7 @@ import React from 'react';
 import jade from 'app/html/templates'
 import api from 'app/html/markedApi'
 import _ from 'lodash'
-import {default as languages, routes, getFileName, config} from 'config';
+import {languages, routes, getFileName, config} from 'config';
 
 export default (page, addLocals, inheritPropsFrom) => {
 	

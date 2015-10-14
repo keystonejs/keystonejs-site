@@ -1,7 +1,7 @@
 import React from 'react'
 import strip from 'striptags'
 import Jade from 'pages/jade';
-import {default as nav} from 'config';
+import {languages as nav} from 'config';
 import { translate as markdown }  from 'md'
 import fetch2 from 'fetch'
 

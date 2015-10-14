@@ -2,7 +2,7 @@ import App from 'common/render';
 import Jade from 'pages/jade';
 import Page from 'pages/example';
 import Fetch from 'pages/example/example';
-import {default as languages, routes} from 'config';
+import {languages, routes} from 'config';
 
 let Routes = []
 
