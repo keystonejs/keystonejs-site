@@ -13,24 +13,10 @@ mixin docsnav(docssection)
 			li(class=docssection.version == '0.4.x' ? 'active' : null): a(href='/docs/api/current/endpoint').nav-heading 0.4.x
 			li
 				a(href='/docs/api/current/class').nav-heading Reference
-		
-	.visible-xs.lowMenu
-		.col-xs-2
-			span.glyphicon.glyphicon-menu-hamburger.icon
-		.col-xs-10
-			ul.sidebar-nav
-				if docssection.version == '0.4.x' 
-					li.nav-label: a(href='#changelog') 0.3.x to 0.4.x Changes
-				if docssection.version == '0.3.x' 
-					li.nav-label: a(href='#changelog') 0.2.x to 0.3.x Changes
-				each val, ref in apidocs
-					each item in val.list
-						unless item.name
-							li.nav-label: a(href='#main-#{item.keys}') !{item.menuHeader}
-						unless item.main
-							li: a(href='##{item.keys}-#{item.name}') .!{item.name}
-
-	
+	#searchBar
+		.col-xs-12.col-sm-offset-3.col-sm-9.input
+			input(type="text"  placeholder="quick find").form-control.clearable 
+			nav.searchList.docs-sidebar
 	nav.docs-sidebar.hidden-xs.stickyMenu
 		ul.sidebar-nav
 			li
@@ -47,10 +33,7 @@ mixin docsnav(docssection)
 				li(class=docssection.version == '0.4.x' ? 'active' : null): a(href='/docs/api/current/endpoint').nav-heading 0.4.x
 				li
 					a(href='/docs/api/current/class').nav-heading Class Reference
-			
-
 		hr  
-		
 		ul.sidebar-nav
 			if docssection.version == '0.4.x' 
 				li.nav-label: a(href='#changelog') 0.3.x to 0.4.x Changes

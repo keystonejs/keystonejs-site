@@ -7,6 +7,9 @@ var _ = require('lodash');
 var fs = require('fs.extra');
 var ghpages = require('gh-pages');
 
+// clean if you change repos
+// ghpages.clean()
+
 var classReference = require('./apiMarked');
 var sendMarked = _.cloneDeep(classReference._marked);
 
@@ -80,7 +83,9 @@ function runBuild() {
 		// image folder
 		function(done) {
 			copyDir('../public/fonts', '../build/fonts',  function() {
-				copyDir('../public/images', '../build/images', done)
+				copyDir('../public/images', '../build/images', function(){
+					fs.copy('../public/favicon.ico', '../build/favicon.ico', function(){ done() })
+				})
 			})
 		},
 		// create index.html for production
@@ -101,6 +106,7 @@ function runBuild() {
 		},
 		// gh-pages
 		function(done) {
+			return done()
 			showMsg('start gh-pages clone')
 			ghpages.publish(
 				path.join(__dirname, '../build'),
@@ -109,7 +115,7 @@ function runBuild() {
 						console.log(message);
 					},
 					branch: 'master',
-					repo: 'https://github.com/snowkeeper/snowkeeper.github.io.git'
+					repo: 'git@github.com:snowkeeper/snowkeeper.github.io.git'
 				},
 				function() {
 					showMsg('gh-pages cloned');

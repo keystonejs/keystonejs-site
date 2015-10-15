@@ -1,5 +1,6 @@
 // global holdovers
-import 'bootstrap/js/bootstrap.min'
+import 'jquery'
+import 'bootstrap'
 import 'prism'
 import 'analytics'
 // end globals

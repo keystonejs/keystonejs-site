@@ -12,6 +12,17 @@ var jade_mixins = {};
 var jade_interp;
 
 buf.push("");;return buf.join("");
+},'common/templates/layout/dev_base': function template(locals) {
+var buf = [];
+var jade_mixins = {};
+var jade_interp;
+;var locals_for_with = (locals || {});(function (language, title) {
+buf.push("<!DOCTYPE html><html" + (jade.attr("lang", language, true, true)) + "><head><script>var _sf_startpt=(new Date()).getTime()</script><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width\"><title>KeystoneJS");
+if ( title)
+{
+buf.push(" &middot; " + (jade.escape((jade_interp = title) == null ? '' : jade_interp)) + "");
+}
+buf.push("</title><meta name=\"keywords\" content=\"node.js,nodejs,cms,publishing,platform,web,development,framework,express,mongo,mongodb,bootstrap,react,jquery\"><meta name=\"description\" content=\"Get a head-start on the features you need. KeystoneJS is the easiest way to build dynamic websites, applications and APIs with Node.js and MongoDB.\"><meta property=\"og:locale\" content=\"en-us\"><meta property=\"og:title\" content=\"KeystoneJS\"><meta property=\"og:description\" content=\"KeystoneJS is an open source Node.js CMS and web application platform built on Express and MongoDB.\"><meta property=\"og:url\" content=\"https://keystonejs.com^current_url^\"><meta property=\"og:site_name\" content=\"KeystoneJS\"><meta property=\"og:type\" content=\"article\"><link href=\"http://fonts.googleapis.com/css?family=Roboto:100,300,300italic,400,500,700\" rel=\"stylesheet\"><link href=\"/styles/site.min.css\" rel=\"stylesheet\"><link rel=\"shortcut icon\" href=\"/favicon.ico\" type=\"image/x-icon\"></head><body><div id=\"keystonejs-spa\"><div class=\"home-header back-key\"><div class=\"container\"><img src=\"/images/logo-inverted.svg\" alt=\"KeystoneJS\" width=\"80\" height=\"81\"><h2>The open source framework for developing database-driven websites, applications and APIs in Node.js. Built on Express and MongoDB.</h2><h1>preparing to get it on...</h1></div></div></div><script src=\"/systemjs/jspm_packages/system.js\"></script><script src=\"/systemjs/config.js\"></script><script src=\"/systemjs/client.js\"></script></body></html>");}.call(this,"language" in locals_for_with?locals_for_with.language:typeof language!=="undefined"?language:undefined,"title" in locals_for_with?locals_for_with.title:typeof title!=="undefined"?title:undefined));;return buf.join("");
 },'common/templates/layout/footer': function template(locals) {
 var buf = [];
 var jade_mixins = {};
@@ -109,108 +120,7 @@ if ( (docssection.value == 'endpointapi' ))
 {
 buf.push("<li" + (jade.cls([docssection.version == '0.4.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/current/endpoint\" class=\"nav-heading\">0.4.x</a></li><li><a href=\"/docs/api/current/class\" class=\"nav-heading\">Reference</a></li>");
 }
-buf.push("</ul></div><div class=\"visible-xs lowMenu\"><div class=\"col-xs-2\"><span class=\"glyphicon glyphicon-menu-hamburger icon\"></span></div><div class=\"col-xs-10\"><ul class=\"sidebar-nav\">");
-if ( docssection.version == '0.4.x' )
-{
-buf.push("<li class=\"nav-label\"><a href=\"#changelog\">0.3.x to 0.4.x Changes</a></li>");
-}
-if ( docssection.version == '0.3.x' )
-{
-buf.push("<li class=\"nav-label\"><a href=\"#changelog\">0.2.x to 0.3.x Changes</a></li>");
-}
-// iterate apidocs
-;(function(){
-  var $$obj = apidocs;
-  if ('number' == typeof $$obj.length) {
-
-    for (var ref = 0, $$l = $$obj.length; ref < $$l; ref++) {
-      var val = $$obj[ref];
-
-// iterate val.list
-;(function(){
-  var $$obj = val.list;
-  if ('number' == typeof $$obj.length) {
-
-    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
-      var item = $$obj[$index];
-
-if (!( item.name))
-{
-buf.push("<li class=\"nav-label\"><a" + (jade.attr("href", '#main-' + (item.keys) + '', true, false)) + ">" + (((jade_interp = item.menuHeader) == null ? '' : jade_interp)) + "</a></li>");
-}
-if (!( item.main))
-{
-buf.push("<li><a" + (jade.attr("href", '#' + (item.keys) + '-' + (item.name) + '', true, false)) + ">." + (((jade_interp = item.name) == null ? '' : jade_interp)) + "</a></li>");
-}
-    }
-
-  } else {
-    var $$l = 0;
-    for (var $index in $$obj) {
-      $$l++;      var item = $$obj[$index];
-
-if (!( item.name))
-{
-buf.push("<li class=\"nav-label\"><a" + (jade.attr("href", '#main-' + (item.keys) + '', true, false)) + ">" + (((jade_interp = item.menuHeader) == null ? '' : jade_interp)) + "</a></li>");
-}
-if (!( item.main))
-{
-buf.push("<li><a" + (jade.attr("href", '#' + (item.keys) + '-' + (item.name) + '', true, false)) + ">." + (((jade_interp = item.name) == null ? '' : jade_interp)) + "</a></li>");
-}
-    }
-
-  }
-}).call(this);
-
-    }
-
-  } else {
-    var $$l = 0;
-    for (var ref in $$obj) {
-      $$l++;      var val = $$obj[ref];
-
-// iterate val.list
-;(function(){
-  var $$obj = val.list;
-  if ('number' == typeof $$obj.length) {
-
-    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
-      var item = $$obj[$index];
-
-if (!( item.name))
-{
-buf.push("<li class=\"nav-label\"><a" + (jade.attr("href", '#main-' + (item.keys) + '', true, false)) + ">" + (((jade_interp = item.menuHeader) == null ? '' : jade_interp)) + "</a></li>");
-}
-if (!( item.main))
-{
-buf.push("<li><a" + (jade.attr("href", '#' + (item.keys) + '-' + (item.name) + '', true, false)) + ">." + (((jade_interp = item.name) == null ? '' : jade_interp)) + "</a></li>");
-}
-    }
-
-  } else {
-    var $$l = 0;
-    for (var $index in $$obj) {
-      $$l++;      var item = $$obj[$index];
-
-if (!( item.name))
-{
-buf.push("<li class=\"nav-label\"><a" + (jade.attr("href", '#main-' + (item.keys) + '', true, false)) + ">" + (((jade_interp = item.menuHeader) == null ? '' : jade_interp)) + "</a></li>");
-}
-if (!( item.main))
-{
-buf.push("<li><a" + (jade.attr("href", '#' + (item.keys) + '-' + (item.name) + '', true, false)) + ">." + (((jade_interp = item.name) == null ? '' : jade_interp)) + "</a></li>");
-}
-    }
-
-  }
-}).call(this);
-
-    }
-
-  }
-}).call(this);
-
-buf.push("</ul></div></div><nav class=\"docs-sidebar hidden-xs stickyMenu\"><ul class=\"sidebar-nav\"><li><a href=\"/docs\" class=\"nav-heading\">Docs Home</a></li>");
+buf.push("</ul></div><div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div><nav class=\"docs-sidebar hidden-xs stickyMenu\"><ul class=\"sidebar-nav\"><li><a href=\"/docs\" class=\"nav-heading\">Docs Home</a></li>");
 if ( (docssection.value == 'classapi' ))
 {
 buf.push("<li" + (jade.cls([docssection.version == '0.3.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/current/class\" class=\"nav-heading\">Current</a></li><li" + (jade.cls([docssection.version == '0.4.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/incoming/class\" class=\"nav-heading\">Incoming</a></li><li" + (jade.cls([docssection.version == '0.2.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/0.2.x/class\" class=\"nav-heading\">0.2.x</a></li>");
@@ -442,108 +352,7 @@ if ( (docssection.value == 'endpointapi' ))
 {
 buf.push("<li" + (jade.cls([docssection.version == '0.4.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/current/endpoint\" class=\"nav-heading\">0.4.x</a></li><li><a href=\"/docs/api/current/class\" class=\"nav-heading\">Reference</a></li>");
 }
-buf.push("</ul></div><div class=\"visible-xs lowMenu\"><div class=\"col-xs-2\"><span class=\"glyphicon glyphicon-menu-hamburger icon\"></span></div><div class=\"col-xs-10\"><ul class=\"sidebar-nav\">");
-if ( docssection.version == '0.4.x' )
-{
-buf.push("<li class=\"nav-label\"><a href=\"#changelog\">0.3.x to 0.4.x Changes</a></li>");
-}
-if ( docssection.version == '0.3.x' )
-{
-buf.push("<li class=\"nav-label\"><a href=\"#changelog\">0.2.x to 0.3.x Changes</a></li>");
-}
-// iterate apidocs
-;(function(){
-  var $$obj = apidocs;
-  if ('number' == typeof $$obj.length) {
-
-    for (var ref = 0, $$l = $$obj.length; ref < $$l; ref++) {
-      var val = $$obj[ref];
-
-// iterate val.list
-;(function(){
-  var $$obj = val.list;
-  if ('number' == typeof $$obj.length) {
-
-    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
-      var item = $$obj[$index];
-
-if (!( item.name))
-{
-buf.push("<li class=\"nav-label\"><a" + (jade.attr("href", '#main-' + (item.keys) + '', true, false)) + ">" + (((jade_interp = item.menuHeader) == null ? '' : jade_interp)) + "</a></li>");
-}
-if (!( item.main))
-{
-buf.push("<li><a" + (jade.attr("href", '#' + (item.keys) + '-' + (item.name) + '', true, false)) + ">." + (((jade_interp = item.name) == null ? '' : jade_interp)) + "</a></li>");
-}
-    }
-
-  } else {
-    var $$l = 0;
-    for (var $index in $$obj) {
-      $$l++;      var item = $$obj[$index];
-
-if (!( item.name))
-{
-buf.push("<li class=\"nav-label\"><a" + (jade.attr("href", '#main-' + (item.keys) + '', true, false)) + ">" + (((jade_interp = item.menuHeader) == null ? '' : jade_interp)) + "</a></li>");
-}
-if (!( item.main))
-{
-buf.push("<li><a" + (jade.attr("href", '#' + (item.keys) + '-' + (item.name) + '', true, false)) + ">." + (((jade_interp = item.name) == null ? '' : jade_interp)) + "</a></li>");
-}
-    }
-
-  }
-}).call(this);
-
-    }
-
-  } else {
-    var $$l = 0;
-    for (var ref in $$obj) {
-      $$l++;      var val = $$obj[ref];
-
-// iterate val.list
-;(function(){
-  var $$obj = val.list;
-  if ('number' == typeof $$obj.length) {
-
-    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
-      var item = $$obj[$index];
-
-if (!( item.name))
-{
-buf.push("<li class=\"nav-label\"><a" + (jade.attr("href", '#main-' + (item.keys) + '', true, false)) + ">" + (((jade_interp = item.menuHeader) == null ? '' : jade_interp)) + "</a></li>");
-}
-if (!( item.main))
-{
-buf.push("<li><a" + (jade.attr("href", '#' + (item.keys) + '-' + (item.name) + '', true, false)) + ">." + (((jade_interp = item.name) == null ? '' : jade_interp)) + "</a></li>");
-}
-    }
-
-  } else {
-    var $$l = 0;
-    for (var $index in $$obj) {
-      $$l++;      var item = $$obj[$index];
-
-if (!( item.name))
-{
-buf.push("<li class=\"nav-label\"><a" + (jade.attr("href", '#main-' + (item.keys) + '', true, false)) + ">" + (((jade_interp = item.menuHeader) == null ? '' : jade_interp)) + "</a></li>");
-}
-if (!( item.main))
-{
-buf.push("<li><a" + (jade.attr("href", '#' + (item.keys) + '-' + (item.name) + '', true, false)) + ">." + (((jade_interp = item.name) == null ? '' : jade_interp)) + "</a></li>");
-}
-    }
-
-  }
-}).call(this);
-
-    }
-
-  }
-}).call(this);
-
-buf.push("</ul></div></div><nav class=\"docs-sidebar hidden-xs stickyMenu\"><ul class=\"sidebar-nav\"><li><a href=\"/docs\" class=\"nav-heading\">Docs Home</a></li>");
+buf.push("</ul></div><div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div><nav class=\"docs-sidebar hidden-xs stickyMenu\"><ul class=\"sidebar-nav\"><li><a href=\"/docs\" class=\"nav-heading\">Docs Home</a></li>");
 if ( (docssection.value == 'classapi' ))
 {
 buf.push("<li" + (jade.cls([docssection.version == '0.3.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/current/class\" class=\"nav-heading\">Current</a></li><li" + (jade.cls([docssection.version == '0.4.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/incoming/class\" class=\"nav-heading\">Incoming</a></li><li" + (jade.cls([docssection.version == '0.2.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/0.2.x/class\" class=\"nav-heading\">0.2.x</a></li>");
@@ -775,108 +584,7 @@ if ( (docssection.value == 'endpointapi' ))
 {
 buf.push("<li" + (jade.cls([docssection.version == '0.4.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/current/endpoint\" class=\"nav-heading\">0.4.x</a></li><li><a href=\"/docs/api/current/class\" class=\"nav-heading\">Reference</a></li>");
 }
-buf.push("</ul></div><div class=\"visible-xs lowMenu\"><div class=\"col-xs-2\"><span class=\"glyphicon glyphicon-menu-hamburger icon\"></span></div><div class=\"col-xs-10\"><ul class=\"sidebar-nav\">");
-if ( docssection.version == '0.4.x' )
-{
-buf.push("<li class=\"nav-label\"><a href=\"#changelog\">0.3.x to 0.4.x Changes</a></li>");
-}
-if ( docssection.version == '0.3.x' )
-{
-buf.push("<li class=\"nav-label\"><a href=\"#changelog\">0.2.x to 0.3.x Changes</a></li>");
-}
-// iterate apidocs
-;(function(){
-  var $$obj = apidocs;
-  if ('number' == typeof $$obj.length) {
-
-    for (var ref = 0, $$l = $$obj.length; ref < $$l; ref++) {
-      var val = $$obj[ref];
-
-// iterate val.list
-;(function(){
-  var $$obj = val.list;
-  if ('number' == typeof $$obj.length) {
-
-    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
-      var item = $$obj[$index];
-
-if (!( item.name))
-{
-buf.push("<li class=\"nav-label\"><a" + (jade.attr("href", '#main-' + (item.keys) + '', true, false)) + ">" + (((jade_interp = item.menuHeader) == null ? '' : jade_interp)) + "</a></li>");
-}
-if (!( item.main))
-{
-buf.push("<li><a" + (jade.attr("href", '#' + (item.keys) + '-' + (item.name) + '', true, false)) + ">." + (((jade_interp = item.name) == null ? '' : jade_interp)) + "</a></li>");
-}
-    }
-
-  } else {
-    var $$l = 0;
-    for (var $index in $$obj) {
-      $$l++;      var item = $$obj[$index];
-
-if (!( item.name))
-{
-buf.push("<li class=\"nav-label\"><a" + (jade.attr("href", '#main-' + (item.keys) + '', true, false)) + ">" + (((jade_interp = item.menuHeader) == null ? '' : jade_interp)) + "</a></li>");
-}
-if (!( item.main))
-{
-buf.push("<li><a" + (jade.attr("href", '#' + (item.keys) + '-' + (item.name) + '', true, false)) + ">." + (((jade_interp = item.name) == null ? '' : jade_interp)) + "</a></li>");
-}
-    }
-
-  }
-}).call(this);
-
-    }
-
-  } else {
-    var $$l = 0;
-    for (var ref in $$obj) {
-      $$l++;      var val = $$obj[ref];
-
-// iterate val.list
-;(function(){
-  var $$obj = val.list;
-  if ('number' == typeof $$obj.length) {
-
-    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
-      var item = $$obj[$index];
-
-if (!( item.name))
-{
-buf.push("<li class=\"nav-label\"><a" + (jade.attr("href", '#main-' + (item.keys) + '', true, false)) + ">" + (((jade_interp = item.menuHeader) == null ? '' : jade_interp)) + "</a></li>");
-}
-if (!( item.main))
-{
-buf.push("<li><a" + (jade.attr("href", '#' + (item.keys) + '-' + (item.name) + '', true, false)) + ">." + (((jade_interp = item.name) == null ? '' : jade_interp)) + "</a></li>");
-}
-    }
-
-  } else {
-    var $$l = 0;
-    for (var $index in $$obj) {
-      $$l++;      var item = $$obj[$index];
-
-if (!( item.name))
-{
-buf.push("<li class=\"nav-label\"><a" + (jade.attr("href", '#main-' + (item.keys) + '', true, false)) + ">" + (((jade_interp = item.menuHeader) == null ? '' : jade_interp)) + "</a></li>");
-}
-if (!( item.main))
-{
-buf.push("<li><a" + (jade.attr("href", '#' + (item.keys) + '-' + (item.name) + '', true, false)) + ">." + (((jade_interp = item.name) == null ? '' : jade_interp)) + "</a></li>");
-}
-    }
-
-  }
-}).call(this);
-
-    }
-
-  }
-}).call(this);
-
-buf.push("</ul></div></div><nav class=\"docs-sidebar hidden-xs stickyMenu\"><ul class=\"sidebar-nav\"><li><a href=\"/docs\" class=\"nav-heading\">Docs Home</a></li>");
+buf.push("</ul></div><div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div><nav class=\"docs-sidebar hidden-xs stickyMenu\"><ul class=\"sidebar-nav\"><li><a href=\"/docs\" class=\"nav-heading\">Docs Home</a></li>");
 if ( (docssection.value == 'classapi' ))
 {
 buf.push("<li" + (jade.cls([docssection.version == '0.3.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/current/class\" class=\"nav-heading\">Current</a></li><li" + (jade.cls([docssection.version == '0.4.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/incoming/class\" class=\"nav-heading\">Incoming</a></li><li" + (jade.cls([docssection.version == '0.2.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/0.2.x/class\" class=\"nav-heading\">0.2.x</a></li>");
@@ -1108,108 +816,7 @@ if ( (docssection.value == 'endpointapi' ))
 {
 buf.push("<li" + (jade.cls([docssection.version == '0.4.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/current/endpoint\" class=\"nav-heading\">0.4.x</a></li><li><a href=\"/docs/api/current/class\" class=\"nav-heading\">Reference</a></li>");
 }
-buf.push("</ul></div><div class=\"visible-xs lowMenu\"><div class=\"col-xs-2\"><span class=\"glyphicon glyphicon-menu-hamburger icon\"></span></div><div class=\"col-xs-10\"><ul class=\"sidebar-nav\">");
-if ( docssection.version == '0.4.x' )
-{
-buf.push("<li class=\"nav-label\"><a href=\"#changelog\">0.3.x to 0.4.x Changes</a></li>");
-}
-if ( docssection.version == '0.3.x' )
-{
-buf.push("<li class=\"nav-label\"><a href=\"#changelog\">0.2.x to 0.3.x Changes</a></li>");
-}
-// iterate apidocs
-;(function(){
-  var $$obj = apidocs;
-  if ('number' == typeof $$obj.length) {
-
-    for (var ref = 0, $$l = $$obj.length; ref < $$l; ref++) {
-      var val = $$obj[ref];
-
-// iterate val.list
-;(function(){
-  var $$obj = val.list;
-  if ('number' == typeof $$obj.length) {
-
-    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
-      var item = $$obj[$index];
-
-if (!( item.name))
-{
-buf.push("<li class=\"nav-label\"><a" + (jade.attr("href", '#main-' + (item.keys) + '', true, false)) + ">" + (((jade_interp = item.menuHeader) == null ? '' : jade_interp)) + "</a></li>");
-}
-if (!( item.main))
-{
-buf.push("<li><a" + (jade.attr("href", '#' + (item.keys) + '-' + (item.name) + '', true, false)) + ">." + (((jade_interp = item.name) == null ? '' : jade_interp)) + "</a></li>");
-}
-    }
-
-  } else {
-    var $$l = 0;
-    for (var $index in $$obj) {
-      $$l++;      var item = $$obj[$index];
-
-if (!( item.name))
-{
-buf.push("<li class=\"nav-label\"><a" + (jade.attr("href", '#main-' + (item.keys) + '', true, false)) + ">" + (((jade_interp = item.menuHeader) == null ? '' : jade_interp)) + "</a></li>");
-}
-if (!( item.main))
-{
-buf.push("<li><a" + (jade.attr("href", '#' + (item.keys) + '-' + (item.name) + '', true, false)) + ">." + (((jade_interp = item.name) == null ? '' : jade_interp)) + "</a></li>");
-}
-    }
-
-  }
-}).call(this);
-
-    }
-
-  } else {
-    var $$l = 0;
-    for (var ref in $$obj) {
-      $$l++;      var val = $$obj[ref];
-
-// iterate val.list
-;(function(){
-  var $$obj = val.list;
-  if ('number' == typeof $$obj.length) {
-
-    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
-      var item = $$obj[$index];
-
-if (!( item.name))
-{
-buf.push("<li class=\"nav-label\"><a" + (jade.attr("href", '#main-' + (item.keys) + '', true, false)) + ">" + (((jade_interp = item.menuHeader) == null ? '' : jade_interp)) + "</a></li>");
-}
-if (!( item.main))
-{
-buf.push("<li><a" + (jade.attr("href", '#' + (item.keys) + '-' + (item.name) + '', true, false)) + ">." + (((jade_interp = item.name) == null ? '' : jade_interp)) + "</a></li>");
-}
-    }
-
-  } else {
-    var $$l = 0;
-    for (var $index in $$obj) {
-      $$l++;      var item = $$obj[$index];
-
-if (!( item.name))
-{
-buf.push("<li class=\"nav-label\"><a" + (jade.attr("href", '#main-' + (item.keys) + '', true, false)) + ">" + (((jade_interp = item.menuHeader) == null ? '' : jade_interp)) + "</a></li>");
-}
-if (!( item.main))
-{
-buf.push("<li><a" + (jade.attr("href", '#' + (item.keys) + '-' + (item.name) + '', true, false)) + ">." + (((jade_interp = item.name) == null ? '' : jade_interp)) + "</a></li>");
-}
-    }
-
-  }
-}).call(this);
-
-    }
-
-  }
-}).call(this);
-
-buf.push("</ul></div></div><nav class=\"docs-sidebar hidden-xs stickyMenu\"><ul class=\"sidebar-nav\"><li><a href=\"/docs\" class=\"nav-heading\">Docs Home</a></li>");
+buf.push("</ul></div><div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div><nav class=\"docs-sidebar hidden-xs stickyMenu\"><ul class=\"sidebar-nav\"><li><a href=\"/docs\" class=\"nav-heading\">Docs Home</a></li>");
 if ( (docssection.value == 'classapi' ))
 {
 buf.push("<li" + (jade.cls([docssection.version == '0.3.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/current/class\" class=\"nav-heading\">Current</a></li><li" + (jade.cls([docssection.version == '0.4.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/incoming/class\" class=\"nav-heading\">Incoming</a></li><li" + (jade.cls([docssection.version == '0.2.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/0.2.x/class\" class=\"nav-heading\">0.2.x</a></li>");
@@ -1358,7 +965,35 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\">");
+buf.push("</ul></div>");
+if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
+{
+buf.push("<div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
+}
+buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+// iterate docsnav
+;(function(){
+  var $$obj = docsnav;
+  if ('number' == typeof $$obj.length) {
+
+    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
+      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  } else {
+    var $$l = 0;
+    for (var $index in $$obj) {
+      $$l++;      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  }
+}).call(this);
+
+buf.push("</ul><hr/>");
 if ( docssection.value != 'introduction')
 {
 buf.push("<ul class=\"sidebar-nav\">");
@@ -1414,32 +1049,9 @@ buf.push("<ul><li class=\"nav-label\"><a href=\"#concepts\">Concepts</a></li><li
   }
 }).call(this);
 
-buf.push("</ul><hr/>");
+buf.push("</ul>");
 }
-buf.push("<ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
-// iterate docsnav
-;(function(){
-  var $$obj = docsnav;
-  if ('number' == typeof $$obj.length) {
-
-    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
-      var item = $$obj[$index];
-
-buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
-    }
-
-  } else {
-    var $$l = 0;
-    for (var $index in $$obj) {
-      $$l++;      var item = $$obj[$index];
-
-buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
-    }
-
-  }
-}).call(this);
-
-buf.push("</ul></nav>");
+buf.push("</nav>");
 };
 buf.push("<div class=\"page-header\"><div class=\"container\"><h1>Keystone Api</h1><p class=\"lead\">Class and Endpoint Api</p></div></div><div class=\"container\"><div class=\"row\"><div class=\"col-sm-3\">");
 jade_mixins["docsnav"](docssection);
@@ -1474,7 +1086,35 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\">");
+buf.push("</ul></div>");
+if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
+{
+buf.push("<div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
+}
+buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+// iterate docsnav
+;(function(){
+  var $$obj = docsnav;
+  if ('number' == typeof $$obj.length) {
+
+    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
+      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  } else {
+    var $$l = 0;
+    for (var $index in $$obj) {
+      $$l++;      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  }
+}).call(this);
+
+buf.push("</ul><hr/>");
 if ( docssection.value != 'introduction')
 {
 buf.push("<ul class=\"sidebar-nav\">");
@@ -1530,32 +1170,9 @@ buf.push("<ul><li class=\"nav-label\"><a href=\"#concepts\">Concepts</a></li><li
   }
 }).call(this);
 
-buf.push("</ul><hr/>");
+buf.push("</ul>");
 }
-buf.push("<ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
-// iterate docsnav
-;(function(){
-  var $$obj = docsnav;
-  if ('number' == typeof $$obj.length) {
-
-    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
-      var item = $$obj[$index];
-
-buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
-    }
-
-  } else {
-    var $$l = 0;
-    for (var $index in $$obj) {
-      $$l++;      var item = $$obj[$index];
-
-buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
-    }
-
-  }
-}).call(this);
-
-buf.push("</ul></nav>");
+buf.push("</nav>");
 };
 buf.push("<div class=\"page-header\"><div class=\"container\"><h1>Configuration</h1><p class=\"lead\">How to roll KeystoneJS the way you want it.</p></div></div><div class=\"container\"><div class=\"row\"><div class=\"col-sm-3\">");
 jade_mixins["docsnav"](docssection);
@@ -1590,7 +1207,35 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\">");
+buf.push("</ul></div>");
+if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
+{
+buf.push("<div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
+}
+buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+// iterate docsnav
+;(function(){
+  var $$obj = docsnav;
+  if ('number' == typeof $$obj.length) {
+
+    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
+      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  } else {
+    var $$l = 0;
+    for (var $index in $$obj) {
+      $$l++;      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  }
+}).call(this);
+
+buf.push("</ul><hr/>");
 if ( docssection.value != 'introduction')
 {
 buf.push("<ul class=\"sidebar-nav\">");
@@ -1646,32 +1291,9 @@ buf.push("<ul><li class=\"nav-label\"><a href=\"#concepts\">Concepts</a></li><li
   }
 }).call(this);
 
-buf.push("</ul><hr/>");
+buf.push("</ul>");
 }
-buf.push("<ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
-// iterate docsnav
-;(function(){
-  var $$obj = docsnav;
-  if ('number' == typeof $$obj.length) {
-
-    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
-      var item = $$obj[$index];
-
-buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
-    }
-
-  } else {
-    var $$l = 0;
-    for (var $index in $$obj) {
-      $$l++;      var item = $$obj[$index];
-
-buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
-    }
-
-  }
-}).call(this);
-
-buf.push("</ul></nav>");
+buf.push("</nav>");
 };
 buf.push("<div class=\"page-header\"><div class=\"container\"><h1>Database</h1><p class=\"lead\">Setting up and using Data Models</p></div></div><div class=\"container\"><div class=\"row\"><div class=\"col-sm-3\">");
 jade_mixins["docsnav"](docssection);
@@ -1706,7 +1328,35 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\">");
+buf.push("</ul></div>");
+if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
+{
+buf.push("<div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
+}
+buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+// iterate docsnav
+;(function(){
+  var $$obj = docsnav;
+  if ('number' == typeof $$obj.length) {
+
+    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
+      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  } else {
+    var $$l = 0;
+    for (var $index in $$obj) {
+      $$l++;      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  }
+}).call(this);
+
+buf.push("</ul><hr/>");
 if ( docssection.value != 'introduction')
 {
 buf.push("<ul class=\"sidebar-nav\">");
@@ -1762,32 +1412,9 @@ buf.push("<ul><li class=\"nav-label\"><a href=\"#concepts\">Concepts</a></li><li
   }
 }).call(this);
 
-buf.push("</ul><hr/>");
+buf.push("</ul>");
 }
-buf.push("<ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
-// iterate docsnav
-;(function(){
-  var $$obj = docsnav;
-  if ('number' == typeof $$obj.length) {
-
-    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
-      var item = $$obj[$index];
-
-buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
-    }
-
-  } else {
-    var $$l = 0;
-    for (var $index in $$obj) {
-      $$l++;      var item = $$obj[$index];
-
-buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
-    }
-
-  }
-}).call(this);
-
-buf.push("</ul></nav>");
+buf.push("</nav>");
 };
 buf.push("<div class=\"page-header\"><div class=\"container\"><h1>FAQ's</h1><p class=\"lead\">A collection of frequently asked questions's asked throughout community forums</p></div></div><div class=\"container\"><div class=\"row\"><div class=\"col-sm-3\">");
 jade_mixins["docsnav"](docssection);
@@ -1822,7 +1449,35 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\">");
+buf.push("</ul></div>");
+if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
+{
+buf.push("<div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
+}
+buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+// iterate docsnav
+;(function(){
+  var $$obj = docsnav;
+  if ('number' == typeof $$obj.length) {
+
+    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
+      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  } else {
+    var $$l = 0;
+    for (var $index in $$obj) {
+      $$l++;      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  }
+}).call(this);
+
+buf.push("</ul><hr/>");
 if ( docssection.value != 'introduction')
 {
 buf.push("<ul class=\"sidebar-nav\">");
@@ -1878,32 +1533,9 @@ buf.push("<ul><li class=\"nav-label\"><a href=\"#concepts\">Concepts</a></li><li
   }
 }).call(this);
 
-buf.push("</ul><hr/>");
+buf.push("</ul>");
 }
-buf.push("<ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
-// iterate docsnav
-;(function(){
-  var $$obj = docsnav;
-  if ('number' == typeof $$obj.length) {
-
-    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
-      var item = $$obj[$index];
-
-buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
-    }
-
-  } else {
-    var $$l = 0;
-    for (var $index in $$obj) {
-      $$l++;      var item = $$obj[$index];
-
-buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
-    }
-
-  }
-}).call(this);
-
-buf.push("</ul></nav>");
+buf.push("</nav>");
 };
 buf.push("<div class=\"page-header\"><div class=\"container\"><h1>Getting Started Guide</h1><p class=\"lead\">This guide steps you through how to create a KeystoneJS site. <a href=\"/quick-start\">There's also a generator.</a></p></div></div><div class=\"container\"><div class=\"row\"><div class=\"col-sm-3\">");
 jade_mixins["docsnav"](docssection);
@@ -1938,7 +1570,35 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\">");
+buf.push("</ul></div>");
+if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
+{
+buf.push("<div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
+}
+buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+// iterate docsnav
+;(function(){
+  var $$obj = docsnav;
+  if ('number' == typeof $$obj.length) {
+
+    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
+      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  } else {
+    var $$l = 0;
+    for (var $index in $$obj) {
+      $$l++;      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  }
+}).call(this);
+
+buf.push("</ul><hr/>");
 if ( docssection.value != 'introduction')
 {
 buf.push("<ul class=\"sidebar-nav\">");
@@ -1994,32 +1654,9 @@ buf.push("<ul><li class=\"nav-label\"><a href=\"#concepts\">Concepts</a></li><li
   }
 }).call(this);
 
-buf.push("</ul><hr/>");
+buf.push("</ul>");
 }
-buf.push("<ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
-// iterate docsnav
-;(function(){
-  var $$obj = docsnav;
-  if ('number' == typeof $$obj.length) {
-
-    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
-      var item = $$obj[$index];
-
-buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
-    }
-
-  } else {
-    var $$l = 0;
-    for (var $index in $$obj) {
-      $$l++;      var item = $$obj[$index];
-
-buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
-    }
-
-  }
-}).call(this);
-
-buf.push("</ul></nav>");
+buf.push("</nav>");
 };
 buf.push("<div class=\"page-header\"><div class=\"container\"><h1>Documentation</h1><p class=\"lead\">Learn how to build database-driven websites, applications and APIs in Node.js.</p></div></div><div class=\"container\"><div class=\"row\"><div class=\"col-sm-3\">");
 jade_mixins["docsnav"](docssection);
@@ -2054,7 +1691,35 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\">");
+buf.push("</ul></div>");
+if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
+{
+buf.push("<div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
+}
+buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+// iterate docsnav
+;(function(){
+  var $$obj = docsnav;
+  if ('number' == typeof $$obj.length) {
+
+    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
+      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  } else {
+    var $$l = 0;
+    for (var $index in $$obj) {
+      $$l++;      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  }
+}).call(this);
+
+buf.push("</ul><hr/>");
 if ( docssection.value != 'introduction')
 {
 buf.push("<ul class=\"sidebar-nav\">");
@@ -2110,32 +1775,9 @@ buf.push("<ul><li class=\"nav-label\"><a href=\"#concepts\">Concepts</a></li><li
   }
 }).call(this);
 
-buf.push("</ul><hr/>");
+buf.push("</ul>");
 }
-buf.push("<ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
-// iterate docsnav
-;(function(){
-  var $$obj = docsnav;
-  if ('number' == typeof $$obj.length) {
-
-    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
-      var item = $$obj[$index];
-
-buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
-    }
-
-  } else {
-    var $$l = 0;
-    for (var $index in $$obj) {
-      $$l++;      var item = $$obj[$index];
-
-buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
-    }
-
-  }
-}).call(this);
-
-buf.push("</ul></nav>");
+buf.push("</nav>");
 };
 buf.push("<div class=\"page-header\"><div class=\"container\"><h1>Code Examples</h1><p class=\"lead\">Learn how to use KeystoneJS.</p></div></div><div class=\"container\"><div class=\"row\"><div class=\"col-sm-3\">");
 jade_mixins["docsnav"](docssection);
@@ -2170,7 +1812,35 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\">");
+buf.push("</ul></div>");
+if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
+{
+buf.push("<div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
+}
+buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+// iterate docsnav
+;(function(){
+  var $$obj = docsnav;
+  if ('number' == typeof $$obj.length) {
+
+    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
+      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  } else {
+    var $$l = 0;
+    for (var $index in $$obj) {
+      $$l++;      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  }
+}).call(this);
+
+buf.push("</ul><hr/>");
 if ( docssection.value != 'introduction')
 {
 buf.push("<ul class=\"sidebar-nav\">");
@@ -2226,32 +1896,9 @@ buf.push("<ul><li class=\"nav-label\"><a href=\"#concepts\">Concepts</a></li><li
   }
 }).call(this);
 
-buf.push("</ul><hr/>");
+buf.push("</ul>");
 }
-buf.push("<ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
-// iterate docsnav
-;(function(){
-  var $$obj = docsnav;
-  if ('number' == typeof $$obj.length) {
-
-    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
-      var item = $$obj[$index];
-
-buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
-    }
-
-  } else {
-    var $$l = 0;
-    for (var $index in $$obj) {
-      $$l++;      var item = $$obj[$index];
-
-buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
-    }
-
-  }
-}).call(this);
-
-buf.push("</ul></nav>");
+buf.push("</nav>");
 };
 buf.push("<div class=\"page-header\"><div class=\"container\"><h1>ES6 React SPA  </h1><p class=\"lead\">Using System.js and babel to build a new KeystoneJS.com SPA with React.</p></div></div><div class=\"container\"><div class=\"row\"><div class=\"col-sm-3\">");
 jade_mixins["docsnav"](docssection);
@@ -2286,7 +1933,35 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\">");
+buf.push("</ul></div>");
+if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
+{
+buf.push("<div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
+}
+buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+// iterate docsnav
+;(function(){
+  var $$obj = docsnav;
+  if ('number' == typeof $$obj.length) {
+
+    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
+      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  } else {
+    var $$l = 0;
+    for (var $index in $$obj) {
+      $$l++;      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  }
+}).call(this);
+
+buf.push("</ul><hr/>");
 if ( docssection.value != 'introduction')
 {
 buf.push("<ul class=\"sidebar-nav\">");
@@ -2342,32 +2017,9 @@ buf.push("<ul><li class=\"nav-label\"><a href=\"#concepts\">Concepts</a></li><li
   }
 }).call(this);
 
-buf.push("</ul><hr/>");
+buf.push("</ul>");
 }
-buf.push("<ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
-// iterate docsnav
-;(function(){
-  var $$obj = docsnav;
-  if ('number' == typeof $$obj.length) {
-
-    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
-      var item = $$obj[$index];
-
-buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
-    }
-
-  } else {
-    var $$l = 0;
-    for (var $index in $$obj) {
-      $$l++;      var item = $$obj[$index];
-
-buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
-    }
-
-  }
-}).call(this);
-
-buf.push("</ul></nav>");
+buf.push("</nav>");
 };
 buf.push("<div class=\"page-header\"><div class=\"container\"><h1>Resources</h1><p class=\"lead\">Learn how to build in Node.js.</p></div></div><div class=\"container\"><div class=\"row\"><div class=\"col-sm-3\">");
 jade_mixins["docsnav"](docssection);
@@ -2402,7 +2054,35 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\">");
+buf.push("</ul></div>");
+if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
+{
+buf.push("<div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
+}
+buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+// iterate docsnav
+;(function(){
+  var $$obj = docsnav;
+  if ('number' == typeof $$obj.length) {
+
+    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
+      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  } else {
+    var $$l = 0;
+    for (var $index in $$obj) {
+      $$l++;      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  }
+}).call(this);
+
+buf.push("</ul><hr/>");
 if ( docssection.value != 'introduction')
 {
 buf.push("<ul class=\"sidebar-nav\">");
@@ -2458,32 +2138,9 @@ buf.push("<ul><li class=\"nav-label\"><a href=\"#concepts\">Concepts</a></li><li
   }
 }).call(this);
 
-buf.push("</ul><hr/>");
+buf.push("</ul>");
 }
-buf.push("<ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
-// iterate docsnav
-;(function(){
-  var $$obj = docsnav;
-  if ('number' == typeof $$obj.length) {
-
-    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
-      var item = $$obj[$index];
-
-buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
-    }
-
-  } else {
-    var $$l = 0;
-    for (var $index in $$obj) {
-      $$l++;      var item = $$obj[$index];
-
-buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
-    }
-
-  }
-}).call(this);
-
-buf.push("</ul></nav>");
+buf.push("</nav>");
 };
 buf.push("<div class=\"page-header\"><div class=\"container\"><h1>Learn</h1><p class=\"lead\">Learn how to build database-driven websites, applications and APIs in Node.js.</p></div></div><div class=\"container\"><div class=\"row\"><div class=\"col-sm-3\">");
 jade_mixins["docsnav"](docssection);
@@ -2518,7 +2175,35 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\">");
+buf.push("</ul></div>");
+if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
+{
+buf.push("<div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
+}
+buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+// iterate docsnav
+;(function(){
+  var $$obj = docsnav;
+  if ('number' == typeof $$obj.length) {
+
+    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
+      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  } else {
+    var $$l = 0;
+    for (var $index in $$obj) {
+      $$l++;      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  }
+}).call(this);
+
+buf.push("</ul><hr/>");
 if ( docssection.value != 'introduction')
 {
 buf.push("<ul class=\"sidebar-nav\">");
@@ -2574,32 +2259,9 @@ buf.push("<ul><li class=\"nav-label\"><a href=\"#concepts\">Concepts</a></li><li
   }
 }).call(this);
 
-buf.push("</ul><hr/>");
+buf.push("</ul>");
 }
-buf.push("<ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
-// iterate docsnav
-;(function(){
-  var $$obj = docsnav;
-  if ('number' == typeof $$obj.length) {
-
-    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
-      var item = $$obj[$index];
-
-buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
-    }
-
-  } else {
-    var $$l = 0;
-    for (var $index in $$obj) {
-      $$l++;      var item = $$obj[$index];
-
-buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
-    }
-
-  }
-}).call(this);
-
-buf.push("</ul></nav>");
+buf.push("</nav>");
 };
 buf.push("<div class=\"page-header\"><div class=\"container\"><h1>Views</h1><p class=\"lead\">Using Views with your keystone application</p></div></div><div class=\"container\"><div class=\"row\"><div class=\"col-sm-3\">");
 jade_mixins["docsnav"](docssection);
@@ -2652,7 +2314,35 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\">");
+buf.push("</ul></div>");
+if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
+{
+buf.push("<div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
+}
+buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+// iterate docsnav
+;(function(){
+  var $$obj = docsnav;
+  if ('number' == typeof $$obj.length) {
+
+    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
+      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  } else {
+    var $$l = 0;
+    for (var $index in $$obj) {
+      $$l++;      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  }
+}).call(this);
+
+buf.push("</ul><hr/>");
 if ( docssection.value != 'introduction')
 {
 buf.push("<ul class=\"sidebar-nav\">");
@@ -2708,32 +2398,9 @@ buf.push("<ul><li class=\"nav-label\"><a href=\"#concepts\">Concepts</a></li><li
   }
 }).call(this);
 
-buf.push("</ul><hr/>");
+buf.push("</ul>");
 }
-buf.push("<ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
-// iterate docsnav
-;(function(){
-  var $$obj = docsnav;
-  if ('number' == typeof $$obj.length) {
-
-    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
-      var item = $$obj[$index];
-
-buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
-    }
-
-  } else {
-    var $$l = 0;
-    for (var $index in $$obj) {
-      $$l++;      var item = $$obj[$index];
-
-buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
-    }
-
-  }
-}).call(this);
-
-buf.push("</ul></nav>");
+buf.push("</nav>");
 };
 buf.push("<div class=\"page-header\"><div class=\"container\"><h1>ES6 React SPA  </h1><p class=\"lead\">Using System.js and babel to build a new KeystoneJS.com SPA with React.</p></div></div><div class=\"col-sm-3\">");
 jade_mixins["docsnav"](docssection);
@@ -2774,7 +2441,35 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\">");
+buf.push("</ul></div>");
+if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
+{
+buf.push("<div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
+}
+buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+// iterate docsnav
+;(function(){
+  var $$obj = docsnav;
+  if ('number' == typeof $$obj.length) {
+
+    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
+      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  } else {
+    var $$l = 0;
+    for (var $index in $$obj) {
+      $$l++;      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  }
+}).call(this);
+
+buf.push("</ul><hr/>");
 if ( docssection.value != 'introduction')
 {
 buf.push("<ul class=\"sidebar-nav\">");
@@ -2830,97 +2525,15 @@ buf.push("<ul><li class=\"nav-label\"><a href=\"#concepts\">Concepts</a></li><li
   }
 }).call(this);
 
-buf.push("</ul><hr/>");
+buf.push("</ul>");
 }
-buf.push("<ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
-// iterate docsnav
-;(function(){
-  var $$obj = docsnav;
-  if ('number' == typeof $$obj.length) {
-
-    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
-      var item = $$obj[$index];
-
-buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
-    }
-
-  } else {
-    var $$l = 0;
-    for (var $index in $$obj) {
-      $$l++;      var item = $$obj[$index];
-
-buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
-    }
-
-  }
-}).call(this);
-
-buf.push("</ul></nav>");
+buf.push("</nav>");
 };
 jade_mixins["docsnav"](docssection);}.call(this,"docsnav" in locals_for_with?locals_for_with.docsnav:typeof docsnav!=="undefined"?docsnav:undefined,"docssection" in locals_for_with?locals_for_with.docssection:typeof docssection!=="undefined"?docssection:undefined));;return buf.join("");
 },'en/templates/mixins/docsapinav': function template(locals) {
 var buf = [];
 var jade_mixins = {};
 var jade_interp;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -3081,6 +2694,11 @@ var jade_interp;
 
 
 
+
+
+
+
+
 ;return buf.join("");
 },'index': function template(locals) {
 var buf = [];
@@ -3092,7 +2710,7 @@ if ( title)
 {
 buf.push(" &middot; " + (jade.escape((jade_interp = title) == null ? '' : jade_interp)) + "");
 }
-buf.push("</title><meta name=\"keywords\" content=\"node.js,nodejs,cms,publishing,platform,web,development,framework,express,mongo,mongodb,bootstrap,react,jquery\"><meta name=\"description\" content=\"Get a head-start on the features you need. KeystoneJS is the easiest way to build dynamic websites, applications and APIs with Node.js and MongoDB.\"><meta property=\"og:locale\" content=\"en-us\"><meta property=\"og:title\" content=\"KeystoneJS\"><meta property=\"og:description\" content=\"KeystoneJS is an open source Node.js CMS and web application platform built on Express and MongoDB.\"><meta property=\"og:url\" content=\"https://keystonejs.com^current_url^\"><meta property=\"og:site_name\" content=\"KeystoneJS\"><meta property=\"og:type\" content=\"article\"><link href=\"http://fonts.googleapis.com/css?family=Roboto:100,300,300italic,400,500,700\" rel=\"stylesheet\"><link href=\"/styles/site.min.css\" rel=\"stylesheet\"><link rel=\"shortcut icon\" href=\"/favicon.ico\" type=\"image/x-icon\"></head><body><div id=\"keystonejs-spa\"><div class=\"home-header back-key\"><div class=\"container\"><img src=\"/images/logo-inverted.svg\" alt=\"KeystoneJS\" width=\"80\" height=\"81\"><h2>The open source framework for developing database-driven websites, applications and APIs in Node.js. Built on Express and MongoDB.</h2><h1>preparing to get it on...</h1></div></div></div><script src=\"/inclusive-bundle.js\"></script></body></html>");}.call(this,"language" in locals_for_with?locals_for_with.language:typeof language!=="undefined"?language:undefined,"title" in locals_for_with?locals_for_with.title:typeof title!=="undefined"?title:undefined));;return buf.join("");
+buf.push("</title><meta name=\"keywords\" content=\"node.js,nodejs,cms,publishing,platform,web,development,framework,express,mongo,mongodb,bootstrap,react,jquery\"><meta name=\"description\" content=\"Get a head-start on the features you need. KeystoneJS is the easiest way to build dynamic websites, applications and APIs with Node.js and MongoDB.\"><meta property=\"og:locale\" content=\"en-us\"><meta property=\"og:title\" content=\"KeystoneJS\"><meta property=\"og:description\" content=\"KeystoneJS is an open source Node.js CMS and web application platform built on Express and MongoDB.\"><meta property=\"og:url\" content=\"https://keystonejs.com^current_url^\"><meta property=\"og:site_name\" content=\"KeystoneJS\"><meta property=\"og:type\" content=\"article\"><link href=\"http://fonts.googleapis.com/css?family=Roboto:100,300,300italic,400,500,700\" rel=\"stylesheet\"><link href=\"/styles/site.min.css\" rel=\"stylesheet\"><link rel=\"shortcut icon\" href=\"/favicon.ico\" type=\"image/x-icon\"></head><body><div id=\"keystonejs-spa\"><div class=\"home-header back-key\"><div class=\"container\"><img src=\"/images/logo-inverted.svg\" alt=\"KeystoneJS\" width=\"80\" height=\"81\"><h2>The open source framework for developing database-driven websites, applications and APIs in Node.js. Built on Express and MongoDB.</h2><h1>preparing to get it on...</h1></div></div></div><script src=\"/systemjs/jspm_packages/system.js\"></script><script src=\"/systemjs/config.js\"></script><script src=\"/systemjs/client.js\"></script></body></html>");}.call(this,"language" in locals_for_with?locals_for_with.language:typeof language!=="undefined"?language:undefined,"title" in locals_for_with?locals_for_with.title:typeof title!=="undefined"?title:undefined));;return buf.join("");
 },'zh/pages/404': function template(locals) {
 var buf = [];
 var jade_mixins = {};

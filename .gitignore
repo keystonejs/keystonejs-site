@@ -13,4 +13,4 @@ node_modules
 public/systemjs/jspm_packages
 
 # Build folder
-build
+#build

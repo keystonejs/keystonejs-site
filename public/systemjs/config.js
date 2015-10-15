@@ -12,17 +12,11 @@ System.config({
   paths: {
     "github:*": "systemjs/jspm_packages/github/*",
     "npm:*": "systemjs/jspm_packages/npm/*",
-    "config": "systemjs/app/config.js",
-    "analytics": "systemjs/analytics.js",
-    "dependencies": "systemjs/bundles/dependencies.js",
-    "dependencies-map": "systemjs/bundles/dependencies.js.map",
-    "html": "systemjs/bundles/html.js",
-    "html-map": "systemjs/bundles/html.js.map",
     "app/*": "systemjs/app/*.js",
     "pages/*": "systemjs/app/pages/*.js",
     "common/*": "systemjs/app/common/*.js",
     "styles/site": "styles/site.min.css",
-    "styles/prism": "styles/prism.css",
+    "styles/prism": "styles/prism.css"
   },
   bundles: {
     "html": [
@@ -30,21 +24,30 @@ System.config({
       "app/html/markedApi"
     ]
   },
+
   meta: {
-    'styles/*': {
-      loader: 'css',
-      defaultExtension: false
+    "styles/*": {
+      "loader": "css",
+      "defaultExtension": false
     }
   },
+
   map: {
     "@lukekarrys/jade-runtime": "npm:@lukekarrys/jade-runtime@1.11.1",
+    "analytics": "systemjs/analytics.js",
     "babel": "npm:babel-core@5.8.25",
     "babel-runtime": "npm:babel-runtime@5.8.25",
-    "bootstrap": "github:twbs/bootstrap@3.1.0",
+    "bootstrap": "systemjs/bootstrap-collapse",
+    "config": "systemjs/app/config.js",
     "core-js": "npm:core-js@1.2.1",
+    "dependencies": "systemjs/bundles/dependencies.js",
+    "dependencies-map": "systemjs/bundles/dependencies.js.map",
     "fetch": "npm:whatwg-fetch@0.10.0",
     "history": "npm:history@1.12.4",
-    "jade-runtime": "npm:jade-runtime@1.1.0",
+    "html": "systemjs/bundles/html.js",
+    "html-map": "systemjs/bundles/html.js.map",
+    "jade-runtime": "npm:jade-runtime@1.0.0",
+    "jadejs/jade": "github:jadejs/jade@v2",
     "jquery": "github:components/jquery@1.10.2",
     "lodash": "npm:lodash@3.10.1",
     "md": "github:guybedford/system-md@0.0.2",
@@ -81,10 +84,6 @@ System.config({
     },
     "github:jspm/nodelibs-util@0.1.0": {
       "util": "npm:util@0.10.3"
-    },
-    "github:twbs/bootstrap@3.1.0": {
-      "css": "github:systemjs/plugin-css@0.1.18",
-      "jquery": "github:components/jquery@1.10.2"
     },
     "npm:@lukekarrys/jade-runtime@1.11.1": {
       "fs": "github:jspm/nodelibs-fs@0.1.2"
@@ -159,7 +158,7 @@ System.config({
       "loose-envify": "npm:loose-envify@1.0.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:jade-runtime@1.1.0": {
+    "npm:jade-runtime@1.0.0": {
       "fs": "github:jspm/nodelibs-fs@0.1.2"
     },
     "npm:js-tokens@1.0.1": {

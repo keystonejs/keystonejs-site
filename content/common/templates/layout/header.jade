@@ -2,7 +2,6 @@ include ../mixins/breadcrumbs
 .language-switcher: .container
 	a(href=languages.zh.links[section] class=(language === 'zh' ? 'active' : '')).language-switcher-option 中文 (Chinese)
 	a(href=languages.en.links[section] class=(language === 'en' ? 'active' : '')).language-switcher-option English
-block homepage-header
 
 if section !== 'home'
 	header(role='banner').docs-header: .container

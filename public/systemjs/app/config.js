@@ -17,11 +17,11 @@ exports.languages = {
 		],
 		"docsnav": [
 			{ "value": "getting-started", "path": "/docs/getting-started", "label": "Getting Started", "labelsm": "Start" },
-			{ "value": "configuration", "path": "/docs/configuration", "label": "Configuration", "labelsm": "Opts" },
+			{ "value": "configuration", "path": "/docs/configuration", "label": "Configuration", "labelsm": "Config" },
 			{ "value": "database", "path": "/docs/database", "label": "Database", "labelsm": "Lists" },
 			{ "value": "classapi", "path": "/docs/api/current/class", "label": "Class Reference", "labelsm": "Api" },
 			{ "value": "learn", "path": "/docs/learn", "label": "Learn", "labelsm": "Learn" },
-			{ "value": "faqs", "path": "/docs/faqs", "label": "FAQ's", "labelsm": "FAQs" }
+			{ "value": "faqs", "path": "/docs/faqs", "label": "FAQ's", "labelsm": "FAQ" }
 		],
 	},
 	"zh": {
@@ -416,8 +416,9 @@ exports.getFileName = function getFileName(url){
 exports.cleanPath = function(path) {
 	return path[path.length-1] === '/' ? path.slice(0,-1) : path;
 }
+
 exports.config = {
-	location: location,
+	location: {},
 	versions: ['0.2.x', 'current', 'incoming'],
 	language: "en"
 }

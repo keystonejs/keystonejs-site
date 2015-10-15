@@ -3,8 +3,21 @@ mixin docsnav(docssection)
 		each item in docsnav
 			li(class=docssection.value == item.value ? 'active' : null)
 				a(href=item.path).nav-heading= item.labelsm
+	
+	if docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration'
+		#searchBar
+			.col-xs-12.col-sm-offset-3.col-sm-9.input
+				input(type="text"  placeholder="quick find").form-control.clearable
+				nav.searchList.docs-sidebar
 		
 	nav.docs-sidebar.hidden-xs
+		ul.sidebar-nav
+			li(class=docssection.value == 'introduction' ? 'active' : null)
+				a(href='/docs').nav-heading Welcome
+			each item in docsnav
+				li(class=docssection.value == item.value ? 'active' : null)
+					a(href=item.path).nav-heading= item.label
+		hr
 		if docssection.value != 'introduction'
 			ul.sidebar-nav
 				each item in docsnav						
@@ -122,11 +135,5 @@ mixin docsnav(docssection)
 							li: a(href='#fieldtypes-embedly') Embedly
 							li: a(href='#fieldtypes-localfile') LocalFile
 							li: a(href='#fieldtypes-s3file') S3 File
-			hr
-		ul.sidebar-nav
-			li(class=docssection.value == 'introduction' ? 'active' : null)
-				a(href='/docs').nav-heading Welcome
-			each item in docsnav
-				li(class=docssection.value == item.value ? 'active' : null)
-					a(href=item.path).nav-heading= item.label
+		
 							

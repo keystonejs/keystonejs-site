@@ -1,9 +1,10 @@
-var fs = require('fs');
+var fs = require('fs.extra');
 var pathutil = require('path');
 var uglify = require('uglify-js');
 var jade = require('jade');
 var events = require('events');
 var util = require('util');
+var content = require('../public/systemjs/app/config.js');
 
 function JadeAsset() {
 	events.EventEmitter.call(this);
@@ -18,10 +19,18 @@ JadeAsset.prototype.jade = jade;
 JadeAsset.prototype.saveIndex = function(options, callback) {
 	var file = options.file
 	var dest = options.dest
+	var path = pathutil.dirname(options.dest);
 	var html = jade.renderFile(file, { language: "en"});
 	if (html) {
 		fs.writeFile(dest, html, function (err) {
 			if (err) return console.log(err);
+			// add a page for each route
+			content.routes.forEach(function(route) {
+				var filename = route.path.substr(1).replace(/\//g, '_') || 'index';
+				var filepath = path + '/' + filename + '.html';
+				console.log('Writing ' + filename + '.html');
+				fs.outputFileSync(filepath, html);
+			});
 			if('function' === typeof callback) {
 				callback(dest);
 			}

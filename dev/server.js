@@ -34,7 +34,7 @@ app.use(function(req, res, next) {
 // Set up locals and routes
 app.locals.version = require('../package.json').version;
 
-app.use('/systemjs/app/templates.js', function(req, res, next) {
+app.use('/systemjs/app/html/templates.js', function(req, res, next) {
 	console.log('get jade template file');
 	jadeFn.create({
 		dirname: '../content',
