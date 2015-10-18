@@ -29,7 +29,7 @@ class App extends React.Component {
 			<div>
 				{head}
 				<div > 
-					{this.props.children }
+					{this.props.children}
 				</div>
 				{foot}
 			</div>

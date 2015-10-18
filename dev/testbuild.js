@@ -106,7 +106,7 @@ function runBuild() {
 		},
 		// gh-pages
 		function(done) {
-			return done()
+			//return done()
 			showMsg('start gh-pages clone')
 			ghpages.publish(
 				path.join(__dirname, '../build'),

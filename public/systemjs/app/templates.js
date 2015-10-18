@@ -120,7 +120,7 @@ if ( (docssection.value == 'endpointapi' ))
 {
 buf.push("<li" + (jade.cls([docssection.version == '0.4.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/current/endpoint\" class=\"nav-heading\">0.4.x</a></li><li><a href=\"/docs/api/current/class\" class=\"nav-heading\">Reference</a></li>");
 }
-buf.push("</ul></div><div id=\"searchBar\"><div class=\"col-xs-10 col-sm-offset-3 col-sm-12 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control\"/><nav class=\"searchList docs-sidebar\"></nav></div></div><nav class=\"docs-sidebar hidden-xs stickyMenu\"><ul class=\"sidebar-nav\"><li><a href=\"/docs\" class=\"nav-heading\">Docs Home</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs stickyMenu\"><ul class=\"sidebar-nav\"><li><a href=\"/docs\" class=\"nav-heading\">Docs Home</a></li>");
 if ( (docssection.value == 'classapi' ))
 {
 buf.push("<li" + (jade.cls([docssection.version == '0.3.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/current/class\" class=\"nav-heading\">Current</a></li><li" + (jade.cls([docssection.version == '0.4.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/incoming/class\" class=\"nav-heading\">Incoming</a></li><li" + (jade.cls([docssection.version == '0.2.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/0.2.x/class\" class=\"nav-heading\">0.2.x</a></li>");
@@ -352,7 +352,7 @@ if ( (docssection.value == 'endpointapi' ))
 {
 buf.push("<li" + (jade.cls([docssection.version == '0.4.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/current/endpoint\" class=\"nav-heading\">0.4.x</a></li><li><a href=\"/docs/api/current/class\" class=\"nav-heading\">Reference</a></li>");
 }
-buf.push("</ul></div><div id=\"searchBar\"><div class=\"col-xs-10 col-sm-offset-3 col-sm-12 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control\"/><nav class=\"searchList docs-sidebar\"></nav></div></div><nav class=\"docs-sidebar hidden-xs stickyMenu\"><ul class=\"sidebar-nav\"><li><a href=\"/docs\" class=\"nav-heading\">Docs Home</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs stickyMenu\"><ul class=\"sidebar-nav\"><li><a href=\"/docs\" class=\"nav-heading\">Docs Home</a></li>");
 if ( (docssection.value == 'classapi' ))
 {
 buf.push("<li" + (jade.cls([docssection.version == '0.3.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/current/class\" class=\"nav-heading\">Current</a></li><li" + (jade.cls([docssection.version == '0.4.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/incoming/class\" class=\"nav-heading\">Incoming</a></li><li" + (jade.cls([docssection.version == '0.2.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/0.2.x/class\" class=\"nav-heading\">0.2.x</a></li>");
@@ -584,7 +584,7 @@ if ( (docssection.value == 'endpointapi' ))
 {
 buf.push("<li" + (jade.cls([docssection.version == '0.4.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/current/endpoint\" class=\"nav-heading\">0.4.x</a></li><li><a href=\"/docs/api/current/class\" class=\"nav-heading\">Reference</a></li>");
 }
-buf.push("</ul></div><div id=\"searchBar\"><div class=\"col-xs-10 col-sm-offset-3 col-sm-12 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control\"/><nav class=\"searchList docs-sidebar\"></nav></div></div><nav class=\"docs-sidebar hidden-xs stickyMenu\"><ul class=\"sidebar-nav\"><li><a href=\"/docs\" class=\"nav-heading\">Docs Home</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs stickyMenu\"><ul class=\"sidebar-nav\"><li><a href=\"/docs\" class=\"nav-heading\">Docs Home</a></li>");
 if ( (docssection.value == 'classapi' ))
 {
 buf.push("<li" + (jade.cls([docssection.version == '0.3.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/current/class\" class=\"nav-heading\">Current</a></li><li" + (jade.cls([docssection.version == '0.4.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/incoming/class\" class=\"nav-heading\">Incoming</a></li><li" + (jade.cls([docssection.version == '0.2.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/0.2.x/class\" class=\"nav-heading\">0.2.x</a></li>");
@@ -816,7 +816,7 @@ if ( (docssection.value == 'endpointapi' ))
 {
 buf.push("<li" + (jade.cls([docssection.version == '0.4.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/current/endpoint\" class=\"nav-heading\">0.4.x</a></li><li><a href=\"/docs/api/current/class\" class=\"nav-heading\">Reference</a></li>");
 }
-buf.push("</ul></div><div id=\"searchBar\"><div class=\"col-xs-10 col-sm-offset-3 col-sm-12 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control\"/><nav class=\"searchList docs-sidebar\"></nav></div></div><nav class=\"docs-sidebar hidden-xs stickyMenu\"><ul class=\"sidebar-nav\"><li><a href=\"/docs\" class=\"nav-heading\">Docs Home</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs stickyMenu\"><ul class=\"sidebar-nav\"><li><a href=\"/docs\" class=\"nav-heading\">Docs Home</a></li>");
 if ( (docssection.value == 'classapi' ))
 {
 buf.push("<li" + (jade.cls([docssection.version == '0.3.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/current/class\" class=\"nav-heading\">Current</a></li><li" + (jade.cls([docssection.version == '0.4.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/incoming/class\" class=\"nav-heading\">Incoming</a></li><li" + (jade.cls([docssection.version == '0.2.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/0.2.x/class\" class=\"nav-heading\">0.2.x</a></li>");
@@ -965,12 +965,7 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div>");
-if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
-{
-buf.push("<div id=\"searchBar\"><div class=\"col-xs-10 col-sm-offset-3 col-sm-12 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
-}
-buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
 // iterate docsnav
 ;(function(){
   var $$obj = docsnav;
@@ -1005,9 +1000,13 @@ buf.push("<ul class=\"sidebar-nav\">");
     for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
       var item = $$obj[$index];
 
+if ( (item.value == docssection.value ) && docssection.override == 'fetch')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/fetch\">Fetch Examples</a></li><li><a href=\"/fetch/noscript\">noscript</a></li><li><a href=\"/fetch/body\">body noscript</a></li><li><a href=\"/fetch/text\">clean text</a></li><li><a href=\"/fetch/json/code\">json code</a></li><li><a href=\"/fetch/fail\">failure </a></li><li><a href=\"/fetch/lost-link\">should 404  </a></li><li><a href=\"/docs/learn/reference\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+}
 if ( (item.value == docssection.value ) && item.value == 'learn')
 {
-buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/code\">Fetch Examples</a></li><li><a href=\"/fetch\">noscript</a></li><li><a href=\"/body\">body noscript</a></li><li><a href=\"/text\">clean text</a></li><li><a href=\"/json/code\">json code</a></li><li><a href=\"/markdown\">markdown </a></li><li><a href=\"/fail\">failure </a></li><li><a href=\"/lost-link\">should 404  </a></li><li><a href=\"/quick-start\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/reference/readme\">Reference Materials</a></li><li><a href=\"/docs/learn/reference/readme\">README  </a></li><li><a href=\"/docs/learn/reference/roadmap\">ROADMAP   </a></li><li><a href=\"/docs/learn/reference/history\">HISTORY   </a></li><li><a href=\"/docs/learn/reference/contributing\">CONTRIBUTING</a></li></ul>");
 }
 if ( (item.value == docssection.value ) && item.value == 'getting-started')
 {
@@ -1028,9 +1027,13 @@ buf.push("<ul><li class=\"nav-label\"><a href=\"#concepts\">Concepts</a></li><li
     for (var $index in $$obj) {
       $$l++;      var item = $$obj[$index];
 
+if ( (item.value == docssection.value ) && docssection.override == 'fetch')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/fetch\">Fetch Examples</a></li><li><a href=\"/fetch/noscript\">noscript</a></li><li><a href=\"/fetch/body\">body noscript</a></li><li><a href=\"/fetch/text\">clean text</a></li><li><a href=\"/fetch/json/code\">json code</a></li><li><a href=\"/fetch/fail\">failure </a></li><li><a href=\"/fetch/lost-link\">should 404  </a></li><li><a href=\"/docs/learn/reference\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+}
 if ( (item.value == docssection.value ) && item.value == 'learn')
 {
-buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/code\">Fetch Examples</a></li><li><a href=\"/fetch\">noscript</a></li><li><a href=\"/body\">body noscript</a></li><li><a href=\"/text\">clean text</a></li><li><a href=\"/json/code\">json code</a></li><li><a href=\"/markdown\">markdown </a></li><li><a href=\"/fail\">failure </a></li><li><a href=\"/lost-link\">should 404  </a></li><li><a href=\"/quick-start\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/reference/readme\">Reference Materials</a></li><li><a href=\"/docs/learn/reference/readme\">README  </a></li><li><a href=\"/docs/learn/reference/roadmap\">ROADMAP   </a></li><li><a href=\"/docs/learn/reference/history\">HISTORY   </a></li><li><a href=\"/docs/learn/reference/contributing\">CONTRIBUTING</a></li></ul>");
 }
 if ( (item.value == docssection.value ) && item.value == 'getting-started')
 {
@@ -1086,12 +1089,7 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div>");
-if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
-{
-buf.push("<div id=\"searchBar\"><div class=\"col-xs-10 col-sm-offset-3 col-sm-12 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
-}
-buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
 // iterate docsnav
 ;(function(){
   var $$obj = docsnav;
@@ -1126,9 +1124,13 @@ buf.push("<ul class=\"sidebar-nav\">");
     for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
       var item = $$obj[$index];
 
+if ( (item.value == docssection.value ) && docssection.override == 'fetch')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/fetch\">Fetch Examples</a></li><li><a href=\"/fetch/noscript\">noscript</a></li><li><a href=\"/fetch/body\">body noscript</a></li><li><a href=\"/fetch/text\">clean text</a></li><li><a href=\"/fetch/json/code\">json code</a></li><li><a href=\"/fetch/fail\">failure </a></li><li><a href=\"/fetch/lost-link\">should 404  </a></li><li><a href=\"/docs/learn/reference\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+}
 if ( (item.value == docssection.value ) && item.value == 'learn')
 {
-buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/code\">Fetch Examples</a></li><li><a href=\"/fetch\">noscript</a></li><li><a href=\"/body\">body noscript</a></li><li><a href=\"/text\">clean text</a></li><li><a href=\"/json/code\">json code</a></li><li><a href=\"/markdown\">markdown </a></li><li><a href=\"/fail\">failure </a></li><li><a href=\"/lost-link\">should 404  </a></li><li><a href=\"/quick-start\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/reference/readme\">Reference Materials</a></li><li><a href=\"/docs/learn/reference/readme\">README  </a></li><li><a href=\"/docs/learn/reference/roadmap\">ROADMAP   </a></li><li><a href=\"/docs/learn/reference/history\">HISTORY   </a></li><li><a href=\"/docs/learn/reference/contributing\">CONTRIBUTING</a></li></ul>");
 }
 if ( (item.value == docssection.value ) && item.value == 'getting-started')
 {
@@ -1149,9 +1151,13 @@ buf.push("<ul><li class=\"nav-label\"><a href=\"#concepts\">Concepts</a></li><li
     for (var $index in $$obj) {
       $$l++;      var item = $$obj[$index];
 
+if ( (item.value == docssection.value ) && docssection.override == 'fetch')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/fetch\">Fetch Examples</a></li><li><a href=\"/fetch/noscript\">noscript</a></li><li><a href=\"/fetch/body\">body noscript</a></li><li><a href=\"/fetch/text\">clean text</a></li><li><a href=\"/fetch/json/code\">json code</a></li><li><a href=\"/fetch/fail\">failure </a></li><li><a href=\"/fetch/lost-link\">should 404  </a></li><li><a href=\"/docs/learn/reference\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+}
 if ( (item.value == docssection.value ) && item.value == 'learn')
 {
-buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/code\">Fetch Examples</a></li><li><a href=\"/fetch\">noscript</a></li><li><a href=\"/body\">body noscript</a></li><li><a href=\"/text\">clean text</a></li><li><a href=\"/json/code\">json code</a></li><li><a href=\"/markdown\">markdown </a></li><li><a href=\"/fail\">failure </a></li><li><a href=\"/lost-link\">should 404  </a></li><li><a href=\"/quick-start\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/reference/readme\">Reference Materials</a></li><li><a href=\"/docs/learn/reference/readme\">README  </a></li><li><a href=\"/docs/learn/reference/roadmap\">ROADMAP   </a></li><li><a href=\"/docs/learn/reference/history\">HISTORY   </a></li><li><a href=\"/docs/learn/reference/contributing\">CONTRIBUTING</a></li></ul>");
 }
 if ( (item.value == docssection.value ) && item.value == 'getting-started')
 {
@@ -1207,12 +1213,7 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div>");
-if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
-{
-buf.push("<div id=\"searchBar\"><div class=\"col-xs-10 col-sm-offset-3 col-sm-12 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
-}
-buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
 // iterate docsnav
 ;(function(){
   var $$obj = docsnav;
@@ -1247,9 +1248,13 @@ buf.push("<ul class=\"sidebar-nav\">");
     for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
       var item = $$obj[$index];
 
+if ( (item.value == docssection.value ) && docssection.override == 'fetch')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/fetch\">Fetch Examples</a></li><li><a href=\"/fetch/noscript\">noscript</a></li><li><a href=\"/fetch/body\">body noscript</a></li><li><a href=\"/fetch/text\">clean text</a></li><li><a href=\"/fetch/json/code\">json code</a></li><li><a href=\"/fetch/fail\">failure </a></li><li><a href=\"/fetch/lost-link\">should 404  </a></li><li><a href=\"/docs/learn/reference\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+}
 if ( (item.value == docssection.value ) && item.value == 'learn')
 {
-buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/code\">Fetch Examples</a></li><li><a href=\"/fetch\">noscript</a></li><li><a href=\"/body\">body noscript</a></li><li><a href=\"/text\">clean text</a></li><li><a href=\"/json/code\">json code</a></li><li><a href=\"/markdown\">markdown </a></li><li><a href=\"/fail\">failure </a></li><li><a href=\"/lost-link\">should 404  </a></li><li><a href=\"/quick-start\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/reference/readme\">Reference Materials</a></li><li><a href=\"/docs/learn/reference/readme\">README  </a></li><li><a href=\"/docs/learn/reference/roadmap\">ROADMAP   </a></li><li><a href=\"/docs/learn/reference/history\">HISTORY   </a></li><li><a href=\"/docs/learn/reference/contributing\">CONTRIBUTING</a></li></ul>");
 }
 if ( (item.value == docssection.value ) && item.value == 'getting-started')
 {
@@ -1270,9 +1275,13 @@ buf.push("<ul><li class=\"nav-label\"><a href=\"#concepts\">Concepts</a></li><li
     for (var $index in $$obj) {
       $$l++;      var item = $$obj[$index];
 
+if ( (item.value == docssection.value ) && docssection.override == 'fetch')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/fetch\">Fetch Examples</a></li><li><a href=\"/fetch/noscript\">noscript</a></li><li><a href=\"/fetch/body\">body noscript</a></li><li><a href=\"/fetch/text\">clean text</a></li><li><a href=\"/fetch/json/code\">json code</a></li><li><a href=\"/fetch/fail\">failure </a></li><li><a href=\"/fetch/lost-link\">should 404  </a></li><li><a href=\"/docs/learn/reference\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+}
 if ( (item.value == docssection.value ) && item.value == 'learn')
 {
-buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/code\">Fetch Examples</a></li><li><a href=\"/fetch\">noscript</a></li><li><a href=\"/body\">body noscript</a></li><li><a href=\"/text\">clean text</a></li><li><a href=\"/json/code\">json code</a></li><li><a href=\"/markdown\">markdown </a></li><li><a href=\"/fail\">failure </a></li><li><a href=\"/lost-link\">should 404  </a></li><li><a href=\"/quick-start\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/reference/readme\">Reference Materials</a></li><li><a href=\"/docs/learn/reference/readme\">README  </a></li><li><a href=\"/docs/learn/reference/roadmap\">ROADMAP   </a></li><li><a href=\"/docs/learn/reference/history\">HISTORY   </a></li><li><a href=\"/docs/learn/reference/contributing\">CONTRIBUTING</a></li></ul>");
 }
 if ( (item.value == docssection.value ) && item.value == 'getting-started')
 {
@@ -1328,12 +1337,7 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div>");
-if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
-{
-buf.push("<div id=\"searchBar\"><div class=\"col-xs-10 col-sm-offset-3 col-sm-12 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
-}
-buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
 // iterate docsnav
 ;(function(){
   var $$obj = docsnav;
@@ -1368,9 +1372,13 @@ buf.push("<ul class=\"sidebar-nav\">");
     for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
       var item = $$obj[$index];
 
+if ( (item.value == docssection.value ) && docssection.override == 'fetch')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/fetch\">Fetch Examples</a></li><li><a href=\"/fetch/noscript\">noscript</a></li><li><a href=\"/fetch/body\">body noscript</a></li><li><a href=\"/fetch/text\">clean text</a></li><li><a href=\"/fetch/json/code\">json code</a></li><li><a href=\"/fetch/fail\">failure </a></li><li><a href=\"/fetch/lost-link\">should 404  </a></li><li><a href=\"/docs/learn/reference\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+}
 if ( (item.value == docssection.value ) && item.value == 'learn')
 {
-buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/code\">Fetch Examples</a></li><li><a href=\"/fetch\">noscript</a></li><li><a href=\"/body\">body noscript</a></li><li><a href=\"/text\">clean text</a></li><li><a href=\"/json/code\">json code</a></li><li><a href=\"/markdown\">markdown </a></li><li><a href=\"/fail\">failure </a></li><li><a href=\"/lost-link\">should 404  </a></li><li><a href=\"/quick-start\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/reference/readme\">Reference Materials</a></li><li><a href=\"/docs/learn/reference/readme\">README  </a></li><li><a href=\"/docs/learn/reference/roadmap\">ROADMAP   </a></li><li><a href=\"/docs/learn/reference/history\">HISTORY   </a></li><li><a href=\"/docs/learn/reference/contributing\">CONTRIBUTING</a></li></ul>");
 }
 if ( (item.value == docssection.value ) && item.value == 'getting-started')
 {
@@ -1391,9 +1399,13 @@ buf.push("<ul><li class=\"nav-label\"><a href=\"#concepts\">Concepts</a></li><li
     for (var $index in $$obj) {
       $$l++;      var item = $$obj[$index];
 
+if ( (item.value == docssection.value ) && docssection.override == 'fetch')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/fetch\">Fetch Examples</a></li><li><a href=\"/fetch/noscript\">noscript</a></li><li><a href=\"/fetch/body\">body noscript</a></li><li><a href=\"/fetch/text\">clean text</a></li><li><a href=\"/fetch/json/code\">json code</a></li><li><a href=\"/fetch/fail\">failure </a></li><li><a href=\"/fetch/lost-link\">should 404  </a></li><li><a href=\"/docs/learn/reference\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+}
 if ( (item.value == docssection.value ) && item.value == 'learn')
 {
-buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/code\">Fetch Examples</a></li><li><a href=\"/fetch\">noscript</a></li><li><a href=\"/body\">body noscript</a></li><li><a href=\"/text\">clean text</a></li><li><a href=\"/json/code\">json code</a></li><li><a href=\"/markdown\">markdown </a></li><li><a href=\"/fail\">failure </a></li><li><a href=\"/lost-link\">should 404  </a></li><li><a href=\"/quick-start\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/reference/readme\">Reference Materials</a></li><li><a href=\"/docs/learn/reference/readme\">README  </a></li><li><a href=\"/docs/learn/reference/roadmap\">ROADMAP   </a></li><li><a href=\"/docs/learn/reference/history\">HISTORY   </a></li><li><a href=\"/docs/learn/reference/contributing\">CONTRIBUTING</a></li></ul>");
 }
 if ( (item.value == docssection.value ) && item.value == 'getting-started')
 {
@@ -1449,12 +1461,7 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div>");
-if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
-{
-buf.push("<div id=\"searchBar\"><div class=\"col-xs-10 col-sm-offset-3 col-sm-12 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
-}
-buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
 // iterate docsnav
 ;(function(){
   var $$obj = docsnav;
@@ -1489,9 +1496,13 @@ buf.push("<ul class=\"sidebar-nav\">");
     for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
       var item = $$obj[$index];
 
+if ( (item.value == docssection.value ) && docssection.override == 'fetch')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/fetch\">Fetch Examples</a></li><li><a href=\"/fetch/noscript\">noscript</a></li><li><a href=\"/fetch/body\">body noscript</a></li><li><a href=\"/fetch/text\">clean text</a></li><li><a href=\"/fetch/json/code\">json code</a></li><li><a href=\"/fetch/fail\">failure </a></li><li><a href=\"/fetch/lost-link\">should 404  </a></li><li><a href=\"/docs/learn/reference\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+}
 if ( (item.value == docssection.value ) && item.value == 'learn')
 {
-buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/code\">Fetch Examples</a></li><li><a href=\"/fetch\">noscript</a></li><li><a href=\"/body\">body noscript</a></li><li><a href=\"/text\">clean text</a></li><li><a href=\"/json/code\">json code</a></li><li><a href=\"/markdown\">markdown </a></li><li><a href=\"/fail\">failure </a></li><li><a href=\"/lost-link\">should 404  </a></li><li><a href=\"/quick-start\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/reference/readme\">Reference Materials</a></li><li><a href=\"/docs/learn/reference/readme\">README  </a></li><li><a href=\"/docs/learn/reference/roadmap\">ROADMAP   </a></li><li><a href=\"/docs/learn/reference/history\">HISTORY   </a></li><li><a href=\"/docs/learn/reference/contributing\">CONTRIBUTING</a></li></ul>");
 }
 if ( (item.value == docssection.value ) && item.value == 'getting-started')
 {
@@ -1512,9 +1523,13 @@ buf.push("<ul><li class=\"nav-label\"><a href=\"#concepts\">Concepts</a></li><li
     for (var $index in $$obj) {
       $$l++;      var item = $$obj[$index];
 
+if ( (item.value == docssection.value ) && docssection.override == 'fetch')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/fetch\">Fetch Examples</a></li><li><a href=\"/fetch/noscript\">noscript</a></li><li><a href=\"/fetch/body\">body noscript</a></li><li><a href=\"/fetch/text\">clean text</a></li><li><a href=\"/fetch/json/code\">json code</a></li><li><a href=\"/fetch/fail\">failure </a></li><li><a href=\"/fetch/lost-link\">should 404  </a></li><li><a href=\"/docs/learn/reference\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+}
 if ( (item.value == docssection.value ) && item.value == 'learn')
 {
-buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/code\">Fetch Examples</a></li><li><a href=\"/fetch\">noscript</a></li><li><a href=\"/body\">body noscript</a></li><li><a href=\"/text\">clean text</a></li><li><a href=\"/json/code\">json code</a></li><li><a href=\"/markdown\">markdown </a></li><li><a href=\"/fail\">failure </a></li><li><a href=\"/lost-link\">should 404  </a></li><li><a href=\"/quick-start\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/reference/readme\">Reference Materials</a></li><li><a href=\"/docs/learn/reference/readme\">README  </a></li><li><a href=\"/docs/learn/reference/roadmap\">ROADMAP   </a></li><li><a href=\"/docs/learn/reference/history\">HISTORY   </a></li><li><a href=\"/docs/learn/reference/contributing\">CONTRIBUTING</a></li></ul>");
 }
 if ( (item.value == docssection.value ) && item.value == 'getting-started')
 {
@@ -1570,12 +1585,7 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div>");
-if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
-{
-buf.push("<div id=\"searchBar\"><div class=\"col-xs-10 col-sm-offset-3 col-sm-12 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
-}
-buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
 // iterate docsnav
 ;(function(){
   var $$obj = docsnav;
@@ -1610,9 +1620,13 @@ buf.push("<ul class=\"sidebar-nav\">");
     for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
       var item = $$obj[$index];
 
+if ( (item.value == docssection.value ) && docssection.override == 'fetch')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/fetch\">Fetch Examples</a></li><li><a href=\"/fetch/noscript\">noscript</a></li><li><a href=\"/fetch/body\">body noscript</a></li><li><a href=\"/fetch/text\">clean text</a></li><li><a href=\"/fetch/json/code\">json code</a></li><li><a href=\"/fetch/fail\">failure </a></li><li><a href=\"/fetch/lost-link\">should 404  </a></li><li><a href=\"/docs/learn/reference\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+}
 if ( (item.value == docssection.value ) && item.value == 'learn')
 {
-buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/code\">Fetch Examples</a></li><li><a href=\"/fetch\">noscript</a></li><li><a href=\"/body\">body noscript</a></li><li><a href=\"/text\">clean text</a></li><li><a href=\"/json/code\">json code</a></li><li><a href=\"/markdown\">markdown </a></li><li><a href=\"/fail\">failure </a></li><li><a href=\"/lost-link\">should 404  </a></li><li><a href=\"/quick-start\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/reference/readme\">Reference Materials</a></li><li><a href=\"/docs/learn/reference/readme\">README  </a></li><li><a href=\"/docs/learn/reference/roadmap\">ROADMAP   </a></li><li><a href=\"/docs/learn/reference/history\">HISTORY   </a></li><li><a href=\"/docs/learn/reference/contributing\">CONTRIBUTING</a></li></ul>");
 }
 if ( (item.value == docssection.value ) && item.value == 'getting-started')
 {
@@ -1633,9 +1647,13 @@ buf.push("<ul><li class=\"nav-label\"><a href=\"#concepts\">Concepts</a></li><li
     for (var $index in $$obj) {
       $$l++;      var item = $$obj[$index];
 
+if ( (item.value == docssection.value ) && docssection.override == 'fetch')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/fetch\">Fetch Examples</a></li><li><a href=\"/fetch/noscript\">noscript</a></li><li><a href=\"/fetch/body\">body noscript</a></li><li><a href=\"/fetch/text\">clean text</a></li><li><a href=\"/fetch/json/code\">json code</a></li><li><a href=\"/fetch/fail\">failure </a></li><li><a href=\"/fetch/lost-link\">should 404  </a></li><li><a href=\"/docs/learn/reference\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+}
 if ( (item.value == docssection.value ) && item.value == 'learn')
 {
-buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/code\">Fetch Examples</a></li><li><a href=\"/fetch\">noscript</a></li><li><a href=\"/body\">body noscript</a></li><li><a href=\"/text\">clean text</a></li><li><a href=\"/json/code\">json code</a></li><li><a href=\"/markdown\">markdown </a></li><li><a href=\"/fail\">failure </a></li><li><a href=\"/lost-link\">should 404  </a></li><li><a href=\"/quick-start\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/reference/readme\">Reference Materials</a></li><li><a href=\"/docs/learn/reference/readme\">README  </a></li><li><a href=\"/docs/learn/reference/roadmap\">ROADMAP   </a></li><li><a href=\"/docs/learn/reference/history\">HISTORY   </a></li><li><a href=\"/docs/learn/reference/contributing\">CONTRIBUTING</a></li></ul>");
 }
 if ( (item.value == docssection.value ) && item.value == 'getting-started')
 {
@@ -1691,12 +1709,7 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div>");
-if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
-{
-buf.push("<div id=\"searchBar\"><div class=\"col-xs-10 col-sm-offset-3 col-sm-12 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
-}
-buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
 // iterate docsnav
 ;(function(){
   var $$obj = docsnav;
@@ -1731,9 +1744,13 @@ buf.push("<ul class=\"sidebar-nav\">");
     for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
       var item = $$obj[$index];
 
+if ( (item.value == docssection.value ) && docssection.override == 'fetch')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/fetch\">Fetch Examples</a></li><li><a href=\"/fetch/noscript\">noscript</a></li><li><a href=\"/fetch/body\">body noscript</a></li><li><a href=\"/fetch/text\">clean text</a></li><li><a href=\"/fetch/json/code\">json code</a></li><li><a href=\"/fetch/fail\">failure </a></li><li><a href=\"/fetch/lost-link\">should 404  </a></li><li><a href=\"/docs/learn/reference\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+}
 if ( (item.value == docssection.value ) && item.value == 'learn')
 {
-buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/code\">Fetch Examples</a></li><li><a href=\"/fetch\">noscript</a></li><li><a href=\"/body\">body noscript</a></li><li><a href=\"/text\">clean text</a></li><li><a href=\"/json/code\">json code</a></li><li><a href=\"/markdown\">markdown </a></li><li><a href=\"/fail\">failure </a></li><li><a href=\"/lost-link\">should 404  </a></li><li><a href=\"/quick-start\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/reference/readme\">Reference Materials</a></li><li><a href=\"/docs/learn/reference/readme\">README  </a></li><li><a href=\"/docs/learn/reference/roadmap\">ROADMAP   </a></li><li><a href=\"/docs/learn/reference/history\">HISTORY   </a></li><li><a href=\"/docs/learn/reference/contributing\">CONTRIBUTING</a></li></ul>");
 }
 if ( (item.value == docssection.value ) && item.value == 'getting-started')
 {
@@ -1754,9 +1771,13 @@ buf.push("<ul><li class=\"nav-label\"><a href=\"#concepts\">Concepts</a></li><li
     for (var $index in $$obj) {
       $$l++;      var item = $$obj[$index];
 
+if ( (item.value == docssection.value ) && docssection.override == 'fetch')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/fetch\">Fetch Examples</a></li><li><a href=\"/fetch/noscript\">noscript</a></li><li><a href=\"/fetch/body\">body noscript</a></li><li><a href=\"/fetch/text\">clean text</a></li><li><a href=\"/fetch/json/code\">json code</a></li><li><a href=\"/fetch/fail\">failure </a></li><li><a href=\"/fetch/lost-link\">should 404  </a></li><li><a href=\"/docs/learn/reference\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+}
 if ( (item.value == docssection.value ) && item.value == 'learn')
 {
-buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/code\">Fetch Examples</a></li><li><a href=\"/fetch\">noscript</a></li><li><a href=\"/body\">body noscript</a></li><li><a href=\"/text\">clean text</a></li><li><a href=\"/json/code\">json code</a></li><li><a href=\"/markdown\">markdown </a></li><li><a href=\"/fail\">failure </a></li><li><a href=\"/lost-link\">should 404  </a></li><li><a href=\"/quick-start\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/reference/readme\">Reference Materials</a></li><li><a href=\"/docs/learn/reference/readme\">README  </a></li><li><a href=\"/docs/learn/reference/roadmap\">ROADMAP   </a></li><li><a href=\"/docs/learn/reference/history\">HISTORY   </a></li><li><a href=\"/docs/learn/reference/contributing\">CONTRIBUTING</a></li></ul>");
 }
 if ( (item.value == docssection.value ) && item.value == 'getting-started')
 {
@@ -1781,7 +1802,7 @@ buf.push("</nav>");
 };
 buf.push("<div class=\"page-header\"><div class=\"container\"><h1>Code Examples</h1><p class=\"lead\">Learn how to use KeystoneJS.</p></div></div><div class=\"container\"><div class=\"row\"><div class=\"col-sm-3\">");
 jade_mixins["docsnav"](docssection);
-buf.push("</div><div class=\"col-sm-9\"><div class=\"docs-content\"><ul><h3><a href=\"/fetch\">Fetch Examples</a></h3><p><a href=\"/fetch\">noscript</a></p><p><a href=\"/body\">body noscript</a></p><p><a href=\"/text\">clean text</a></p><p><a href=\"/json/code\">json code</a></p><p><a href=\"/markdown\">markdown </a></p><p><a href=\"/fail\">failure </a></p><p><a href=\"/lost-link\">should 404  </a></p><p><a href=\"/quick-start\" class=\"notspa\">should reload</a></p><p><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></p></ul></div></div></div></div>");}.call(this,"docsnav" in locals_for_with?locals_for_with.docsnav:typeof docsnav!=="undefined"?docsnav:undefined,"docssection" in locals_for_with?locals_for_with.docssection:typeof docssection!=="undefined"?docssection:undefined));;return buf.join("");
+buf.push("</div><div class=\"col-sm-9\"><div class=\"docs-content\"><ul><h3><a href=\"/fetch\">Fetch Examples</a></h3></ul></div></div></div></div>");}.call(this,"docsnav" in locals_for_with?locals_for_with.docsnav:typeof docsnav!=="undefined"?docsnav:undefined,"docssection" in locals_for_with?locals_for_with.docssection:typeof docssection!=="undefined"?docssection:undefined));;return buf.join("");
 },'en/pages/docs/learn/es6': function template(locals) {
 var buf = [];
 var jade_mixins = {};
@@ -1812,12 +1833,7 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div>");
-if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
-{
-buf.push("<div id=\"searchBar\"><div class=\"col-xs-10 col-sm-offset-3 col-sm-12 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
-}
-buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
 // iterate docsnav
 ;(function(){
   var $$obj = docsnav;
@@ -1852,9 +1868,13 @@ buf.push("<ul class=\"sidebar-nav\">");
     for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
       var item = $$obj[$index];
 
+if ( (item.value == docssection.value ) && docssection.override == 'fetch')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/fetch\">Fetch Examples</a></li><li><a href=\"/fetch/noscript\">noscript</a></li><li><a href=\"/fetch/body\">body noscript</a></li><li><a href=\"/fetch/text\">clean text</a></li><li><a href=\"/fetch/json/code\">json code</a></li><li><a href=\"/fetch/fail\">failure </a></li><li><a href=\"/fetch/lost-link\">should 404  </a></li><li><a href=\"/docs/learn/reference\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+}
 if ( (item.value == docssection.value ) && item.value == 'learn')
 {
-buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/code\">Fetch Examples</a></li><li><a href=\"/fetch\">noscript</a></li><li><a href=\"/body\">body noscript</a></li><li><a href=\"/text\">clean text</a></li><li><a href=\"/json/code\">json code</a></li><li><a href=\"/markdown\">markdown </a></li><li><a href=\"/fail\">failure </a></li><li><a href=\"/lost-link\">should 404  </a></li><li><a href=\"/quick-start\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/reference/readme\">Reference Materials</a></li><li><a href=\"/docs/learn/reference/readme\">README  </a></li><li><a href=\"/docs/learn/reference/roadmap\">ROADMAP   </a></li><li><a href=\"/docs/learn/reference/history\">HISTORY   </a></li><li><a href=\"/docs/learn/reference/contributing\">CONTRIBUTING</a></li></ul>");
 }
 if ( (item.value == docssection.value ) && item.value == 'getting-started')
 {
@@ -1875,9 +1895,13 @@ buf.push("<ul><li class=\"nav-label\"><a href=\"#concepts\">Concepts</a></li><li
     for (var $index in $$obj) {
       $$l++;      var item = $$obj[$index];
 
+if ( (item.value == docssection.value ) && docssection.override == 'fetch')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/fetch\">Fetch Examples</a></li><li><a href=\"/fetch/noscript\">noscript</a></li><li><a href=\"/fetch/body\">body noscript</a></li><li><a href=\"/fetch/text\">clean text</a></li><li><a href=\"/fetch/json/code\">json code</a></li><li><a href=\"/fetch/fail\">failure </a></li><li><a href=\"/fetch/lost-link\">should 404  </a></li><li><a href=\"/docs/learn/reference\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+}
 if ( (item.value == docssection.value ) && item.value == 'learn')
 {
-buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/code\">Fetch Examples</a></li><li><a href=\"/fetch\">noscript</a></li><li><a href=\"/body\">body noscript</a></li><li><a href=\"/text\">clean text</a></li><li><a href=\"/json/code\">json code</a></li><li><a href=\"/markdown\">markdown </a></li><li><a href=\"/fail\">failure </a></li><li><a href=\"/lost-link\">should 404  </a></li><li><a href=\"/quick-start\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/reference/readme\">Reference Materials</a></li><li><a href=\"/docs/learn/reference/readme\">README  </a></li><li><a href=\"/docs/learn/reference/roadmap\">ROADMAP   </a></li><li><a href=\"/docs/learn/reference/history\">HISTORY   </a></li><li><a href=\"/docs/learn/reference/contributing\">CONTRIBUTING</a></li></ul>");
 }
 if ( (item.value == docssection.value ) && item.value == 'getting-started')
 {
@@ -1903,6 +1927,136 @@ buf.push("</nav>");
 buf.push("<div class=\"page-header\"><div class=\"container\"><h1>ES6 React SPA  </h1><p class=\"lead\">Using System.js and babel to build a new KeystoneJS.com SPA with React.</p></div></div><div class=\"container\"><div class=\"row\"><div class=\"col-sm-3\">");
 jade_mixins["docsnav"](docssection);
 buf.push("</div><div class=\"col-sm-9\"><div class=\"jl-guide\"><div class=\"jl-guide-section\"><div class=\"jl-guide__header\"><div class=\"p lead\">Our SPA creation guide <div class=\"jl-guide__title-info\"> rundown of our requirements for a complete project    </div></div></div><p>The goal of this guide will be to take a current ExpressJS website built with Jade templates and convert it into a React based SPA integrated with Keystone. The current jade templates will remain and be included via plugin. A route config file will be used to designate the process for compiling each page.</p><p> We will perform this excercise with source code from the current website for <a href=\"https://github.com/keystonejs/keystonejs-site\">KeystoneJS.com</a>.  Since the final output will need to be a <code>gh-pages</code> deployment, this guide will also document that process as well.  </p><p>In place of webpack / browserify we will use <a href=\"https://github.com/systemjs/systemjs\">System.js</a> and build based on ES6 making use of <a href=\"http://babeljs.io\">babel</a></p><Rundown></Rundown><ul><li>ES6 with System.js and babel</li><li>SPA using React and React-Router</li><li>Add Keystone to current express setup</li><li>Build process to deploy static version to  <code>gh-pages</code> branch</li></ul></div><!-- prepare--><div class=\"jl-guide-section\"><div class=\"jl-guide__header\"><h2 class=\"jl-guide__title\"><div class=\"jl-guide__title-label\"> <div class=\"jl-guide__title-count\"><span class=\"jl-guide__title-count\">1</span></div> Prepare <div class=\"jl-guide__title-info\"> get your code base ready  </div></div></h2></div><p>We will start by cloning our repo and creating a new branch <b>spa</b>.  Pick a unique branch for you if working from a current local repo.  </p><pre class=\"line-numbers language-javascript\">git clone git@github.com:keystonejs/keystonejs-site.git  \ncd keystonejs-site \ngit checkout -b spa  </pre><p>Create a new folder for our client files.  We will serve this as a static just like public.  </p><pre class=\"command-line\"><code class=\"language-javascript\">mkdir client </code></pre><p>Install and save our new dependencies.  </p><pre class=\"command-line\"><code class=\"language-javascript\">npm i --save systemjs babel typescript keystone react react-router  </code></pre></div><div class=\"jl-guide-section\">\t\t\t\t<div class=\"jl-guide__header\"><h2 class=\"jl-guide__title\"><div class=\"jl-guide__title-label\"> <div class=\"jl-guide__title-count\"><span class=\"jl-guide__title-count\">2</span></div>Client Files<div class=\"jl-guide__title-info\">create your new client app </div></div></h2></div><h3>Rework our jade files</h3><p>We still like using jade.  It is quick, good for large blocks of html, and having seperate files is easier for multiple parties to maintain.  </p><p>For our SPA we only need an index file.  We will create a new base file and remove the template include lines from each of the content files. The old base file can eventually be removed.  </p><p class=\"note\">You do not have to remove all of the template includes from your content files.  Instead, rename each appropriate template file and replace it with a blank one.</p><div class=\"code-header\"><h4> Create your SPA index file. </h4><p>Copy <code>content/common/templates/layout/base.jade</code> to <code>content/common/templates/layout/spa_base.jade</code> and add a named div.</p><p>Replace the old javascript with the system.js tag.  We will add our app later.  </p></div><pre class=\"language-javascript\"><code class=\"language-markup\">\n\t// old code\n\t\t.docs-body\n\t\t\tblock content\n\t\t\n\t// replace with\n\t\t.docs-body\n\t\t\t#keystonejs-spa\n\t\t\n\t/* javascript tag */\n\t// old code\n\t\tscript(src=\"/js/lib/jquery/jquery-1.10.2.min.js\")\n\t\tscript(src='/js/lib/bootstrap/collapse.js')\n\t\t//- script(src='/js/lib/bootstrap/dropdown.js')\n\t\tscript(src='/js/lib/prism/prism.min.js')\n\t\tscript(src='/js/anchor-links.js')\n\t\tscript(src='/js/api-code.js')\n\t\n\t// replace with\n\t\tscript(src=\"system.js\")\n\t\n</code>\n\n</pre><h3>Create a folder for your project</h3><p>Create your project wherever you want:</p><pre class=\"command-line\">mkdir my-test-project</pre><p>Than make sure you're in your new project:</p><pre class=\"command-line\">cd my-test-project</pre><h3>Run the generator</h3><pre class=\"command-line\">yo keystone</pre><p>The generator will ask you a few questions about what features you'd like to include, then configure and copy all the files you'll need into your project.</p><p>It will also install dependencies from npm so you're ready to go.</p></div><div class=\"jl-guide-figure jl-guide-figure--commands hidden-xs\"><div class=\"window safari\"><img src=\"/images/getting-started/commands-safari.png\" alt=\"Safari window\" width=\"942\" height=\"616\"/></div><div class=\"window terminal\"><div class=\"terminal-cursor\"></div><img src=\"/images/getting-started/commands-terminal.png\" alt=\"Terminal window\" width=\"650\" height=\"437\"/></div><div class=\"figure-shadow\"></div></div><div class=\"jl-guide-section\"><div class=\"jl-guide__header\"><h2 class=\"jl-guide__title\"><span class=\"jl-guide__title-count\">3</span><div class=\"jl-guide__title-label\">You're Done!</div></h2><p class=\"jl-guide__subtitle\">So you just created your first KeystoneJS project, congrats!</p><p class=\"jl-guide__subtitle\">Run it in your command line like this:</p><pre class=\"command-line\">node keystone</pre><p class=\"jl-guide__subtitle\">Then open <a href=\"http://localhost:3000\" target=\"_blank\">http://localhost:3000</a> to view it in your browser.</p><p class=\"jl-guide__subtitle\">If you want to see what the generator actually did take a look at our getting started guide, it'll walk you through the manual setup process. This is particularly helpful if you're new to Node.js.</p><p class=\"jl-guide__subtitle\"><a href=\"/docs/getting-started\">View the getting started guide &rarr;</a></p></div></div><div class=\"jl-guide-figure jl-guide-figure--finished wow-much-find hidden-xs\"><img src=\"/images/getting-started/commands-safari.png\" alt=\"Safari window\" width=\"1680\" height=\"600\" class=\"sr-only\"/></div><div class=\"jl-guide-section\"><div><div class=\"jl-guide__header\"><h2 class=\"jl-guide__title\"><span class=\"jl-guide__title-count\">?</span><div class=\"jl-guide__title-label\">Problems</div></h2><p class=\"jl-guide__subtitle\">Something went wrong? Hopefully these tips will help.</p><h3>ERR! Please try running this command again as root/Administrator.</h3><p>When running npm install -g generator-keystone, you may get an EACCES error asking you to run the command again as root/Administrator. This indicates that there is a permissions issue.</p><p>On your development system you can change directory ownership to the current $USER so you do not have to run sudo while installing untrusted code:</p><pre>sudo chown -R $USER /usr/local\n \n# Other directories may be required depending on your O/S\nsudo chown -R $USER /usr/lib/node_modules/</pre><p>For a production/shared environment you may wish to re-run the npm command with the sudo prefix:</p><pre>sudo npm install -g generator-keystone</pre><p>For more information, see the <a href='http://foohack.com/2010/08/intro-to-npm/#what_no_sudo', target='_blank'>\"What, no sudo?\"</a> of the Intro to npm by Isaac Schulueter.</p><h3>What do you mean it couldn't find my Database?</h3><p>By default, KeystoneJS will look for a MongoDB server running on localhost on the default port, and connect to it. If you're getting errors related to the MongoDB connection, make sure your MongoDB server is running.</p><p>If you haven't installed MongoDB yet, follow <a href=\"https://www.mongodb.org/downloads\" target=\"_blank\">the official instructions.</a></p><p>To connect to a server other than localhost, add a MONGO_URI setting to the .env file in your Keystone project directory:</p><pre>MONGO_URI=mongodb://your-server/database-name</pre><h3>Something else?</h3><p class=\"jl-guide__subtitle\">If your issue still isn't resolved, reach out to us on the <a href=\"https://groups.google.com/d/forum/keystonejs\" target=\"_blank\">KeystoneJS Google Group</a>.</p></div></div></div></div></div></div></div>");}.call(this,"docsnav" in locals_for_with?locals_for_with.docsnav:typeof docsnav!=="undefined"?docsnav:undefined,"docssection" in locals_for_with?locals_for_with.docssection:typeof docssection!=="undefined"?docssection:undefined));;return buf.join("");
+},'en/pages/docs/learn/fetch': function template(locals) {
+var buf = [];
+var jade_mixins = {};
+var jade_interp;
+
+buf.push("<div class=\"contextual-note\"><h4>Note</h4><p>This section is a complete react page that uses fetch to render the content.  This home page is a jade file.  The others a noted by their name. </p></div><h3><a href=\"/fetch\">Fetch Examples</a></h3><p><a href=\"/fetch/noscript\">noscript</a></p><p><a href=\"/fetch/body\">body noscript</a></p><p><a href=\"/fetch/text\">clean text</a></p><p><a href=\"/fetch/json/code\">json code</a></p><p><a href=\"/fetch/markdown\">markdown </a></p><p><a href=\"/fetch/fail\">failure </a></p><p><a href=\"/fetch/lost-link\">should 404  </a></p><p><a href=\"/docs/learn\" class=\"notspa\">should reload</a></p><p><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></p>");;return buf.join("");
+},'en/pages/docs/learn/heroku': function template(locals) {
+var buf = [];
+var jade_mixins = {};
+var jade_interp;
+;var locals_for_with = (locals || {});(function (docsnav, docssection) {
+jade_mixins["docsnav"] = jade_interp = function(docssection){
+var block = (this && this.block), attributes = (this && this.attributes) || {};
+buf.push("<div class=\"visible-xs\"><ul class=\"nav-toggle\">");
+// iterate docsnav
+;(function(){
+  var $$obj = docsnav;
+  if ('number' == typeof $$obj.length) {
+
+    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
+      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.labelsm) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  } else {
+    var $$l = 0;
+    for (var $index in $$obj) {
+      $$l++;      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.labelsm) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  }
+}).call(this);
+
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+// iterate docsnav
+;(function(){
+  var $$obj = docsnav;
+  if ('number' == typeof $$obj.length) {
+
+    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
+      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  } else {
+    var $$l = 0;
+    for (var $index in $$obj) {
+      $$l++;      var item = $$obj[$index];
+
+buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], [true])) + "><a" + (jade.attr("href", item.path, true, false)) + " class=\"nav-heading\">" + (jade.escape(null == (jade_interp = item.label) ? "" : jade_interp)) + "</a></li>");
+    }
+
+  }
+}).call(this);
+
+buf.push("</ul><hr/>");
+if ( docssection.value != 'introduction')
+{
+buf.push("<ul class=\"sidebar-nav\">");
+// iterate docsnav						
+;(function(){
+  var $$obj = docsnav						;
+  if ('number' == typeof $$obj.length) {
+
+    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
+      var item = $$obj[$index];
+
+if ( (item.value == docssection.value ) && docssection.override == 'fetch')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/fetch\">Fetch Examples</a></li><li><a href=\"/fetch/noscript\">noscript</a></li><li><a href=\"/fetch/body\">body noscript</a></li><li><a href=\"/fetch/text\">clean text</a></li><li><a href=\"/fetch/json/code\">json code</a></li><li><a href=\"/fetch/fail\">failure </a></li><li><a href=\"/fetch/lost-link\">should 404  </a></li><li><a href=\"/docs/learn/reference\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+}
+if ( (item.value == docssection.value ) && item.value == 'learn')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/reference/readme\">Reference Materials</a></li><li><a href=\"/docs/learn/reference/readme\">README  </a></li><li><a href=\"/docs/learn/reference/roadmap\">ROADMAP   </a></li><li><a href=\"/docs/learn/reference/history\">HISTORY   </a></li><li><a href=\"/docs/learn/reference/contributing\">CONTRIBUTING</a></li></ul>");
+}
+if ( (item.value == docssection.value ) && item.value == 'getting-started')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"#introduction\">Introduction</a></li><li><a href=\"#introduction-prerequisites\">Prerequisites</a></li><li><a href=\"#introduction-productionvsdevelopment\">Production vs Development</a></li><li class=\"nav-label\"><a href=\"#gettingstarted\">Getting Started</a></li><li><a href=\"#gettingstarted-usingyeoman\">Using the Yeoman Generator</a></li><li><a href=\"#gettingstarted-startinganewproject\">Starting a new project</a></li><li><a href=\"#gettingstarted-projectstructure\">Project Structure</a></li><li class=\"nav-label\"><a href=\"#models\">Models</a></li><li><a href=\"#models-authentication\">Authentication and Session Management</a></li><li class=\"nav-label\"><a href=\"#routesviews\">Routes &amp; Views</a></li><li><a href=\"#routesviews-settingup\">Setting up your Routes and Middleware</a></li><li><a href=\"#routesviews-middleware\">Common Route Middleware</a></li><li><a href=\"#routesviews-firstview\">Your first View</a></li><li><a href=\"#routesviews-templates\">Templates</a></li><li><a href=\"#routesviews-publicassets\">Public Assets</a></li><li class=\"nav-label\"><a href=\"#runningyourapp\">Running your App</a></li><li><a href=\"#runningyourapp-writingupdates\">Writing Updates</a></li><li><a href=\"#runningyourapp-startingkeystone\">Starting Keystone</a></li><li><a href=\"#runningyourapp-nextstep\">Next Steps</a></li></ul>");
+}
+if ( (item.value == docssection.value ) && item.value == 'configuration')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"#options\">Keystone Options</a></li><li><a href=\"#options-concepts\">Setting Options</a></li><li><a href=\"#options-project\">Project Options</a></li><li><a href=\"#options-server\">Web Server Options</a></li><li><a href=\"#options-ssl\">SSL Options</a></li><li><a href=\"#options-unix-socket\">Unix Socket Options</a></li><li><a href=\"#options-database\">Database and User Auth Options</a></li><li><a href=\"#options-ui\">Admin UI Options</a></li><li class=\"nav-label\"><a href=\"#services\">Services</a></li><li><a href=\"#services-google-analytics\">Google Analytics</a></li><li><a href=\"#services-google-maps\">Google Maps</a></li><li><a href=\"#services-amazons3\">Amazon S3</a></li><li><a href=\"#services-azure\">Windows Azure Storage</a></li><li><a href=\"#services-cloudinary\">Cloudinary</a></li><li><a href=\"#services-embedly\">Embed.ly</a></li><li><a href=\"#services-mandrill\">Mandrill</a></li><li class=\"nav-label\"><a href=\"#updates\">Application Updates</a></li><li class=\"nav-label\"><a href=\"#headless\">Disabling the Admin UI</a></li></ul>");
+}
+if ( (item.value == docssection.value ) && item.value == 'database')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"#concepts\">Concepts</a></li><li class=\"nav-label\"><a href=\"#lists\">Lists</a></li><li><a href=\"#lists-usage\">Usage</a></li><li><a href=\"#lists-example\">Example</a></li><li><a href=\"#lists-options\">List Options</a></li><li><a href=\"#lists-plugins\">Schema Plugins</a></li><li><a href=\"#lists-querying\">Querying Data</a></li><li><a href=\"#lists-paginate\">Pagination Querying</a></li><li><a href=\"#lists-creating\">Creating Items</a></li><li><a href=\"#lists-deleting\">Deleting Items</a></li><li class=\"nav-label\"><a href=\"#headings\">Headings</a></li><li class=\"nav-label\"><a href=\"#fields\">Fields</a></li><li><a href=\"#fields-overview\">Overview</a></li><li><a href=\"#fields-options\">Field Options</a></li><li><a href=\"#fields-conditional\">Field Conditionals</a></li><li><a href=\"#fields-watching\">Field Watching</a></li><li><a href=\"#fields-underscoremethods\">Underscore Methods</a></li><li class=\"nav-label\"><a href=\"#relationships\">Relationships</a></li><li><a href=\"#relationship-fields\">Relationship Fields</a></li><li><a href=\"#relationship-definitions\">Relationship Definitions</a></li><li><a href=\"#relationship-queries\">Loading related items</a></li><li class=\"nav-label\"><a href=\"#fieldtypes\">Field Types</a></li><li><a href=\"#fieldtypes-boolean\">Boolean</a></li><li><a href=\"#fieldtypes-code\">Code</a></li><li><a href=\"#fieldtypes-color\">Color</a></li><li><a href=\"#fieldtypes-date\">Date</a></li><li><a href=\"#fieldtypes-datetime\">Datetime</a></li><li><a href=\"#fieldtypes-email\">Email</a></li><li><a href=\"#fieldtypes-html\">Html</a></li><li><a href=\"#fieldtypes-key\">Key</a></li><li><a href=\"#fieldtypes-location\">Location</a></li><li><a href=\"#fieldtypes-markdown\">Markdown</a></li><li><a href=\"#fieldtypes-money\">Money</a></li><li><a href=\"#fieldtypes-name\">Name</a></li><li><a href=\"#fieldtypes-number\">Number</a></li><li><a href=\"#fieldtypes-numberarray\">Numberarray</a></li><li><a href=\"#fieldtypes-password\">Password</a></li><li><a href=\"#fieldtypes-select\">Select</a></li><li><a href=\"#fieldtypes-text\">Text</a></li><li><a href=\"#fieldtypes-textarea\">Textarea</a></li><li><a href=\"#fieldtypes-textarray\">Textarray</a></li><li><a href=\"#fieldtypes-url\">Url</a></li><li><a href=\"#fieldtypes-azurefile\">AzureFile</a></li><li><a href=\"#fieldtypes-cloudinaryimage\">CloudinaryImage</a></li><li><a href=\"#fieldtypes-cloudinaryimages\">CloudinaryImages</a></li><li><a href=\"#fieldtypes-embedly\">Embedly</a></li><li><a href=\"#fieldtypes-localfile\">LocalFile</a></li><li><a href=\"#fieldtypes-s3file\">S3 File</a></li></ul>");
+}
+    }
+
+  } else {
+    var $$l = 0;
+    for (var $index in $$obj) {
+      $$l++;      var item = $$obj[$index];
+
+if ( (item.value == docssection.value ) && docssection.override == 'fetch')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/fetch\">Fetch Examples</a></li><li><a href=\"/fetch/noscript\">noscript</a></li><li><a href=\"/fetch/body\">body noscript</a></li><li><a href=\"/fetch/text\">clean text</a></li><li><a href=\"/fetch/json/code\">json code</a></li><li><a href=\"/fetch/fail\">failure </a></li><li><a href=\"/fetch/lost-link\">should 404  </a></li><li><a href=\"/docs/learn/reference\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+}
+if ( (item.value == docssection.value ) && item.value == 'learn')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/reference/readme\">Reference Materials</a></li><li><a href=\"/docs/learn/reference/readme\">README  </a></li><li><a href=\"/docs/learn/reference/roadmap\">ROADMAP   </a></li><li><a href=\"/docs/learn/reference/history\">HISTORY   </a></li><li><a href=\"/docs/learn/reference/contributing\">CONTRIBUTING</a></li></ul>");
+}
+if ( (item.value == docssection.value ) && item.value == 'getting-started')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"#introduction\">Introduction</a></li><li><a href=\"#introduction-prerequisites\">Prerequisites</a></li><li><a href=\"#introduction-productionvsdevelopment\">Production vs Development</a></li><li class=\"nav-label\"><a href=\"#gettingstarted\">Getting Started</a></li><li><a href=\"#gettingstarted-usingyeoman\">Using the Yeoman Generator</a></li><li><a href=\"#gettingstarted-startinganewproject\">Starting a new project</a></li><li><a href=\"#gettingstarted-projectstructure\">Project Structure</a></li><li class=\"nav-label\"><a href=\"#models\">Models</a></li><li><a href=\"#models-authentication\">Authentication and Session Management</a></li><li class=\"nav-label\"><a href=\"#routesviews\">Routes &amp; Views</a></li><li><a href=\"#routesviews-settingup\">Setting up your Routes and Middleware</a></li><li><a href=\"#routesviews-middleware\">Common Route Middleware</a></li><li><a href=\"#routesviews-firstview\">Your first View</a></li><li><a href=\"#routesviews-templates\">Templates</a></li><li><a href=\"#routesviews-publicassets\">Public Assets</a></li><li class=\"nav-label\"><a href=\"#runningyourapp\">Running your App</a></li><li><a href=\"#runningyourapp-writingupdates\">Writing Updates</a></li><li><a href=\"#runningyourapp-startingkeystone\">Starting Keystone</a></li><li><a href=\"#runningyourapp-nextstep\">Next Steps</a></li></ul>");
+}
+if ( (item.value == docssection.value ) && item.value == 'configuration')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"#options\">Keystone Options</a></li><li><a href=\"#options-concepts\">Setting Options</a></li><li><a href=\"#options-project\">Project Options</a></li><li><a href=\"#options-server\">Web Server Options</a></li><li><a href=\"#options-ssl\">SSL Options</a></li><li><a href=\"#options-unix-socket\">Unix Socket Options</a></li><li><a href=\"#options-database\">Database and User Auth Options</a></li><li><a href=\"#options-ui\">Admin UI Options</a></li><li class=\"nav-label\"><a href=\"#services\">Services</a></li><li><a href=\"#services-google-analytics\">Google Analytics</a></li><li><a href=\"#services-google-maps\">Google Maps</a></li><li><a href=\"#services-amazons3\">Amazon S3</a></li><li><a href=\"#services-azure\">Windows Azure Storage</a></li><li><a href=\"#services-cloudinary\">Cloudinary</a></li><li><a href=\"#services-embedly\">Embed.ly</a></li><li><a href=\"#services-mandrill\">Mandrill</a></li><li class=\"nav-label\"><a href=\"#updates\">Application Updates</a></li><li class=\"nav-label\"><a href=\"#headless\">Disabling the Admin UI</a></li></ul>");
+}
+if ( (item.value == docssection.value ) && item.value == 'database')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"#concepts\">Concepts</a></li><li class=\"nav-label\"><a href=\"#lists\">Lists</a></li><li><a href=\"#lists-usage\">Usage</a></li><li><a href=\"#lists-example\">Example</a></li><li><a href=\"#lists-options\">List Options</a></li><li><a href=\"#lists-plugins\">Schema Plugins</a></li><li><a href=\"#lists-querying\">Querying Data</a></li><li><a href=\"#lists-paginate\">Pagination Querying</a></li><li><a href=\"#lists-creating\">Creating Items</a></li><li><a href=\"#lists-deleting\">Deleting Items</a></li><li class=\"nav-label\"><a href=\"#headings\">Headings</a></li><li class=\"nav-label\"><a href=\"#fields\">Fields</a></li><li><a href=\"#fields-overview\">Overview</a></li><li><a href=\"#fields-options\">Field Options</a></li><li><a href=\"#fields-conditional\">Field Conditionals</a></li><li><a href=\"#fields-watching\">Field Watching</a></li><li><a href=\"#fields-underscoremethods\">Underscore Methods</a></li><li class=\"nav-label\"><a href=\"#relationships\">Relationships</a></li><li><a href=\"#relationship-fields\">Relationship Fields</a></li><li><a href=\"#relationship-definitions\">Relationship Definitions</a></li><li><a href=\"#relationship-queries\">Loading related items</a></li><li class=\"nav-label\"><a href=\"#fieldtypes\">Field Types</a></li><li><a href=\"#fieldtypes-boolean\">Boolean</a></li><li><a href=\"#fieldtypes-code\">Code</a></li><li><a href=\"#fieldtypes-color\">Color</a></li><li><a href=\"#fieldtypes-date\">Date</a></li><li><a href=\"#fieldtypes-datetime\">Datetime</a></li><li><a href=\"#fieldtypes-email\">Email</a></li><li><a href=\"#fieldtypes-html\">Html</a></li><li><a href=\"#fieldtypes-key\">Key</a></li><li><a href=\"#fieldtypes-location\">Location</a></li><li><a href=\"#fieldtypes-markdown\">Markdown</a></li><li><a href=\"#fieldtypes-money\">Money</a></li><li><a href=\"#fieldtypes-name\">Name</a></li><li><a href=\"#fieldtypes-number\">Number</a></li><li><a href=\"#fieldtypes-numberarray\">Numberarray</a></li><li><a href=\"#fieldtypes-password\">Password</a></li><li><a href=\"#fieldtypes-select\">Select</a></li><li><a href=\"#fieldtypes-text\">Text</a></li><li><a href=\"#fieldtypes-textarea\">Textarea</a></li><li><a href=\"#fieldtypes-textarray\">Textarray</a></li><li><a href=\"#fieldtypes-url\">Url</a></li><li><a href=\"#fieldtypes-azurefile\">AzureFile</a></li><li><a href=\"#fieldtypes-cloudinaryimage\">CloudinaryImage</a></li><li><a href=\"#fieldtypes-cloudinaryimages\">CloudinaryImages</a></li><li><a href=\"#fieldtypes-embedly\">Embedly</a></li><li><a href=\"#fieldtypes-localfile\">LocalFile</a></li><li><a href=\"#fieldtypes-s3file\">S3 File</a></li></ul>");
+}
+    }
+
+  }
+}).call(this);
+
+buf.push("</ul>");
+}
+buf.push("</nav>");
+};
+buf.push("<div class=\"page-header\"><div class=\"container\"><h1>Learn</h1><p class=\"lead\">deploy your app to Heroku</p></div></div><div class=\"container\"><div class=\"row\"><div class=\"col-sm-3\">");
+jade_mixins["docsnav"](docssection);
+buf.push("</div><div class=\"col-sm-9\"><div class=\"docs-content\"><h2><a name=\"faqs\"></a>Deploying to Heroku</h2><h3>Description</h3><p>This section describes the steps required to deploy your KeystoneJS application to Heroku. </p><h3>Prerequisites</h3><ol class=\"fancy-list\"><li>Sign up for a Heroku account and install the <a href=\"https://toolbelt.heroku.com/\">Heroku Toolbelt</a></li><li>In this section, we will be using Git and Github so make sure you are appropriately set up with both</li><li>Create a Keystone application, Github repository and clone the repository locally</li></ol><h3>Steps</h3><p class=\"lead\">Create the heroku application</p><p>Run the following command <code>heroku create</code> from your terminal and within your Keystone applications root directory. Heroku will generate an app name for you (i.e. beautiful-island-4327) and set up a git remote called Heroku to use for identification</p><p class=\"lead\">If you wish to rename your application</p><p>Run the command <code>heroku apps:rename your-new-app-name --app current-name-of-your-app</code> in order to change your applications name</p><p class=\"lead\">Add your new Heroku remotes.</p><p>Run the command <code>heroku git:remote --app your-new-app-name</code> in order to add the appropriate Heroku remotes</p><p class=\"lead\">Include Heroku add-ons</p><p>Firstly, you'll need a database. There are a few providers you can choose from in Heroku's add-ons directory. For the purpose of this walk-through we'll be using Mongolab. Secondly, let's add a logging system. Again, there are a few to choose from but we'll be using Papertrail. This gives you a nice web UI to your application logs and lets you set up alerts for errors, etc. The basic plan for papertrail is also free. </p><ol> <li>Adding MongoLab</li><p>Run the command <code>heroku addons:add mongolab:sandbox</code></p><i class=\"mt-2\">N.B: You can point your Keystone site at any database provider by customising the MONGO_URI environment variable (make sure to remove the mongolab addon first!)</i><li class=\"mt-2\">Adding Papertrail</li><p>Run the command <code>heroku addons:add papertrail:choklad</code> </p></ol><p class=\"lead\">Adding environment variables for 3rd party service providers</p><p>You can do this yourself (the dashboard gives you the ENV variable set up) or you can add it as an add-on to your Heroku account like Mongolab and Papertrail. We recommend you do this manually as you'll probably want to use the account in development and staging as well, rather than having it tied to as single Heroku app.</p><p class=\"lead\">Deployment</p><p>Once you've created your Keystone application and got the database configured, commit all your code to git and run the following command to make your site go live <code>git push heroku master</code></p><p class=\"lead\">View your live site</p><p>Now that you have deployed your application you can enter the command <code>heroku open</code> or simply navigate to http://your-new-app-name.herokapp.com</p><p class=\"lead\">Adding a custom domain</p><p>Login to your Heroku account and add a real domain for your application. Following this, point your DNS at Heroku and you're off. You can also set up SSL and whatever else you need. </p><i>N.B: Heroku doesn't keep any changes to the local file system so you can't keep user-uploaded files without putting them on a 3rd party service, hence the Cloudinary/Azure/S3 integration.</i><p class=\"mt-2\">Make sure to checkout <a href=\"https://devcenter.heroku.com/articles/getting-started-with-nodejs\">Heroku's getting started docs for Node.js </a> if you hit any hurdles.</p></div></div></div></div>");}.call(this,"docsnav" in locals_for_with?locals_for_with.docsnav:typeof docsnav!=="undefined"?docsnav:undefined,"docssection" in locals_for_with?locals_for_with.docssection:typeof docssection!=="undefined"?docssection:undefined));;return buf.join("");
 },'en/pages/docs/learn/resources': function template(locals) {
 var buf = [];
 var jade_mixins = {};
@@ -1933,12 +2087,7 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div>");
-if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
-{
-buf.push("<div id=\"searchBar\"><div class=\"col-xs-10 col-sm-offset-3 col-sm-12 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
-}
-buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
 // iterate docsnav
 ;(function(){
   var $$obj = docsnav;
@@ -1973,9 +2122,13 @@ buf.push("<ul class=\"sidebar-nav\">");
     for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
       var item = $$obj[$index];
 
+if ( (item.value == docssection.value ) && docssection.override == 'fetch')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/fetch\">Fetch Examples</a></li><li><a href=\"/fetch/noscript\">noscript</a></li><li><a href=\"/fetch/body\">body noscript</a></li><li><a href=\"/fetch/text\">clean text</a></li><li><a href=\"/fetch/json/code\">json code</a></li><li><a href=\"/fetch/fail\">failure </a></li><li><a href=\"/fetch/lost-link\">should 404  </a></li><li><a href=\"/docs/learn/reference\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+}
 if ( (item.value == docssection.value ) && item.value == 'learn')
 {
-buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/code\">Fetch Examples</a></li><li><a href=\"/fetch\">noscript</a></li><li><a href=\"/body\">body noscript</a></li><li><a href=\"/text\">clean text</a></li><li><a href=\"/json/code\">json code</a></li><li><a href=\"/markdown\">markdown </a></li><li><a href=\"/fail\">failure </a></li><li><a href=\"/lost-link\">should 404  </a></li><li><a href=\"/quick-start\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/reference/readme\">Reference Materials</a></li><li><a href=\"/docs/learn/reference/readme\">README  </a></li><li><a href=\"/docs/learn/reference/roadmap\">ROADMAP   </a></li><li><a href=\"/docs/learn/reference/history\">HISTORY   </a></li><li><a href=\"/docs/learn/reference/contributing\">CONTRIBUTING</a></li></ul>");
 }
 if ( (item.value == docssection.value ) && item.value == 'getting-started')
 {
@@ -1996,9 +2149,13 @@ buf.push("<ul><li class=\"nav-label\"><a href=\"#concepts\">Concepts</a></li><li
     for (var $index in $$obj) {
       $$l++;      var item = $$obj[$index];
 
+if ( (item.value == docssection.value ) && docssection.override == 'fetch')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/fetch\">Fetch Examples</a></li><li><a href=\"/fetch/noscript\">noscript</a></li><li><a href=\"/fetch/body\">body noscript</a></li><li><a href=\"/fetch/text\">clean text</a></li><li><a href=\"/fetch/json/code\">json code</a></li><li><a href=\"/fetch/fail\">failure </a></li><li><a href=\"/fetch/lost-link\">should 404  </a></li><li><a href=\"/docs/learn/reference\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+}
 if ( (item.value == docssection.value ) && item.value == 'learn')
 {
-buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/code\">Fetch Examples</a></li><li><a href=\"/fetch\">noscript</a></li><li><a href=\"/body\">body noscript</a></li><li><a href=\"/text\">clean text</a></li><li><a href=\"/json/code\">json code</a></li><li><a href=\"/markdown\">markdown </a></li><li><a href=\"/fail\">failure </a></li><li><a href=\"/lost-link\">should 404  </a></li><li><a href=\"/quick-start\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/reference/readme\">Reference Materials</a></li><li><a href=\"/docs/learn/reference/readme\">README  </a></li><li><a href=\"/docs/learn/reference/roadmap\">ROADMAP   </a></li><li><a href=\"/docs/learn/reference/history\">HISTORY   </a></li><li><a href=\"/docs/learn/reference/contributing\">CONTRIBUTING</a></li></ul>");
 }
 if ( (item.value == docssection.value ) && item.value == 'getting-started')
 {
@@ -2054,12 +2211,7 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div>");
-if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
-{
-buf.push("<div id=\"searchBar\"><div class=\"col-xs-10 col-sm-offset-3 col-sm-12 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
-}
-buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
 // iterate docsnav
 ;(function(){
   var $$obj = docsnav;
@@ -2094,9 +2246,13 @@ buf.push("<ul class=\"sidebar-nav\">");
     for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
       var item = $$obj[$index];
 
+if ( (item.value == docssection.value ) && docssection.override == 'fetch')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/fetch\">Fetch Examples</a></li><li><a href=\"/fetch/noscript\">noscript</a></li><li><a href=\"/fetch/body\">body noscript</a></li><li><a href=\"/fetch/text\">clean text</a></li><li><a href=\"/fetch/json/code\">json code</a></li><li><a href=\"/fetch/fail\">failure </a></li><li><a href=\"/fetch/lost-link\">should 404  </a></li><li><a href=\"/docs/learn/reference\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+}
 if ( (item.value == docssection.value ) && item.value == 'learn')
 {
-buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/code\">Fetch Examples</a></li><li><a href=\"/fetch\">noscript</a></li><li><a href=\"/body\">body noscript</a></li><li><a href=\"/text\">clean text</a></li><li><a href=\"/json/code\">json code</a></li><li><a href=\"/markdown\">markdown </a></li><li><a href=\"/fail\">failure </a></li><li><a href=\"/lost-link\">should 404  </a></li><li><a href=\"/quick-start\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/reference/readme\">Reference Materials</a></li><li><a href=\"/docs/learn/reference/readme\">README  </a></li><li><a href=\"/docs/learn/reference/roadmap\">ROADMAP   </a></li><li><a href=\"/docs/learn/reference/history\">HISTORY   </a></li><li><a href=\"/docs/learn/reference/contributing\">CONTRIBUTING</a></li></ul>");
 }
 if ( (item.value == docssection.value ) && item.value == 'getting-started')
 {
@@ -2117,9 +2273,13 @@ buf.push("<ul><li class=\"nav-label\"><a href=\"#concepts\">Concepts</a></li><li
     for (var $index in $$obj) {
       $$l++;      var item = $$obj[$index];
 
+if ( (item.value == docssection.value ) && docssection.override == 'fetch')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/fetch\">Fetch Examples</a></li><li><a href=\"/fetch/noscript\">noscript</a></li><li><a href=\"/fetch/body\">body noscript</a></li><li><a href=\"/fetch/text\">clean text</a></li><li><a href=\"/fetch/json/code\">json code</a></li><li><a href=\"/fetch/fail\">failure </a></li><li><a href=\"/fetch/lost-link\">should 404  </a></li><li><a href=\"/docs/learn/reference\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+}
 if ( (item.value == docssection.value ) && item.value == 'learn')
 {
-buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/code\">Fetch Examples</a></li><li><a href=\"/fetch\">noscript</a></li><li><a href=\"/body\">body noscript</a></li><li><a href=\"/text\">clean text</a></li><li><a href=\"/json/code\">json code</a></li><li><a href=\"/markdown\">markdown </a></li><li><a href=\"/fail\">failure </a></li><li><a href=\"/lost-link\">should 404  </a></li><li><a href=\"/quick-start\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/reference/readme\">Reference Materials</a></li><li><a href=\"/docs/learn/reference/readme\">README  </a></li><li><a href=\"/docs/learn/reference/roadmap\">ROADMAP   </a></li><li><a href=\"/docs/learn/reference/history\">HISTORY   </a></li><li><a href=\"/docs/learn/reference/contributing\">CONTRIBUTING</a></li></ul>");
 }
 if ( (item.value == docssection.value ) && item.value == 'getting-started')
 {
@@ -2142,9 +2302,9 @@ buf.push("</ul>");
 }
 buf.push("</nav>");
 };
-buf.push("<div class=\"page-header\"><div class=\"container\"><h1>Learn</h1><p class=\"lead\">Learn how to build database-driven websites, applications and APIs in Node.js.</p></div></div><div class=\"container\"><div class=\"row\"><div class=\"col-sm-3\">");
+buf.push("<div class=\"page-header\"><div class=\"container\"><h1>Learn</h1><p class=\"lead\">articles, examples and resources to help you use Keystone</p></div></div><div class=\"container\"><div class=\"row\"><div class=\"col-sm-3\">");
 jade_mixins["docsnav"](docssection);
-buf.push("</div><div class=\"col-sm-9\"><div class=\"docs-content\"><p class=\"lead\">Articles, code examples and more resources</p><div class=\"row\"><div class=\"col-sm-12 col-md-4\"><div class=\"feature-panel\"><div class=\"feature-content\"><h4><a href=\"/docs/learn/es6\">ES6 & System.js</a></h4><p>We converted this site to use <a href=\"https://github.com/systemjs/systemjs\" target=\"_blank\">System.js</a>, <a href=\"http://babeljs.io\" target=\"_blank\">Babel</a> and <a href=\"https://facebook.github.io/react/\" target=\"_blank\">React</a></p></div></div></div><div class=\"col-sm-12 col-md-4\"><div class=\"feature-panel\"><div class=\"feature-content\"><h4><a href=\"/docs/learn/code\">Code Examples</a></h4><p>View code examples for Email, socket.io support and more.</p></div></div></div><div class=\"col-sm-12 col-md-4\"><div class=\"feature-panel\"><div class=\"feature-content\"><h4><a href=\"/docs/learn/resources\">Resources</a></h4><p>Goodies about everything from MongoDB, mongoose, React, System.js, Keystone and more.</p></div></div></div></div></div></div></div></div>");}.call(this,"docsnav" in locals_for_with?locals_for_with.docsnav:typeof docsnav!=="undefined"?docsnav:undefined,"docssection" in locals_for_with?locals_for_with.docssection:typeof docssection!=="undefined"?docssection:undefined));;return buf.join("");
+buf.push("</div><div class=\"col-sm-9\"><div class=\"docs-content\"><p class=\"lead\">Articles, code examples and more resources</p><div class=\"row\"><div class=\"col-sm-12 col-md-4\"><div class=\"feature-panel\"><div class=\"feature-content\"><h4><a href=\"/docs/learn/es6\">ES6 & System.js</a></h4><p>We converted this site to use <a href=\"https://github.com/systemjs/systemjs\" target=\"_blank\">System.js</a>, <a href=\"http://babeljs.io\" target=\"_blank\">Babel</a> and <a href=\"https://facebook.github.io/react/\" target=\"_blank\">React</a></p></div></div></div><div class=\"col-sm-12 col-md-4\"><div class=\"feature-panel\"><div class=\"feature-content\"><h4><a href=\"/docs/learn/heroku\">Heroku deployment</a></h4><p>Learn how to deploy your app to Heroku.</p></div></div></div><div class=\"col-sm-12 col-md-4\"><div class=\"feature-panel\"><div class=\"feature-content\"><h4><a href=\"/docs/learn/code\">Code Examples</a></h4><p>View code examples for Email, socket.io support and more.</p></div></div></div></div><div class=\"row\"><div class=\"col-sm-12 col-md-4\"><div class=\"feature-panel\"><div class=\"feature-content\"><h4><a href=\"/docs/learn/resources\">Resources</a></h4><p>Goodies about everything from MongoDB, mongoose, React, System.js, Keystone and more.</p></div></div></div><div class=\"col-sm-12 col-md-4\"><div class=\"feature-panel\"><div class=\"feature-content\"></div></div></div><div class=\"col-sm-12 col-md-4\"><div class=\"feature-panel\"><div class=\"feature-content\"><h4>Reference Materials</h4><p><a href=\"/docs/learn/reference/readme\">README  </a></p><p><a href=\"/docs/learn/reference/roadmap\">ROADMAP   </a></p><p><a href=\"/docs/learn/reference/history\">HISTORY   </a></p><p><a href=\"/docs/learn/reference/contributing\">CONTRIBUTING</a></p></div></div></div></div></div></div></div></div>");}.call(this,"docsnav" in locals_for_with?locals_for_with.docsnav:typeof docsnav!=="undefined"?docsnav:undefined,"docssection" in locals_for_with?locals_for_with.docssection:typeof docssection!=="undefined"?docssection:undefined));;return buf.join("");
 },'en/pages/docs/views': function template(locals) {
 var buf = [];
 var jade_mixins = {};
@@ -2175,12 +2335,7 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div>");
-if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
-{
-buf.push("<div id=\"searchBar\"><div class=\"col-xs-10 col-sm-offset-3 col-sm-12 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
-}
-buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
 // iterate docsnav
 ;(function(){
   var $$obj = docsnav;
@@ -2215,9 +2370,13 @@ buf.push("<ul class=\"sidebar-nav\">");
     for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
       var item = $$obj[$index];
 
+if ( (item.value == docssection.value ) && docssection.override == 'fetch')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/fetch\">Fetch Examples</a></li><li><a href=\"/fetch/noscript\">noscript</a></li><li><a href=\"/fetch/body\">body noscript</a></li><li><a href=\"/fetch/text\">clean text</a></li><li><a href=\"/fetch/json/code\">json code</a></li><li><a href=\"/fetch/fail\">failure </a></li><li><a href=\"/fetch/lost-link\">should 404  </a></li><li><a href=\"/docs/learn/reference\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+}
 if ( (item.value == docssection.value ) && item.value == 'learn')
 {
-buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/code\">Fetch Examples</a></li><li><a href=\"/fetch\">noscript</a></li><li><a href=\"/body\">body noscript</a></li><li><a href=\"/text\">clean text</a></li><li><a href=\"/json/code\">json code</a></li><li><a href=\"/markdown\">markdown </a></li><li><a href=\"/fail\">failure </a></li><li><a href=\"/lost-link\">should 404  </a></li><li><a href=\"/quick-start\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/reference/readme\">Reference Materials</a></li><li><a href=\"/docs/learn/reference/readme\">README  </a></li><li><a href=\"/docs/learn/reference/roadmap\">ROADMAP   </a></li><li><a href=\"/docs/learn/reference/history\">HISTORY   </a></li><li><a href=\"/docs/learn/reference/contributing\">CONTRIBUTING</a></li></ul>");
 }
 if ( (item.value == docssection.value ) && item.value == 'getting-started')
 {
@@ -2238,9 +2397,13 @@ buf.push("<ul><li class=\"nav-label\"><a href=\"#concepts\">Concepts</a></li><li
     for (var $index in $$obj) {
       $$l++;      var item = $$obj[$index];
 
+if ( (item.value == docssection.value ) && docssection.override == 'fetch')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/fetch\">Fetch Examples</a></li><li><a href=\"/fetch/noscript\">noscript</a></li><li><a href=\"/fetch/body\">body noscript</a></li><li><a href=\"/fetch/text\">clean text</a></li><li><a href=\"/fetch/json/code\">json code</a></li><li><a href=\"/fetch/fail\">failure </a></li><li><a href=\"/fetch/lost-link\">should 404  </a></li><li><a href=\"/docs/learn/reference\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+}
 if ( (item.value == docssection.value ) && item.value == 'learn')
 {
-buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/code\">Fetch Examples</a></li><li><a href=\"/fetch\">noscript</a></li><li><a href=\"/body\">body noscript</a></li><li><a href=\"/text\">clean text</a></li><li><a href=\"/json/code\">json code</a></li><li><a href=\"/markdown\">markdown </a></li><li><a href=\"/fail\">failure </a></li><li><a href=\"/lost-link\">should 404  </a></li><li><a href=\"/quick-start\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/reference/readme\">Reference Materials</a></li><li><a href=\"/docs/learn/reference/readme\">README  </a></li><li><a href=\"/docs/learn/reference/roadmap\">ROADMAP   </a></li><li><a href=\"/docs/learn/reference/history\">HISTORY   </a></li><li><a href=\"/docs/learn/reference/contributing\">CONTRIBUTING</a></li></ul>");
 }
 if ( (item.value == docssection.value ) && item.value == 'getting-started')
 {
@@ -2314,12 +2477,7 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div>");
-if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
-{
-buf.push("<div id=\"searchBar\"><div class=\"col-xs-10 col-sm-offset-3 col-sm-12 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
-}
-buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
 // iterate docsnav
 ;(function(){
   var $$obj = docsnav;
@@ -2354,9 +2512,13 @@ buf.push("<ul class=\"sidebar-nav\">");
     for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
       var item = $$obj[$index];
 
+if ( (item.value == docssection.value ) && docssection.override == 'fetch')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/fetch\">Fetch Examples</a></li><li><a href=\"/fetch/noscript\">noscript</a></li><li><a href=\"/fetch/body\">body noscript</a></li><li><a href=\"/fetch/text\">clean text</a></li><li><a href=\"/fetch/json/code\">json code</a></li><li><a href=\"/fetch/fail\">failure </a></li><li><a href=\"/fetch/lost-link\">should 404  </a></li><li><a href=\"/docs/learn/reference\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+}
 if ( (item.value == docssection.value ) && item.value == 'learn')
 {
-buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/code\">Fetch Examples</a></li><li><a href=\"/fetch\">noscript</a></li><li><a href=\"/body\">body noscript</a></li><li><a href=\"/text\">clean text</a></li><li><a href=\"/json/code\">json code</a></li><li><a href=\"/markdown\">markdown </a></li><li><a href=\"/fail\">failure </a></li><li><a href=\"/lost-link\">should 404  </a></li><li><a href=\"/quick-start\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/reference/readme\">Reference Materials</a></li><li><a href=\"/docs/learn/reference/readme\">README  </a></li><li><a href=\"/docs/learn/reference/roadmap\">ROADMAP   </a></li><li><a href=\"/docs/learn/reference/history\">HISTORY   </a></li><li><a href=\"/docs/learn/reference/contributing\">CONTRIBUTING</a></li></ul>");
 }
 if ( (item.value == docssection.value ) && item.value == 'getting-started')
 {
@@ -2377,9 +2539,13 @@ buf.push("<ul><li class=\"nav-label\"><a href=\"#concepts\">Concepts</a></li><li
     for (var $index in $$obj) {
       $$l++;      var item = $$obj[$index];
 
+if ( (item.value == docssection.value ) && docssection.override == 'fetch')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/fetch\">Fetch Examples</a></li><li><a href=\"/fetch/noscript\">noscript</a></li><li><a href=\"/fetch/body\">body noscript</a></li><li><a href=\"/fetch/text\">clean text</a></li><li><a href=\"/fetch/json/code\">json code</a></li><li><a href=\"/fetch/fail\">failure </a></li><li><a href=\"/fetch/lost-link\">should 404  </a></li><li><a href=\"/docs/learn/reference\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+}
 if ( (item.value == docssection.value ) && item.value == 'learn')
 {
-buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/code\">Fetch Examples</a></li><li><a href=\"/fetch\">noscript</a></li><li><a href=\"/body\">body noscript</a></li><li><a href=\"/text\">clean text</a></li><li><a href=\"/json/code\">json code</a></li><li><a href=\"/markdown\">markdown </a></li><li><a href=\"/fail\">failure </a></li><li><a href=\"/lost-link\">should 404  </a></li><li><a href=\"/quick-start\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/reference/readme\">Reference Materials</a></li><li><a href=\"/docs/learn/reference/readme\">README  </a></li><li><a href=\"/docs/learn/reference/roadmap\">ROADMAP   </a></li><li><a href=\"/docs/learn/reference/history\">HISTORY   </a></li><li><a href=\"/docs/learn/reference/contributing\">CONTRIBUTING</a></li></ul>");
 }
 if ( (item.value == docssection.value ) && item.value == 'getting-started')
 {
@@ -2441,12 +2607,7 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div>");
-if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
-{
-buf.push("<div id=\"searchBar\"><div class=\"col-xs-10 col-sm-offset-3 col-sm-12 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
-}
-buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
 // iterate docsnav
 ;(function(){
   var $$obj = docsnav;
@@ -2481,9 +2642,13 @@ buf.push("<ul class=\"sidebar-nav\">");
     for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
       var item = $$obj[$index];
 
+if ( (item.value == docssection.value ) && docssection.override == 'fetch')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/fetch\">Fetch Examples</a></li><li><a href=\"/fetch/noscript\">noscript</a></li><li><a href=\"/fetch/body\">body noscript</a></li><li><a href=\"/fetch/text\">clean text</a></li><li><a href=\"/fetch/json/code\">json code</a></li><li><a href=\"/fetch/fail\">failure </a></li><li><a href=\"/fetch/lost-link\">should 404  </a></li><li><a href=\"/docs/learn/reference\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+}
 if ( (item.value == docssection.value ) && item.value == 'learn')
 {
-buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/code\">Fetch Examples</a></li><li><a href=\"/fetch\">noscript</a></li><li><a href=\"/body\">body noscript</a></li><li><a href=\"/text\">clean text</a></li><li><a href=\"/json/code\">json code</a></li><li><a href=\"/markdown\">markdown </a></li><li><a href=\"/fail\">failure </a></li><li><a href=\"/lost-link\">should 404  </a></li><li><a href=\"/quick-start\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/reference/readme\">Reference Materials</a></li><li><a href=\"/docs/learn/reference/readme\">README  </a></li><li><a href=\"/docs/learn/reference/roadmap\">ROADMAP   </a></li><li><a href=\"/docs/learn/reference/history\">HISTORY   </a></li><li><a href=\"/docs/learn/reference/contributing\">CONTRIBUTING</a></li></ul>");
 }
 if ( (item.value == docssection.value ) && item.value == 'getting-started')
 {
@@ -2504,9 +2669,13 @@ buf.push("<ul><li class=\"nav-label\"><a href=\"#concepts\">Concepts</a></li><li
     for (var $index in $$obj) {
       $$l++;      var item = $$obj[$index];
 
+if ( (item.value == docssection.value ) && docssection.override == 'fetch')
+{
+buf.push("<ul><li class=\"nav-label\"><a href=\"/fetch\">Fetch Examples</a></li><li><a href=\"/fetch/noscript\">noscript</a></li><li><a href=\"/fetch/body\">body noscript</a></li><li><a href=\"/fetch/text\">clean text</a></li><li><a href=\"/fetch/json/code\">json code</a></li><li><a href=\"/fetch/fail\">failure </a></li><li><a href=\"/fetch/lost-link\">should 404  </a></li><li><a href=\"/docs/learn/reference\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+}
 if ( (item.value == docssection.value ) && item.value == 'learn')
 {
-buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/code\">Fetch Examples</a></li><li><a href=\"/fetch\">noscript</a></li><li><a href=\"/body\">body noscript</a></li><li><a href=\"/text\">clean text</a></li><li><a href=\"/json/code\">json code</a></li><li><a href=\"/markdown\">markdown </a></li><li><a href=\"/fail\">failure </a></li><li><a href=\"/lost-link\">should 404  </a></li><li><a href=\"/quick-start\" class=\"notspa\">should reload</a></li><li><a href=\"https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade\">should leave</a></li></ul>");
+buf.push("<ul><li class=\"nav-label\"><a href=\"/docs/learn\">Learn</a></li><li><a href=\"/docs/learn/es6\">ES6 Rewrite</a></li><li><a href=\"/docs/learn/code\">Code Examples</a></li><li><a href=\"/docs/learn/resources\">Resources</a></li><li class=\"nav-label\"><a href=\"/docs/learn/reference/readme\">Reference Materials</a></li><li><a href=\"/docs/learn/reference/readme\">README  </a></li><li><a href=\"/docs/learn/reference/roadmap\">ROADMAP   </a></li><li><a href=\"/docs/learn/reference/history\">HISTORY   </a></li><li><a href=\"/docs/learn/reference/contributing\">CONTRIBUTING</a></li></ul>");
 }
 if ( (item.value == docssection.value ) && item.value == 'getting-started')
 {
@@ -2628,6 +2797,9 @@ var jade_interp;
 var buf = [];
 var jade_mixins = {};
 var jade_interp;
+
+
+
 
 
 

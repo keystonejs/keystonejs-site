@@ -18,12 +18,7 @@ System.config({
     "styles/site": "styles/site.min.css",
     "styles/prism": "styles/prism.css"
   },
-  bundles: {
-    "html": [
-      "app/html/templates",
-      "app/html/markedApi"
-    ]
-  },
+
 
   meta: {
     "styles/*": {
@@ -35,6 +30,7 @@ System.config({
   map: {
     "@lukekarrys/jade-runtime": "npm:@lukekarrys/jade-runtime@1.11.1",
     "analytics": "systemjs/analytics.js",
+    "anchored": "npm:anchored",
     "babel": "npm:babel-core@5.8.25",
     "babel-runtime": "npm:babel-runtime@5.8.25",
     "bootstrap": "systemjs/bootstrap-collapse",
@@ -58,6 +54,7 @@ System.config({
     "react-router": "npm:react-router@1.0.0-rc3",
     "showdown": "github:showdownjs/showdown@1.2.3",
     "striptags": "npm:striptags@2.0.4",
+    "tag-search": "npm:tag-search@0.0.9",
     "github:guybedford/system-md@0.0.2": {
       "showdown": "github:showdownjs/showdown@1.2.3"
     },

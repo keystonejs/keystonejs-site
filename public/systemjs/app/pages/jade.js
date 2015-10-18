@@ -3,6 +3,12 @@ import jade from 'app/html/templates'
 import api from 'app/html/markedApi'
 import _ from 'lodash'
 import {languages, routes, getFileName, config} from 'config';
+import SearchTags from 'tag-search'
+
+let routeObj = {}
+for (let v of routes) {
+  routeObj[v.path] = v
+}
 
 export default (page, addLocals, inheritPropsFrom) => {
 	
@@ -14,7 +20,28 @@ export default (page, addLocals, inheritPropsFrom) => {
 			this.state = { html: readyJade.render(readyJade.locals) }
 		}
 		render() {
-			return <div dangerouslySetInnerHTML={{ __html: this.state.html }} />
+			let anchorOpts = {
+				useLocation: false,
+				nostyles: true,
+				noclasses: false,
+				searchBar: 'searchBar',
+				searchList: 'searchList',
+				tagSelector: '.docs-content a[name]',
+				classes: {
+					'searchBar': ' col-sm-offset-3 col-sm-9 ',
+					'input': ' form-control clearable',
+					'ul': ' sidebar-nav ',
+					'searchList': ' docs-sidebar ',
+					'context': ' context ',
+					'li:heading': ' nav-heading '
+				}
+			}
+			let anchor = (('object' === typeof routeObj[location.pathname]) && routeObj[location.pathname]["anchor-search"] !== 'true') ? <span /> : <SearchTags  options={anchorOpts}   {...this.props}   />
+			
+			return (<div>
+				<div dangerouslySetInnerHTML={{ __html: this.state.html }} />
+				{anchor}
+			</div>)
 		}
 	}
 	return Jade

@@ -8,7 +8,7 @@ let Routes = routes.map(v => {
 });
 
 export default (Component) => {
-	
+		
 	class Listeners extends React.Component {
 		constructor(props){
 			super(props)
@@ -24,7 +24,8 @@ export default (Component) => {
 			this._limiters = {}
 		}
 		render() {
-			return <Component {...this.props} {...this.state} />
+			// return React.cloneElement(Component, this.props)
+			return  <Component {...this.props} {...this.state} />
 		}
 		componentWillReceiveProps(props) {
 			const clean = getFileName(props.location.pathname).clean
@@ -48,8 +49,8 @@ export default (Component) => {
 		onUpdate() {
 			let thisComponent = this;
 			this._update = false;
-			console.log('update listeners')
-			scroll(0,0);
+			//console.log('update listeners')
+			window.scrollTo(0,0);
 			// scroll to anchor
 			// *only* if we have anchor on the url
 			if(thisComponent.props.location.hash) {
@@ -117,22 +118,8 @@ export default (Component) => {
 					}
 				});
 			}
-			
-			/**
-			 * set some values on mount and update
-			 * instead of on every listen event
-			 * **/
-			 thisComponent.setVars()
 			 		
 		} // end onUpdate
-		setVars() {
-			let thisComponent = this
-			thisComponent.$list = $('#searchBar .searchList')
-			thisComponent.$searchDiv = $('#searchBar');
-			thisComponent.$searchBar = thisComponent.$searchDiv.find('input');
-			thisComponent.$allAnchors = $(".docs-content a[name]")
-			return true;
-		}
 		onMount() {
 			let thisComponent = this;
 			let _cached = {}
@@ -166,157 +153,7 @@ export default (Component) => {
 					$pre.slideToggle();
 							
 				}
-			});
-			
-			/**
-			 * Search Bar
-			 * takes the value from input and first searches for 
-			 * a match in anchor names then a full text search
-			 * */			
-			// catch menu clicks
-			$(document).on('click', '.catchMenuClick a', function(e) {
-				thisComponent.catchMenuClick(e);
-			});
-			
-			// hide the results when clicked outside
-			$(document).on('mouseup','body', function (e)
-			{
-				let $list = thisComponent.$list
-				let $searchDiv = thisComponent.$searchDiv
-				
-				if ( (!$list.is(e.target) // if the target of the click isn't the container...
-					&& $list.has(e.target).length === 0) // ... nor a descendant of the container
-					&& (!$searchDiv.is(e.target) // if the target of the click isn't the main div...
-					&& $searchDiv.has(e.target).length === 0) // if the target of the click isn't the input...
-				) {
-					$list.hide();
-					$('#searchBar input').removeClass('active caution')
-					return;
-				}
-			})
-			
-			// jump to first anchor on page that matches and give a list of matches
-			$(document).on('input focus', '#searchBar input', function(e) {
-				/**
-				 * until someone optimizes this for me
-				 * we will rate limit and only run 
-				 * 1 time every second
-				 * */
-				if(thisComponent.rateLimited('searchBar', 500)) {
-					return true
-				} 
-				let $list = thisComponent.$list
-				let $searchBar = thisComponent.$searchBar
-				let $allAnchors = thisComponent.$allAnchors
-				let searchAnchors = {}
-				let isWide = (document.body.clientWidth > 480)
-				
-				let searchedFor = e.target.value.replace('.', ' ').replace('-', ' ').toLowerCase()
-				let $firstAnchor = false
-				
-				let aBit = false // bit for anchor presence
-				let bBit = false // bit for blob search results presence
-				
-				$list.html('');
-				
-				// set display names
-				let mainHeader;
-				if(thisComponent.props.location.pathname.search('api') > -1) {
-					mainHeader = 'Method'
-				} else {
-					mainHeader = 'Anchor'
-				}
-					
-				// create the method ul
-				let $ul = $(document.createElement("ul")).addClass('sidebar-nav').addClass('catchMenuClick')
-				$ul.append('<li class="nav-heading">' + mainHeader + ' Matches</li>');
-				
-				// create the search blob ui
-				let $ul2 = $(document.createElement("ul")).addClass('sidebar-nav').addClass('catchMenuClick')
-				$ul2.append('<li class="nav-heading">Search Matches</li>');
-				
-				// store all li in case of no matches
-				let allAnchors = $(document.createElement("ul")).addClass('sidebar-nav').addClass('catchMenuClick')
-				allAnchors.append('<li class="nav-heading">' + mainHeader + 's</li>');
-				
-				// create search lists
-				_.forEach($allAnchors, function(v) {
-					const $anchor = $(v);
-					const text = $anchor.nextUntil("a[name]").andSelf().text()
-					
-					// set display names
-					let name = $anchor[0].name || '';
-					let displayName = $anchor[0].name || '';
-					const $next = $anchor.next();
-					if (["H2", "H3", "H4"].indexOf($next.prop("tagName")) > -1) {
-						displayName = $next.clone().children(':not("em, code")').remove().end().text();
-					}
-					
-					const itemDesc = '<li><a href="#' + name + '" >' + displayName + '</a><div class="context">' + _.trunc(text, {'length': 150,'separator': ' '}) + '</div></li>'
-					const item = '<li><a href="#' + name + '" >' + displayName + '</a><div class="context">' + _.trunc(text, {'length': 100,'separator': ' '}) + '</div></li>'
-
-					// full text search
-					if(searchedFor && text !== '') {
-						if(text.toLowerCase().search(searchedFor) > -1) {
-							$ul2.append(itemDesc);	
-						}
-					}
-					
-					// console.log(searchedFor, name.replace('-', ' ').replace(/([a-z])([A-Z])/g, '$1 $2'), name.replace('-', ' ').replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase().search(searchedFor))
-					
-					// populate method list
-					if(searchedFor !== '' && name.replace('-', ' ').replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase().search(searchedFor) > -1) {
-						$ul.append(item)
-						if(!$firstAnchor) {
-							$firstAnchor = $anchor
-						}
-					}
-					
-					allAnchors.append(item)
-					
-				})
-				
-				// set blob bit
-				bBit = ($ul2[0].childElementCount > 1)
-				// set method bit
-				aBit = ($ul[0].childElementCount > 1)
-				
-				if(aBit) {
-					
-					const goTo = location.pathname + '#' + $firstAnchor[0].name
-					//console.log('push anchor', goTo)
-					
-					// push the anchot to history and goto
-					$(document).scrollTop($firstAnchor.offset().top)
-					//window.location.href = goTo;
-					thisComponent.props.history.pushState(null, goTo)
-					
-					// set background to normal
-					$searchBar.removeClass('caution').addClass('active')
-					
-				} else if(!bBit) {					
-					aBit = true
-					$ul = allAnchors
-					$searchBar.addClass('caution').removeClass('active')
-				}
-					
-				if(!isWide || (!bBit || !aBit)) {
-					if(aBit) {
-						$list.append($ul)
-					}
-					if(bBit) {
-						$list.append($ul2)
-					}
-				} else {
-					// float left methods
-					$list.append($(document.createElement("div")).css({float:'left',width:'50%'}).append($ul))
-					// float left blob search
-					$list.append($(document.createElement("div")).css({float:'left',width:'50%'}).append($ul2))
-				}
-				
-				$list.show()
-				
-			});
+			});			
 			
 			// catch clicks for react-router
 			// to add links that bypass this measure add class '.notspa' or '.uselink'
@@ -330,65 +167,35 @@ export default (Component) => {
 				if(Routes.indexOf(filename) > -1 && (!$url.hash || thisComponent.state.route !== filename)) {
 					event.preventDefault()
 					console.log('push history',  url)
-					return thisComponent.props.history.pushState(null, url)
-					
+					thisComponent.props.history.pushState(null, url)
+					return
 				}
 				// should this be a 404?
-				//console.log('check for spa 404');
-				//console.log('$url.host',$url.host, 'location.host:',location.host)
 				if(!$url.hash && $url.host === location.host) {
 					// this app is entirely SPA with defined routes, so this page is probably a 404, but also could be a development, dynamic or hidden page
 					event.preventDefault()
 					console.log('push history unknown ', url)
-					return thisComponent.props.history.pushState(null, url)
+					thisComponent.props.history.pushState(null, url)
+					return
 				}
-				console.log('allowed default link', url)
-			})
-			
-			// CLEARABLE INPUT
-			function tog(v){
-				return v ? 'addClass' : 'removeClass'
-			} 
-			$(document).on('input', '.clearable', function(){
-				$(this)[tog(this.value)]('x');
-			}).on('mousemove', '.x', function( e ){
-				$(this)[tog(this.offsetWidth-18 < e.clientX-this.getBoundingClientRect().left)]('onX');   
-			}).on('touchstart click', '.onX', function( ev ){
-				ev.preventDefault();
-				$(this).removeClass('x onX').val('').change();
-			})
+			})	
 			
 			
-		} // end onMount
-		catchMenuClick (e) {
-			console.log('catchMenuClick', e)
-			// catch a menu click and close any menus
-			let $list = $('#searchBar .searchList')
-			$list.hide()
-			
-			// clean search bar status
-			$('#searchBar input').removeClass('active caution')
-		}
-		rateLimited(id, time) {
-			/**
-			 * keeps a timer per id
-			 * returns true if rate limited
-			 * returns false if ok to run or new
-			 * **/
-			let timer = new Date().getTime();
-			if(_.isNumber(this._limiters[id] )) {
-				if( (timer - this._limiters[id] ) < time ) {
-					return true
-				} else {
-					this._limiters[id]  = timer
-					return false
-				}
-			} else {
-				this._limiters[id] = timer
-				return false
-			}
-		}
 		
+		// x for clear
+		function tog(v){
+			return v ? 'addClass' : 'removeClass'
+		} 
+		$(document).on('#searchBar input', '.clearable', function(){
+			$(this)[tog(this.value)]('x');
+		}).on('mousemove', '.x', function( e ){
+			$(this)[tog(this.offsetWidth-22 < e.clientX-this.getBoundingClientRect().left)]('onX');   
+		}).on('touchstart click', '.onX', function( ev ){
+			ev.preventDefault();
+			$(this).removeClass('x onX').val('').change();
+		})
+				
+		} // end onMount		
 	}
 
 	Listeners.propTypes = {};

@@ -20,8 +20,8 @@ exports.languages = {
 			{ "value": "configuration", "path": "/docs/configuration", "label": "Configuration", "labelsm": "Config" },
 			{ "value": "database", "path": "/docs/database", "label": "Database", "labelsm": "Lists" },
 			{ "value": "classapi", "path": "/docs/api/current/class", "label": "Class Reference", "labelsm": "Api" },
-			{ "value": "learn", "path": "/docs/learn", "label": "Learn", "labelsm": "Learn" },
-			{ "value": "faqs", "path": "/docs/faqs", "label": "FAQ's", "labelsm": "FAQ" }
+			{ "value": "learn", "path": "/docs/learn", "label": "Learn", "labelsm": "Learn" }
+			/*{ "value": "faqs", "path": "/docs/faqs", "label": "FAQ's", "labelsm": "FAQ" }*/
 		],
 	},
 	"zh": {
@@ -122,7 +122,8 @@ exports.routes = [
 		"template": "docs/getting-started",
 		"section": "docs",
 		"docssection": { "value": "getting-started", "path": "/docs/guides", "label": "Guides" },
-		"title": "Getting Started"
+		"title": "Getting Started",
+		"anchor-search": "true"
 	},
 	{
 		"path": "/docs/configuration",
@@ -130,7 +131,8 @@ exports.routes = [
 		"template": "docs/configuration",
 		"section": "docs",
 		"docssection": { "value": "configuration", "path": "/docs/configuration", "label": "Configuration" },
-		"title": "Configuration"
+		"title": "Configuration",
+		"anchor-search": "true"
 	},
 	{
 		"path": "/docs/database",
@@ -138,7 +140,8 @@ exports.routes = [
 		"template": "docs/database",
 		"section": "docs",
 		"docssection": { "value": "database", "path": "/docs/database", "label": "Database" },
-		"title": "Setting up and using Data Models"
+		"title": "Setting up and using Data Models",
+		"anchor-search": "true"
 	},
 	{
 		"path": "/docs/learn",
@@ -149,12 +152,21 @@ exports.routes = [
 		"title": "Learn"
 	},
 	{
+		"path": "/docs/learn/heroku",
+		"language": "en",
+		"template": "docs/learn/heroku",
+		"section": "docs",
+		"docssection": { "value": "learn", "path": "/docs/learn/heroku", "label": "Heroku deployment" },
+		"title": "Learn: deploying your app to Heroku"
+	},
+	{
 		"path": "/docs/learn/es6",
 		"language": "en",
 		"template": "docs/learn/es6",
 		"section": "docs",
 		"docssection": { "value": "learn", "path": "/docs/learn/es6", "label": "ES6" },
-		"title": "System.js, Babel and React"
+		"title": "System.js, Babel and React",
+		"anchor-search": "true"
 	},
 	{
 		"path": "/docs/learn/resources",
@@ -189,7 +201,8 @@ exports.routes = [
 		"branch": 'v0.3.x',
 		"_version": "current",
 		"docssection": { "version": "0.3.x", "value": "classapi", "path": "/docs/api/current/class", "label": "Class Reference" },
-		"title": "Class Reference"
+		"title": "Class Reference",
+		"anchor-search": "true"
 	},
 	{
 		"path": "/docs/api/current/class",
@@ -200,7 +213,8 @@ exports.routes = [
 		"branch": 'v0.3.x',
 		"_version": "current",
 		"docssection": { "version": "0.3.x", "value": "classapi", "path": "/docs/api/current/class", "label": "Class Reference" },
-		"title": "Class Reference"
+		"title": "Class Reference",
+		"anchor-search": "true"
 	},
 	{
 		"path": "/docs/api/incoming",
@@ -211,7 +225,8 @@ exports.routes = [
 		"_version": "incoming",
 		"branch": 'master',
 		"docssection": { "version": "0.4.x", "value": "classapi", "path": "/docs/api/incoming/class", "label": "Class Reference" },
-		"title": "Class Reference"
+		"title": "Class Reference",
+		"anchor-search": "true"
 	},
 	{
 		"path": "/docs/api/incoming/class",
@@ -222,7 +237,8 @@ exports.routes = [
 		"branch": 'master',
 		"_version": "incoming",
 		"docssection": { "version": "0.4.x", "value": "classapi", "path": "/docs/api/incoming/class", "label": "Class Reference" },
-		"title": "Class Reference"
+		"title": "Class Reference",
+		"anchor-search": "true"
 	},
 	{
 		"path": "/docs/api/current/endpoint",
@@ -233,7 +249,8 @@ exports.routes = [
 		"branch": 'master',
 		"_version": "incoming",
 		"docssection": { "version": "0.4.x", "value": "endpointapi", "path": "/docs/api/current/class", "label": "Class Api" },
-		"title": "Class Api"
+		"title": "Class Api",
+		"anchor-search": "true"
 	},
 	{
 		"path": "/docs/api/0.4.x",
@@ -244,7 +261,8 @@ exports.routes = [
 		"branch": 'master',
 		"_version": "incoming",
 		"docssection": { "version": "0.4.x", "value": "classapi", "path": "/docs/api/0.4.x/class", "label": "Keystone Class Reference" },
-		"title": "Keystone Class Reference"
+		"title": "Keystone Class Reference",
+		"anchor-search": "true"
 	},
 	{
 		"path": "/docs/api/0.4.x/class",
@@ -255,7 +273,8 @@ exports.routes = [
 		"branch": 'master',
 		"_version": "incoming",
 		"docssection": { "version": "0.4.x", "value": "classapi", "path": "/docs/api/0.4.x/class", "label": "Keystone Class Reference" },
-		"title": "Keystone Class Reference"
+		"title": "Keystone Class Reference",
+		"anchor-search": "true"
 	},
 	{
 		"path": "/docs/api/0.4.x/endpoint",
@@ -266,7 +285,8 @@ exports.routes = [
 		"branch": 'master',
 		"_version": "incoming",
 		"docssection": { "version": "0.4.x", "value": "endpointapi", "path": "/docs/api/current/endpoint", "label": "Class Reference" },
-		"title": "Class Reference"
+		"title": "Endpoint Api",
+		"anchor-search": "true"
 	},
 	{
 		"path": "/docs/api/0.3.x",
@@ -277,7 +297,8 @@ exports.routes = [
 		"branch": 'v0.3.x',
 		"_version": "current",
 		"docssection": { "version": "0.3.x", "value": "classapi", "path": "/docs/api", "label": "Keystone Class Reference" },
-		"title": "Keystone Class Reference"
+		"title": "Keystone Class Reference",
+		"anchor-search": "true"
 	},
 	{
 		"path": "/docs/api/0.3.x/class",
@@ -288,7 +309,8 @@ exports.routes = [
 		"branch": 'v0.3.x',
 		"_version": "current",
 		"docssection": { "version": "0.3.x", "value": "classapi", "path": "/docs/api", "label": "Keystone Class Reference" },
-		"title": "Keystone Class Reference"
+		"title": "Keystone Class Reference",
+		"anchor-search": "true"
 	},
 	{
 		"path": "/docs/api/0.2.x",
@@ -299,7 +321,8 @@ exports.routes = [
 		"branch": '0.2.x',
 		"_version": "0.2.x",
 		"docssection": { "version": "0.2.x", "value": "classapi", "path": "/docs/api", "label": "Keystone Class Reference" },
-		"title": "Keystone Class Reference"
+		"title": "Keystone Class Reference",
+		"anchor-search": "true"
 	},
 	{
 		"path": "/docs/api/0.2.x/class",
@@ -310,17 +333,11 @@ exports.routes = [
 		"branch": '0.2.x',
 		"_version": "0.2.x",
 		"docssection": { "version": "0.2.x", "value": "classapi", "path": "/docs/api/0.2.x/class", "label": "Class Reference 0.2.x" },
-		"title": "Class Reference 0.2.x"
+		"title": "Class Reference 0.2.x",
+		"anchor-search": "true"
 	},
-	{
-		"path": "/docs/faqs",
-		"language": "en",
-		"template": "docs/faqs",
-		"section": "docs",
-		"docssection": { "value": "faqs", "path": "/docs/faqs", "label": "FAQs" },
-		"title": "Frequently Asked Questions"
-	},
-	/* {
+	/*
+	 {
 		"path": "/docs/views",
 		"template": "docs/views",
 		"section": "docs",

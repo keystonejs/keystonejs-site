@@ -13,10 +13,7 @@ mixin docsnav(docssection)
 			li(class=docssection.version == '0.4.x' ? 'active' : null): a(href='/docs/api/current/endpoint').nav-heading 0.4.x
 			li
 				a(href='/docs/api/current/class').nav-heading Reference
-	#searchBar
-		.col-xs-12.col-sm-offset-3.col-sm-9.input
-			input(type="text"  placeholder="quick find").form-control.clearable 
-			nav.searchList.docs-sidebar
+	
 	nav.docs-sidebar.hidden-xs.stickyMenu
 		ul.sidebar-nav
 			li

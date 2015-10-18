@@ -120,7 +120,7 @@ if ( (docssection.value == 'endpointapi' ))
 {
 buf.push("<li" + (jade.cls([docssection.version == '0.4.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/current/endpoint\" class=\"nav-heading\">0.4.x</a></li><li><a href=\"/docs/api/current/class\" class=\"nav-heading\">Reference</a></li>");
 }
-buf.push("</ul></div><div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div><nav class=\"docs-sidebar hidden-xs stickyMenu\"><ul class=\"sidebar-nav\"><li><a href=\"/docs\" class=\"nav-heading\">Docs Home</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs stickyMenu\"><ul class=\"sidebar-nav\"><li><a href=\"/docs\" class=\"nav-heading\">Docs Home</a></li>");
 if ( (docssection.value == 'classapi' ))
 {
 buf.push("<li" + (jade.cls([docssection.version == '0.3.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/current/class\" class=\"nav-heading\">Current</a></li><li" + (jade.cls([docssection.version == '0.4.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/incoming/class\" class=\"nav-heading\">Incoming</a></li><li" + (jade.cls([docssection.version == '0.2.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/0.2.x/class\" class=\"nav-heading\">0.2.x</a></li>");
@@ -352,7 +352,7 @@ if ( (docssection.value == 'endpointapi' ))
 {
 buf.push("<li" + (jade.cls([docssection.version == '0.4.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/current/endpoint\" class=\"nav-heading\">0.4.x</a></li><li><a href=\"/docs/api/current/class\" class=\"nav-heading\">Reference</a></li>");
 }
-buf.push("</ul></div><div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div><nav class=\"docs-sidebar hidden-xs stickyMenu\"><ul class=\"sidebar-nav\"><li><a href=\"/docs\" class=\"nav-heading\">Docs Home</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs stickyMenu\"><ul class=\"sidebar-nav\"><li><a href=\"/docs\" class=\"nav-heading\">Docs Home</a></li>");
 if ( (docssection.value == 'classapi' ))
 {
 buf.push("<li" + (jade.cls([docssection.version == '0.3.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/current/class\" class=\"nav-heading\">Current</a></li><li" + (jade.cls([docssection.version == '0.4.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/incoming/class\" class=\"nav-heading\">Incoming</a></li><li" + (jade.cls([docssection.version == '0.2.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/0.2.x/class\" class=\"nav-heading\">0.2.x</a></li>");
@@ -584,7 +584,7 @@ if ( (docssection.value == 'endpointapi' ))
 {
 buf.push("<li" + (jade.cls([docssection.version == '0.4.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/current/endpoint\" class=\"nav-heading\">0.4.x</a></li><li><a href=\"/docs/api/current/class\" class=\"nav-heading\">Reference</a></li>");
 }
-buf.push("</ul></div><div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div><nav class=\"docs-sidebar hidden-xs stickyMenu\"><ul class=\"sidebar-nav\"><li><a href=\"/docs\" class=\"nav-heading\">Docs Home</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs stickyMenu\"><ul class=\"sidebar-nav\"><li><a href=\"/docs\" class=\"nav-heading\">Docs Home</a></li>");
 if ( (docssection.value == 'classapi' ))
 {
 buf.push("<li" + (jade.cls([docssection.version == '0.3.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/current/class\" class=\"nav-heading\">Current</a></li><li" + (jade.cls([docssection.version == '0.4.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/incoming/class\" class=\"nav-heading\">Incoming</a></li><li" + (jade.cls([docssection.version == '0.2.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/0.2.x/class\" class=\"nav-heading\">0.2.x</a></li>");
@@ -816,7 +816,7 @@ if ( (docssection.value == 'endpointapi' ))
 {
 buf.push("<li" + (jade.cls([docssection.version == '0.4.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/current/endpoint\" class=\"nav-heading\">0.4.x</a></li><li><a href=\"/docs/api/current/class\" class=\"nav-heading\">Reference</a></li>");
 }
-buf.push("</ul></div><div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div><nav class=\"docs-sidebar hidden-xs stickyMenu\"><ul class=\"sidebar-nav\"><li><a href=\"/docs\" class=\"nav-heading\">Docs Home</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs stickyMenu\"><ul class=\"sidebar-nav\"><li><a href=\"/docs\" class=\"nav-heading\">Docs Home</a></li>");
 if ( (docssection.value == 'classapi' ))
 {
 buf.push("<li" + (jade.cls([docssection.version == '0.3.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/current/class\" class=\"nav-heading\">Current</a></li><li" + (jade.cls([docssection.version == '0.4.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/incoming/class\" class=\"nav-heading\">Incoming</a></li><li" + (jade.cls([docssection.version == '0.2.x' ? 'active' : null], [true])) + "><a href=\"/docs/api/0.2.x/class\" class=\"nav-heading\">0.2.x</a></li>");
@@ -965,12 +965,7 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div>");
-if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
-{
-buf.push("<div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
-}
-buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
 // iterate docsnav
 ;(function(){
   var $$obj = docsnav;
@@ -1086,12 +1081,7 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div>");
-if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
-{
-buf.push("<div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
-}
-buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
 // iterate docsnav
 ;(function(){
   var $$obj = docsnav;
@@ -1207,12 +1197,7 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div>");
-if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
-{
-buf.push("<div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
-}
-buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
 // iterate docsnav
 ;(function(){
   var $$obj = docsnav;
@@ -1328,12 +1313,7 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div>");
-if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
-{
-buf.push("<div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
-}
-buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
 // iterate docsnav
 ;(function(){
   var $$obj = docsnav;
@@ -1449,12 +1429,7 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div>");
-if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
-{
-buf.push("<div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
-}
-buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
 // iterate docsnav
 ;(function(){
   var $$obj = docsnav;
@@ -1570,12 +1545,7 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div>");
-if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
-{
-buf.push("<div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
-}
-buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
 // iterate docsnav
 ;(function(){
   var $$obj = docsnav;
@@ -1691,12 +1661,7 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div>");
-if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
-{
-buf.push("<div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
-}
-buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
 // iterate docsnav
 ;(function(){
   var $$obj = docsnav;
@@ -1812,12 +1777,7 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div>");
-if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
-{
-buf.push("<div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
-}
-buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
 // iterate docsnav
 ;(function(){
   var $$obj = docsnav;
@@ -1933,12 +1893,7 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div>");
-if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
-{
-buf.push("<div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
-}
-buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
 // iterate docsnav
 ;(function(){
   var $$obj = docsnav;
@@ -2054,12 +2009,7 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div>");
-if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
-{
-buf.push("<div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
-}
-buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
 // iterate docsnav
 ;(function(){
   var $$obj = docsnav;
@@ -2175,12 +2125,7 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div>");
-if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
-{
-buf.push("<div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
-}
-buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
 // iterate docsnav
 ;(function(){
   var $$obj = docsnav;
@@ -2314,12 +2259,7 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div>");
-if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
-{
-buf.push("<div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
-}
-buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
 // iterate docsnav
 ;(function(){
   var $$obj = docsnav;
@@ -2441,12 +2381,7 @@ buf.push("<li" + (jade.cls([docssection.value == item.value ? 'active' : null], 
   }
 }).call(this);
 
-buf.push("</ul></div>");
-if ( docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration')
-{
-buf.push("<div id=\"searchBar\"><div class=\"col-xs-12 col-sm-offset-3 col-sm-9 input\"><input type=\"text\" placeholder=\"quick find\" class=\"form-control clearable\"/><nav class=\"searchList docs-sidebar\"></nav></div></div>");
-}
-buf.push("<nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
+buf.push("</ul></div><nav class=\"docs-sidebar hidden-xs\"><ul class=\"sidebar-nav\"><li" + (jade.cls([docssection.value == 'introduction' ? 'active' : null], [true])) + "><a href=\"/docs\" class=\"nav-heading\">Welcome</a></li>");
 // iterate docsnav
 ;(function(){
   var $$obj = docsnav;
@@ -2628,11 +2563,6 @@ var jade_interp;
 var buf = [];
 var jade_mixins = {};
 var jade_interp;
-
-
-
-
-
 
 
 

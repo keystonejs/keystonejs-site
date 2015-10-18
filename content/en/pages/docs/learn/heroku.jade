@@ -1,0 +1,63 @@
+include ../../../templates/mixins/docsnav
+
+block intro
+	.page-header
+		.container
+			h1 Learn
+			p.lead deploy your app to Heroku
+	
+block content
+	.container: .row
+		
+		.col-sm-3
+			+docsnav(docssection)
+		
+		.col-sm-9: .docs-content
+			
+			h2
+				a(name="faqs")
+				| Deploying to Heroku
+			h3 Description
+			p This section describes the steps required to deploy your KeystoneJS application to Heroku. 
+
+			h3 Prerequisites
+			ol.fancy-list
+				li Sign up for a Heroku account and install the <a href="https://toolbelt.heroku.com/">Heroku Toolbelt</a>
+				li In this section, we will be using Git and Github so make sure you are appropriately set up with both
+				li Create a Keystone application, Github repository and clone the repository locally
+
+			h3 Steps
+			p.lead Create the heroku application
+			p Run the following command <code>heroku create</code> from your terminal and within your Keystone applications root directory. Heroku will generate an app name for you (i.e. beautiful-island-4327) and set up a git remote called Heroku to use for identification
+
+			p.lead If you wish to rename your application
+			p Run the command <code>heroku apps:rename your-new-app-name --app current-name-of-your-app</code> in order to change your applications name
+
+
+			p.lead Add your new Heroku remotes.
+			p Run the command <code>heroku git:remote --app your-new-app-name</code> in order to add the appropriate Heroku remotes
+
+			p.lead Include Heroku add-ons
+			p Firstly, you'll need a database. There are a few providers you can choose from in Heroku's add-ons directory. For the purpose of this walk-through we'll be using Mongolab. Secondly, let's add a logging system. Again, there are a few to choose from but we'll be using Papertrail. This gives you a nice web UI to your application logs and lets you set up alerts for errors, etc. The basic plan for papertrail is also free. 
+			ol 
+				li Adding MongoLab
+				p Run the command <code>heroku addons:add mongolab:sandbox</code>
+				i.mt-2 N.B: You can point your Keystone site at any database provider by customising the MONGO_URI environment variable (make sure to remove the mongolab addon first!)
+
+				li.mt-2 Adding Papertrail
+				p Run the command <code>heroku addons:add papertrail:choklad</code> 
+
+			p.lead Adding environment variables for 3rd party service providers
+			p You can do this yourself (the dashboard gives you the ENV variable set up) or you can add it as an add-on to your Heroku account like Mongolab and Papertrail. We recommend you do this manually as you'll probably want to use the account in development and staging as well, rather than having it tied to as single Heroku app.
+
+			p.lead Deployment
+			p Once you've created your Keystone application and got the database configured, commit all your code to git and run the following command to make your site go live <code>git push heroku master</code>
+
+			p.lead View your live site
+			p Now that you have deployed your application you can enter the command <code>heroku open</code> or simply navigate to http://your-new-app-name.herokapp.com
+
+			p.lead Adding a custom domain
+			p Login to your Heroku account and add a real domain for your application. Following this, point your DNS at Heroku and you're off. You can also set up SSL and whatever else you need. 
+			i N.B: Heroku doesn't keep any changes to the local file system so you can't keep user-uploaded files without putting them on a 3rd party service, hence the Cloudinary/Azure/S3 integration.
+
+			p.mt-2 Make sure to checkout <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs">Heroku's getting started docs for Node.js </a> if you hit any hurdles.

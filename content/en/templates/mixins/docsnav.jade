@@ -3,13 +3,7 @@ mixin docsnav(docssection)
 		each item in docsnav
 			li(class=docssection.value == item.value ? 'active' : null)
 				a(href=item.path).nav-heading= item.labelsm
-	
-	if docssection.value == 'database'  || docssection.value == 'getting-started' || docssection.value == 'configuration'
-		#searchBar
-			.col-xs-12.col-sm-offset-3.col-sm-9.input
-				input(type="text"  placeholder="quick find").form-control.clearable
-				nav.searchList.docs-sidebar
-		
+
 	nav.docs-sidebar.hidden-xs
 		ul.sidebar-nav
 			li(class=docssection.value == 'introduction' ? 'active' : null)
@@ -21,6 +15,18 @@ mixin docsnav(docssection)
 		if docssection.value != 'introduction'
 			ul.sidebar-nav
 				each item in docsnav						
+					if (item.value == docssection.value ) && docssection.override == 'fetch'
+						ul
+							//- test links
+							li.nav-label: a(href='/fetch') Fetch Examples
+							li: a(href="/fetch/noscript") noscript
+							li: a(href="/fetch/body") body noscript
+							li: a(href="/fetch/text") clean text
+							li: a(href="/fetch/json/code") json code
+							li: a(href="/fetch/fail") failure 
+							li: a(href="/fetch/lost-link") should 404  
+							li: a(href="/docs/learn/reference").notspa should reload
+							li: a(href="https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade") should leave
 					if (item.value == docssection.value ) && item.value == 'learn'
 						ul
 							li.nav-label: a(href='/docs/learn') Learn
@@ -28,17 +34,13 @@ mixin docsnav(docssection)
 							li: a(href='/docs/learn/code') Code Examples
 							li: a(href='/docs/learn/resources') Resources
 							
-							//- test links
-							li.nav-label: a(href='/docs/learn/code') Fetch Examples
-							li: a(href="/fetch") noscript
-							li: a(href="/body") body noscript
-							li: a(href="/text") clean text
-							li: a(href="/json/code") json code
-							li: a(href="/markdown") markdown 
-							li: a(href="/fail") failure 
-							li: a(href="/lost-link") should 404  
-							li: a(href="/quick-start").notspa should reload
-							li: a(href="https://github.com/snowkeeper/keystonejs-site/blob/qstart/content/en/pages/docs/getting-started.jade") should leave
+							//- reference links
+							li.nav-label: a(href='/docs/learn/reference/readme') Reference Materials
+							li: a(href='/docs/learn/reference/readme') README  
+							li: a(href='/docs/learn/reference/roadmap') ROADMAP   
+							li: a(href='/docs/learn/reference/history') HISTORY   
+							li: a(href='/docs/learn/reference/contributing') CONTRIBUTING
+					
 					if (item.value == docssection.value ) && item.value == 'getting-started'
 						ul
 							li.nav-label: a(href='#introduction') Introduction
