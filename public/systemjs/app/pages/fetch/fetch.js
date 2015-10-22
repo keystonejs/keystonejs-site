@@ -1,6 +1,6 @@
 import React from 'react'
 import strip from 'striptags'
-import Jade from 'pages/jade';
+import Jade from 'pages/fetch/jade'
 import {languages as nav} from 'config';
 import { translate as markdown }  from 'md'
 import fetch2 from 'fetch'
@@ -10,7 +10,18 @@ if(typeof window.fetch == 'undefined' ) {
 	window.fetch = fetch2
 }
 
-export default (page, Component, dataType) => {
+/**
+ * This is our fetch component
+ * If you send a Component then the data will be added to 
+ * 	Componenet props.response and rendered
+ * 
+ * if Component is false then a div will be rendered
+ * 
+ * You can also use pages/generic for a plain component to render your page into
+ * */
+
+export default (page, Component, dataType, options) => {
+	if(!options) options = {}
 	
 	class Page extends React.Component {
 		constructor(props){
@@ -103,13 +114,41 @@ export default (page, Component, dataType) => {
 						}
 						return data
 						break
+					case 'wikiindexpage':
+						let wikiregx = /\[\[(.*?]*)\]\]/
+						let link
+						let uri = (options.path || '/docs/learn/kb') + '/'
+						while (wikiregx.test(data)) {
+							let match = data.match(wikiregx);
+							if(match) {
+								//console.log('matched',match)
+								// we may have a title and link or just a title
+								let matches = match[1].split('|')
+								if(matches.length === 1) {
+									// conver the title into a link
+									link = matches[0].split(" ").join("-");
+									link = '<a href="' + uri + link + '" >' + matches[0] + '</a>'
+								} else {
+									link = '<a href="' + uri + matches[1] + '" >' + matches[0] + '</a>'
+								}
+								data = data.replace(wikiregx, link);
+							}
+						}
+						return data
+						break
 					default:
 						return data
 				}	
 			}
 		}
 		render() {
-			return this.state.response ? <Component {...this.props} {...this.state} /> : <span />
+			if(this.state.response) {
+				let sendBack = Component ? <Component {...this.props} {...this.state} /> : <div dangerouslySetInnerHTML={{ __html: this.state.response }} />
+				return  sendBack
+			} else {
+				return <span />
+			}
+			
 		}
 	}
 

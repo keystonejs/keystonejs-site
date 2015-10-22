@@ -1,7 +1,12 @@
 import React from 'react'
 import $ from 'jquery'
 import _ from 'lodash'
-import {routes, cleanPath, getFileName, config} from 'config';
+import {routes, config} from 'config';
+import {baseRoute, cleanPath, getFileName} from 'common/util';
+import Debug from 'debug'
+import Gab from 'common/gab'
+
+let debug = Debug('keystone:app:common:listen');
 
 let Routes = routes.map(v => {
 	return v.path;
@@ -49,7 +54,7 @@ export default (Component) => {
 		onUpdate() {
 			let thisComponent = this;
 			this._update = false;
-			//console.log('update listeners')
+			//debug('update listeners')
 			window.scrollTo(0,0);
 			// scroll to anchor
 			// *only* if we have anchor on the url
@@ -70,9 +75,8 @@ export default (Component) => {
 					name = $anchor.attr("name")
 				let link = '<a class="anchor" href="#' + name + '"><i class="entypo entypo-link"></i></a><a class="anchor" href="#top"><i class="entypo entypo-up"></i></a>'
 				const $next = $anchor.next();
-				
-				const version = $('#_version').val(),
-					path = $('#_path').val();
+				const version = $('#_version').val()
+				const path = $('#_path').val()
 
 				if(path) {
 					link += '<i class="anchor" style="padding-right: 0px;"><span>switch to:</span></i>';
@@ -83,6 +87,7 @@ export default (Component) => {
 						}
 					});
 				}	
+				
 				const $link = $(link);
 				
 				// only append links to H2/H3/H4 tags
@@ -148,7 +153,7 @@ export default (Component) => {
 								_cached[branch][target.file] = results;
 								$pre.text(results);
 							})
-						.catch(e => console.log('Fetch error',page,e))
+						.catch(e => debug('Fetch error',page,e))
 					}
 					$pre.slideToggle();
 							
@@ -158,42 +163,57 @@ export default (Component) => {
 			// catch clicks for react-router
 			// to add links that bypass this measure add class '.notspa' or '.uselink'
 			$(document).on('click', 'a:not(.uselink, .notspa, .catchMenuClick)', function(event) {
-				
+			
 				const $url = $(this)[0]
-				const filename = cleanPath($url.pathname)
-				const url = $url.pathname + $url.search + $url.hash
-				//console.log(Routes.indexOf(filename) > -1, (!$url.hash || _this.state.route !== filename), $url.hash , _this.state.route )
+				const myLocation = getFileName($url.href)
+				
+				const filename = myLocation.clean
+				const url = $url.pathname + $url.search + myLocation.hash
+				
+				debug('click information', 'location', myLocation, 'url', url, '$url', $url)
+		
 				// is this a routed link
-				if(Routes.indexOf(filename) > -1 && (!$url.hash || thisComponent.state.route !== filename)) {
+				if(myLocation.route.section !== '404' && (!$url.hash || thisComponent.state.route !== filename)) {
 					event.preventDefault()
-					console.log('push history',  url)
+					debug('push history known route',  url)
 					thisComponent.props.history.pushState(null, url)
 					return
 				}
 				// should this be a 404?
-				if(!$url.hash && $url.host === location.host) {
+				if(!myLocation.hash && $url.host === location.host) {
 					// this app is entirely SPA with defined routes, so this page is probably a 404, but also could be a development, dynamic or hidden page
 					event.preventDefault()
-					console.log('push history unknown ', url)
+					debug('push history unknown route', url)
 					thisComponent.props.history.pushState(null, url)
 					return
 				}
+				if(myLocation.hash && thisComponent.state.route === filename) {
+					// react-router has a bug that triggers a render on same page anchor links
+					// this should catch that and fake the move
+					event.preventDefault()
+					debug('fake scroll', url)
+					let $goto = $('a[name="' + myLocation.hashless + '"]')
+					if($goto.length) {
+						$(document).scrollTop($goto.offset().top)
+					}
+					return
+				}
+				
+				debug('not our link so send away')
 			})	
 			
-			
-		
-		// x for clear
-		function tog(v){
-			return v ? 'addClass' : 'removeClass'
-		} 
-		$(document).on('#searchBar input', '.clearable', function(){
-			$(this)[tog(this.value)]('x');
-		}).on('mousemove', '.x', function( e ){
-			$(this)[tog(this.offsetWidth-22 < e.clientX-this.getBoundingClientRect().left)]('onX');   
-		}).on('touchstart click', '.onX', function( ev ){
-			ev.preventDefault();
-			$(this).removeClass('x onX').val('').change();
-		})
+			// x for clear
+			function tog(v){
+				return v ? 'addClass' : 'removeClass'
+			} 
+			$(document).on('#searchBar input', '.clearable', function(){
+				$(this)[tog(this.value)]('x');
+			}).on('mousemove', '.x', function( e ){
+				$(this)[tog(this.offsetWidth-22 < e.clientX-this.getBoundingClientRect().left)]('onX');   
+			}).on('touchstart click', '.onX', function( ev ){
+				ev.preventDefault();
+				$(this).removeClass('x onX').val('').change();
+			})
 				
 		} // end onMount		
 	}

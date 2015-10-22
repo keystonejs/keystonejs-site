@@ -50,7 +50,7 @@ module.exports = {
 				}
 				fs.readdir(dir, function (err, files) {
 					if (err) {
-						next(); // passing an err to next() kills the series... i should have rtfm
+						next(); 
 					} else {
 						async.eachSeries(files, function(file, done) {
 							file =  path.join(dir, file);

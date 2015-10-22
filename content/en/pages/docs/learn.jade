@@ -3,8 +3,8 @@ include ../../templates/mixins/docsnav
 block intro
 	.page-header
 		.container
-			h1 Learn
-			p.lead articles, examples and resources to help you use Keystone
+			h1 Ref:School
+			p.lead .consume(articles, examples and resources to help you use Keystone)
 	
 block content
 	.container: .row
@@ -18,33 +18,47 @@ block content
 				.col-sm-12.col-md-4
 					.feature-panel
 						.feature-content
-							h4: a(href='/docs/learn/es6') ES6 & System.js
-							p We converted this site to use <a href="https://github.com/systemjs/systemjs" target="_blank">System.js</a>, <a href="http://babeljs.io" target="_blank">Babel</a> and <a href="https://facebook.github.io/react/" target="_blank">React</a>
-				.col-sm-12.col-md-4
-					.feature-panel
-						.feature-content
-							h4: a(href='/docs/learn/heroku') Heroku deployment
-							p Learn how to deploy your app to Heroku.
-				.col-sm-12.col-md-4
-					.feature-panel
-						.feature-content
-							h4: a(href='/docs/learn/code') Code Examples
-							p View code examples for Email, socket.io support and more.
-
-			.row
-				.col-sm-12.col-md-4
-					.feature-panel
-						.feature-content
-							h4: a(href='/docs/learn/resources') Resources
-							p Goodies about everything from MongoDB, mongoose, React, System.js, Keystone and more.
-				.col-sm-12.col-md-4
-					.feature-panel
-						.feature-content
-				.col-sm-12.col-md-4
-					.feature-panel
-						.feature-content
 							h4 Reference Materials
 							p: a(href='/docs/learn/reference/readme') README  
-							p: a(href='/docs/learn/reference/roadmap') ROADMAP   
-							p: a(href='/docs/learn/reference/history') HISTORY   
-							p: a(href='/docs/learn/reference/contributing') CONTRIBUTING
+							p: a(href='/docs/learn/reference/roadmap') Roadmap   
+							p: a(href='/docs/learn/reference/history') History   
+							p: a(href='/docs/learn/reference/contributing') Contributing
+							p: a(href='/docs/learn/reference/coding-standards') Code Standards
+				.col-sm-12.col-md-4
+					.feature-panel(style="")
+						.feature-content
+							h4 Heroku Deployment
+							p: a(href='/docs/learn/heroku') Learn how to deploy your app to Heroku.
+							p You can also deploy a starter project to <a href="https://heroku.com" target="_blank">Heroku</a> for free to try it out:
+							p: a(href='https://heroku.com/deploy?template=https://github.com/JedWatson/keystone-starter' target="_blank"): img(src='https://www.herokucdn.com/deploy/button.png' )
+				.col-sm-12.col-md-4
+					.feature-panel
+						.feature-content
+							h4 Support
+							p: a(href='/docs/learn/kb') Knowledge Base
+							p: a(href='https://gitter.im/keystonejs/keystone?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge' target="_blank") <img src='https://badges.gitter.im/Join%20Chat.svg' />
+							p <a href='https://groups.google.com/d/forum/keystonejs' target="_blank"> Google Group </a> - ideas, questions or need some advice
+							p <a href='https://github.com/keystonejs/keystone/issues' target="_blank"> Issue Tracker </a> - report bugs and issues
+			.row
+				.col-sm-12.col-md-4
+					.feature-panel(style="background:url('/images/es2015.png') no-repeat center;background-size:95px;background-position:35px 75px;")
+						.feature-content
+							h4 ES2015 & System.js
+							p: a(href='/docs/learn/es2015') Read the conversion guide
+							p: br
+							p: br
+							p: br
+							p We converted this site to use <a href="https://github.com/systemjs/systemjs" target="_blank">System.js</a>, <a href="http://babeljs.io" target="_blank">Babel</a> and <a href="https://facebook.github.io/react/" target="_blank">React</a>
+				.col-sm-12.col-md-4
+					.feature-panel(style="background:url('/images/taged.png') no-repeat center;background-position:30px 109px;background-size:54%;")
+						.feature-content
+							h4 Code Examples
+							p View <a href="/docs/learn/code" >code examples</a>  for Email, socket.io support and more.
+				.col-sm-12.col-md-4
+					.feature-panel
+						.feature-content
+							h4 Resources
+							p: a(href='/docs/learn/kb/Related-Projects') Related Projects
+							p <a href="/docs/learn/resources" >Goodies</a> about everything from MongoDB, mongoose, React, System.js, Keystone and more.
+				
+				

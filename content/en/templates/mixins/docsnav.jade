@@ -30,16 +30,19 @@ mixin docsnav(docssection)
 					if (item.value == docssection.value ) && item.value == 'learn'
 						ul
 							li.nav-label: a(href='/docs/learn') Learn
-							li: a(href='/docs/learn/es6') ES6 Rewrite
+							li: a(href='/docs/learn/es2015') ES2015 App
 							li: a(href='/docs/learn/code') Code Examples
 							li: a(href='/docs/learn/resources') Resources
+							li: a(href='/docs/learn/kb') Knowledge Base
+							li: a(href='/docs/learn/heroku') Deploy to Heroku
 							
 							//- reference links
 							li.nav-label: a(href='/docs/learn/reference/readme') Reference Materials
 							li: a(href='/docs/learn/reference/readme') README  
-							li: a(href='/docs/learn/reference/roadmap') ROADMAP   
-							li: a(href='/docs/learn/reference/history') HISTORY   
-							li: a(href='/docs/learn/reference/contributing') CONTRIBUTING
+							li: a(href='/docs/learn/reference/roadmap') Roadmap   
+							li: a(href='/docs/learn/reference/history') History   
+							li: a(href='/docs/learn/reference/contributing') Contributing
+							li: a(href='/docs/learn/reference/coding-standards') Coding Standards
 					
 					if (item.value == docssection.value ) && item.value == 'getting-started'
 						ul

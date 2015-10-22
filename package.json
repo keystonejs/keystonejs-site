@@ -42,8 +42,12 @@
     "npm": ">= 1.4.9"
   },
   "devDependencies": {
-    "jspm": "^0.16.12",
-    "less": "^2.5.3"
+    "babel-core": "^5.8.25",
+    "gulp-less": "^3.0.3",
+    "gulp-minify-css": "^1.2.1",
+    "jspm": "^0.16.13",
+    "less": "^2.5.3",
+    "systemjs-builder": "^0.14.8"
   },
   "jspm": {
     "directories": {
@@ -52,8 +56,10 @@
     "dependencies": {
       "@lukekarrys/jade-runtime": "npm:@lukekarrys/jade-runtime@^1.11.1",
       "anchor-js": "npm:anchor-js@^1.3.0",
+      "debug": "npm:debug@^2.2.0",
+      "events": "github:jspm/nodelibs-events@^0.1.1",
       "fetch": "npm:whatwg-fetch@^0.10.0",
-      "history": "npm:history@^1.12.4",
+      "history": "npm:history@^1.12.5",
       "jade-runtime": "npm:jade-runtime@1.0.0",
       "jquery": "github:components/jquery@1.10.2",
       "lodash": "npm:lodash@^3.10.1",
@@ -61,12 +67,14 @@
       "prism": "github:PrismJS/prism@^1.2.0",
       "react": "npm:react@^0.14.0",
       "react-addons-test-utils": "npm:react-addons-test-utils@^0.14.0",
+      "react-console": "npm:react-console@^0.0.8",
       "react-dom": "npm:react-dom@^0.14.0",
       "react-router": "npm:react-router@^1.0.0-rc3",
       "showdown": "github:showdownjs/showdown@^1.2.3",
       "snowkeeper/tag-search": "github:snowkeeper/tag-search@master",
       "striptags": "npm:striptags@^2.0.4",
-      "tag-search": "npm:tag-search@^0.0.9"
+      "tag-search": "npm:tag-search@^0.0.16",
+      "util": "github:jspm/nodelibs-util@^0.1.0"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",

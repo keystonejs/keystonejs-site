@@ -19,8 +19,9 @@ exports.languages = {
 			{ "value": "getting-started", "path": "/docs/getting-started", "label": "Getting Started", "labelsm": "Start" },
 			{ "value": "configuration", "path": "/docs/configuration", "label": "Configuration", "labelsm": "Config" },
 			{ "value": "database", "path": "/docs/database", "label": "Database", "labelsm": "Lists" },
+			{ "value": "learn", "path": "/docs/learn", "label": "Learn", "labelsm": "Learn" },
 			{ "value": "classapi", "path": "/docs/api/current/class", "label": "Class Reference", "labelsm": "Api" },
-			{ "value": "learn", "path": "/docs/learn", "label": "Learn", "labelsm": "Learn" }
+			
 			/*{ "value": "faqs", "path": "/docs/faqs", "label": "FAQ's", "labelsm": "FAQ" }*/
 		],
 	},
@@ -63,7 +64,6 @@ exports.routes = [
 	},
 	{
 		"path": "/footer",
-		"language": "en",
 		"partial": "common/templates/layout/footer"
 	},
 	{
@@ -148,6 +148,7 @@ exports.routes = [
 		"language": "en",
 		"template": "docs/learn",
 		"section": "docs",
+		"dynamic": "true",
 		"docssection": { "value": "learn", "path": "/docs/learn", "label": "Learn" },
 		"title": "Learn"
 	},
@@ -160,11 +161,11 @@ exports.routes = [
 		"title": "Learn: deploying your app to Heroku"
 	},
 	{
-		"path": "/docs/learn/es6",
+		"path": "/docs/learn/es2015",
 		"language": "en",
-		"template": "docs/learn/es6",
+		"template": "docs/learn/es2015",
 		"section": "docs",
-		"docssection": { "value": "learn", "path": "/docs/learn/es6", "label": "ES6" },
+		"docssection": { "value": "learn", "path": "/docs/learn/es2015", "label": "ES2015" },
 		"title": "System.js, Babel and React",
 		"anchor-search": "true"
 	},
@@ -179,10 +180,22 @@ exports.routes = [
 	{
 		"path": "/docs/learn/code",
 		"language": "en",
-		"template": "docs/learn/code",
 		"section": "docs",
+		"skip": "true",
+		"dynamic": "true",
+		"anchor-search": "true",
 		"docssection": { "value": "learn", "path": "/docs/learn/code", "label": "Code" },
 		"title": "Code Examples"
+	},
+	{
+		"path": "/docs/learn/kb",
+		"language": "en",
+		"section": "docs",
+		"skip": "true",
+		"dynamic": "true",
+		"anchor-search": "true",
+		"docssection": { "value": "learn", "path": "/docs/learn/kb", "label": "Knowledge Base" },
+		"title": "Knowledge Base"
 	},
 	{
 		"path": "/docs/api",
@@ -408,31 +421,6 @@ exports.routes = [
 		"title": "在你的应用程序中使用Views"
 	},*/
 ]
-
-exports.getFileName = function getFileName(url){
-	var urls = {}
-	urls.segments = url.split('/');
-	//remove the protocol
-	url = url.replace(/.*?:\/\//g, "");
-	urls.host = url;
-	//this removes everything before the first slash in the path (host:port)
-	url = url.substring(url.indexOf("/"), url.length);
-	urls.anchor = url;
-	//this removes the anchor at the end, if there is one
-	url = url.substring(0, (url.indexOf("#") == -1) ? url.length : url.indexOf("#"));
-	urls.query = url;
-	//this removes the query after the file name, if there is one
-	url = url.substring(0, (url.indexOf("?") == -1) ? url.length : url.indexOf("?"));
-	urls.final = url;
-	// remove a trailing slash
-	url = url[url.length-1] === '/' ? url.substring(url.lastIndexOf("/"), -1) : url;
-	urls.clean = url.trim();
-	//return
-	return urls;
-}
-exports.cleanPath = function(path) {
-	return path[path.length-1] === '/' ? path.slice(0,-1) : path;
-}
 
 exports.config = {
 	location: {},
