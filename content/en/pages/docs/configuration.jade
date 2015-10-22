@@ -189,6 +189,11 @@ block content
 				tr
 					td <code>trust proxy</code> <code class="data-type">Boolean</code>
 					td Set this to enable processing of the HTTP request <code>X-Forwarded-For</code> header. Extracted IP addresses will be available as the array <code>req.ips</code> (<a href="http://expressjs.com/api.html#req.ips">see docs here</a>).
+				tr
+					td <code>api whitelist</code> <code class="data-type">Array of Strings</code>
+					td
+						p Set this to allow read-only GET access to parts of the API. Each string will be tested against the API path as a regex.
+						p For example, if you want to allow access to <code>/keystone/api/posts/</code>, you should pass <code>['posts']</code>.
 			
 			.code-header
 				h4 Alternate View Engines
