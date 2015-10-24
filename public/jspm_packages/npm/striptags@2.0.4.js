@@ -1,0 +1,1 @@
+module.exports = require("npm:striptags@2.0.4/index");

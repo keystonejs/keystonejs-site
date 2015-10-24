@@ -1,0 +1,1 @@
+module.exports = require("npm:asap@1.0.0/asap");

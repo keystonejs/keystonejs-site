@@ -1,0 +1,7 @@
+{
+  "main": "md",
+  "registry": "jspm",
+  "dependencies": {
+    "showdown": "^1.2.3"
+  }
+}

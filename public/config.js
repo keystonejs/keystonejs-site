@@ -10,8 +10,8 @@ System.config({
     "blacklist": []
   },
   paths: {
-    "github:*": "systemjs/jspm_packages/github/*",
-    "npm:*": "systemjs/jspm_packages/npm/*",
+    "github:*": "jspm_packages/github/*",
+    "npm:*": "jspm_packages/npm/*",
     "app/*": "systemjs/app/*.js",
     "pages/*": "systemjs/app/pages/*.js",
     "common/*": "systemjs/app/common/*.js",

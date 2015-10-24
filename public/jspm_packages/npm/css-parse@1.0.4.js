@@ -1,0 +1,1 @@
+module.exports = require("npm:css-parse@1.0.4/index");

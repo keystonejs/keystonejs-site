@@ -5,7 +5,6 @@
 ## Running locally
 
     $ npm install  
-    $ jspm install  
     $ npm start  
     
 ## Gulp

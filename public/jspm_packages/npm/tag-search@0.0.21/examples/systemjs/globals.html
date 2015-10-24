@@ -1,0 +1,118 @@
+<html>
+<body>
+	
+	
+<h1>System.js  File</h1>
+
+<a name="home"></a>
+<h2>Home</h2>
+<p> <a href="/">home</a> </p>
+
+<h2>Run <code>jspm install</code> to use this example</h2>
+
+<h4>To use on your page</h4>
+<pre>
+<code>
+		&lt;div id="anchor-search"&gt; &lt;/div&gt;
+		&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"&gt;&lt;/script&gt;
+		&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.min.js"&gt;&lt;/script&gt;
+		&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"&gt;&lt;/script&gt;
+		&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"&gt;&lt;/script&gt;
+		&lt;script src="globals.js"&gt;&lt;/script&gt;
+
+		&lt;script src="jspm_packages/system.js"&gt;&lt;/script&gt;
+		&lt;script src="config.js"&gt;&lt;/script&gt;
+		&lt;script&gt;
+		System.set('react', System.newModule({
+			"default": window.React
+		}));
+		System.set('react-dom', System.newModule({
+			"default": window.ReactDom
+		}));
+		System.set('jquery', System.newModule({
+			"default": window.JQuery
+		}));
+		System.set('_', System.newModule({
+			"default": window.lodash
+		}));
+		System.import('entry').catch(function(e){setTimeout(function(){throw e;});});
+		&lt;/script&gt;
+	</code>
+</pre>
+
+<p>This is a System.js normal build with babel.  It includes React, react-dom, jquery, lodash and all dependencies through import.</p>
+
+<p>For old school javascript pages use the <a href="index.html">inclusive System.js build</a> or the example with <a href="globals.html">Global libs.</a> </p>
+
+<h4>Browserify Build</h4>
+<p>For browserify builds checkout the <a href="../browserify/index.html">example browserified build</a> or the example with <a href="../browserify/globals.html">global libs.</a> </p>
+
+<div id="anchor-search"> </div>
+
+<a name="systemjs-normal"></a>
+<h3>System.js</h3>
+<p> <a href="/systemjs/index.html">dev System.js build</a> </p>
+
+
+<a name="systemjs-inclusive"></a>
+<h3>System.js inclusive file</h3>
+<p><a href="/systemjs/inclusive.html">inclusive System.js build</a></p>
+
+
+<a name="systemjs-global"></a>
+<h3>System.js using global dependencies</h3>
+<p><a href="/systemjs/globals.html">global libs.</a></p>
+
+<a name="browserify-inclusive"></a>
+<h3>Broserified inclusive file</h3>
+<p><a href="/browserify/">inclusive browserify build</a></p>
+
+
+<a name="bro-global"></a>
+<h3>Browserified using global dependencies</h3>
+<p><a href="/browserify/globals.html">global libs.</a></p>
+<p><br/>&nbsp;</p>
+<p><br/>&nbsp;</p>
+<p><br/>&nbsp;</p>
+<p>scroll down to test jump</p>
+<p><br/>&nbsp;</p>
+<p><br/>&nbsp;</p>
+<p><br/>&nbsp;</p>
+<p><br/>&nbsp;</p>
+<p><br/>&nbsp;</p>
+<p><br/>&nbsp;</p>
+<p><br/>&nbsp;</p>
+<p><br/>&nbsp;</p>
+<p><br/>&nbsp;</p>
+<p><br/>&nbsp;</p>
+<p><br/>&nbsp;</p>
+<p><br/>&nbsp;</p>
+<p><br/>&nbsp;</p>
+<p><br/>&nbsp;</p>
+<p><br/>&nbsp;</p>
+<p><br/>&nbsp;</p>
+<p>End</p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+
+<script src="jspm_packages/system.js"></script>
+<script src="config.js"></script>
+<script >
+System.set('react', System.newModule({
+    "default": window.React
+}));
+System.set('react-dom', System.newModule({
+    "default": window.ReactDom
+}));
+System.set('jquery', System.newModule({
+    "default": window.JQuery
+}));
+System.set('_', System.newModule({
+    "default": window.lodash
+}));
+System.import('entry').catch(function(e){setTimeout(function(){throw e;});});
+</script>
+</body>
+</html>

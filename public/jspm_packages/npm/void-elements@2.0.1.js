@@ -1,0 +1,1 @@
+module.exports = require("npm:void-elements@2.0.1/index");

@@ -1,0 +1,71 @@
+{
+  "name": "tag-search",
+  "version": "0.0.21",
+  "description": "search and list html tags like named anchor links",
+  "main": "lib/tag-search.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/snowkeeper/tag-search"
+  },
+  "keywords": [
+    "react",
+    "systemjs",
+    "javascipt",
+    "inclusive",
+    "anchor",
+    "html",
+    "a",
+    "tag",
+    "code",
+    "h3",
+    "h1",
+    "h2",
+    "search",
+    "tag search",
+    "html tag",
+    "html tags"
+  ],
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  },
+  "author": "snowkeeper",
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "babelify": "^6.3.0",
+    "browserify": "^11.0.1",
+    "browserify-global-shim": "^1.0.0",
+    "gulp": "^3.9.0",
+    "gulp-filesize": "0.0.6",
+    "gulp-minify": "0.0.5",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.4.2",
+    "jspm": "^0.16.12",
+    "live-server": "^0.8.1",
+    "reactify": "^1.1.1",
+    "systemjs": "^0.19.4",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.4.0"
+  },
+  "jspm": {
+    "format": "es6",
+    "registry": "npm",
+    "dependencies": {
+	  "debug": "^2.2.0",
+	  "jquery": "^2.1.4",
+	  "lodash": "^3.10.1",
+	  "react": "^0.14.0",
+	  "react-dom": "^0.14.0"
+	}
+  },
+  "dependencies": {
+    "debug": "^2.2.0",
+    "jquery": "^2.1.4",
+    "lodash": "^3.10.1",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0"
+  }
+}

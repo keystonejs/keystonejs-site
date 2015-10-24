@@ -1,0 +1,1 @@
+module.exports = require("npm:jstransformer@0.0.2/index");

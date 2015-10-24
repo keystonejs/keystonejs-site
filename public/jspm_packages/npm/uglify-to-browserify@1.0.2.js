@@ -1,0 +1,1 @@
+module.exports = require("npm:uglify-to-browserify@1.0.2/index");

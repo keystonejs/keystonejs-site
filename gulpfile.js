@@ -170,7 +170,7 @@ gulp.task("pages", ['index'], function(cb){
 
 gulp.task("copy",  function(cb){
 	// fonts
-	gulp.src(['./public/config.js', './public/systemjs/jspm_packages/system.js']).pipe(gulp.dest('./build'));
+	gulp.src(['./public/config.js', './public/jspm_packages/system.js']).pipe(gulp.dest('./build'));
 	gulp.src([ './public/favicon.ico', './public/images/**/*', './public/fonts/**/*', './public/favicon.ico'], {
             base: 'public'
     }).pipe(gulp.dest('./build'));
@@ -196,7 +196,7 @@ gulp.task('build', function (callback) {
 
 gulp.task('build-no-clean', ['pages','css','jade','api','copy'], function (cb) {
 	// sets the baseURL and loads the configuration file
-		var builder = new Builder('./public/', './public/systemjs/config.js');
+		var builder = new Builder('./public/', './public/config.js');
 		gutil.log('start inclusive bundle');
 		builder.bundle('app/app', './build/inclusive-bundle.js', { minify: true, sourceMaps: false })
 			.then(function() {
