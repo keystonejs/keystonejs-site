@@ -72,8 +72,8 @@ gulp.task("menu", function() {
 	console.log('.. build-no-clean ... does not delete build dir first                        ..')
 	console.log('.. bundle-html ... bundle jade & api and save in app/bundles/html.js         ..')
 	console.log('.. bundle-dependencies ... bundle and save in app/bundles/dependencies.js    ..')
+	console.log('.. dev-bundle ... run bundle-html && bundle-dependencies                     ..')
 	console.log('...............................................................................')
-	console.log('-------------------------------------------------------------------------------')
 	console.log('-------------------------------------------------------------------------------')
 
 });
@@ -337,8 +337,8 @@ gulp.task('bundle-html', function (cb) {
 
 // bundle all dependencies
 // see public/systemjs/client.js to use
-gulp.task('bundle-dependencies', ['jade','api'], function (cb) {
-	var builder = new Builder('./public/', './public/systemjs/config.js');
+gulp.task('bundle-dependencies',  function (cb) {
+	var builder = new Builder('./public/', './public/config.js');
 	builder.bundle('app/app - [systemjs/app/**/*]', '../public/systemjs/bundles/dependencies.js', { minify: true, sourceMaps: true })
 	.then(function() {
 		gutil.log('wrote /systemjs/bundles/dependencies.js');
@@ -349,4 +349,12 @@ gulp.task('bundle-dependencies', ['jade','api'], function (cb) {
 		gutil.log('FAILED dep bundle ',err)
 		cb()
 	});
+});
+
+// shortcut to both
+// build then push to production
+gulp.task('dev-bundle', function (callback) {
+	
+	runSequence('bundle-html', 'bundle-dependencies', callback);
+	return
 });

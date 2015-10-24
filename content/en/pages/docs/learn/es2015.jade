@@ -19,13 +19,96 @@ block content
 						.jl-guide__title-info  rundown of our requirements for a complete project    
 				p The goal of this guide will be to take a current ExpressJS website built with Jade templates and convert it into a React based SPA integrated with Keystone. The current jade templates will remain and be included via plugin. A route config file will be used to designate the process for compiling each page.
 				p  We will perform this excercise with source code from the current website for <a href="https://github.com/keystonejs/keystonejs-site">KeystoneJS.com</a>.  Since the final output will need to be a <code>gh-pages</code> deployment, this guide will also document that process as well.  
-				p In place of webpack / browserify we will use <a href="https://github.com/systemjs/systemjs">System.js</a> and build based on ES6 making use of <a href="http://babeljs.io">babel</a>
-				Rundown
-				ul
-					li ES6 with System.js and babel
-					li SPA using React and React-Router
-					li Add Keystone to current express setup
-					li Build process to deploy static version to  <code>gh-pages</code> branch
+				p We will use <a href="https://github.com/systemjs/systemjs">System.js</a> with jspm to manage our packages, and build using ES6 thanks to <a href="http://babeljs.io">babel</a>  
+				h4 Table of Contents
+				ul.fancy-list
+					li: a(href="#prepare") Prepare
+					li: a(href="#client-files") Client Files
+						ol
+							li: a(href="#jade") Fix and create Jade files
+							li: a(href="#route-config") Fix and move route config
+							li: a(href="#jspm") Setup jspm and install client packages
+							li: a(href="#app") Create App 
+							li: a(href="#componenets") App Pages & Components
+							li: a(href="#fetch") Fetch Component
+							li: a(href="#render-jade") Jade Component
+					li: a(href="#clean") Remove old files
+					li: a(href="#build") Create build tasks with <code>gulp</code>
+						ol
+							li: a(href="#jade-functions") Build template functions from jade files
+							li: a(href="#bundle") Bundle app with </code>systemjs-builder</code>
+							li: a(href="#deploy") Deploy to <code>gh-pages</code>
+					li: a(href="#prepare") Add Keystone
+					
+				h4 Final Folder Structure
+				ul.folder-list
+					li.folder content
+						ol
+							li.folder common/templates/layout
+								ol
+									li base.jade
+									li dev_base.jade
+									li footer.jade
+									li header.jade
+									li spa_base.jade
+							li.folder en
+								ol
+									li.folder ...
+									li ...
+							li.folder zh
+								ol
+									li.folder ...
+									li ...
+							li 404.jade	
+							li index.jade
+					li.folder dev
+						ol
+							li apiMarked.js 
+							li server.js
+					li.folder public
+						ol
+							li.folder fonts
+							li.folder images
+							li.folder jspm_packages
+							li.folder styles
+							li.folder systemjs
+								ol
+									li.folder app
+										ol
+											li.folder common
+												ol
+													li gab.js
+													li listen.js
+													li render.js
+													li routes.js
+													li util.js
+											li.folder html
+												ol
+													li apiMarked.js
+													li templates.js
+											li.folder pages
+												ol
+													li.folder component
+														ol
+															li generic.js
+															li generic-fetch.js
+															li kb.js
+													li.folder fetch
+														ol
+															li fetch.js
+															li jade.js
+													li code-examples.js
+													li example.js
+													li kb-page.js
+													li learning.js
+									li.folder bundles
+									li analytics.js
+									li bootstrap-collapse.js
+									li client.js
+							li config.js
+							li deploy.html
+							li favicon.ico
+					
 			// prepare
 			.jl-guide-section
 				.jl-guide__header

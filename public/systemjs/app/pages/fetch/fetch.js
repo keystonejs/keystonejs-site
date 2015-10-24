@@ -7,7 +7,7 @@ import fetch2 from 'fetch'
 import Debug from 'debug'
 import Gab from 'common/gab'
 
-let debug = Debug('keystone:app:pages:fetch');
+let debug = Debug('keystone:app:pages:fetch:fetch');
 
 if(typeof window.fetch == 'undefined' ) {
 	// polyfill fetch

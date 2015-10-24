@@ -5,6 +5,9 @@ import api from 'app/html/markedApi'
 import _ from 'lodash'
 import {languages, routes, config} from 'config'
 import {baseRoute, cleanPath, getFileName} from 'common/util'
+import Debug from 'debug'
+
+let debug = Debug('keystone:app:pages:fetch:jade');
 
 export default (page, addLocals, inheritPropsFrom, useLocals) => {
 	

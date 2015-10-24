@@ -409,6 +409,34 @@ span.subMethod {
 	font-weight: bold;
 }
 
+// folder ul
+ul.folder-list, ol.folder-list {
+	margin-bottom: 0;
+	ol {
+		margin-bottom: 0;
+	}
+	list-style-type: none;
+	li:before {
+		display: none;
+	}
+	.folder {
+		color: darken(@link-color, 30%);
+	}
+	color: darken(@link-color, 30%);
+	li {
+		
+		ol {
+			list-style-image: url("/images/lists/nested.png");
+			padding-left: 18px;
+			li {
+				color: @brand-primary;
+				margin-left:10px;
+			}
+		}
+	}
+
+}
+
 // notes
 .note {
 	border-left: 3px solid @gray-lighter;
