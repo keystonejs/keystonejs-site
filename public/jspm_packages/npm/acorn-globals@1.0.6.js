@@ -1,1 +1,0 @@
-module.exports = require("npm:acorn-globals@1.0.6/index");

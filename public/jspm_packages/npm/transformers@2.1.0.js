@@ -1,1 +1,0 @@
-module.exports = require("npm:transformers@2.1.0/lib/transformers");

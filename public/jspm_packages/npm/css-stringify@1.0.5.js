@@ -1,1 +1,0 @@
-module.exports = require("npm:css-stringify@1.0.5/index");

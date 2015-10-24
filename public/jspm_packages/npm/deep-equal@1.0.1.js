@@ -1,1 +1,0 @@
-module.exports = require("npm:deep-equal@1.0.1/index");

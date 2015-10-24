@@ -1,1 +1,0 @@
-module.exports = require("github:guybedford/system-md@0.0.2/md");
