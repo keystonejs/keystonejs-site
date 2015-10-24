@@ -1,6 +1,5 @@
 import {routes as routeArray} from 'config'
 import React from 'react'
-import ReactConsole from 'react-console'
 import Debug from 'debug'
 
 let debug = Debug('keystone:pages:component:util');
@@ -9,66 +8,6 @@ let debug = Debug('keystone:pages:component:util');
 let routes = {}
 for (let v of routeArray) {
   routes[v.path] = v
-}
-
-export class Console extends React.Component {
-	constructor(props){
-		super(props)
-		this.displayName = 'Page Template'
-		this.state = { 
-			log: {
-				alive: false,
-			}
-		}
-		
-		//debug.log = this.debugLogger.bind(this);
-		this.props = props;
-		// set console to our logger
-		//this.oldConsole = window.console.log
-		//window.console.log = this.consoleLogger.bind(this);
-	}
-	render() {
-		let Comp = React.createFactory(ReactConsole)
-		return  (<div><Comp command={this.command} toggle={this.toggleConsole} alive={this.state.log.alive} log={this.state.log} /></div>)
-	}
-	command(value) {
-		// value is text box value 
-	}
-	toggleConsole(e) {
-		this.setState({ log: {alive: !this.state.log.alive} });
-	}
-	openConsole() {
-		this.setState({ log: {alive: true} });
-	}
-	logger(data) {
-		var log = {
-			alive: this.state.log,
-			message: data.message,
-			doc: data.doc,
-			error: data.error,
-		};
-		
-		this.setState({log : log});
-	}
-	consoleLogger(...messages) {
-		
-		for(let msg of messages) {
-			this.setState({
-				log :{
-					alive: this.state.log.alive,
-					message: msg
-				}
-			});
-		}
-	}
-	debugLogger(msg) {
-		var log = {
-			alive: this.state.log,
-			message: msg
-		};
-		
-		this.setState({log : log});
-	}
 }
 
 export function getFileName(url) {

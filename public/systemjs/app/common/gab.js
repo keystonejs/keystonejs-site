@@ -1,12 +1,9 @@
 import {EventEmitter} from 'events'
-import util from 'util'
 
-class Gab {
+class Gab extends EventEmitter {
 	constructor() {
-		EventEmitter.call(this);
+		super()
 	}
 }
-
-util.inherits(Gab, EventEmitter)
 
 export default new Gab()

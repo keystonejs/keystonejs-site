@@ -48,8 +48,8 @@ export default (Component) => {
 			}
 		}
 		componentDidMount() {
-			this.onUpdate();
 			this.onMount();
+			this.onUpdate();
 		}
 		onUpdate() {
 			let thisComponent = this;
@@ -123,46 +123,63 @@ export default (Component) => {
 					}
 				});
 			}
+			
+			// Run Prism highlighting
+			// weird error on api pages needs a second run
+			if(location.pathname.search('api') > -1) {
+				debug('highlight again', location.pathname.search('api'))
+				setTimeout(Prism.highlightAll,1000)
+			}
+			Prism.highlightAll()
 			 		
 		} // end onUpdate
 		onMount() {
 			let thisComponent = this;
 			let _cached = {}
 			let create_cached = function(version) {
-				if(typeof _cached[version] !== 'Object') {
+				if(!_.isObject(_cached[version])) {
 					_cached[version] = {}
 				}
 			}
 			// catch code view click
 			$(document).on('click', '.loadCode', function(e) {
-				e.preventDefault();
-				let $this = $(this);
-				let target = $this.parent().data();
-				
-				if(target.file) {
-					const branch = $('#_branch').val();
-					create_cached(branch);
-					const url = 'https://raw.githubusercontent.com/keystonejs/keystone/BRANCH/FILE'.replace('BRANCH',branch).replace('FILE', target.file);
-					const $pre = $this.parent().next();
-					if(_cached[branch][target.file]) {
-						$pre.text(_cached[branch][target.file]);
-					} else {
-						fetch(url)
-							.then(r => r.text())
-							.then(results => {
-								_cached[branch][target.file] = results;
-								$pre.text(results);
-							})
-						.catch(e => debug('Fetch error',page,e))
+				e.preventDefault()
+				const $this = $(this)
+				const target = $this.parent().data()
+				const $pre = $this.parent().next()
+				let pass = (go=true) => {
+					if(go) {
+						$pre.slideToggle();
 					}
-					$pre.slideToggle();
-							
 				}
+				const branch = $('#_branch').val();
+				create_cached(branch);
+				if($pre.css('display') === 'block') {
+					// just toggle close
+					pass()
+				} else if(_cached[branch][target.file]) {
+					// cached results so just toggle open
+					pass()
+				} else if(target.file) {
+					const url = 'https://raw.githubusercontent.com/keystonejs/keystone/BRANCH/FILE'.replace('BRANCH',branch).replace('FILE', target.file);
+					debug('github code cache',_cached, target.file)
+					fetch(url)
+						.then(r => r.text())
+						.then(results => {
+							_cached[branch][target.file] = Prism.highlight(results, Prism.languages.js);
+							debug(_cached)
+							$pre.html(_cached[branch][target.file])
+							pass()
+						})
+					.catch(e => debug('Fetch error',page,e))	
+				} else {
+					pass(false)
+				}				
 			});			
 			
 			// catch clicks for react-router
 			// to add links that bypass this measure add class '.notspa' or '.uselink'
-			$(document).on('click', 'a:not(.uselink, .notspa, .catchMenuClick)', function(event) {
+			$(document).on('click', 'a:not(.uselink, .notspa, .catchMenuClick, .loadCode)', function(event) {
 			
 				const $url = $(this)[0]
 				const myLocation = getFileName($url.href)
@@ -170,8 +187,13 @@ export default (Component) => {
 				const filename = myLocation.clean
 				const url = $url.pathname + $url.search + myLocation.hash
 				
-				debug('click information', 'location', myLocation, 'url', url, '$url', $url)
-		
+				debug('click information', location, myLocation, 'url', url, '$url', $url.hostname)
+				
+				if(location.hostname !== $url.hostname) {
+					// not our link 
+					return
+				}
+				
 				// is this a routed link
 				if(myLocation.route.section !== '404' && (!$url.hash || thisComponent.state.route !== filename)) {
 					event.preventDefault()

@@ -3,7 +3,6 @@ import Pages from 'pages/fetch/fetch'
 import Debug from 'debug'
 import Gab from 'common/gab'
 
-
 let debug = Debug('keystone:pages:component:kb');
 
 	export default (path, home, giturl) => {
@@ -21,6 +20,7 @@ let debug = Debug('keystone:pages:component:kb');
 				}
 				this._update = false
 				this._stopInterval = false
+				this.tagSearch = this.tagSearch.bind(this)
 			}
 			setPage() {
 				let url = giturl 
@@ -33,8 +33,8 @@ let debug = Debug('keystone:pages:component:kb');
 					returnType = ['markdown','wikiindexpage']
 				}
 				let page = url + pathname + '.md'
-				
-				let html = Pages(page, false, returnType, {path: path})
+
+				let html = Pages(page, false, returnType, {path: path, onUpdate: this.tagSearch})
 				
 				return html
 			}
@@ -45,24 +45,20 @@ let debug = Debug('keystone:pages:component:kb');
 			}
 			componentDidUpdate() {
 				debug('didUpdate');
-				if(this._update && this.state.html !== '') {
-					debug('really did update');
-					this._stopInterval = false
-					this.tagSearch();
-				}
 			}
 			componentDidMount() {
 				debug('did mount');
-				this.tagSearch();
+				
 			}
 			tagSearch() {
 				debug('tag-search');
-				this._update = false;
 				
+				Prism.highlightAll()
+								
 				setTimeout(() => {
 					debug('emit tag options')
 					Gab.emit('tag-search:tag','.create-anchor-links :header');
-				},700);
+				},500);
 				// wait for results
 				Gab.once('tag-search:tagged',(tags) => {
 					debug('got tag response', tags)

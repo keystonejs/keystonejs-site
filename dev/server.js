@@ -9,7 +9,24 @@ var favicon = require('serve-favicon');
 var less = require('less-middleware');
 var logger = require('morgan');
 var fs = require('fs');
-var jadeFn = require('./jadeFunctions.js');
+var gulp = require('gulp'); 
+var jade = require('gulp-jade');
+var jadeConcat = require('gulp-jade-template-concat');
+
+function compileJade(done) {
+  gulp.src('./content/**/*.jade')
+    .pipe(jade({
+        client: true
+    }))
+    .pipe(jadeConcat('templates.js', {templateVariable:"templates"}))
+    .pipe(gulp.dest('./public/systemjs/app/html'))
+    .on('end', function () {
+      if (done) { 
+        done(); // callback to signal end of build
+      }
+    });
+}
+
 	
 var app = express();
 
@@ -36,18 +53,13 @@ app.locals.version = require('../package.json').version;
 
 app.use('/systemjs/app/html/templates.js', function(req, res, next) {
 	console.log('get jade template file');
-	jadeFn.create({
-		dirname: '../content',
-		output: '../public/systemjs/app/templates.js',
-		compress: false,
-	}, function(contents) {
+	compileJade(function() {
 		//res.set('Content-Type', 'text/javascript');
-		res.status(200).sendFile('templates.js', {root: '../public/systemjs/app/'});
+		res.status(200).sendFile('templates.js', {root: '../public/systemjs/app/html/'});
 	});	
 });
+
 app.use(express.static('../public'));
-
-
 
 app.get('/*', function(req, res, next) {
 	//console.log('here')

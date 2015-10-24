@@ -18,7 +18,6 @@
     "fs.extra": "^1.3.2",
     "gh-pages": "^0.4.0",
     "github": "^0.2.4",
-    "http2": "^3.2.0",
     "jade": "^1.9.2",
     "jstransformer-marked": "^1.0.1",
     "keystone": "^0.3.14",
@@ -33,8 +32,10 @@
     "url": "https://github.com/keystonejs/keystonejs-site/issues"
   },
   "scripts": {
-    "build": "cd dev && node ./testbuild.js",
-    "start": "cd dev && node ./server.js"
+    "build": "gulp build",
+    "start": "cd dev && node ./server.js",
+    "postinstall": "jspm i",
+    "pack": "git add --all :/ && git commit -m 'update from script' && git push origin site"
   },
   "engines": {
     "iojs": ">= 3.3.1",
@@ -43,37 +44,42 @@
   },
   "devDependencies": {
     "babel-core": "^5.8.25",
+    "gulp": "^3.9.0",
+    "gulp-concat-css": "^2.2.0",
+    "gulp-copy": "0.0.2",
+    "gulp-jade": "^1.1.0",
+    "gulp-jade-template-concat": "git://github.com/snowkeeper/gulp-jade-template-concat#export",
     "gulp-less": "^3.0.3",
     "gulp-minify-css": "^1.2.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-util": "^3.0.7",
     "jspm": "^0.16.13",
     "less": "^2.5.3",
-    "systemjs-builder": "^0.14.8"
+    "run-sequence": "^1.1.4",
+    "systemjs-builder": "^0.14.8",
+    "vinyl-source-stream": "^1.1.0"
   },
   "jspm": {
     "directories": {
-      "baseURL": "public/systemjs"
+      "baseURL": "public"
     },
     "dependencies": {
-      "@lukekarrys/jade-runtime": "npm:@lukekarrys/jade-runtime@^1.11.1",
-      "anchor-js": "npm:anchor-js@^1.3.0",
       "debug": "npm:debug@^2.2.0",
       "events": "github:jspm/nodelibs-events@^0.1.1",
       "fetch": "npm:whatwg-fetch@^0.10.0",
       "history": "npm:history@^1.12.5",
-      "jade-runtime": "npm:jade-runtime@1.0.0",
+      "jade": "npm:jade@1.11.0",
       "jquery": "github:components/jquery@1.10.2",
       "lodash": "npm:lodash@^3.10.1",
       "md": "github:guybedford/system-md@^0.0.2",
       "prism": "github:PrismJS/prism@^1.2.0",
       "react": "npm:react@^0.14.0",
       "react-addons-test-utils": "npm:react-addons-test-utils@^0.14.0",
-      "react-console": "npm:react-console@^0.0.8",
       "react-dom": "npm:react-dom@^0.14.0",
       "react-router": "npm:react-router@^1.0.0-rc3",
       "showdown": "github:showdownjs/showdown@^1.2.3",
-      "snowkeeper/tag-search": "github:snowkeeper/tag-search@master",
       "striptags": "npm:striptags@^2.0.4",
-      "tag-search": "npm:tag-search@^0.0.16",
+      "tag-search": "npm:tag-search@^0.0.21",
       "util": "github:jspm/nodelibs-util@^0.1.0"
     },
     "devDependencies": {

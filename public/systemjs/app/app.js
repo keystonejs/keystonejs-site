@@ -1,8 +1,6 @@
-// global holdovers
-//import 'jquery'
 import 'bootstrap'
-//import 'prism'
-//import 'analytics'
+import 'prism'
+import 'analytics'
 // end globals
 import React from 'react';
 import { render } from 'react-dom'

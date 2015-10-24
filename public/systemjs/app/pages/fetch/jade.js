@@ -1,9 +1,10 @@
-import React from 'react';
-import jade from 'app/html/templates'
+import React from 'react'
+import jade from 'jade-runtime'
+import jadeTemplates from 'app/html/templates'
 import api from 'app/html/markedApi'
 import _ from 'lodash'
-import {languages, routes, config} from 'config';
-import {baseRoute, cleanPath, getFileName} from 'common/util';
+import {languages, routes, config} from 'config'
+import {baseRoute, cleanPath, getFileName} from 'common/util'
 
 export default (page, addLocals, inheritPropsFrom, useLocals) => {
 	
@@ -81,7 +82,7 @@ function pageOptions(page, addlocals, inherit, uselocals) {
 	
 	let sendBack = {
 		locals: locals,
-		render: jade[locals.filename]
+		render: jadeTemplates[locals.filename]
 	}
 	if('function' !== typeof sendBack.render) {
 		debug('failed to find jade function', sendBack, page)

@@ -2,7 +2,7 @@ import React from 'react';
 import { Router, Route, Link } from 'react-router'
 import JadePage from 'pages/fetch/jade';
 import wrapListeners from 'common/listen';
-import {baseRoute, cleanPath, getFileName, Console} from 'common/util';
+import {baseRoute, cleanPath, getFileName} from 'common/util';
 import SearchTags from 'tag-search'
 import {extend, merge} from 'lodash'
 import Debug from 'debug'
@@ -20,14 +20,15 @@ class App extends React.Component {
 			footer: JadePage('/footer',{language: base.language}, base.path),
 			tagSearchOptions: {
 				useLocation: false,
+				skipHistory: true,
 				nostyles: false,
 				noclasses: false,
 				topLink: true,
 				searchBar: 'searchBar',
 				searchList: 'searchList',
 				tagSelector: '.docs-content a[name]',
-				nameFromTagAttr: 'name',
-				nameFromNextTag: false,
+				nameFromTagAttr: 'innerHTML',
+				nameFromNextTag: true,
 				classes: {
 					'searchBar': ' col-sm-offset-3 col-sm-9 ',
 					'input': ' form-control clearable',

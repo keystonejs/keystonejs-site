@@ -4,6 +4,10 @@ import Jade from 'pages/fetch/jade'
 import {languages as nav} from 'config';
 import { translate as markdown }  from 'md'
 import fetch2 from 'fetch'
+import Debug from 'debug'
+import Gab from 'common/gab'
+
+let debug = Debug('keystone:app:pages:fetch');
 
 if(typeof window.fetch == 'undefined' ) {
 	// polyfill fetch
@@ -57,6 +61,10 @@ export default (page, Component, dataType, options) => {
 					this.setState({
 						response: ret
 					});
+					
+					if('function' === typeof options.onUpdate) {
+						options.onUpdate()
+					}
 					return;
 				}.bind(this))
 			.catch(e => {
@@ -74,6 +82,7 @@ export default (page, Component, dataType, options) => {
 				this.setState({
 					response: resp
 				});
+				
 			})
 		}
 		transform(data, dataType) {
@@ -121,7 +130,6 @@ export default (page, Component, dataType, options) => {
 						while (wikiregx.test(data)) {
 							let match = data.match(wikiregx);
 							if(match) {
-								//console.log('matched',match)
 								// we may have a title and link or just a title
 								let matches = match[1].split('|')
 								if(matches.length === 1) {
@@ -134,11 +142,20 @@ export default (page, Component, dataType, options) => {
 								data = data.replace(wikiregx, link);
 							}
 						}
+						data = data.replace('ol', 'ol class="fancy-list"')
 						return data
 						break
 					default:
 						return data
 				}	
+			}
+		}
+		componentDidUpate() {
+			// run prism
+			Prism.highlightAll()
+			debug('options', options, typeof options.onUpdate)
+			if('function' === typeof options.onUpdate) {
+				options.onUpdate()
 			}
 		}
 		render() {

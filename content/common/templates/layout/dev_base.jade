@@ -18,6 +18,7 @@ html(lang=language)
 		meta(property="og:type" content="article")
 		link(href="http://fonts.googleapis.com/css?family=Roboto:100,300,300italic,400,500,700", rel="stylesheet")
 		link(href="/styles/site.min.css", rel="stylesheet")
+		link(href="/styles/prism.css", rel="stylesheet")
 		link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
 		block css
 
@@ -26,9 +27,30 @@ html(lang=language)
 			.home-header.back-key: .container
 				img(src='/images/logo-inverted.svg', alt='KeystoneJS', width=80, height=81)
 				h2 The open source framework for developing database-driven websites, applications and APIs in Node.js. Built on Express and MongoDB.
-				h1 preparing to get it on...
-		
-		
+				h2(style="text-align:left; padding-left:50px;") import keystone from keystonejs
+					| <br />
+					| <br /> keystone.init({
+					| <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'name': 'Acme, Inc.',
+					| <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'brand': 'Acme, Inc.',
+					| <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'less': 'public',
+					| <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'static': 'public',
+					| <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'favicon': 'public/favicon.ico',
+					| <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'views': 'templates/views',
+					| <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'view engine': 'jade',
+					| <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'emails': 'templates/emails',
+					| <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'auto update': true,
+					| <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'session': true,
+					| <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'auth': true,
+					| <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'user model': 'User'
+					| <br /> })
+					| <br />
+					| <br /> keystone.import('models')
+					| <br />
+					| <br /> keystone.set('locals',{ hello: 'Hi!' })
+					| <br />
+					| <br /> keystone.start()
+
 		script(src="/systemjs/jspm_packages/system.js")
-		script(src="/systemjs/config.js")
+		script(src="/config.js")
 		script(src="/systemjs/client.js")
+		
