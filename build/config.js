@@ -16,7 +16,8 @@ System.config({
     "pages/*": "systemjs/app/pages/*.js",
     "common/*": "systemjs/app/common/*.js",
     "html/*": "systemjs/app/html/*.js",
-    "dependencies": "systemjs/bundles/dependencies"
+    "dependencies": "systemjs/bundles/dependencies",
+    "mainconfig": "config.js"
   },
 
   meta: {

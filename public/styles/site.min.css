@@ -7751,15 +7751,16 @@ code.default-value {
   text-align: center;
 }
 .home-header.back-key {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
+  overflow: auto;
   background-size: 400% 400%;
   background-repeat: repeat-x;
-  background-image: -webkit-linear-gradient(240deg, #34d9d3, #3464d9);
-  background-image: linear-gradient(240deg, #34d9d3, #3464d9);
+  background-image: -webkit-linear-gradient(160deg, #34d9d3, #3464d9);
+  background-image: linear-gradient(160deg, #34d9d3, #3464d9);
   -webkit-animation: backKeyed 20s ease infinite;
   -moz-animation: backKeyed 20s ease infinite;
   animation: backKeyed 20s ease infinite;
