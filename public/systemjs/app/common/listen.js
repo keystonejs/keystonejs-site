@@ -24,7 +24,6 @@ export default (Component) => {
 				prev: clean.clean,
 				paths: clean
 			}
-			this.props = props;
 			this._update = false
 			this._limiters = {}
 		}
