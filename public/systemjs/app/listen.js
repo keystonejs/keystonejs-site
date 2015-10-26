@@ -1,10 +1,10 @@
 import React from 'react'
 import $ from 'jquery'
 import _ from 'lodash'
-import {routes, config} from 'config';
-import {baseRoute, cleanPath, getFileName} from 'common/util';
+import {routes, config} from './config';
+import {baseRoute, cleanPath, getFileName} from './common/util';
 import Debug from 'debug'
-import Gab from 'common/gab'
+import Gab from './common/gab'
 
 let debug = Debug('keystone:app:common:listen');
 
@@ -160,12 +160,20 @@ export default (Component) => {
 					// cached results so just toggle open
 					pass()
 				} else if(target.file) {
-					const url = 'https://raw.githubusercontent.com/keystonejs/keystone/BRANCH/FILE'.replace('BRANCH',branch).replace('FILE', target.file);
-					debug('github code cache',_cached, target.file)
+					let url
+					let convert
+					if(target.com) {
+						convert = target.convert || 'js'
+						url = 'https://raw.githubusercontent.com/snowkeeper/keystonejs-site/site/' + target.file
+					} else {
+						url = 'https://raw.githubusercontent.com/keystonejs/keystone/BRANCH/FILE'.replace('BRANCH',branch).replace('FILE', target.file)
+						convert = 'js'
+					}
+					debug('github code cache',_cached, target)
 					fetch(url)
 						.then(r => r.text())
 						.then(results => {
-							_cached[branch][target.file] = Prism.highlight(results, Prism.languages.js);
+							_cached[branch][target.file] = Prism.highlight(results, Prism.languages[convert]);
 							debug(_cached)
 							$pre.html(_cached[branch][target.file])
 							pass()
@@ -178,7 +186,7 @@ export default (Component) => {
 			
 			// catch clicks for react-router
 			// to add links that bypass this measure add class '.notspa' or '.uselink'
-			$(document).on('click', 'a:not(.uselink, .notspa, .catchMenuClick, .loadCode)', function(event) {
+			$(document).on('click', 'a:not(.uselink, .notspa, .loadCode)', function(event) {
 			
 				const $url = $(this)[0]
 				const myLocation = getFileName($url.href)
@@ -211,12 +219,14 @@ export default (Component) => {
 				if(myLocation.hash && thisComponent.state.route === filename) {
 					// react-router has a bug that triggers a render on same page anchor links
 					// this should catch that and fake the move
-					event.preventDefault()
+					//event.preventDefault()
 					debug('fake scroll', url)
 					let $goto = $('a[name="' + myLocation.hashless + '"]')
 					if($goto.length) {
-						$(document).scrollTop($goto.offset().top)
+						//location.hash = myLocation.hashless;
+						//$(document).scrollTop($goto.offset().top)
 					}
+					//thisComponent.props.history.replaceState(null, url)
 					return
 				}
 				

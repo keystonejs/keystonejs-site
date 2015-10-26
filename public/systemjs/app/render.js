@@ -1,12 +1,12 @@
 import React from 'react';
 import { Router, Route, Link } from 'react-router'
-import JadePage from 'pages/fetch/jade';
-import wrapListeners from 'common/listen';
-import {baseRoute, cleanPath, getFileName} from 'common/util';
+import JadePage from './pages/fetch/jade';
+import wrapListeners from './listen';
+import {baseRoute, cleanPath, getFileName} from './common/util';
 import SearchTags from 'tag-search'
 import {extend, merge} from 'lodash'
 import Debug from 'debug'
-import Gab from 'common/gab'
+import Gab from './common/gab'
 
 let debug = Debug('keystone:app:common:render');
 
@@ -26,7 +26,7 @@ class App extends React.Component {
 				topLink: true,
 				searchBar: 'searchBar',
 				searchList: 'searchList',
-				tagSelector: '.docs-content a[name]',
+				tagSelector: '.docs-content a[name], .jl-guide a[name]',
 				nameFromTagAttr: 'innerHTML',
 				nameFromNextTag: true,
 				classes: {
@@ -36,7 +36,7 @@ class App extends React.Component {
 					'searchList': ' docs-sidebar ',
 					'context': ' context ',
 					'li:heading': ' nav-heading ',
-					'li:a': 'notspa'
+					'li:a': ''
 				},
 				styles: {
 					'searchBar': {},

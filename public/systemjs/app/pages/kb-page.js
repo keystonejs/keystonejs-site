@@ -1,6 +1,6 @@
 import React from 'react';
-import Templates from 'app/html/templates'
-import {languages as nav, routes} from 'config';
+import Templates from '../html/templates'
+import {languages as nav, routes} from '../config';
 
 /**
  * This is a template class.  The route handler will trigger the 

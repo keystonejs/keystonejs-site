@@ -1,4 +1,4 @@
-import {routes as routeArray} from 'config'
+import {routes as routeArray} from '../config'
 import React from 'react'
 import Debug from 'debug'
 

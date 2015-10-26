@@ -12,10 +12,10 @@ System.config({
   paths: {
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*",
-    "app/*": "systemjs/app/*.js",
-    "pages/*": "systemjs/app/pages/*.js",
-    "common/*": "systemjs/app/common/*.js",
-    "html/*": "systemjs/app/html/*.js",
+    "app/*": "systemjs/app/*",
+    "pages/*": "systemjs/app/pages/*",
+    "common/*": "systemjs/app/common/*",
+    "html/*": "systemjs/app/html/*",
     "dependencies": "systemjs/bundles/dependencies",
     "mainconfig": "config.js"
   },
@@ -29,10 +29,10 @@ System.config({
   },
 
   map: {
-    "analytics": "systemjs/analytics.js",
+    "analytics": "systemjs/globals/analytics.js",
     "babel": "npm:babel-core@5.8.25",
     "babel-runtime": "npm:babel-runtime@5.8.25",
-    "bootstrap": "systemjs/bootstrap-collapse",
+    "bootstrap": "systemjs/globals/bootstrap-collapse",
     "config": "systemjs/app/config.js",
     "core-js": "npm:core-js@1.2.3",
     "debug": "npm:debug@2.2.0",
@@ -43,6 +43,7 @@ System.config({
     "jade-runtime": "npm:jade@1.11.0/lib/runtime",
     "jquery": "github:components/jquery@1.10.2",
     "lodash": "npm:lodash@3.10.1",
+    "marked": "npm:marked@0.3.5",
     "md": "github:guybedford/system-md@0.0.2",
     "prism": "github:PrismJS/prism@1.2.0",
     "react": "npm:react@0.14.0",
@@ -388,6 +389,9 @@ System.config({
     "npm:invariant@2.1.1": {
       "loose-envify": "npm:loose-envify@1.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:jade-runtime@1.1.0": {
+      "fs": "github:jspm/nodelibs-fs@0.1.2"
     },
     "npm:jade@1.11.0": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",

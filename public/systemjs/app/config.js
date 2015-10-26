@@ -56,7 +56,7 @@ exports.routes = [
 		"language": "en",
 		"template": "404",
 		"section": "404",
-		"title": 'Lost?'
+		"title": ''
 	},
 	{
 		"path": "/header",
@@ -423,7 +423,5 @@ exports.routes = [
 ]
 
 exports.config = {
-	location: {},
 	versions: ['0.2.x', 'current', 'incoming'],
-	language: "en"
 }

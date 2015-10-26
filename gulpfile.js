@@ -14,6 +14,14 @@ var ghpages = require('gh-pages');
 var gutil = require('gulp-util');
 var runSequence = require('run-sequence');
 var minimist = require('minimist');
+var insert = require('gulp-insert');
+var gulpif = require('gulp-if');
+var browserify = require('browserify');
+var babel = require('babelify');
+var source = require('vinyl-source-stream');
+var nodeResolve = require('resolve');
+
+var production = (process.env.NODE_ENV === 'production');
 
 /**
  * for dev builds
@@ -47,34 +55,33 @@ var sendMarked = _.cloneDeep(classReference._marked);
 gulp.task("default",['menu'])
 
 gulp.task("menu", function() {
-	console.log('-------------------------------------------------------------------------------')
 	console.log('-- KeystoneJS.com Gulp Commands -- gulp menu ----------------------------------')
 	console.log('...............................................................................')
 	console.log('.. clean ... delete build directory                                          ..')
-
 	console.log('.. deploy ... run build then push to gh-pages branch                         ..')
+//	console.log('.. deploy-browserify ... run build-browserify then push to gh-pages branch   ..')
 	console.log('.. build ... run clean; then pages, css, jade, api, copy; & bundle last      ..')
+//	console.log('.. build-browserify ... run build using browserify instead of bundle         ..')
 	console.log('.. push ... push build dir to your forks gh-pages branch                     ..')
     
 	console.log('.. less ... creates ./public/styles/site.min.css                             ..')
 	console.log('.. css ... run less; bundle prism; save ./build/styles/site.min.css          ..')
 	console.log('.. copy ... copy fonts, images and favicon to build dir                      ..')
-	console.log('.. index ... create public/deploy.html from spa_base.jade                    ..')	
-	console.log('.. pages ... run index then create html pages in ./build                     ..')
+	console.log('.. pages ... create html pages in ./build                                    ..')
 	console.log('.. jade ... create the jade template file in app/html/templates.js           ..')
 	console.log('.. api ... create the api file in app/html/markedApi.js                      ..')
     console.log('.. bundle ... create ./build/bundle-inclusive.js                             ..')
+//    console.log('.. browserify ... create ./build/bundle-inclusive.js  with browserify        ..')
 	console.log('-------------------------------------------------------------------------------')
 	console.log('-- DEV OPTIONS ------ To start the dev server type npm start ------------------')
-	console.log('-------------------------------------------------------------------------------')
 	console.log('.. dev-push ...   ( required: --repo for push and deploy)                    ..')
 	console.log('.. dev-deploy ... ( optional: --branch, --clone, --tag, --user, --email )    ..')
 	console.log('.. build-no-clean ... does not delete build dir first                        ..')
+//	console.log('.. browserify-no-clean ... does not delete build dir first                   ..')
 	console.log('.. bundle-html ... bundle jade & api and save in app/bundles/html.js         ..')
 	console.log('.. bundle-dependencies ... bundle and save in app/bundles/dependencies.js    ..')
 	console.log('.. dev-bundle ... run bundle-html && bundle-dependencies                     ..')
 	console.log('...............................................................................')
-	console.log('-------------------------------------------------------------------------------')
 
 });
 
@@ -168,15 +175,17 @@ gulp.task('css', ['less'], function () {
 
 // create each html page from routes
 // evry page is a copy of public/deploy.html
-gulp.task("pages", ['index'], function(cb){
+gulp.task("pages",  function(cb){
 	// run through routes
     async.forEachOf(content.routes, function(route, k, next){
 		var filename = route.path.substr(1).replace(/\//g, '_') || 'index';
 		var filepath = filename + '.html';
 		gutil.log('Writing ' + filename + '.html');
-		gulp.src('./public/deploy.html')
-			.pipe(rename(filepath))
-			.pipe(gulp.dest('./build'));
+		gulp.src('./content/common/templates/layout/spa_base.jade')
+        .pipe(jade({ locals: route }))
+        .pipe(gulpif((route.path != '/404' && route.filename != 'index' && route.path != '/' ),insert.prepend("---\npermalink: " + route.path + "/\n---\n")))
+        .pipe(rename(filepath))
+        .pipe(gulp.dest('./build/'));
 		next()
 		
 	}, function() {
@@ -187,7 +196,7 @@ gulp.task("pages", ['index'], function(cb){
 // copy statics
 gulp.task("copy",  function(cb){
 	// fonts
-	var stream = gulp.src(['./public/config.js', './public/jspm_packages/system.js']).pipe(gulp.dest('./build'));
+	var stream = gulp.src(['./public/jspm_packages/system.js', './public/jspm_packages/system-polyfills.js']).pipe(gulp.dest('./build'));
 	gulp.src([ './public/favicon.ico', './public/images/**/*', './public/fonts/**/*', './public/favicon.ico'], {
             base: 'public'
     }).pipe(gulp.dest('./build'));
@@ -198,6 +207,12 @@ gulp.task("copy",  function(cb){
 gulp.task('build', function (callback) {
 	
 	runSequence('clean', 'build-no-clean', callback);
+	return
+});
+// build
+gulp.task('build-browserify', function (callback) {
+	
+	runSequence('clean', 'browserify-no-clean', callback);
 	return
 });
 // build without deleting ./build
@@ -212,6 +227,17 @@ gulp.task('bundle', function (cb) {
 	bundle(cb)	
 });
 
+// browserify without deleting ./build
+gulp.task('browserify-no-clean', ['pages','css','jade','api','copy'], function (cb) {
+	// sets the baseURL and loads the configuration file
+	browserifier(cb)
+});
+
+// only browserify
+gulp.task('browserify', function (cb) {
+	// sets the baseURL and loads the configuration file
+	browserifier(cb)	
+});
 
 // bundle the js files
 function bundle(cb) {
@@ -226,6 +252,17 @@ function bundle(cb) {
 		gutil.log('FAILED inclusive bundle',err)
 		cb()
 	});		
+}
+
+// use browserify instead of builder
+function browserifier(cb) {
+	browserify('./public/systemjs/app/app.js', { debug: true })
+	.transform(babel)
+	.bundle()
+	.on('error', function(err) { console.error(err); this.emit('end'); })
+	.on('end', cb)
+	.pipe(fs.createWriteStream("./build/browserified.js"));
+
 }
 
 // push to the gh-pages branch of this repo
@@ -300,6 +337,13 @@ gulp.task('deploy', function (callback) {
 	return
 });
 
+// build then push to production
+gulp.task('deploy-browserify', function (callback) {
+	
+	runSequence('build-browserify', 'push', callback);
+	return
+});
+
 // build then push to development
 // REQUIRED ...  --repo your_repo
 // optional ...  --clone /dir
@@ -358,3 +402,76 @@ gulp.task('dev-bundle', function (callback) {
 	runSequence('bundle-html', 'bundle-dependencies', callback);
 	return
 });
+
+
+/* *
+ * Test tasks for browserify
+ * The files are too big
+ * app 4.5 mb
+ * vendor 6 mb
+ * surely I am doing something wrong
+ * */
+
+gulp.task('build-vendor', function () {
+  var b = browserify({
+    // generate source maps in non-production environment
+    debug: !production
+  });
+
+  // resolve path using 'resolve' module
+  getNPMPackageIds().forEach(function (id) {
+    b.require(nodeResolve.sync(id), { expose: id });
+  });
+
+  var stream = b
+    .bundle()
+    .on('error', function(err){
+      // print the error (can replace with gulp-util)
+      console.log(err.message);
+      // end this stream
+      this.emit('end');
+    })
+    .pipe(source('vendor.js'));
+
+  // pipe additional tasks here (for eg: minifying / uglifying, etc)
+  // remember to turn off name-mangling if needed when uglifying
+
+  stream.pipe(gulp.dest('./build/dist'));
+
+  return stream;
+});
+gulp.task('build-app', function () {
+
+  var b = browserify('./public/systemjs/app/app.js', {
+    // generate source maps in non-production environment
+    debug: !production
+  }).transform(babel);
+
+  // do the similar thing, but for npm-managed modules.
+  // resolve path using 'resolve' module
+  getNPMPackageIds().forEach(function (id) {
+    b.external(id);
+  });
+
+  var stream = b.bundle().pipe(source('app.js'));
+
+  // pipe additional tasks here (for eg: minifying / uglifying, etc)
+  // remember to turn off name-mangling if needed when uglifying
+
+  stream.pipe(gulp.dest('./build/dist'));
+
+  return stream;
+
+});
+
+function getNPMPackageIds() {
+  // read package.json and get dependencies' package ids
+  var packageManifest = {};
+  try {
+    packageManifest = require('./package.json');
+  } catch (e) {
+    // does not have a package.json manifest
+  }
+  return _.keys(packageManifest.client) || [];
+
+}

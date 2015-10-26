@@ -1,6 +1,6 @@
 import React from 'react';
-import jade from 'app/html/templates'
-import {languages as nav, routes} from 'config';
+import jade from '../html/templates'
+import {languages as nav, routes} from '../config';
 
 	class Example extends React.Component {
 		constructor(props) {

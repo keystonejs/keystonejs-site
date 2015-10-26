@@ -12,227 +12,1112 @@ block content
 		.col-sm-3
 			+docsnav(docssection)
 		
-		.col-sm-9: .docs-content.jl-guide
-			.jl-guide-section
+		.col-sm-9: .jl-guide
+			
+			.jl-guide-section.docs-content
 				.jl-guide__header
-					.p.lead Our SPA creation guide 
+					h2 Conversion Guide 
 						.jl-guide__title-info  rundown of our requirements for a complete project    
-				p The goal of this guide will be to take a current ExpressJS website built with Jade templates and convert it into a React based SPA integrated with Keystone. The current jade templates will remain and be included via plugin. A route config file will be used to designate the process for compiling each page.
+				p The goal of this guide will be to take a current ExpressJS website built with Jade templates and convert it into a React based SPA. We will use the current jade templates through functions instead of server renders.
 				p  We will perform this excercise with source code from the current website for <a href="https://github.com/keystonejs/keystonejs-site">KeystoneJS.com</a>.  Since the final output will need to be a <code>gh-pages</code> deployment, this guide will also document that process as well.  
 				p We will use <a href="https://github.com/systemjs/systemjs">System.js</a> with jspm to manage our packages, and build using ES6 thanks to <a href="http://babeljs.io">babel</a>  
-				h4 Table of Contents
-				ul.fancy-list
-					li: a(href="#prepare") Prepare
-					li: a(href="#client-files") Client Files
-						ol
-							li: a(href="#jade") Fix and create Jade files
-							li: a(href="#route-config") Fix and move route config
-							li: a(href="#jspm") Setup jspm and install client packages
-							li: a(href="#app") Create App 
-							li: a(href="#componenets") App Pages & Components
-							li: a(href="#fetch") Fetch Component
-							li: a(href="#render-jade") Jade Component
-					li: a(href="#clean") Remove old files
-					li: a(href="#build") Create build tasks with <code>gulp</code>
-						ol
-							li: a(href="#jade-functions") Build template functions from jade files
-							li: a(href="#bundle") Bundle app with </code>systemjs-builder</code>
-							li: a(href="#deploy") Deploy to <code>gh-pages</code>
-					li: a(href="#prepare") Add Keystone
-					
-				h4 Final Folder Structure
-				ul.folder-list
-					li.folder content
-						ol
-							li.folder common/templates/layout
-								ol
-									li base.jade
-									li dev_base.jade
-									li footer.jade
-									li header.jade
-									li spa_base.jade
-							li.folder en
-								ol
-									li.folder ...
-									li ...
-							li.folder zh
-								ol
-									li.folder ...
-									li ...
-							li 404.jade	
-							li index.jade
-					li.folder dev
-						ol
-							li apiMarked.js 
-							li server.js
-					li.folder public
-						ol
-							li.folder fonts
-							li.folder images
-							li.folder jspm_packages
-							li.folder styles
-							li.folder systemjs
-								ol
-									li.folder app
-										ol
-											li.folder common
+				.col-sm-6
+					a(name="contents")
+					h4 Table of Contents
+					ul.fancy-list
+						li: a(href="#prepare") Prepare							
+						
+						li: a(href="#jade") Fix and create Jade files
+						li: a(href="#route-config") Fix and move route config
+						li: a(href="#jspm") Setup jspm and install client packages
+						li: a(href="#app") Create App 
+						li: a(href="#components") App Pages & Components
+						li: a(href="#render-jade") Jade Component
+						li: a(href="#fetch") Fetch Component
+							
+						li: a(href="#clean") Move server.js and clean up
+						li: a(href="#build") Create build tasks with <code>gulp</code>
+							ul.fancy-list
+								li: a(href="#jade-functions") Build template functions from jade files
+								li: a(href="#common") CSS and copy tasks
+								li: a(href="#bundle") Bundle app with </code>systemjs-builder</code>
+								li: a(href="#deploy") Deploy to <code>gh-pages</code>
+						li: a(href="#bonus") Add Keystone
+				.col-sm-6
+					h4 Final Folder Structure
+					ul.folder-list(style="overflow:auto;height:550px;")
+						li.folder content
+							ol
+								li.folder common/templates/layout
+									ol
+										li base.jade
+										li dev_base.jade
+										li footer.jade
+										li header.jade
+										li spa_base.jade
+								li.folder en
+								li.folder zh
+								li 404.jade	
+								li index.jade
+						li.folder dev
+							ol
+								li apiMarked.js 
+								li server.js
+						li.folder public
+							ol
+								li config.js
+								li deploy.html
+								li favicon.ico
+								li.folder fonts
+								li.folder images
+								li.folder jspm_packages
+								li.folder styles
+								li.folder systemjs
+									ol
+										li client.js
+										li.folder app
+											ol
+												li listen.js
+												li render.js
+												li routes.js
+												li.folder common
+													ol
+														li gab.js
+														li util.js
+												li.folder html
+													ol
+														li apiMarked.js
+														li templates.js
+												li.folder pages
+													ol
+														li code-examples.js
+														li example.js
+														li kb-page.js
+														li learning.js
+														li.folder component
+															ol
+																li generic.js
+																li generic-fetch.js
+																li kb.js
+														li.folder fetch
+															ol
+																li fetch.js
+																li jade.js
+										li.folder bundles
+										li.folder globals
 												ol
-													li gab.js
-													li listen.js
-													li render.js
-													li routes.js
-													li util.js
-											li.folder html
-												ol
-													li apiMarked.js
-													li templates.js
-											li.folder pages
-												ol
-													li.folder component
-														ol
-															li generic.js
-															li generic-fetch.js
-															li kb.js
-													li.folder fetch
-														ol
-															li fetch.js
-															li jade.js
-													li code-examples.js
-													li example.js
-													li kb-page.js
-													li learning.js
-									li.folder bundles
-									li analytics.js
-									li bootstrap-collapse.js
-									li client.js
-							li config.js
-							li deploy.html
-							li favicon.ico
-					
+													li analytics.js
+													li bootstrap-collapse.js
+			.clearfix
 			// prepare
 			.jl-guide-section
 				.jl-guide__header
+					a(name="prepare")
 					h2.jl-guide__title
 						.jl-guide__title-label 
 							div.jl-guide__title-count: span.jl-guide__title-count 1
 							|  Prepare 
 							.jl-guide__title-info  get your code base ready  
-				p We will start by cloning our repo and creating a new branch <b>spa</b>.  Pick a unique branch for you if working from a current local repo.  
-				pre.line-numbers.language-javascript
+				.code-header
+					h4 Set up repo 
+					p We will start by cloning our repo and creating a new branch <b>spa</b>.  Pick a unique branch for you if working from a current local repo.  
+				pre.line-numbers.language-cmd
 					| git clone git@github.com:keystonejs/keystonejs-site.git  
 					| cd keystonejs-site 
 					| git checkout -b spa  
-				p Create a new folder for our client files.  We will serve this as a static just like public.  
-				pre.command-line: code.language-javascript
-					| mkdir client 
-				p Install and save our new dependencies.  
-				pre.command-line: code.language-javascript
-					| npm i --save systemjs babel typescript keystone react react-router  
+				.code-header
+					h4 Create some new folders. 
+				pre: code.language-cmd
+					| mkdir dev
+					| mkdir public/systemjs
+					| mkdir public/sytemjs/app 
+					| mkdir public/sytemjs/app/common
+					| mkdir public/sytemjs/app/html
+					| mkdir public/sytemjs/app/pages
+					| mkdir public/sytemjs/app/pages/component
+					| mkdir public/sytemjs/app/pages/fetch
+				.code-header
+					h4 Install and save our new dependencies.  
+				pre: code.language-cmd
+					| npm i --save-dev jspm marked systemjs-builder jade less run-sequence
+					| npm i --save-dev gulp gulp-concat-css gulp-copy gulp-jade gulp-less  
+					| npm i --save-dev gulp-minify-css gulp-rename gulp-util minimist gulp-if 
+					| npm i --save-dev vinyl-source-stream gulp-insert gulp-jade-template-concat
 			.jl-guide-section 				
 				.jl-guide__header
+					a(name="jade")
 					h2.jl-guide__title
 						.jl-guide__title-label 
 							div.jl-guide__title-count: span.jl-guide__title-count 2
-							| Client Files
-							.jl-guide__title-info create your new client app 
-				h3 Rework our jade files
-				p We still like using jade.  It is quick, good for large blocks of html, and having seperate files is easier for multiple parties to maintain.  
-				p For our SPA we only need an index file.  We will create a new base file and remove the template include lines from each of the content files. The old base file can eventually be removed.  
-				p.note You do not have to remove all of the template includes from your content files.  Instead, rename each appropriate template file and replace it with a blank one.
+							| Rework our jade files
+							.jl-guide__title-info create some files and make a couple modifications   
+				p For our SPA we need a single HTML file.  We will use two different jade files, one for development, and one for production to provide our base HTML file. 
+				p Since our menu state changes depending on language and page, we will extract the body header and footer, then place them in aptly named files.  This way our SPA can use a function to update the header when needed.
+				
+				//- copy base.jade
+				.code-header 
+					h4 First copy `base.jade`
+				pre.language-cmd.
+					<code class="language-cmd">
+						cd content/common/templates/layout
+						cp base.jade dev_base.jade
+					</code>
+				
+				//- header.jade
 				.code-header
-					h4  Create your SPA index file. 
-					p Copy <code>content/common/templates/layout/base.jade</code> to <code>content/common/templates/layout/spa_base.jade</code> and add a named div.
-					p Replace the old javascript with the system.js tag.  We will add our app later.  
+					h4 Create <code>header.jade</code>
+					p Extract the following from <code>dev_base.jade</code> to create the new file.				
+				pre.language-jade.
+					<code class="language-jade">
+						include ../mixins/breadcrumbs
+						.language-switcher: .container
+							a(href=languages.zh.links[section] class=(language === 'zh' ? 'active' : '')).language-switcher-option 中文 (Chinese)
+							a(href=languages.en.links[section] class=(language === 'en' ? 'active' : '')).language-switcher-option English
+
+						if section !== 'home'
+							header(role='banner').docs-header: .container
+								button.navbar-toggle.navbar-toggle-menu(type='button', data-toggle='collapse', data-target='.docs-nav__collapse')
+									span.sr-only= content.toggle_navigation
+									//- span.entypo.entypo-list
+									!='<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>'
+								a(href=prefix, title='KeystoneJS').keystone-logo: img(src='/images/logo.svg', alt='KeystoneJS', width=207, height=70)
+								
+								nav.docs-nav
+									.docs-nav__collapse.collapse
+										ul.docs-nav__nav
+											each item in primarynav
+												li(class=section == item.section ? 'active' : null): a(href=item.path)= item.label
+
+
+
+						if section === 'docs' && docssubsection
+							+breadcrumbs(docssection, docssubsection)
+						else
+							block intro
+					</code>
+				
+				//- footer.jade
+				.code-header
+					h4 Create <code>footer.jade</code>
+					p Extract the following from <code>dev_base.jade</code> to create the new file.				
+				pre.language-jade.
+					<code class="language-jade">
+						.docs-footer
+							.container
+								p
+									| Created by 
+									a(href='http://twitter.com/jedwatson', target='_blank') @jedwatson
+									| , 
+									a(href='http://twitter.com/bladey', target='_blank') @bladey
+									|  and 
+									a(href='http://twitter.com/jossmackison', target='_blank') @jossmackison
+									|  at 
+									a(href='http://www.thinkmill.com.au', target='_blank') Thinkmill
+									| , and other 
+									a(href='https://github.com/keystonejs/keystone/contributors', target='_blank') contributors
+									|  under the 
+									a(href='http://opensource.org/licenses/MIT', target='_blank') MIT License
+								ul.list-inline
+									li: a(href=prefix + 'getting-started', title='KeystoneJS Getting Started') Getting Started
+									li: a(href=prefix + 'docs', title='KeystoneJS Documentation') Documentation
+									li: a(href='https://groups.google.com/forum/#!forum/keystonejs', target='_blank', title='KeystoneJS Google Group') Google Group
+									li: a(href='https://github.com/keystonejs/keystone', target='_blank', title='Github Project (new window)') Github Project
+									li: a(href='http://demo.keystonejs.com', target='_blank', title='Demo Website (new window)') Demo Website
+									li: a(href=prefix + 'examples', title='KeystoneJS Database') Examples
+						.docs-footer-floor
+							.container
+								.social-buttons
+									.social-button.social-button__twitter: a(href="https://twitter.com/keystonejs", class="twitter-follow-button", data-show-count="true") Follow @keystonejs
+									.social-button.social-button__github: iframe(src="http://ghbtns.com/github-btn.html?user=keystonejs&repo=keystone&type=watch&count=true", allowtransparency="true", frameborder=0, scrolling=0, width=86, height=20)
+					</code>
+				
+				.code-header
+					h4 Create <code>public/systemjs/analytics.js</code>
+					p Extract the following from <code>dev_base.jade</code> to create a file we can include as global javascript instead of using script tags.				
 				pre.language-javascript.
-					<code class="language-markup">
-						// old code
-							.docs-body
-								block content
-							
-						// replace with
-							.docs-body
-								#keystonejs-spa
-							
-						/* javascript tag */
-						// old code
-							script(src="/js/lib/jquery/jquery-1.10.2.min.js")
-							script(src='/js/lib/bootstrap/collapse.js')
-							//- script(src='/js/lib/bootstrap/dropdown.js')
-							script(src='/js/lib/prism/prism.min.js')
-							script(src='/js/anchor-links.js')
-							script(src='/js/api-code.js')
-						
-						// replace with
-							script(src="system.js")
+					<code class="language-javascript">
+						!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+
+						if (window.location.hostname.match(/keystonejs\.com/)) {
+							(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+							(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+							m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+							})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+							ga('create', 'UA-43970386-1', 'keystonejs.com');
+							ga('send', 'pageview');
+						}
+
+						if (window.location.hostname.match(/keystonejs\.com/)) {
+							var _sf_async_config = { uid: 46610, domain: 'keystonejs.com', useCanonical: true };
+							(function() {
+								function loadChartbeat() {
+									window._sf_endpt = (new Date()).getTime();
+									var e = document.createElement('script');
+									e.setAttribute('language', 'javascript');
+									e.setAttribute('type', 'text/javascript');
+									e.setAttribute('src','//static.chartbeat.com/js/chartbeat.js');
+									document.body.appendChild(e);
+								};
+								var oldonload = window.onload;
+								window.onload = (typeof window.onload != 'function') ?
+								loadChartbeat : function() { oldonload(); loadChartbeat(); };
+							})();
+						}
+
+						if (window.location.hostname.match(/keystonejs\.com/)) {
+							setTimeout(function(){var a=document.createElement("script");
+							var b=document.getElementsByTagName("script")[0];
+							a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0013/3329.js?"+Math.floor(new Date().getTime()/3600000);
+							a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+						}	
+					</code>
+				
+				
+				//- dev_base.jade				
+				.code-header
+					h4 Finish your SPA dev file. 
+					p Replace the body and add our new script tags 
+				pre.language-jade.
+					<code class="language-jade">
+						body
+							#keystonejs-spa
+								.home-header.back-key: .container
+									img(src='/images/logo-inverted.svg', alt='KeystoneJS', width=80, height=81)
+									
+									h2(style="text-align:left; padding-left:50px;") import keystone from 'keystone'
+										| &lt;br /&gt;
+										| &lt;br /&gt; keystone.init({
+										| &lt;br /&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'name': 'KeystoneJS.com',
+										| &lt;br /&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'brand': 'KeystoneJS',
+										| &lt;br /&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'less': 'public',
+										| &lt;br /&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'static': 'public',
+										| &lt;br /&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'favicon': 'public/favicon.ico',
+										| &lt;br /&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'views': 'templates/views',
+										| &lt;br /&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'view engine': 'jade',
+										| &lt;br /&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'headless': true,
+										| &lt;br /&gt; })
+										| &lt;br /&gt;
+										| &lt;br /&gt; keystone.import('models')
+										| &lt;br /&gt;
+										| &lt;br /&gt; keystone.set('locals',{ hello: 'Hi!' })
+										| &lt;br /&gt;
+										| &lt;br /&gt; keystone.start()
+
+							script(src="/jspm_packages/system.js")
+							script(src="/config.js")
+							script(src="/systemjs/client.js")
 						
 					</code>
 					
 				
-				h3 Create a folder for your project
-				p Create your project wherever you want:
-				pre.command-line mkdir my-test-project
 				
-				p Than make sure you're in your new project:
-				pre.command-line cd my-test-project
+				//- spa_base.jade				
+				.code-header
+					h4 Modify the SPA production file <code>spa_base.jade</code>. 
+					p Remove the prism css tag and change the javascript tags
+				pre.language-jade.
+					<code class="language-jade">
+						doctype html
+						html(lang=language)
+							head
+								script.
+									var _sf_startpt=(new Date()).getTime()
+								meta(charset="utf-8")
+								meta(name="viewport", content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width")
+								title KeystoneJS
+									if title
+										|  &middot; #{title}
+								meta(name="keywords" content="node.js,nodejs,cms,publishing,platform,web,development,framework,express,mongo,mongodb,bootstrap,react,jquery")
+								meta(name="description" content="Get a head-start on the features you need. KeystoneJS is the easiest way to build dynamic websites, applications and APIs with Node.js and MongoDB.")
+								meta(property="og:locale" content="en-us")
+								meta(property="og:title" content="KeystoneJS")
+								meta(property="og:description" content="KeystoneJS is an open source Node.js CMS and web application platform built on Express and MongoDB.")
+								meta(property="og:url" content="https://keystonejs.com^current_url^")
+								meta(property="og:site_name" content="KeystoneJS")
+								meta(property="og:type" content="article")
+								link(href="http://fonts.googleapis.com/css?family=Roboto:100,300,300italic,400,500,700", rel="stylesheet")
+								link(href="/styles/site.min.css", rel="stylesheet")
+								link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
+								block css
+
+							body
+								#keystonejs-spa
+									.home-header.back-key: .container
+										img(src='/images/logo-inverted.svg', alt='KeystoneJS', width=80, height=81)
+
+										h2(style="text-align:left; padding-left:50px;") import keystone from 'keystone'
+											| &lt;br /&gt;
+											| &lt;br /&gt; keystone.init({
+											| &lt;br /&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'name': 'KeystoneJS.com',
+											| &lt;br /&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'brand': 'KeystoneJS',
+											| &lt;br /&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'less': 'public',
+											| &lt;br /&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'static': 'public',
+											| &lt;br /&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'favicon': 'public/favicon.ico',
+											| &lt;br /&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'views': 'templates/views',
+											| &lt;br /&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'view engine': 'jade',
+											| &lt;br /&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'headless': true,
+											| &lt;br /&gt; })
+											| &lt;br /&gt;
+											| &lt;br /&gt; keystone.import('models')
+											| &lt;br /&gt;
+											| &lt;br /&gt; keystone.set('locals',{ hello: 'Hi!' })
+											| &lt;br /&gt;
+											| &lt;br /&gt; keystone.start()
+								
+								script(src="/system.js")
+								script(src="/inclusive-bundle.js")
+								script.
+									System.import('app/app').catch(console.error.bind(console));
+					</code>
 				
-				h3 Run the generator
-				pre.command-line yo keystone
-				p The generator will ask you a few questions about what features you'd like to include, then configure and copy all the files you'll need into your project.
-				p It will also install dependencies from npm so you're ready to go.
+				//- base.jade	
+				.code-header 
+					h4 Remove everything from <code>base.jade</code> except the jade block assignments.
+					p If you remove the block assignments then Jade will throw a console hissy fit during your build process.
+				pre.language-jade.
+					<code class="language-jade">
+						block intro
+
+						block homepage-header
+
+						block content
+
+						block js
+					</code>	
+				
+				//- left_menu.jade	
+				.code-header 
+					h4 For each language create  <code>left_menu.jade</code> 
+					p In <code>content/<i>LANGUAGE</i>/templates/left_menu.jade</code>.  This will create a function we can use when creating React based pages in the future.
+				pre.language-jade.
+					<code class="language-jade">
+						include ./mixins/docsnav
+
+						+docsnav(docssection)
+					</code>
 			
-			.jl-guide-figure.jl-guide-figure--commands.hidden-xs
-				.window.safari
-					img(src='/images/getting-started/commands-safari.png', alt='Safari window', width=942, height=616)
-				.window.terminal
-					.terminal-cursor
-					img(src='/images/getting-started/commands-terminal.png', alt='Terminal window', width=650, height=437)
-				.figure-shadow
+			//- route			
+			.jl-guide-section 				
+				.jl-guide__header
+					a(name="route-config")
+					h2.jl-guide__title
+						.jl-guide__title-label 
+							div.jl-guide__title-count: span.jl-guide__title-count 3
+							| Route config	
+							.jl-guide__title-info  the brains behind our delivery system
+				
+				p Our route file will provide information for the SPA to use when rendering each page.  This should  include the name of the Jade template function, section and language for the menus, as well as any page specific information like adding a menu based on named anchor links.
+				
+				//- move route file
+				.code-header
+					h4 Move and rename the route file.
+					p Currently our route file is at <code>content/index.js</code> We want to move it to <code>public/systemjs/app/config.js</code>.				
+				pre.language-javascript.
+					<code class="language-cmd">
+						// go to your project root
+						cd ~/projects/github/keystonejs-site
+						mv content/index.js public/systemjs/app/config.js
+					</code>	
+				
+				//- change route file
+				h4 Convert route file to ES2015
+				p We want everything to match in our client app so make a couple small changes.
+				.code-header
+					h4 <code>module.exports =</code> to <code>exports.</code>				
+				pre.language-javascript.
+					<code class="language-javascript">
+						exports.languages = {
+					</code>	
+					<code class="language-javascript">
+						exports.routes = [
+					</code>
+				.code-header
+					h4 Add a version tracker			
+				pre.language-javascript.
+					<code class="language-javascript">
+						exports.config = {
+							versions: ['0.2.x', 'current', 'incoming'],
+						}
+					</code>
+				.code-header
+					h4 Add some new routes to the <code>exports.routes</code> array
+				pre.language-javascript.
+					<code >
+						{
+							"path": "/docs/learn",
+							"language": "en",
+							"template": "docs/learn",
+							"section": "docs",
+							"dynamic": "true",
+							"docssection": { "value": "learn", "path": "/docs/learn", "label": "Learn" },
+							"title": "Learn"
+						},
+						{
+							"path": "/docs/learn/heroku",
+							"language": "en",
+							"template": "docs/learn/heroku",
+							"section": "docs",
+							"docssection": { "value": "learn", "path": "/docs/learn/heroku", "label": "Heroku deployment" },
+							"title": "Learn: deploying your app to Heroku"
+						},
+						{
+							"path": "/docs/learn/es2015",
+							"language": "en",
+							"template": "docs/learn/es2015",
+							"section": "docs",
+							"docssection": { "value": "learn", "path": "/docs/learn/es2015", "label": "ES2015" },
+							"title": "System.js, Babel and React",
+							"anchor-search": "true"
+						},
+						{
+							"path": "/docs/learn/resources",
+							"language": "en",
+							"template": "docs/learn/resources",
+							"section": "docs",
+							"docssection": { "value": "learn", "path": "/docs/learn/resources", "label": "Resources" },
+							"title": "Resources"
+						},
+						{
+							"path": "/docs/learn/code",
+							"language": "en",
+							"section": "docs",
+							"skip": "true",
+							"dynamic": "true",
+							"anchor-search": "true",
+							"docssection": { "value": "learn", "path": "/docs/learn/code", "label": "Code" },
+							"title": "Code Examples"
+						},
+						{
+							"path": "/docs/learn/kb",
+							"language": "en",
+							"section": "docs",
+							"skip": "true",
+							"dynamic": "true",
+							"anchor-search": "true",
+							"docssection": { "value": "learn", "path": "/docs/learn/kb", "label": "Knowledge Base" },
+							"title": "Knowledge Base"
+						},
+					</code>
+
+			//- jspm
+			.jl-guide-section 				
+				.jl-guide__header
+					a(name="jspm")
+					h2.jl-guide__title
+						.jl-guide__title-label 
+							div.jl-guide__title-count: span.jl-guide__title-count 4
+							| Setup jspm	
+							.jl-guide__title-info System.js package manager
+				p <b>jspm</b> will manage our client packages for us like npm does for our server packages. Versions are respected within dependencies.  
+				p We will use a basic System.js setup for a <b>gh-pages</b> deployment.  In a typical server environment we could bundle our app by section and serve files as needed.  We will not take advantage of path mapping so this app can be built with browserify as well.
+				
+				.code-header 
+					h4 Run <kbd>jspm init</kbd> from project root
+				pre.language-cmd.
+					<code class="language-cmd">
+						cd ~/projects/github/keystonejs-site 
+						jspm init
+						Would you like jspm to prefix the jspm package.json properties under jspm? [yes]:
+						Enter server baseURL (public folder path) [./]:./public  
+						Enter jspm packages folder [public/jspm_packages]:
+						Enter config file path [public/config.js]:
+						Configuration file public/config.js doesn't exist, create it? [yes]:
+						Enter client baseURL (public folder URL) [/]:
+						Do you wish to use a transpiler? [yes]:
+						Which ES6 transpiler would you like to use, Babel, TypeScript or Traceur? [babel]:
+						ok   Verified package.json at package.json
+							 Verified config file at public/config.js
+							 Looking up loader files...
+					</code>	
 					
+				.code-header 
+					h4 Remove jsx from babel blacklist
+					p By default System.js currently has jsx blacklisted in babel options.
+					p Open <code>public/config.js</code> and change <code>babelOptions</code> to:
+				pre.language-javascript.
+					<code class="language-javascript">
+						 babelOptions: {
+							"optional": [
+							  "runtime",
+							  "optimisation.modules.system"
+							],
+							"blacklist": []
+						  },
+					</code>	
+			
+				.code-header 
+					h4 Add depedencies to <code>packages.json</code>
+					p Change the <b>jspm</b> depedencies section to:
+				pre.language-javascript.
+					<code class="language-javascript">
+					  "jspm": {	
+						"dependencies": {
+						  "debug": "npm:debug@^2.2.0",
+						  "events": "github:jspm/nodelibs-events@^0.1.1",
+						  "fetch": "npm:whatwg-fetch@^0.10.0",
+						  "history": "npm:history@^1.12.5",
+						  "jade": "npm:jade@1.11.0",
+						  "jquery": "github:components/jquery@1.10.2",
+						  "lodash": "npm:lodash@^3.10.1",
+						  "marked": "npm:marked@^0.3.5",
+						  "react": "npm:react@^0.14.0",
+						  "react-addons-test-utils": "npm:react-addons-test-utils@^0.14.0",
+						  "react-dom": "npm:react-dom@^0.14.0",
+						  "react-router": "npm:react-router@^1.0.0-rc3",
+						  "striptags": "npm:striptags@^2.0.4",
+						  "tag-search": "npm:tag-search@^0.0.21",
+						  "util": "github:jspm/nodelibs-util@^0.1.0"
+						}
+					  },  
+					</code>	
+				.caution-note
+					p Notice we include <kbd>jade@1.11.0</kbd> instead of <kbd>jade-runtime</kbd>.  The Jade functions need this version and we access the runtime directly via <code>jade/lib/runtime</code>
+				
+				.code-header 
+					h4 Install packages
+				pre.language-cmd.
+					<code class="language-cmd">
+						jspm install
+					</code>
+				
+				
+			
+			//- create app		
+			.jl-guide-section 				
+				.jl-guide__header
+					a(name="app")
+					h2.jl-guide__title
+						.jl-guide__title-label 
+							div.jl-guide__title-count: span.jl-guide__title-count 5
+							| Create App
+							.jl-guide__title-info We need some routes, a base component, and add our listeners
+			
+				.code-header 
+					h4 Create <code>public/systemjs/clients.js</code>
+					p For development we can use a seperate file for entry.  This allows us to easily add or remove bundles for testing.  System.js pulls in all our files and runs and ES2015 file through babel, so we do not have to run browserify after each change.  While this is great for development, load times can be long.  In production our bundle file loads very fast.  We can achieve some of this load time by bundling our dependencies and only loading the client files.
+					
+				pre.language-javascript.
+					<code class="language-javascript">
+						// System.import('./bundles/dependencies');
+						System.import('./app/app').catch(console.error.bind(console));
+					</code>	
+				
+				.code-header 
+					h4 Create <code>public/systemjs/app/app.js</code>
+					p This is where we set up <code>react-router</code> and include any global holdovers
+				pre.language-javascript.
+					<code class="language-jsx">
+						import '../globals/bootstrap-collapse'
+						import '../globals/prism'
+						import '../globals/analytics'
+						// end globals
+						import React from 'react';
+						import { render } from 'react-dom'
+						import createBrowserHistory from 'history/lib/createBrowserHistory'
+						import { Router } from 'react-router'
+						import rootRoute from './routes';
+						import Debug from 'debug'
+
+						window.myDebug = Debug
+
+						render( <Router history={createBrowserHistory()} routes={rootRoute} />, document.getElementById('keystonejs-spa'));
+					</code>	
+				
+				.code-header(data-file="public/systemjs/app/routes.js" data-convert="jsx" data-com="true") 
+					h4 Create <code>public/systemjs/app/routes.js</code>
+					p This is our route file and the brains of our app.  Using <code>public/systemjs/app/config.js</code>, we build all our previous jade routes.  Then we can add some new pages for a knowledge base and code examples.  Each page is created through modules that accept options and return a React component.  We will create those soon.
+					br
+					a( href="#" class="loadCode" ) view code
+				pre.language-jsx.hideCode
+				
+				.code-header 
+					h4 Create <code>public/systemjs/app/render.js</code>
+					p This is our base component.  All other components are wrapped here.
+				pre.language-jsx.
+					<code class="language-jsx">
+						import React from 'react';
+						import { Router, Route, Link } from 'react-router'
+						import JadePage from './pages/fetch/jade';
+						import wrapListeners from './listen';
+						import {baseRoute, cleanPath, getFileName} from './common/util';
+						import SearchTags from 'tag-search'
+						import {extend, merge} from 'lodash'
+						import Debug from 'debug'
+						import Gab from './common/gab'
+
+						let debug = Debug('keystone:app:common:render');
+
+						class App extends React.Component {
+							constructor(props) {
+								super(props);
+								let base = baseRoute(props.location.pathname)
+								this.state = {
+									base: base,
+									header: JadePage('/header', {language: base.language}, base.path),
+									footer: JadePage('/footer',{language: base.language}, base.path),
+									tagSearchOptions: {
+										useLocation: false,
+										skipHistory: true,
+										nostyles: false,
+										noclasses: false,
+										topLink: true,
+										searchBar: 'searchBar',
+										searchList: 'searchList',
+										tagSelector: '.docs-content a[name], .jl-guide a[name]',
+										nameFromTagAttr: 'innerHTML',
+										nameFromNextTag: true,
+										classes: {
+											'searchBar': ' col-sm-offset-3 col-sm-9 ',
+											'input': ' form-control clearable',
+											'ul': ' sidebar-nav ',
+											'searchList': ' docs-sidebar ',
+											'context': ' context ',
+											'li:heading': ' nav-heading ',
+											'li:a': ''
+										},
+										styles: {
+											'searchBar': {},
+											'input': {},
+											'inputDiv': {},
+											'searchList': {},
+											'ul': {},
+											'li': {},
+											'li:a': {},
+											'li:heading': {},
+											'context': {},
+											'wrapper': {
+												'height': '50px',
+												'position': 'absolute',
+												'top': 0,
+												'right': 0,
+												'zIndex': 1022,
+												'padding': '0 0 0 8px',
+												'width': '100%',
+												'backgroundColor': '#f7f7f7',
+												'color': '#7a7a7a'
+											}
+										},
+									}
+								} // end setState
+								
+								debug('constructor done', this.state)
+								
+								this.updateTagSearch = this.updateTagSearch.bind(this)
+							}
+							componentWillReceiveProps(props) {
+								let base = baseRoute(props.location.pathname)
+								debug('props', this.state.base.section, base.section)
+								if(this.state.base.section !== base.section || this.state.base.language !== base.language) {
+								
+									this.setState({
+										header: JadePage('/header', {language: base.language}, base.path),
+										footer: JadePage('/footer',{language: base.language}, base.path),
+										base: base
+									});
+								}
+							}
+							updateTagSearch(options) {
+								debug('reset tag search',options)
+								Gab.emit('tag-search:update', options)
+							}		
+							render() {
+								debug('render app', this)
+								let head = <this.state.header />
+								let foot = <this.state.footer />
+								if(this.props.location.pathname === '/') {
+									head = <span />
+									foot = <span />
+								}		
+								let anchor;
+								let base = baseRoute()
+								if('object' === typeof base) {
+									if(base["anchor-search"] == 'true') {
+										anchor = <SearchTags reset={true} events={Gab} options={this.state.tagSearchOptions}   {...this.props}   />
+									} else {
+										anchor = <span />
+									}
+								} else {
+									anchor = <span />
+								}
+								return (
+									<div>
+										<a name="top" />
+										{head}	
+										<div > 
+											{this.props.children && React.cloneElement(this.props.children, {
+												updateTagSearch: this.updateTagSearch
+											})}
+										</div>
+										{foot}
+										{anchor}
+									</div>
+								);
+							}
+							
+							
+						 
+						}
+
+						App.defaultProps = {};
+
+						export default wrapListeners(App) 
+
+					</code>	
+					
+				.code-header 
+					h4 Create <code>public/systemjs/app/listen.js</code>
+					p Our event listeners.  We can choose to run events onMount and onUpdate.
+				pre.language-jsx.
+					<code class="language-jsx">
+						import React from 'react'
+						import $ from 'jquery'
+						import _ from 'lodash'
+						import {routes, config} from './config';
+						import {baseRoute, cleanPath, getFileName} from './common/util';
+						import Debug from 'debug'
+						import Gab from './common/gab'
+
+						let debug = Debug('keystone:app:common:listen');
+
+						let Routes = routes.map(v => {
+							return v.path;
+						});
+
+						export default (Component) => {
+								
+							class Listeners extends React.Component {
+								constructor(props){
+									super(props)
+									this.displayName = 'Page Template'
+									const clean = getFileName(props.location.pathname)
+									this.state = { 
+										route: clean.clean,
+										prev: clean.clean,
+										paths: clean
+									}
+									this._update = false
+									this._limiters = {}
+								}
+								render() {
+									// return React.cloneElement(Component, this.props)
+									return  <Component {...this.props} {...this.state} />
+								}
+								componentWillReceiveProps(props) {
+									const clean = getFileName(props.location.pathname).clean
+									if(clean !== this.state.route) {
+										this.setState({
+											route: clean,
+											prev: this.state.route
+										});
+										this._update = true;
+									}
+								}
+								componentDidUpdate() {
+									if(this._update) {
+										this.onUpdate();
+									}
+								}
+								componentDidMount() {
+									this.onMount();
+									this.onUpdate();
+								}
+								onUpdate() {
+									let thisComponent = this;
+									this._update = false;
+									//debug('update listeners')
+									window.scrollTo(0,0);
+									// scroll to anchor
+									// *only* if we have anchor on the url
+									if(thisComponent.props.location.hash) {
+										
+										// smooth scroll to the anchor id
+										const $anchor = $('a[name="' + thisComponent.props.location.hash.slice(1) + '"]');
+										if($anchor.length === 1) {
+											$('html, body').animate({
+												scrollTop: $anchor.offset().top + 'px'
+											}, 100, 'swing');
+										}
+									}
+													
+									// add anchor links and version switcher to certain elements
+									$(".docs-content a[name]").each(function() {
+										let $anchor = $(this),
+											name = $anchor.attr("name")
+										let link = '<a class="anchor" href="#' + name + '"><i class="entypo entypo-link"></i></a><a class="anchor" href="#top"><i class="entypo entypo-up"></i></a>'
+										const $next = $anchor.next();
+										const version = $('#_version').val()
+										const path = $('#_path').val()
+
+										if(path) {
+											link += '<i class="anchor" style="padding-right: 0px;"><span>switch to:</span></i>';
+											config.versions.forEach(function(v) {
+												if(v !== version) {
+													const newpath = path.replace(version, v);
+													link += '<a style="padding-left: 8px;padding-right: 8px;"class="anchor" href="' + newpath + '/#' + name + '"><span>' + v + '</span></a>';
+												}
+											});
+										}	
+										
+										const $link = $(link);
+										
+										// only append links to H2/H3/H4 tags
+										if (["H2", "H3", "H4"].indexOf($next.prop("tagName")) > -1) {
+											$next.append($link);
+										}
+									});
+									
+									// add code links and dropdown html
+									$(".docs-content .addGitHubLink").each(function(e) {
+										const $this = $(this);
+										const file = $this.data("file");
+										const branch = $('#_branch').val();
+										const append = '<div style="float:right" > /' + file + ' <a href="http://github.com/keystonejs/keystone/blob/' + branch + '/' + file + '" target="_blank"><i class="entypo entypo-social entypo-github"></i></a></div>';
+										$this.append(append);
+									});
+									
+									
+									// sticky menu
+									const $stickyMenu = $('.stickyMenu');
+									const $docsFooter = $('.docs-footer');
+									if (!!$stickyMenu.offset()) { 
+										const stickyTop = $stickyMenu.offset().top;  
+										$(window).scroll(function() { 
+											const windowTop = $(window).scrollTop(); 
+											if (stickyTop-40 < windowTop){
+												const docFooterView = $docsFooter[0].getBoundingClientRect();
+												const height = (($(window).height() - docFooterView.top) < 0) ? '100%' : docFooterView.top + 'px';
+												const width = $stickyMenu.parent().width()
+												$stickyMenu.css({ direction: 'ltr', position: 'fixed', overflowY: 'auto', top: 0,  marginTop: '0', paddingBottom: '80px',  'height': height, 'width': width });
+											} else {
+												$stickyMenu.css({ position:'static'});
+											}
+										});
+									}
+									
+									// Run Prism highlighting
+									// weird error on api pages needs a second run
+									if(location.pathname.search('api') > -1) {
+										debug('highlight again', location.pathname.search('api'))
+										setTimeout(Prism.highlightAll,1000)
+									}
+									Prism.highlightAll()
+											
+								} // end onUpdate
+								onMount() {
+									let thisComponent = this;
+									let _cached = {}
+									let create_cached = function(version) {
+										if(!_.isObject(_cached[version])) {
+											_cached[version] = {}
+										}
+									}
+									// catch code view click
+									$(document).on('click', '.loadCode', function(e) {
+										e.preventDefault()
+										const $this = $(this)
+										const target = $this.parent().data()
+										const $pre = $this.parent().next()
+										let pass = (go=true) => {
+											if(go) {
+												$pre.slideToggle();
+											}
+										}
+										const branch = $('#_branch').val();
+										create_cached(branch);
+										if($pre.css('display') === 'block') {
+											// just toggle close
+											pass()
+										} else if(_cached[branch][target.file]) {
+											// cached results so just toggle open
+											pass()
+										} else if(target.file) {
+											const url = 'https://raw.githubusercontent.com/keystonejs/keystone/BRANCH/FILE'.replace('BRANCH',branch).replace('FILE', target.file);
+											debug('github code cache',_cached, target.file)
+											fetch(url)
+												.then(r => r.text())
+												.then(results => {
+													_cached[branch][target.file] = Prism.highlight(results, Prism.languages.js);
+													debug(_cached)
+													$pre.html(_cached[branch][target.file])
+													pass()
+												})
+											.catch(e => debug('Fetch error',page,e))	
+										} else {
+											pass(false)
+										}				
+									});			
+									
+									// catch clicks for react-router
+									// to add links that bypass this measure add class '.notspa' or '.uselink'
+									$(document).on('click', 'a:not(.uselink, .notspa, .loadCode)', function(event) {
+									
+										const $url = $(this)[0]
+										const myLocation = getFileName($url.href)
+										
+										const filename = myLocation.clean
+										const url = $url.pathname + $url.search + myLocation.hash
+										
+										debug('click information', location, myLocation, 'url', url, '$url', $url.hostname)
+										
+										if(location.hostname !== $url.hostname) {
+											// not our link 
+											return
+										}
+										
+										// is this a routed link
+										if(myLocation.route.section !== '404' && (!$url.hash || thisComponent.state.route !== filename)) {
+											event.preventDefault()
+											debug('push history known route',  url)
+											thisComponent.props.history.pushState(null, url)
+											return
+										}
+										// should this be a 404?
+										if(!myLocation.hash && $url.host === location.host) {
+											// this app is entirely SPA with defined routes, so this page is probably a 404, but also could be a development, dynamic or hidden page
+											event.preventDefault()
+											debug('push history unknown route', url)
+											thisComponent.props.history.pushState(null, url)
+											return
+										}
+										if(myLocation.hash && thisComponent.state.route === filename) {
+											// react-router has a bug that triggers a render on same page anchor links
+											// this should catch that and fake the move
+											//event.preventDefault()
+											debug('fake scroll', url)
+											let $goto = $('a[name="' + myLocation.hashless + '"]')
+											if($goto.length) {
+												//location.hash = myLocation.hashless;
+												//$(document).scrollTop($goto.offset().top)
+											}
+											//thisComponent.props.history.replaceState(null, url)
+											return
+										}
+										
+										debug('not our link so send away')
+									})	
+									
+									// x for clear
+									function tog(v){
+										return v ? 'addClass' : 'removeClass'
+									} 
+									$(document).on('#searchBar input', '.clearable', function(){
+										$(this)[tog(this.value)]('x');
+									}).on('mousemove', '.x', function( e ){
+										$(this)[tog(this.offsetWidth-22 < e.clientX-this.getBoundingClientRect().left)]('onX');   
+									}).on('touchstart click', '.onX', function( ev ){
+										ev.preventDefault();
+										$(this).removeClass('x onX').val('').change();
+									})
+										
+								} // end onMount		
+							}
+
+							Listeners.propTypes = {};
+
+							return Listeners
+						}
+					</code>	
+					
+				
+				
+			//- components	
+			.jl-guide-section 				
+				.jl-guide__header
+					a(name="components")
+					h2.jl-guide__title
+						.jl-guide__title-label 
+							div.jl-guide__title-count: span.jl-guide__title-count 6
+							| Pages & Common Components
+							.jl-guide__title-info
+			
+				.code-header 
+					h4 Create <code>public/systemjs/app/routes.js</code>
+					p This is our route file and the brains of our app.  Using
+				pre.language-javascript.
+					<code class="language-cmd">
+						jspm install
+					</code>	
+					
+					
+			.jl-guide-section 				
+				.jl-guide__header
+					a(name="render-jade")
+					h2.jl-guide__title
+						.jl-guide__title-label 
+							div.jl-guide__title-count: span.jl-guide__title-count 7
+							| Jade Component
+							.jl-guide__title-info
+			.jl-guide-section 				
+				.jl-guide__header
+					a(name="fetch")
+					h2.jl-guide__title
+						.jl-guide__title-label 
+							div.jl-guide__title-count: span.jl-guide__title-count 8
+							| Fetch Component
+							.jl-guide__title-info
 			.jl-guide-section
 				.jl-guide__header
+					a(name="clean")
 					h2.jl-guide__title
-						span.jl-guide__title-count 3
-						.jl-guide__title-label You're Done!
-					p.jl-guide__subtitle So you just created your first KeystoneJS project, congrats!
-					p.jl-guide__subtitle Run it in your command line like this:
-					pre.command-line node keystone
-					p.jl-guide__subtitle Then open <a href="http://localhost:3000" target="_blank">http://localhost:3000</a> to view it in your browser.
-					p.jl-guide__subtitle If you want to see what the generator actually did take a look at our getting started guide, it'll walk you through the manual setup process. This is particularly helpful if you're new to Node.js.
-					p.jl-guide__subtitle: a(href='/docs/getting-started') View the getting started guide &rarr;
+						.jl-guide__title-label 
+							div.jl-guide__title-count: span.jl-guide__title-count 9
+							| Clean up
+							.jl-guide__title-info move server to /dev and clean up old files
+	
+			.jl-guide-section
+				.jl-guide__header
+					a(name="build")
+					h2.jl-guide__title
+						.jl-guide__title-label 
+							div.jl-guide__title-count: span.jl-guide__title-count 10
+							| Create build file
+							.jl-guide__title-info Use gulp to automate our routine.
 			
-			.jl-guide-figure.jl-guide-figure--finished.wow-much-find.hidden-xs
-				img(src='/images/getting-started/commands-safari.png', alt='Safari window', width=1680, height=600).sr-only
+			.jl-guide-section
+				.jl-guide__header
+					a(name="jade-functions")
+					h2.jl-guide__title
+						.jl-guide__title-label 
+							div.jl-guide__title-count: span.jl-guide__title-count 11
+							| Jade template file
+							.jl-guide__title-info build our jade templates
+			
+			.jl-guide-section
+				.jl-guide__header
+					a(name="common")
+					h2.jl-guide__title
+						.jl-guide__title-label 
+							div.jl-guide__title-count: span.jl-guide__title-count 12
+							| LESS and Copying Files
+							.jl-guide__title-info Use gulp to automate our routine.
+			
+			.jl-guide-section
+				.jl-guide__header
+					a(name="bundle")
+					h2.jl-guide__title
+						.jl-guide__title-label 
+							div.jl-guide__title-count: span.jl-guide__title-count 13
+							| Setup Create our bundle tasks
+							.jl-guide__title-info Use gulp to automate our routine.
+							
+			.jl-guide-section
+				.jl-guide__header
+					a(name="deploy")
+					h2.jl-guide__title
+						.jl-guide__title-label 
+							div.jl-guide__title-count: span.jl-guide__title-count 14
+							| Deploy to <b>GitHub</b> Pages
+							.jl-guide__title-info 								
 				
 			.jl-guide-section
-				div
-					.jl-guide__header
-						h2.jl-guide__title
-							span.jl-guide__title-count ?
-							.jl-guide__title-label Problems
-						p.jl-guide__subtitle Something went wrong? Hopefully these tips will help.
-						
-						h3 ERR! Please try running this command again as root/Administrator.
-						p When running npm install -g generator-keystone, you may get an EACCES error asking you to run the command again as root/Administrator. This indicates that there is a permissions issue.
-						p On your development system you can change directory ownership to the current $USER so you do not have to run sudo while installing untrusted code:
-						pre
-							| sudo chown -R $USER /usr/local
-							| 
-							| # Other directories may be required depending on your O/S
-							| sudo chown -R $USER /usr/lib/node_modules/
-						
-						p For a production/shared environment you may wish to re-run the npm command with the sudo prefix:
-
-						pre sudo npm install -g generator-keystone
-						p For more information, see the <a href='http://foohack.com/2010/08/intro-to-npm/#what_no_sudo', target='_blank'>"What, no sudo?"</a> of the Intro to npm by Isaac Schulueter.
-
-						h3 What do you mean it couldn't find my Database?
-						p By default, KeystoneJS will look for a MongoDB server running on localhost on the default port, and connect to it. If you're getting errors related to the MongoDB connection, make sure your MongoDB server is running.
-						p If you haven't installed MongoDB yet, follow <a href="https://www.mongodb.org/downloads" target="_blank">the official instructions.</a>
-						p To connect to a server other than localhost, add a MONGO_URI setting to the .env file in your Keystone project directory:
-						pre MONGO_URI=mongodb://your-server/database-name
-						
-						h3 Something else?
-						p.jl-guide__subtitle If your issue still isn't resolved, reach out to us on the <a href="https://groups.google.com/d/forum/keystonejs" target="_blank">KeystoneJS Google Group</a>.
-
-			
-				
+				.jl-guide__header
+					a(name="clean")
+					h2.jl-guide__title
+						.jl-guide__title-label 
+							div.jl-guide__title-count: span.jl-guide__title-count 15
+							| Bonus
+							.jl-guide__title-info Add Keystone to a current Express app
+					
+					
+					

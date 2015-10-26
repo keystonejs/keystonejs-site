@@ -1,7 +1,7 @@
 import React from 'react';
-import Templates from 'app/html/templates'
-import {languages as nav, routes} from 'config';
-import {baseRoute, cleanPath, getFileName} from 'common/util';
+import Templates from '../html/templates'
+import {languages as nav, routes} from '../config';
+import {baseRoute, cleanPath, getFileName} from '../common/util';
 import Debug from 'debug'
 
 let debug = Debug('keystone:app:pages:code-examples');

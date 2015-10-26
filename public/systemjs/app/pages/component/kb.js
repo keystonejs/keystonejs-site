@@ -1,7 +1,7 @@
 import React from 'react';
-import Pages from 'pages/fetch/fetch'
+import Pages from '../fetch/fetch'
 import Debug from 'debug'
-import Gab from 'common/gab'
+import Gab from '../../common/gab'
 
 let debug = Debug('keystone:pages:component:kb');
 
@@ -69,7 +69,7 @@ let debug = Debug('keystone:pages:component:kb');
 							nameFromTagAttr: 'innerHTML',
 							contextTextUntilTag: 'h*',
 							useLocation: false,
-							skipHistory: true,
+							skipHistory: false,
 							topLink: true,
 							mainHeader: 'header',
 							classes: {

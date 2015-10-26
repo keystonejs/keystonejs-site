@@ -1,5 +1,5 @@
 import React from 'react';
-import Pages from 'pages/fetch/fetch';
+import Pages from '../fetch/fetch';
 
 	export default (page, returnType, options) => {
 		class GenericFetch extends React.Component {

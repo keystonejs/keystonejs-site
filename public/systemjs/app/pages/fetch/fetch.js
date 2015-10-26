@@ -1,17 +1,17 @@
 import React from 'react'
 import strip from 'striptags'
-import Jade from 'pages/fetch/jade'
-import {languages as nav} from 'config';
-import { translate as markdown }  from 'md'
-import fetch2 from 'fetch'
+import Jade from './jade'
+import {languages as nav} from '../../config';
+import markdown from 'marked'
+import fetchPolyfill from 'fetch'
 import Debug from 'debug'
-import Gab from 'common/gab'
+import Gab from '../../common/gab'
 
 let debug = Debug('keystone:app:pages:fetch:fetch');
 
 if(typeof window.fetch == 'undefined' ) {
 	// polyfill fetch
-	window.fetch = fetch2
+	window.fetch = fetchPolyfill
 }
 
 /**
@@ -114,7 +114,7 @@ export default (page, Component, dataType, options) => {
 						return ("<pre>" + preed + "</pre>") 
 						break
 					case 'markdown':
-						return markdown({ source: data })
+						return markdown(data)
 						break
 					case 'noscript':
 						let regx = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi

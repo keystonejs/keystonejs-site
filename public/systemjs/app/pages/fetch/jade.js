@@ -1,10 +1,10 @@
 import React from 'react'
-import jade from 'jade-runtime'
-import jadeTemplates from 'app/html/templates'
-import api from 'app/html/markedApi'
+import jade from 'jade/lib/runtime'
+import jadeTemplates from '../../html/templates'
+import api from '../../html/markedApi'
 import _ from 'lodash'
-import {languages, routes, config} from 'config'
-import {baseRoute, cleanPath, getFileName} from 'common/util'
+import {languages, routes, config} from '../../config'
+import {baseRoute, cleanPath, getFileName} from '../../common/util'
 import Debug from 'debug'
 
 let debug = Debug('keystone:app:pages:fetch:jade');

@@ -1,12 +1,12 @@
-import App from 'common/render';
-import Jade from 'pages/fetch/jade';
-import Learn from 'pages/learning'; // page
-import Example from 'pages/example'; // page
-import Code from 'pages/code-examples'; // page
-import Fetch from 'pages/component/generic-fetch'; // function > component
-import KbPage from 'pages/kb-page'; // page
-import KbContent from 'pages/component/kb'; // function > component
-import {languages, routes} from 'config';
+import App from './render';
+import Jade from './pages/fetch/jade';
+import Learn from './pages/learning'; // page
+import Example from './pages/example'; // page for Fetch example -- hidden --
+import Code from './pages/code-examples'; // page
+import Fetch from './pages/component/generic-fetch'; // function > component
+import KbPage from './pages/kb-page'; // page
+import KbContent from './pages/component/kb'; // function > component
+import {languages, routes} from './config';
 
 let Routes = []
 
