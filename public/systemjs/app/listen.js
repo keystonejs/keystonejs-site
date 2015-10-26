@@ -217,8 +217,9 @@ export default (Component) => {
 					return
 				}
 				if(myLocation.hash && thisComponent.state.route === filename) {
-					// react-router has a bug that triggers a render on same page anchor links
-					// this should catch that and fake the move
+					// react-router is currently triggering a render on same page anchor links
+					// this can catch that and fake the move
+					// but we lose history
 					//event.preventDefault()
 					debug('fake scroll', url)
 					let $goto = $('a[name="' + myLocation.hashless + '"]')

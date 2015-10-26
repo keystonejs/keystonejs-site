@@ -87,7 +87,7 @@ Routes.push({
     ]
 })
 
-Routes.push({ path: '*', component: Jade('404') })
+Routes.push({ path: '*', component: Jade('/404') })
 
 const home = Jade('/home');
 

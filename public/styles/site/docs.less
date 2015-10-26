@@ -91,7 +91,8 @@ h2:first-child {
 	}
 	#searchList {
 		display: none;
-		margin: -250px 15px 0 15px;
+		margin: -300px 15px 0 15px;
+		height: 250px;
 		@media (min-width: @screen-sm-min) {
 			height: 300px;
 			margin: -350px 15px 0 15px;
@@ -99,7 +100,6 @@ h2:first-child {
 		border: 1px solid mix(white, @gray-light,50%);
 		border-bottom: none;
 		overflow-y: auto;
-		height: 200px;
 		background-color: mix(white, @gray-lighter,75%);
 		padding: 10px 20px;
 		
@@ -409,33 +409,7 @@ span.subMethod {
 	font-weight: bold;
 }
 
-// folder ul
-ul.folder-list, ol.folder-list {
-	margin-bottom: 0;
-	ol {
-		margin-bottom: 0;
-	}
-	list-style-type: none;
-	li:before {
-		display: none;
-	}
-	.folder {
-		color: darken(@link-color, 30%);
-	}
-	color: darken(@link-color, 30%);
-	li {
-		
-		ol {
-			list-style-image: url("/images/lists/nested.png");
-			padding-left: 18px;
-			li {
-				color: @brand-primary;
-				margin-left:10px;
-			}
-		}
-	}
 
-}
 
 // notes
 .note {

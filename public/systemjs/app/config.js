@@ -161,9 +161,9 @@ exports.routes = [
 		"title": "Learn: deploying your app to Heroku"
 	},
 	{
-		"path": "/docs/learn/es2015",
+		"path": "/docs/learn/ES2015",
 		"language": "en",
-		"template": "docs/learn/es2015",
+		"template": "docs/learn/ES2015",
 		"section": "docs",
 		"docssection": { "value": "learn", "path": "/docs/learn/es2015", "label": "ES2015" },
 		"title": "System.js, Babel and React",

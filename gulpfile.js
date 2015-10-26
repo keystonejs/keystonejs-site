@@ -209,7 +209,7 @@ gulp.task('build', function (callback) {
 	runSequence('clean', 'build-no-clean', callback);
 	return
 });
-// build
+// build-browserify
 gulp.task('build-browserify', function (callback) {
 	
 	runSequence('clean', 'browserify-no-clean', callback);
