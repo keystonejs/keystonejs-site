@@ -1,16 +1,13 @@
-extends ../../../../../common/templates/layout/base
-
 include ../../../../templates/mixins/docsapinav
 
 block intro
 	.page-header
 		.container
-			h1 Class Reference 
-			p.lead incoming (#{branch})
+			h1 Ref:Class
+			p.lead .incoming(#{branch})
 	
 block content
 	.container: .row
-		
 		.col-sm-3
 			+docsnav(docssection)
 		

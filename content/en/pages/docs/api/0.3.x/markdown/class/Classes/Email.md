@@ -37,7 +37,7 @@ options.templateMandrillContent = [
 ]
 ```   
 
-<div class="code-header"> <h4>Create a new Email instance and send an Email</h4></div><pre class=" language-javascript"><code class="language-javascript">
+<div class="code-header"> <h4>Create a new Email instance and send an Email</h4></div><pre><code class="language-javascript">
 	var Email = new keystone.Email('welcome');
 	Email.send({
 		subject:'Your  account information',

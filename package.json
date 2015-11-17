@@ -15,25 +15,109 @@
     "async": "^1.4.2",
     "errorhandler": "^1.3.6",
     "express": "^4.12.3",
-    "fs-extra": "^0.18.3",
+    "fs.extra": "^1.3.2",
+    "gh-pages": "^0.4.0",
     "github": "^0.2.4",
-    "jade": "^1.9.2",
+    "jade": "^1.11.0",
     "jstransformer-marked": "^1.0.1",
+    "keystone": "^0.3.14",
     "less-middleware": "^2.0.1",
     "lodash": "^3.8.0",
     "marked": "^0.3.5",
     "morgan": "^1.5.3",
-    "serve-favicon": "^2.2.1"
+    "serve-favicon": "^2.2.1",
+    "uglify-js": "^2.4.24"
   },
   "bugs": {
     "url": "https://github.com/keystonejs/keystonejs-site/issues"
   },
   "scripts": {
-    "build": "node build.js",
-    "start": "node index.js"
+    "build": "gulp build",
+    "start": "cd dev && node ./server.js",
+    "postinstall": "jspm i",
+    "pack": "git add --all :/ && git commit -m 'update from script' && git push origin site"
   },
   "engines": {
+    "iojs": ">= 3.3.1",
     "node": ">= 0.10.28",
     "npm": ">= 1.4.9"
+  },
+  "devDependencies": {
+    "babel": "^5.8.29",
+    "babel-core": "^5.8.25",
+    "babelify": "^6.4.0",
+    "browserify": "^11.2.0",
+    "debug": "^2.2.0",
+    "fetch": "^0.3.6",
+    "gulp": "^3.9.0",
+    "gulp-concat-css": "^2.2.0",
+    "gulp-copy": "0.0.2",
+    "gulp-if": "^2.0.0",
+    "gulp-insert": "^0.5.0",
+    "gulp-jade": "^1.1.0",
+    "gulp-jade-template-concat": "git://github.com/snowkeeper/gulp-jade-template-concat#export",
+    "gulp-less": "^3.0.3",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-util": "^3.0.7",
+    "history": "^1.12.6",
+    "jade": "^1.11.0",
+    "jade-runtime": "^1.1.0",
+    "jquery": "^2.1.4",
+    "jspm": "^0.16.13",
+    "less": "^2.5.3",
+    "lodash": "^3.10.1",
+    "react": "^0.14.0",
+    "react-addons-test-utils": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-router": "^1.0.0-rc3",
+    "resolve": "^1.1.6",
+    "run-sequence": "^1.1.4",
+    "striptags": "^2.0.4",
+    "systemjs-builder": "^0.14.8",
+    "tag-search": "0.0.21",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "client": {
+    "async": "^1.4.2",
+    "marked": "^0.3.5",
+    "debug": "^2.2.0",
+    "fetch": "^0.3.6",
+    "jade-runtime": "^1.1.0",
+    "jquery": "^2.1.4",
+    "react": "^0.14.0",
+    "react-addons-test-utils": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-router": "^1.0.0-rc3",
+    "tag-search": "0.0.21",
+    "lodash": "^3.10.1",
+    "history": "^1.12.6"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "public"
+    },
+    "dependencies": {
+      "debug": "npm:debug@^2.2.0",
+      "events": "github:jspm/nodelibs-events@^0.1.1",
+      "fetch": "npm:whatwg-fetch@^0.10.0",
+      "history": "npm:history@^1.12.5",
+      "jade": "npm:jade@1.11.0",
+      "jquery": "github:components/jquery@1.10.2",
+      "lodash": "npm:lodash@^3.10.1",
+      "marked": "npm:marked@^0.3.5",
+      "react": "npm:react@^0.14.0",
+      "react-addons-test-utils": "npm:react-addons-test-utils@^0.14.0",
+      "react-dom": "npm:react-dom@^0.14.0",
+      "react-router": "npm:react-router@^1.0.0-rc3",
+      "striptags": "npm:striptags@^2.0.4",
+      "tag-search": "npm:tag-search@^0.0.21",
+      "util": "github:jspm/nodelibs-util@^0.1.0"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
   }
 }
