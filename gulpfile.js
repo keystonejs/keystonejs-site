@@ -45,7 +45,7 @@ var knownArgs = {
 		repo: '',
 		tag: '',
 		add: false,
-		message: 'Automatic build',
+		m: 'Automatic build',
 		user: null,
 		email: null
 	}
@@ -283,7 +283,7 @@ gulp.task('push',  function (cb) {
 			clone: './dev/.gh-pages-production',
 			tag: Args.tag,
 			add: !!Args.add,
-			message: Args.message
+			message: Args.m
 		},
 		function() {
 			gutil.log('-------------------------------------')
@@ -317,7 +317,7 @@ gulp.task('dev-push', function () {
 				clone: Args.clone,
 				tag: Args.tag,
 				add: !!Args.add,
-				message: Args.message,
+				message: Args.m,
 				user: Args.user && Args.email ? { user: Args.user, email: Args.email } : null
 			},
 			function() {
