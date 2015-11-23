@@ -36,7 +36,7 @@ export default (page, Component, dataType, options) => {
 		componentDidMount() {
 			fetch(page, { mode: 'cors' })
 				.then(r => {
-					let dType = (dataType instanceof Array) ? dataType[0] : dataType 
+					let dType = (Array.isArray(dataType)) ? dataType[0] : dataType 
 					switch(dType) {
 						case 'json':
 						case 'jsonp':
@@ -88,7 +88,7 @@ export default (page, Component, dataType, options) => {
 		transform(data, dataType) {
 			if(!dataType) {
 				return data;
-			} else if(dataType instanceof Array) {
+			} else if(Array.isArray(dataType)) {
 				for( let t of dataType) {
 					data = run(t, data)
 				}

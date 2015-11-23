@@ -443,7 +443,7 @@ block content
 			
 				.code-header 
 					h4 Create <code>public/systemjs/clients.js</code>
-					p For development we can use a seperate file for entry.  This allows us to easily add or remove bundles for testing.  System.js pulls in all our files and runs and ES2015 file through babel, so we do not have to run browserify after each change.  While this is great for development, load times can be long.  In production our bundle file loads very fast.  We can achieve some of this load time by bundling our dependencies and only loading the client files.
+					p For development we can use a seperate file for entry.  This allows us to easily add or remove bundles for testing.  System.js handles our transformations with babel during app delivery, so we do not have to watch our files to run a transform on each change.  While this can be good for development, load times can be long.  In production our bundle file will load very fast.  We can achieve a qicker load time in development by bundling our dependencies and only loading the client files.
 					
 				pre.language-javascript.
 					<code class="language-javascript">
@@ -840,7 +840,7 @@ block content
 				.code-header(data-file="public/systemjs/app/html/templates.js" data-convert="jsx" data-com="true") 
 					h4 Finished product: <code>public/systemjs/app/html/templates.js</code>
 					br
-					a( href="https://github.com/snowkeeper/keystonejs-site/blob/site/public/systemjs/app/html/templates.js" target="_blank" ) https://github.com/snowkeeper/keystonejs-site/blob/site/public/systemjs/app/html/templates.js
+					a( href="https://github.com/inquisive/keystonejs-site/blob/site/public/systemjs/app/html/templates.js" target="_blank" ) https://github.com/inquisive/keystonejs-site/blob/site/public/systemjs/app/html/templates.js
 				pre.language-jsx.hideCode
 				blockquote
 					.code-header
@@ -872,7 +872,7 @@ block content
 				.code-header(data-file="public/systemjs/app/html/markedApi.js" data-convert="jsx" data-com="true") 
 					h4 Finished product: <code>public/systemjs/app/html/markedApi.js</code>
 					br
-					a( href="https://github.com/snowkeeper/keystonejs-site/blob/site/public/systemjs/app/html/markedApi.js" target="_blank" ) https://github.com/snowkeeper/keystonejs-site/blob/site/public/systemjs/app/html/markedApi.js
+					a( href="https://github.com/inquisive/keystonejs-site/blob/site/public/systemjs/app/html/markedApi.js" target="_blank" ) https://github.com/inquisive/keystonejs-site/blob/site/public/systemjs/app/html/markedApi.js
 				pre.language-jsx.hideCode
 				blockquote
 					.code-header

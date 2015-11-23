@@ -164,7 +164,7 @@ export default (Component) => {
 					let convert
 					if(target.com) {
 						convert = target.convert || 'js'
-						url = 'https://raw.githubusercontent.com/snowkeeper/keystonejs-site/site/' + target.file
+						url = 'https://raw.githubusercontent.com/inquisive/keystonejs-site/proposal/' + target.file
 					} else {
 						url = 'https://raw.githubusercontent.com/keystonejs/keystone/BRANCH/FILE'.replace('BRANCH',branch).replace('FILE', target.file)
 						convert = 'js'
