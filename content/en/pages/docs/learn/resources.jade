@@ -1,0 +1,137 @@
+include ../../../templates/mixins/docsnav
+
+block intro
+	.page-header
+		.container
+			h1 Ref:Implement
+			p.lead .tour(the web; learn something new)
+	
+block content
+	.container: .row
+		
+		.col-sm-3
+			+docsnav(docssection)
+		
+		.col-sm-9: .docs-content
+			p.lead Explore some tools we use in Node.js
+			.row
+				.col-sm-12.col-md-4
+					.feature-panel
+						.feature-content
+							h4 Babel
+							p.link-context: a(href="http://babeljs.io" target="_blank") http://babeljs.io
+							p Babel is a JavaScript compiler.  Use it to write ES2015 code today.
+				.col-sm-12.col-md-4
+					.feature-panel
+						.feature-content
+							h4 React
+							p.link-contex: a(href='https://facebook.github.io/react/' target="_blank") https://facebook.github.io/react/
+							p.link-contex A javascript library for building user interfaces
+				.col-sm-12.col-md-4
+					.feature-panel
+						.feature-content
+							h4 Express
+							p.link-contex: a(href='http://expressjs.com' target="_blank") http://expressjs.com
+							p Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications
+			.row
+				.col-sm-12.col-md-4
+					.feature-panel
+						.feature-content
+							h4 MongoDB
+							p.link-context: a(href="https://www.mongodb.org" target="_blank") https://www.mongodb.org
+							p: a(href="https://docs.mongodb.org/manual/" target="_blank") Manual
+				.col-sm-12.col-md-4
+					.feature-panel
+						.feature-content
+							h4 Mongoose
+							p.link-context: a(href="http://mongoosejs.com" target="_blank") http://mongoosejs.com
+							p elegant mongodb object modeling for node.js
+							p: a(href="http://mongoosejs.com/docs/guide.html" target="_blank") User Guide
+							p: a(href="http://mongoosejs.com/docs/api.html" target="_blank") Api Docs
+							p: a(href="http://mongoosejs.com/docs/index.html" target="_blank") Quick Start
+				.col-sm-12.col-md-4
+					.feature-panel
+						.feature-content
+							h4 Redis
+							p.link-context: a(href="http://redis.io" target="_blank") http://redis.io
+							p Redis is an open source (BSD licensed), in-memory data structure store, used as database, cache and message broker.
+							p: a(href="http://redis.io/documentation" target="_blank") Documentation
+							p: a(href="http://try.redis.io/" target="_blank") Tutorial
+			.row
+				.col-sm-12.col-md-4
+					.feature-panel
+						.feature-content
+							h4 Socket.io
+							p.link-context: a(href="http://socket.io" target="_blank") http://socket.io
+							p Socket.IO enables real-time bidirectional event-based communication.  It works on every platform, browser or device, focusing equally on reliability and speed.
+				.col-sm-12.col-md-4
+					.feature-panel
+						.feature-content
+							h4 Primus
+							p.link-context: a(href="https://github.com/primus/primus" target="_blank") https://github.com/primus/primus
+							p Primus provides a common low level interface to communicate in real-time using various real-time frameworks.
+				.col-sm-12.col-md-4
+					.feature-panel
+						.feature-content
+							h4 SockJS
+							p.link-context: a(href="https://github.com/sockjs/sockjs-node" target="_blank") https://github.com/sockjs/sockjs-node
+							p SockJS gives you a coherent, cross-browser, Javascript API which creates a low latency, full duplex, cross-domain communication channel between the browser and the web server, with WebSockets or without.
+							p: a(href="https://github.com/sockjs/sockjs-client" target="_blank") SockJS Client
+			.row
+				.col-sm-12.col-md-4
+					.feature-panel
+						.feature-content
+							h4 NPM
+							p.context: a(href="https://docs.npmjs.com" target="_blank") https://docs.npmjs.com
+							p node package manager
+				.col-sm-12.col-md-4
+					.feature-panel
+						.feature-content
+							h4 GitHub
+							p.link-context: a(href="http://github.com" target="_blank") http://github.com
+							p public and private repositories
+				.col-sm-12.col-md-4
+					.feature-panel
+						.feature-content
+							h4 JSPM
+							p.link-context: a(href="http://jspm.io" target="_blank") http://jspm.io
+							p system.js package manager for browsers
+			.row
+				.col-sm-12.col-md-4
+					.feature-panel
+						.feature-content
+							h4 Browserify
+							p.context: a(href="http://browserify.org" target="_blank") http://browserify.org
+							p Browserify lets you require('modules') in the browser by bundling up all of your dependencies.
+				.col-sm-12.col-md-4
+					.feature-panel
+						.feature-content
+							h4 Webpack
+							p.link-context: a(href="http://webpack.github.io/docs/" target="_blank") http://webpack.github.io/docs/
+							p webpack takes modules with dependencies and generates static assets representing those modules.
+				.col-sm-12.col-md-4
+					.feature-panel
+						.feature-content
+							h4 System.js
+							p.link-context: a(href="https://github.com/systemjs/systemjs" target="_blank") https://github.com/systemjs/systemjs
+							p Universal dynamic module loader - loads ES6 modules, AMD, CommonJS and global scripts in the browser and NodeJS. Works with both Traceur and Babel.
+			.row
+				.col-sm-12.col-md-4
+					.feature-panel
+						.feature-content(style="overflow:hidden")
+							h4 Gulp
+							p.context: a(href="https://github.com/gulpjs/gulp/tree/master/docs" target="_blank") github.com/gulpjs/gulp/tree/master/docs
+							p gulp is a toolkit that will help you automate painful or time-consuming tasks in your development workflow.
+				.col-sm-12.col-md-4
+					.feature-panel
+						.feature-content
+							h4 Grunt
+							p.link-context: a(href="http://gruntjs.com" target="_blank") http://gruntjs.com
+							p the JavaScript Task Runner
+				.col-sm-12.col-md-4
+					.feature-panel
+						.feature-content
+							h4 YO
+							p.link-context: a(href="http://yeoman.io/generators/" target="_blank") http://yeoman.io/generators/
+							p Yeoman helps you to kickstart new projects, prescribing best practices and tools to help you stay productive.
+			

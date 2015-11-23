@@ -1,12 +1,10 @@
-extends ../../../common/templates/layout/base
-
 include ../../templates/mixins/docsnav
 
 block intro
 	.page-header
 		.container
-			h1 Documentation
-			p.lead Learn how to build database-driven websites, applications and APIs in Node.js.
+			h1 Ref:Docs
+			p.lead .build(database driven websites, applications and APIs in Node.js)
 	
 block content
 	.container: .row
@@ -35,3 +33,14 @@ block content
 						.feature-content
 							h4: a(href='/docs/database') Database
 							p KeystoneJS builds on top of Mongoose schema's to create "Lists", which contain items. Lists are available in the Admin UI.
+				.col-sm-12.col-md-4
+					.feature-panel
+						.feature-content
+							h4: a(href='/docs/learn') Learn
+							p Information warehouse.  Code examples, knowledge base, how-tos, repo reference materials and more.
+				.col-sm-12.col-md-4
+				.col-sm-12.col-md-4
+					.feature-panel
+						.feature-content
+							h4: a(href='/docs/api/current/class') Class Reference
+							p Complete class reference for KeystoneJS.

@@ -9,11 +9,11 @@ module.exports = {
 		var dirs = [];
 		// recursively add reference docs
 		function addDir(item, lang, ver, key, pushTo, key2) {
-			var path = '../content/' + lang + '/pages/docs/api/' + ver + '/markdown/class/';
+			var path = './content/' + lang + '/pages/docs/api/' + ver + '/markdown/class/';
 			if(key2) {
-				path = '../content/' + lang + '/pages/docs/api/' + ver + '/markdown/class/' + key.charAt(0).toUpperCase() + key.slice(1) + '/' + key2;
+				path = './content/' + lang + '/pages/docs/api/' + ver + '/markdown/class/' + key.charAt(0).toUpperCase() + key.slice(1) + '/' + key2;
 			} else if(key !== 'keystone') {
-				path = '../content/' + language + '/pages/docs/api/' + version + '/markdown/class/' + key.charAt(0).toUpperCase() + key.slice(1);
+				path = './content/' + language + '/pages/docs/api/' + version + '/markdown/class/' + key.charAt(0).toUpperCase() + key.slice(1);
 			}
 			dirs.push({key: key2 || key, main: item.main, pre: item.pre, header: item.header, menuHeader: item.menuHeader, dir: path, pushTo: pushTo });
 			
@@ -39,7 +39,7 @@ module.exports = {
 				var dir = obj.dir;
 				var pushTo = obj.pushTo;
 				if(obj.main) {
-					var main = '../content/' + language + '/pages/docs/api/' + version + '/' + obj.main;
+					var main = './content/' + language + '/pages/docs/api/' + version + '/' + obj.main;
 					if(fs.statSync(main).isFile()) {
 						fs.readFile(main, function (err, data) {
 							if (!err) {
@@ -50,7 +50,7 @@ module.exports = {
 				}
 				fs.readdir(dir, function (err, files) {
 					if (err) {
-						next(); // passing an err to next() kills the series... i should have rtfm
+						next(); 
 					} else {
 						async.eachSeries(files, function(file, done) {
 							file =  path.join(dir, file);
