@@ -1,0 +1,26 @@
+include ../mixins/breadcrumbs
+.language-switcher: .container
+	a(href=languages.zh.links[section] class=(language === 'zh' ? 'active' : '')).language-switcher-option 中文 (Chinese)
+	a(href=languages.en.links[section] class=(language === 'en' ? 'active' : '')).language-switcher-option English
+
+if section !== 'home'
+	header(role='banner').docs-header: .container
+		button.navbar-toggle.navbar-toggle-menu(type='button', data-toggle='collapse', data-target='.docs-nav__collapse')
+			span.sr-only= content.toggle_navigation
+			//- span.entypo.entypo-list
+			!='<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>'
+		a(href=prefix, title='KeystoneJS').keystone-logo: img(src='/images/logo.svg', alt='KeystoneJS', width=207, height=70)
+		
+		nav.docs-nav
+			.docs-nav__collapse.collapse
+				ul.docs-nav__nav
+					each item in primarynav
+						li(class=section == item.section ? 'active' : null): a(href=item.path)= item.label
+
+
+
+if section === 'docs' && docssubsection
+	+breadcrumbs(docssection, docssubsection)
+else
+	block intro
+			

@@ -63,7 +63,7 @@
                 templateMandrillContent: [
                     {
                         "name": "header",
-                        "content": "<h2>" + keystone.get('name') + "</h2>"
+                        "content": keystone.get('name') 
                     }
                 ]
             });

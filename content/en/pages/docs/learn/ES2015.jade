@@ -1,0 +1,1192 @@
+include ../../../templates/mixins/docsnav
+
+block intro
+	.page-header
+		.container
+			h1 Ref:ES2015  
+			p.lead .using(system.js and babel to build a new KeystoneJS.com SPA with React)
+	
+block content
+	.container: .row
+		
+		.col-sm-3
+			+docsnav(docssection)
+		
+		.col-sm-9: .jl-guide
+			
+			.jl-guide-section.docs-content
+				.jl-guide__header
+					h2 Conversion Guide 
+						.jl-guide__title-info  rundown of our requirements for a complete project    
+				p The goal of this guide will be to take a current ExpressJS website built with Jade templates and convert it into a React based SPA. We will use the current jade templates through functions instead of server renders.
+				p  We will perform this excercise with source code from the current website for <a href="https://github.com/keystonejs/keystonejs-site">KeystoneJS.com</a>.  Since the final output will need to be a <code>gh-pages</code> deployment, this guide will also document that process as well.  
+				p We will use <a href="https://github.com/systemjs/systemjs">System.js</a> with jspm to manage our packages, and build using ES6 thanks to <a href="http://babeljs.io">babel</a>  
+				.col-sm-6
+					a(name="contents")
+					h4 Table of Contents
+					ul.fancy-list
+						li: a(href="#prepare") Prepare							
+						
+						li: a(href="#jade") Fix and create Jade files
+						li: a(href="#route-config") Fix and move route config
+						li: a(href="#jspm") Setup jspm and install client packages
+						li: a(href="#app") Create App 
+						li: a(href="#pages") Pages
+						li: a(href="#components") Components & Utils
+						li: a(href="#render-jade") Jade Component
+						li: a(href="#fetch") Fetch Component
+							
+						li: a(href="#clean") Move server.js and clean up
+						li: a(href="#build") Create build tasks with <code>gulp</code>
+							ul.fancy-list
+								li: a(href="#jade-functions") Build template functions from jade files
+								li: a(href="#api") Class Reference and Api
+								li: a(href="#common") CSS and copy tasks
+								li: a(href="#bundle") Bundle app with </code>systemjs-builder</code>
+								li: a(href="#deploy") Deploy to <code>gh-pages</code>
+				.col-sm-6(style="padding-left:0;padding-right:0;")
+					h4 Final Folder Structure
+					ul.folder-list(style="overflow:auto;height:600px;")
+						li.folder content
+							ol
+								li.folder common/templates/layout
+									ol
+										li.file base.jade
+										li.file dev_base.jade
+										li.file footer.jade
+										li.file header.jade
+										li.file spa_base.jade
+								li.folder en
+								li.folder zh
+								li.file 404.jade	
+								li.file index.jade
+						li.folder dev
+							ol
+								li.file apiMarked.js 
+								li.file server.js
+						li.folder public
+							ol
+								li.file config.js
+								li.file deploy.html
+								li.file favicon.ico
+								li.folder fonts
+								li.folder images
+								li.folder jspm_packages
+								li.folder styles
+								li.folder systemjs
+									ol
+										li.file client.js
+										li.folder app
+											ol
+												li.file listen.js
+												li.file render.js
+												li.file routes.js
+												li.folder common
+													ol
+														li.file gab.js
+														li.file util.js
+												li.folder html
+													ol
+														li.file apiMarked.js
+														li.file templates.js
+												li.folder pages
+													ol
+														li.file code-examples.js
+														li.file example.js
+														li.file kb-page.js
+														li.file learning.js
+														li.folder component
+															ol
+																li.file generic.js
+																li.file generic-fetch.js
+																li.file kb.js
+														li.folder fetch
+															ol
+																li.file fetch.js
+																li.file jade.js
+										li.folder bundles
+										li.folder globals
+												ol
+													li.file analytics.js
+													li.file bootstrap-collapse.js
+			.clearfix
+			// prepare
+			.jl-guide-section
+				.jl-guide__header
+					a(name="prepare")
+					h2.jl-guide__title
+						.jl-guide__title-label 
+							div.jl-guide__title-count: span.jl-guide__title-count 1
+							|  Prepare 
+							.jl-guide__title-info  get your code base ready  
+				.code-header
+					h4 Set up repo 
+					p We will start by cloning our repo and creating a new branch <b>spa</b>.  Pick a unique branch for you if working from a current local repo.  
+				pre.line-numbers.language-cmd
+					|   git clone git@github.com:keystonejs/keystonejs-site.git  
+					|   cd keystonejs-site 
+					|   git checkout -b spa  
+				.code-header
+					h4 Create some new folders. 
+				pre: code.language-cmd
+					|   mkdir dev \
+					|   public/systemjs \
+					|   public/sytemjs/app  \
+					|   public/sytemjs/app/common \
+					|   public/sytemjs/app/html \
+					|   public/sytemjs/app/pages \
+					|   public/sytemjs/app/pages/component \
+					|   public/sytemjs/app/pages/fetch
+				.code-header
+					h4 Install and save our new dependencies.  
+				pre: code.language-cmd
+					|   npm i --save-dev jspm marked systemjs-builder jade@1.11.0 less run-sequence \
+					|   gulp gulp-concat-css gulp-copy gulp-jade gulp-less \
+					|   gulp-minify-css gulp-rename gulp-util minimist gulp-if \
+					|   vinyl-source-stream gulp-insert gulp-jade-template-concat
+			.jl-guide-section 				
+				.jl-guide__header
+					a(name="jade")
+					h2.jl-guide__title
+						.jl-guide__title-label 
+							div.jl-guide__title-count: span.jl-guide__title-count 2
+							| Rework our jade files
+							.jl-guide__title-info create some files and make a couple modifications   
+				p For our SPA we need a single HTML file.  We will use two different jade files, one for development, and one for production to provide our base HTML file. 
+				p Since our menu state changes depending on language and page, we will extract the body header and footer, then place them in aptly named files.  This way our SPA can use a function to update the header when needed.
+				
+				//- copy base.jade
+				.code-header 
+					h4 First copy <code>base.jade</code> to <code>dev_base.jade</code>
+				pre.language-cmd.
+					<code class="language-cmd">
+					  cd content/common/templates/layout
+					  cp base.jade dev_base.jade
+					</code>
+				
+				//- change index.jade
+				.code-header 
+					h4 Update <code>content/index.jade</code> to use <code>dev_base.jade</code>
+				pre.language-jade.
+					<code class="language-jade">
+					  extends common/templates/layout/dev_base
+					</code>
+				
+				//- header.jade
+				.code-header(data-file="content/common/templates/layout/header.jade" data-convert="jade" data-com="true") 
+					h4 Create <code>header.jade</code>
+					p Extract from <code>dev_base.jade</code> to create the new file.				
+					br
+					a( href="#" class="loadCode" ) view page code
+				pre.language-jsx.hideCode
+				
+				//- footer.jade
+				.code-header(data-file="content/common/templates/layout/footer.jade" data-convert="jade" data-com="true")
+					h4 Create <code>footer.jade</code>
+					p Extract the following from <code>dev_base.jade</code> to create the new file.				
+					br
+					a( href="#" class="loadCode" ) view page code
+				pre.language-jsx.hideCode
+				
+				.code-header(data-file="public/systemjs/globals/analytics.js" data-convert="jsx" data-com="true")
+					h4 Create <code>public/systemjs/globals/analytics.js</code>
+					p Extract the following from <code>dev_base.jade</code> to create a file we can include as global javascript instead of using script tags.
+					br 
+					a( href="#" class="loadCode" ) view page code
+				pre.language-jsx.hideCode
+								
+				//- dev_base.jade				
+				.code-header(data-file="content/common/templates/layout/dev_base.jade" data-convert="jade" data-com="true")
+					h4 Finish up <code>dev_base.jade</code>. 
+					p Replace the body and add our new script tags
+					br 
+					a( href="#" class="loadCode" ) view page code 
+				pre.language-jade.hideCode
+					
+				//- create spa production file
+				.code-header
+					h4 Copy <code>dev_base.jade</code> to <code>spa_base.jade</code>
+				pre.language.cmd.
+					<code class="language-cmd">
+					  cd content/common/templates/layout
+					  cp dev_base.jade spa_base.jade 
+					</code>
+						
+				//- spa_base.jade				
+				.code-header(data-file="content/common/templates/layout/spa_base.jade" data-convert="jade" data-com="true")
+					h4 Modify the SPA production file <code>spa_base.jade</code>. 
+					p Remove the prism css tag and change the javascript tags
+					br 
+					a( href="#" class="loadCode" ) view page code 
+				pre.language-jade.hideCode
+				
+				//- base.jade	
+				.code-header 
+					h4 Remove everything from <code>base.jade</code> except the jade block assignments.
+					p If you remove the block assignments then Jade will throw a console hissy fit during your build process.
+				pre.language-jade.
+					<code class="language-jade">
+					  block intro
+
+					  block homepage-header
+
+					  block content
+
+					  block js
+					</code>	
+				
+				//- left_menu.jade	
+				.code-header 
+					h4 For each language create  <code>left_menu.jade</code> 
+					p In <code>content/<i>LANGUAGE</i>/templates/left_menu.jade</code>.  This will create a function we can use when creating React based pages in the future.
+				pre.language-jade.
+					<code class="language-jade">
+						include ./mixins/docsnav
+
+						+docsnav(docssection)
+					</code>
+			
+			//- route			
+			.jl-guide-section 				
+				.jl-guide__header
+					a(name="route-config")
+					h2.jl-guide__title
+						.jl-guide__title-label 
+							div.jl-guide__title-count: span.jl-guide__title-count 3
+							| Route config	
+							.jl-guide__title-info  the brains behind our delivery system
+				
+				p Our route file will provide information for the SPA to use when rendering each page.  This should  include the name of the Jade template function, section and language for the menus, as well as any page specific information like adding a menu based on named anchor links.
+				
+				//- move route file
+				.code-header
+					h4 Move and rename the route file.
+					p Currently our route file is at <code>content/index.js</code> We want to move it to <code>public/systemjs/app/config.js</code>.				
+				pre.language-javascript.
+					<code class="language-cmd">
+					  // go to your project root
+					  cd ~/projects/github/keystonejs-site
+					  mv content/index.js public/systemjs/app/config.js
+					</code>	
+				
+				//- change route file
+				
+				h4 Convert route file to ES2015
+				p We want everything to match in our client app so make a couple small changes.
+				
+				.code-header
+					h4 <code>module.exports =</code> to <code>exports.</code>				
+				pre.language-javascript.
+					<code class="language-javascript">
+					  exports.languages = {
+					</code>	
+					<code class="language-javascript">
+					  exports.routes = [
+					</code>
+				
+				.code-header
+					h4 Add a version tracker			
+				pre.language-javascript.
+					<code class="language-javascript">
+					  exports.config = {
+						  versions: ['0.2.x', 'current', 'incoming'],
+					  }
+					</code>
+				
+				.code-header
+					h4 Add some new routes to the <code>exports.routes</code> array
+				pre.language-javascript.
+					<code >
+						{
+							"path": "/docs/learn",
+							"language": "en",
+							"template": "docs/learn",
+							"section": "docs",
+							"dynamic": "true",
+							"docssection": { "value": "learn", "path": "/docs/learn", "label": "Learn" },
+							"title": "Learn"
+						},
+						{
+							"path": "/docs/learn/heroku",
+							"language": "en",
+							"template": "docs/learn/heroku",
+							"section": "docs",
+							"docssection": { "value": "learn", "path": "/docs/learn/heroku", "label": "Heroku deployment" },
+							"title": "Learn: deploying your app to Heroku"
+						},
+						{
+							"path": "/docs/learn/es2015",
+							"language": "en",
+							"template": "docs/learn/es2015",
+							"section": "docs",
+							"docssection": { "value": "learn", "path": "/docs/learn/es2015", "label": "ES2015" },
+							"title": "System.js, Babel and React",
+							"anchor-search": "true"
+						},
+						{
+							"path": "/docs/learn/resources",
+							"language": "en",
+							"template": "docs/learn/resources",
+							"section": "docs",
+							"docssection": { "value": "learn", "path": "/docs/learn/resources", "label": "Resources" },
+							"title": "Resources"
+						},
+						{
+							"path": "/docs/learn/code",
+							"language": "en",
+							"section": "docs",
+							"skip": "true",
+							"dynamic": "true",
+							"anchor-search": "true",
+							"docssection": { "value": "learn", "path": "/docs/learn/code", "label": "Code" },
+							"title": "Code Examples"
+						},
+						{
+							"path": "/docs/learn/kb",
+							"language": "en",
+							"section": "docs",
+							"skip": "true",
+							"dynamic": "true",
+							"anchor-search": "true",
+							"docssection": { "value": "learn", "path": "/docs/learn/kb", "label": "Knowledge Base" },
+							"title": "Knowledge Base"
+						},
+					</code>
+
+			//- jspm
+			.jl-guide-section 				
+				.jl-guide__header
+					a(name="jspm")
+					h2.jl-guide__title
+						.jl-guide__title-label 
+							div.jl-guide__title-count: span.jl-guide__title-count 4
+							| Setup jspm	
+							.jl-guide__title-info System.js package manager
+				p <b>jspm</b> will manage our client packages for us like npm does for our server packages. Versions are respected within dependencies.  
+				p We will use a basic System.js setup for a <b>gh-pages</b> deployment.  In a typical server environment we could bundle our app by section and serve files as needed.  We will not take advantage of path mapping so this app can be built with browserify as well.
+				
+				.code-header 
+					h4 Run <kbd>jspm init</kbd> from project root
+				pre.language-cmd.
+					<code class="language-cmd">
+					  cd ~/projects/github/keystonejs-site 
+					  jspm init
+					  Would you like jspm to prefix the jspm package.json properties under jspm? [yes]:
+					  Enter server baseURL (public folder path) [./]:./public  
+					  Enter jspm packages folder [public/jspm_packages]:
+					  Enter config file path [public/config.js]:
+					  Configuration file public/config.js doesn't exist, create it? [yes]:
+					  Enter client baseURL (public folder URL) [/]:
+					  Do you wish to use a transpiler? [yes]:
+					  Which ES6 transpiler would you like to use, Babel, TypeScript or Traceur? [babel]:
+					  ok   Verified package.json at package.json
+					  	   Verified config file at public/config.js
+						   Looking up loader files...
+					</code>	
+					
+				.code-header 
+					h4 Remove jsx from babel blacklist
+					p By default System.js currently has jsx blacklisted in babel options.
+					p Open <code>public/config.js</code> and change <code>babelOptions</code> to:
+				pre.language-javascript.
+					<code class="language-javascript">
+					  babelOptions: {
+					    "optional": [
+						  "runtime",
+						  "optimisation.modules.system"
+					    ],
+						"blacklist": []
+					  },
+					</code>	
+			
+				.code-header 
+					h4 Add depedencies to <code>packages.json</code>
+					p Change the <b>jspm</b> depedencies section to:
+				pre.language-javascript.
+					<code class="language-javascript">
+					  "jspm": {	
+						"dependencies": {
+						  "debug": "npm:debug@^2.2.0",
+						  "events": "github:jspm/nodelibs-events@^0.1.1",
+						  "fetch": "npm:whatwg-fetch@^0.10.0",
+						  "history": "npm:history@^1.12.5",
+						  "jade": "npm:jade@1.11.0",
+						  "jquery": "github:components/jquery@1.10.2",
+						  "lodash": "npm:lodash@^3.10.1",
+						  "marked": "npm:marked@^0.3.5",
+						  "react": "npm:react@^0.14.0",
+						  "react-addons-test-utils": "npm:react-addons-test-utils@^0.14.0",
+						  "react-dom": "npm:react-dom@^0.14.0",
+						  "react-router": "npm:react-router@^1.0.0-rc3",
+						  "striptags": "npm:striptags@^2.0.4",
+						  "tag-search": "npm:tag-search@^0.0.21",
+						  "util": "github:jspm/nodelibs-util@^0.1.0"
+						}
+					  },  
+					</code>	
+				.caution-note
+					p Notice we include <kbd>jade@1.11.0</kbd> instead of <kbd>jade-runtime</kbd>.  The Jade functions need this version and we access the runtime directly via <code>jade/lib/runtime</code>
+				
+				.code-header 
+					h4 Install packages
+				pre.language-cmd: code   jspm install				
+			
+			//- create app		
+			.jl-guide-section 				
+				.jl-guide__header
+					a(name="app")
+					h2.jl-guide__title
+						.jl-guide__title-label 
+							div.jl-guide__title-count: span.jl-guide__title-count 5
+							| Create App
+							.jl-guide__title-info Routes, components, and listeners
+			
+				.code-header 
+					h4 Create <code>public/systemjs/clients.js</code>
+					p For development we can use a seperate file for entry.  This allows us to easily add or remove bundles for testing.  System.js handles our transformations with babel during app delivery, so we do not have to watch our files to run a transform on each change.  While this can be good for development, load times can be long.  In production our bundle file will load very fast.  We can achieve a qicker load time in development by bundling our dependencies and only loading the client files.
+					
+				pre.language-javascript.
+					<code class="language-javascript">
+						// System.import('./bundles/dependencies');
+						System.import('./app/app').catch(console.error.bind(console));
+					</code>
+
+				.code-header(data-file="public/systemjs/app/app.js" data-convert="jsx" data-com="true") 
+					h4 Create <code>public/systemjs/app/app.js</code>
+					p This is where we set up <code>react-router</code> and include any global holdovers
+					br
+					a( href="#" class="loadCode" ) view page code
+				pre.language-jsx.hideCode
+						
+				
+				.code-header(data-file="public/systemjs/app/routes.js" data-convert="jsx" data-com="true") 
+					h4 Create <code>public/systemjs/app/routes.js</code>
+					p This is our route file and the brains of our app.  Using <code>public/systemjs/app/config.js</code>, we build all our previous jade routes.  Then we can add some new pages for a knowledge base and code examples.  Each page is created through modules that accept options and return a React component.  We will create those soon.
+					br
+					a( href="#" class="loadCode" ) view page code
+				pre.language-jsx.hideCode(style="border-bottom:none")
+				blockquote.
+					<h4> Create a route for each page in our app config file.</h4>
+					<p> Any route with the <code>skip</code> key will not be added.</p>
+					<pre class="language-jsx">
+					  import {languages, routes} from './config';
+
+					  let Routes = []
+
+					  for (let value of routes) {
+						  if(!value.skip) {
+							  let component = value.fetch ?  Example(value.fetch, value.returnTypes) : Jade(value.path); 
+							  Routes.push({ path: value.path, component: component })
+						  }
+					  }
+					</pre>
+					<h4> We create new React based pages by adding them to the <code>Routes</code> Array.</h4>
+					<p class="caution-note">
+						If we do not add the new routes to <code>app/config.js</code>, then on the initial page request only, <b>gh-pages</b> will send a 404 status code even though our page is valid.  To get a 200 status code we will add any new page to the route config with <code>"skip":"true"</code> set.  There will be some dynamic pages that will return a 404, such as code examples pulled from the <b>GitHub</b> wiki.
+					</p>
+					<pre class="language-jsx">
+					  /* from top of file */
+					  import Code from './pages/code-examples'; // page
+					  import Fetch from './pages/component/generic-fetch'; // function > component
+					  import KbPage from './pages/kb-page'; // page
+					  import KbContent from './pages/component/kb'; // function > component
+					  
+					  /* new react route 
+					   * single component reload
+					   * */
+					  // redirect the Home link
+					  function sendToLearn(nextState, replaceState) {
+						  if (nextState.location.pathname === '/docs/learn/kb/Home' || nextState.location.pathname === '/docs/learn/Home') {
+							replaceState({ nextPathname: nextState.location.pathname }, '/docs/learn')
+						  }	
+					  }
+					  function sendToLearnNow(nextState, replaceState) {
+						  replaceState({ nextPathname: nextState.location.pathname }, '/docs/learn')
+					  }
+					  // code examples
+					  Routes.push({ path: '/docs/learn/code/Home', onEnter: sendToLearnNow })
+					  const codemain = Fetch('https://raw.githubusercontent.com/wiki/snowkeeper/keystone/Code-Examples.md', ['markdown','wikiindexpage'], {path: '/docs/learn/code'});
+					  Routes.push({ 
+						  path: '/docs/learn/code', 
+						  component: Code,
+						  indexRoute: { component: codemain },
+						  catchAll: { component: KbContent('/docs/learn/code', '/Code-Examples') },
+						  childRoutes: [
+							  { path: '*', component: KbContent('/docs/learn/code', '/Code-Examples'), onEnter: sendToLearn  }
+						  ]
+					  })
+					</pre>
+										
+				.code-header(data-file="public/systemjs/app/render.js" data-convert="jsx" data-com="true")
+					h4 Create <code>public/systemjs/app/render.js</code>
+					p This is our base component.  All other components are served through here.
+					br
+					a( href="#" class="loadCode" ) view page code
+				pre.language-jsx.hideCode
+				blockquote.
+					<h4> Set the header each time we change pages</h4>
+					<pre class="language-jsx">
+					  /* *
+					   * baseRoute gives us all of the information we need about the current route 
+					   * 
+					   * */
+					  let base = baseRoute(props.location.pathname)
+					  this.state = {
+						  base: base,
+						  header: JadePage('/header', {language: base.language}, base.path),
+						  footer: JadePage('/footer',{language: base.language}, base.path)
+					  }
+					</pre>
+					<h4> Render the App</h4>
+						<p>The menu is generated by the <code>tag-search</code> package.</p>
+						<pre class="language-jsx">
+						  render() {
+							  let head = &lt;this.state.header  /&gt;
+							  let foot = &lt;this.state.footer  /&gt;
+							  if(this.props.location.pathname === '/') {
+								  head = &lt;span  /&gt;
+								  foot = &lt;span  /&gt;
+							  }		
+							  let anchor;
+							  let base = baseRoute()
+							  if('object' === typeof base) {
+								  if(base["anchor-search"] == 'true') {
+									  anchor = &lt;SearchTags reset={true} events={Gab} options={this.state.tagSearchOptions}   {...this.props}    /&gt;
+								  } else {
+									  anchor = &lt;span  /&gt;
+								  }
+							  } else {
+								  anchor = &lt;span  /&gt;
+							  }
+							  return (
+								  &lt;div&gt;
+									  &lt;a name="top"  /&gt;
+									  {head}	
+									  &lt;div &gt; 
+										  {this.props.children && React.cloneElement(this.props.children, {
+											  updateTagSearch: this.updateTagSearch
+										  })}
+									  &lt;/div&gt;
+									  {foot}
+									  {anchor}
+								  &lt;/div&gt;
+							  );
+						  }
+						</pre>
+									
+				.code-header(data-file="public/systemjs/app/listen.js" data-convert="jsx" data-com="true")  
+					h4 Create <code>public/systemjs/app/listen.js</code>
+					p Our event listeners.  We move our jquery functions into listen.  We also have a listener to catch links and push to react-router since most of our code is not React based.
+					br
+					a( href="#" class="loadCode" ) view page code
+				pre.language-jsx.hideCode
+				blockquote.
+					<h4><code>listen.js</code> returns a function.  We use it to wrap <code>App</code> above.</h4>
+					<pre class="language-jsx">
+					  import wrapListeners from './listen';
+					  
+					  class App extends React.Component {
+						  ...
+					  }
+					  
+					  export default wrapListeners(App)
+					</pre>
+			
+			//- pages
+			.jl-guide-section 				
+				.jl-guide__header
+					a(name="pages")
+					h2.jl-guide__title
+						.jl-guide__title-label 
+							div.jl-guide__title-count: span.jl-guide__title-count 6
+							| Pages
+							.jl-guide__title-info Some new React pages to serve content
+				
+				h4 public/systemjs/app/pages/
+				blockquote
+					.code-header(data-file="public/systemjs/app/pages/code-examples.js" data-convert="jsx" data-com="true") 
+						h4 Create <code>public/systemjs/app/pages/code-examples.js</code>
+						p A page to grab code examples from the <b>GitHub</b> wiki.  It shares a component with the knowledge base.
+						br
+						a( href="#" class="loadCode" ) view page code
+					pre.language-jsx.hideCode
+					
+					.code-header(data-file="public/systemjs/app/pages/kb-page.js" data-convert="jsx" data-com="true") 
+						h4 Create <code>public/systemjs/app/pages/kb-page.js</code>
+						p A page to grab the knowledge base from the <b>GitHub</b> wiki
+						br
+						a( href="#" class="loadCode" ) view page code
+					pre.language-jsx.hideCode
+					
+					.code-header(data-file="public/systemjs/app/pages/learning.js" data-convert="jsx" data-com="true") 
+						h4 Create <code>public/systemjs/app/pages/learning.js</code>
+						p This is a hub component for our new learning sections.  
+						br
+						a( href="#" class="loadCode" ) view page code
+					pre.language-jsx.hideCode
+				
+			//- components
+			.jl-guide-section 				
+				.jl-guide__header
+					a(name="components")
+					h2.jl-guide__title
+						.jl-guide__title-label 
+							div.jl-guide__title-count: span.jl-guide__title-count 7
+							| Components & Utils
+							.jl-guide__title-info Helper components and route utilities
+				h4 public/systemjs/app/common/
+				blockquote
+					.code-header(data-file="public/systemjs/app/common/gab.js" data-convert="jsx" data-com="true") 
+						h4 Create <code>public/systemjs/app/common/gab.js</code>
+						p We will use an event emitter to communicate with the tag search menu
+						br
+						a( href="#" class="loadCode" ) view page code
+					pre.language-jsx.hideCode
+					.code-header(data-file="public/systemjs/app/common/util.js" data-convert="jsx" data-com="true") 
+						h4 Create <code>public/systemjs/app/common/util.js</code>
+						p The <code>util</code> functions provide information about the current route.
+						br
+						a( href="#" class="loadCode" ) view page code
+					pre.language-jsx.hideCode
+				h4 public/systemjs/app/pages/component/
+				blockquote
+					.code-header(data-file="public/systemjs/app/pages/component/generic.js" data-convert="jsx" data-com="true") 
+						h4 Create <code>public/systemjs/app/pages/component/generic.js</code>
+						p A simple container component.  It can be used to render any content.
+						br
+						a( href="#" class="loadCode" ) view page code
+					pre.language-jsx.hideCode
+					
+					.code-header(data-file="public/systemjs/app/pages/component/generic-fetch.js" data-convert="jsx" data-com="true") 
+						h4 Create <code>public/systemjs/app/pages/component/generic-fetch.js</code>
+						p A generic fetch container.  Use it to fetch a page from the internet and render.
+						br
+						a( href="#" class="loadCode" ) view page code
+					pre.language-jsx.hideCode
+					
+					.code-header(data-file="public/systemjs/app/pages/component/kb.js" data-convert="jsx" data-com="true") 
+						h4 Create <code>public/systemjs/app/pages/component/kb.js</code>
+						p A helper component for the knowledge base.  Adds a transform for menu pages.  Call Prism to highlight code.  Controls the tag search menu via events.
+						br
+						a( href="#" class="loadCode" ) view page code
+					pre.language-jsx.hideCode
+			
+			//- jade					
+			.jl-guide-section 				
+				.jl-guide__header
+					a(name="render-jade")
+					h2.jl-guide__title
+						.jl-guide__title-label 
+							div.jl-guide__title-count: span.jl-guide__title-count 8
+							| Jade Component
+							.jl-guide__title-info Use a Jade function to serve a file
+				
+				p The jade module is a function that accepts a valid route path, locals to extend, a route to inherit properties from, and last a locals object that will take complete precedence and replace the assigned locals.
+				.code-header(data-file="public/systemjs/app/pages/fetch/jade.js" data-convert="jsx" data-com="true") 
+					h4 Create <code>public/systemjs/app/pages/fetch/jade.js</code>
+					br
+					a( href="#" class="loadCode" ) view page code
+				pre.language-jsx.hideCode
+				blockquote
+					.code-header(data-file="public/systemjs/app/pages/fetch/jade.js" data-convert="jsx" data-com="true") 
+						h4 Simple Example
+					pre.language-jsx.
+						<code>
+						  import JadePage from './pages/fetch/jade';
+						  
+						  class Example extend React.Component {
+							constructor() {
+								super()
+								
+							}
+							render() {
+								let Page = JadePage('/home')
+								
+								return (&lt;div&gt;
+									&lt;Page /&gt;
+								&lt;/div&gt)
+								
+							}
+						  
+						  }
+						</code>
+				
+			.jl-guide-section 				
+				.jl-guide__header
+					a(name="fetch")
+					h2.jl-guide__title
+						.jl-guide__title-label 
+							div.jl-guide__title-count: span.jl-guide__title-count 9
+							| Fetch Component
+							.jl-guide__title-info Fetch content from anywhere
+				p The fetch module is a function that is used to retrieve content from an api or elsewhere.  It includes a transfom to modify the returned data before rendering.
+				p We can send fetch a Component to render or have it render into a div.
+				.code-header(data-file="public/systemjs/app/pages/fetch/fetch.js" data-convert="jsx" data-com="true") 
+					h4 Create <code>public/systemjs/app/pages/fetch/fetch.js</code>
+					br
+					a( href="#" class="loadCode" ) view page code
+				pre.language-jsx.hideCode
+				blockquote
+					.code-header
+						h4 This example uses <code>app/pages/component/generic-fetch.js </code>
+					pre.language-jsx.
+						<code>
+						  import Fetch from './pages/component/generic-fetch'
+						  
+						  class Example extend React.Component {
+							constructor() {
+								super()
+								
+							}
+							render() {
+								let Page = Fetch('https://raw.githubusercontent.com/wiki/snowkeeper/keystone/Code-Examples.md',  ['markdown','wikiindexpage']);
+								
+								return (&lt;div&gt;
+									&lt;Page /&gt;
+								&lt;/div&gt)
+								
+							}
+						  
+						  }
+						</code>
+
+			.jl-guide-section
+				.jl-guide__header
+					a(name="clean")
+					h2.jl-guide__title
+						.jl-guide__title-label 
+							div.jl-guide__title-count: span.jl-guide__title-count 10
+							| Clean up
+							.jl-guide__title-info do some house cleaning
+				
+				.code-header(data-file="dev/server.js" data-convert="jsx" data-com="true")  
+					h4 move <code>index.js</code> to <code>/dev/server.js</code>
+					p We made a few changes as well.  There is a path to rebuild the jade files on page refresh.
+					br
+					a( href="#" class="loadCode" ) view page code
+				pre.language-javascript.hideCode  
+				blockquote
+					.code-header 
+						h4 move the bootstrap file and delete <code>public/js</code>
+					pre.language-cmd.
+						<code class="language-cmd">
+						  cd ~/projects/github/keystonejs-site
+						  cp ./public/js/lib/bootstrap/collapse.js ./public/systemjs/globals/bootstrap_collapse.js
+						  rm -rf ./public/js
+						</code>
+					
+					//- get new prism
+					.code-header 
+						h4 download a new Prism build
+						p Include jade, jsx, less, markup, bash, javascript
+						p Save in <code>./public/systemjs/globals/prism.js</code>
+
+			.jl-guide-section
+				.jl-guide__header
+					a(name="build")
+					h2.jl-guide__title
+						.jl-guide__title-label 
+							div.jl-guide__title-count: span.jl-guide__title-count 11
+							| Create build file
+							.jl-guide__title-info Use gulp to automate our routine.
+				p The build file and server.js files are the only files we use ES5 to write.  
+				p System.js does a good job of allowing us to get to work quicker, but we still need a build process to prepare for our deployment.
+				p Lets start by creating a menu for the next contributor to use
+				.code-header(data-file="gulpfile.js" data-convert="js" data-com="true") 
+					h4 Create <code>./gulpfile.js</code>
+					br
+					a( href="#" class="loadCode" ) view page code
+				pre.language-jsx.hideCode
+				blockquote
+					.code-header
+						h4 Create a menu task and assign it to default.
+					pre.language-cmd.
+						<code>
+						$ gulp
+						[04:26:20] Starting 'menu'...
+						-- KeystoneJS.com Gulp Commands -- gulp menu ----------------------------------
+						...............................................................................
+						.. clean ... delete build directory                                          ..
+						.. deploy ... run build then push to gh-pages branch                         ..
+						.. build ... run clean; then pages, css, jade, api, copy; & bundle last      ..
+						.. push ... push build dir to your forks gh-pages branch                     ..
+						.. less ... creates ./public/styles/site.min.css                             ..
+						.. css ... run less; bundle prism; save ./build/styles/site.min.css          ..
+						.. copy ... copy fonts, images and favicon to build dir                      ..
+						.. pages ... create html pages in ./build                                    ..
+						.. jade ... create the jade template file in app/html/templates.js           ..
+						.. api ... create the api file in app/html/markedApi.js                      ..
+						.. bundle ... create ./build/bundle-inclusive.js                             ..
+						-------------------------------------------------------------------------------
+						-- DEV OPTIONS ------ To start the dev server type npm start ------------------
+						.. dev-push ...   ( required: --repo for push and deploy)                    ..
+						.. dev-deploy ... ( optional: --branch, --clone, --tag, --user, --email )    ..
+						.. build-no-clean ... does not delete build dir first                        ..
+						.. bundle-html ... bundle jade & api and save in app/bundles/html.js         ..
+						.. bundle-dependencies ... bundle and save in app/bundles/dependencies.js    ..
+						.. dev-bundle ... run bundle-html && bundle-dependencies                     ..
+						...............................................................................
+						[04:26:20] Finished 'menu' after 694 μs
+						</code>
+			.jl-guide-section
+				.jl-guide__header
+					a(name="jade-functions")
+					h2.jl-guide__title
+						.jl-guide__title-label 
+							div.jl-guide__title-count: span.jl-guide__title-count 12
+							| Jade template file
+							.jl-guide__title-info build our jade templates
+				p We will use a forked copy of <code>gulp-jade-concat-template</code>.  A slight change was made to produce an ES2015 module.  
+				.code-header(data-file="public/systemjs/app/html/templates.js" data-convert="jsx" data-com="true") 
+					h4 Finished product: <code>public/systemjs/app/html/templates.js</code>
+					br
+					a( href="https://github.com/inquisive/keystonejs-site/blob/site/public/systemjs/app/html/templates.js" target="_blank" ) https://github.com/inquisive/keystonejs-site/blob/site/public/systemjs/app/html/templates.js
+				pre.language-jsx.hideCode
+				blockquote
+					.code-header
+						h4 gulp jade
+					pre.language-js.
+						<code>
+						  // build the jade template functions files
+						  gulp.task("jade" , function(){
+							  var stream = gulp.src('./content/**/*.jade')
+								  .pipe(jade({
+									  client: true
+								  }))
+								  .pipe(jadeConcat('templates.js', {templateVariable:"templates"}))
+								  .pipe(gulp.dest('./public/systemjs/app/html'));
+							  return stream;
+						  });
+						</code>
+			
+			//- markdown api
+			.jl-guide-section
+				.jl-guide__header
+					a(name="api")
+					h2.jl-guide__title
+						.jl-guide__title-label 
+							div.jl-guide__title-count: span.jl-guide__title-count 13
+							| Markdown Class Reference
+							.jl-guide__title-info Create our api module
+				p Our class reference and api is built with markdown.  We need to convert the docs following a pre-defined route path, save the results to an object that we can <code>JSON.stringify</code>, and save the string to a file.
+				.code-header(data-file="public/systemjs/app/html/markedApi.js" data-convert="jsx" data-com="true") 
+					h4 Finished product: <code>public/systemjs/app/html/markedApi.js</code>
+					br
+					a( href="https://github.com/inquisive/keystonejs-site/blob/site/public/systemjs/app/html/markedApi.js" target="_blank" ) https://github.com/inquisive/keystonejs-site/blob/site/public/systemjs/app/html/markedApi.js
+				pre.language-jsx.hideCode
+				blockquote
+					.code-header
+						h4 gulp api
+					pre.language-js.
+						<code>
+						  var content = require('./public/systemjs/app/config.js');
+						  var classReference = require('./dev/apiMarked');
+						  var sendMarked = _.cloneDeep(classReference._marked);
+						  // build the api using markdown 
+						  gulp.task("api", function(cb){
+							 async.forEachOf(sendMarked, function(v, k, next){
+								  async.forEachOf(v, function(vv, kk, tick) {
+									  classReference.getApi(vv, k, kk, function(err, marked) {
+										  gutil.log('mark',k,kk)
+										  sendMarked[k][kk] = marked;
+										  tick();
+									  });
+								  }, function(err) {
+									  next();
+								  });
+								
+							  }, function(err) {
+								
+								  var mark = {}	
+								  try {
+									  mark = JSON.stringify(sendMarked);
+								  } catch(e) {
+									  gutil.log(e)
+									  cb()
+								  }
+								  var send = "const marked = " + mark + "\n " + "export default marked" + "\n";
+								  fs.writeFile('./public/systemjs/app/html/markedApi.js', send, function (err) {
+									  gutil.log('wrote /systemjs/app/html/markedApi.js');
+									  cb()
+								  });	
+							  });
+						  }); 
+						</code>
+					.code-header(data-file="dev/apiMarked.js" data-convert="jsx" data-com="true") 
+						h4 The config file is at <code>dev/apiMarked.js</code>
+						br
+						a( href="#" class="loadCode" ) view page code
+					pre.language-jsx.hideCode
+			
+			//- copy
+			.jl-guide-section
+				.jl-guide__header
+					a(name="common")
+					h2.jl-guide__title
+						.jl-guide__title-label 
+							div.jl-guide__title-count: span.jl-guide__title-count 14
+							| HTML, LESS and Copy
+							.jl-guide__title-info populate our build directory
+				p We need some tasks to build our html pages for <b>gh-pages</b>, transform less and attach the prism css, and copy over the remaining neccessary files.
+				.code-header
+					h4 gulp css / gulp less
+				pre.language-js.
+					<code>
+						// build css from less
+						gulp.task('less',  function () {
+							var stream = gulp.src('./public/styles/site.less')
+							.pipe(less({
+							  paths: [ './public/styles' ]
+							}))
+							.pipe(rename('site.min.css'))
+							.pipe(gulp.dest('./public/styles/'));
+							return stream
+						});
+
+						// bundle less and prism css
+						gulp.task('css', ['less'], function () {
+							var stream = gulp.src(['./public/styles/site.min.css', './public/styles/prism.css'])
+							.pipe(concatCss("site.min.css"))
+							.pipe(minifyCSS())
+							.pipe(gulp.dest('./build/styles/'));
+							return stream
+						});
+					</code>
+				.code-header
+					h4 gulp pages
+					p <b>GitHub Pages</b> are a great resource for the community.  There are some limitations though, and one of those if an inability to properly configure page delivery for a SPA.  To get around this limitation will build every page in our route tree just like a multi page site.  However, we will use <code>spa_base.jade</code> for each page, only changing the title for each.
+				pre.language-js.
+					<code>
+					  // create each html page from routes
+					  // every page is a copy of public/deploy.html
+					  gulp.task("pages",  function(cb){
+						  // run through routes
+						  async.forEachOf(content.routes, function(route, k, next){
+							  var filename = route.path.substr(1).replace(/\//g, '_') || 'index';
+							  var filepath = filename + '.html';
+							  gutil.log('Writing ' + filename + '.html');
+							  gulp.src('./content/common/templates/layout/spa_base.jade')
+							  .pipe(jade({ locals: route }))
+							  .pipe(gulpif((route.path != '/404' && route.filename != 'index' && route.path != '/' ),insert.prepend("---\npermalink: " + route.path + "/\n---\n")))
+							  .pipe(rename(filepath))
+							  .pipe(gulp.dest('./build/'));
+							  next()
+						  }, function() {
+							  cb()
+						  });
+					  });
+					</code>
+				.code-header
+					h4 gulp copy
+					p Now we can copy over our fonts, images, and scripts.
+				pre.language-js.
+					<code>
+					  // copy statics
+					  gulp.task("copy",  function(cb){
+						  // fonts
+						  var stream = gulp.src(['./public/jspm_packages/system.js', './public/jspm_packages/system-polyfills.js']).pipe(gulp.dest('./build'));
+						  gulp.src([ './public/favicon.ico', './public/images/**/*', './public/fonts/**/*', './public/favicon.ico'], {
+								  base: 'public'
+						  }).pipe(gulp.dest('./build'));
+						  return stream
+					  });
+					</code>
+			
+			//- build
+			.jl-guide-section
+				.jl-guide__header
+					a(name="bundle")
+					h2.jl-guide__title
+						.jl-guide__title-label 
+							div.jl-guide__title-count: span.jl-guide__title-count 15
+							| Setup bundle and build tasks
+							.jl-guide__title-info Use gulp to automate our routine.
+				p Create tasks for different bundles including system.js and browserify bundles.  We can also build dev versions of bundles and deploy to a dev git.
+				.code-header
+					h4 gulp build
+					p Delete <code>./build</code> Run pages, css, jade, api and copy. Finally finish with bundle
+				pre.language-js.
+					<code>
+					  // build
+					  gulp.task('build', function (callback) { 
+						  runSequence('clean', 'build-no-clean', callback);
+						  return
+					  });
+					  // build without deleting ./build
+					  gulp.task('build-no-clean', ['pages','css','jade','api','copy'], function (cb) {
+						  // sets the baseURL and loads the configuration file
+						  bundle(cb)
+					  });
+					</code>			
+				.code-header
+					h4 gulp bundle
+					p create <code>./build/bundle-inclusive.js</code>
+				pre.language-js.
+					<code>
+					  // only bundle
+					  gulp.task('bundle', function (cb) {
+						  // sets the baseURL and loads the configuration file
+						  bundle(cb)	
+					  });
+					  // bundle the js files
+					  function bundle(cb) {
+						  var builder = new Builder('./public/', './public/config.js');
+						  gutil.log('start inclusive bundle');
+						  builder.bundle('app/app', './build/inclusive-bundle.js', { minify: true, sourceMaps: false })
+							  .then(function() {
+								  gutil.log('wrote  build/inclusive-bundle.js');
+								  cb()
+							  })
+						  .catch(function(err) {
+							  gutil.log('FAILED inclusive bundle',err)
+							  cb()
+						  });		
+					  }
+					</code>			
+			.jl-guide-section
+				.jl-guide__header
+					a(name="deploy")
+					h2.jl-guide__title
+						.jl-guide__title-label 
+							div.jl-guide__title-count: span.jl-guide__title-count 16
+							| Deploy to <b>GitHub</b> Pages
+							.jl-guide__title-info Run the needed gulp commands	and push to the selected <b>GitHub</b> repo and branch.
+				p We will use the <code>gh-pages</code> package to publish our site.  I'll cover the main and alternate versions.
+				h3 Main Deploy
+				blockquote
+					.code-header
+						h4 gulp deploy
+						p This will build and publish the site to the current repo in the <b>gh-pages</b> branch.
+						p <kbd>gulp deploy --tag 0.0.14</kbd> -- you can tag the release
+					pre.language-js.
+						<code> 
+						  // build then push to production
+						  gulp.task('deploy', function (callback) {
+							  runSequence('build', 'push', callback);
+							  return
+						  });
+						</code>
+				h3 Push
+				blockquote
+					.code-header
+						h4 gulp push
+						p This will publish the site to the current repo in the <b>gh-pages</b> branch.
+						p <kbd>gulp push --tag 0.0.14</kbd> -- you can tag the release
+					pre.language-js.
+						<code> 
+						  // push to the gh-pages branch of this repo
+						  gulp.task('push',  function (cb) {
+							  ghpages.publish(
+								  path.join(__dirname, 'build'),
+								  {
+									  logger: function(message) {
+										  gutil.log(message);
+									  },
+									  branch: 'gh-pages',
+									  clone: './dev/.gh-pages-production',
+									  tag: Args.tag
+								  },
+								  function() {
+									  gutil.log('-------------------------------------')
+									  gutil.log('published to:')
+									  gutil.log('branch: gh-pages')
+									  gutil.log('cloned to: ./dev/.gh-pages-production')
+									  gutil.log('It may take a few minutes for the server to refresh.')			
+									  gutil.log('-------------------------------------')
+									  cb()
+								  }
+							  );
+							
+							  return
+						  });
+						</code>
+				h3 Alternate Deploy
+				blockquote
+					.code-header
+						h4 gulp dev-deploy
+						p This will build and publish the site to the repo and branch you specify via command line.
+						p <kbd>gulp dev-deploy --repo https://github.com/user/user.github.io.git --branch master</kbd>
+						p <kbd style="background-color:#802404">--repo</kbd> <i>https://github.com/user/user.github.io.git</i>
+						p <kbd>--branch</kbd> <i>master</i> -- The branch of the repo to push to
+						p <kbd>--tag</kbd> <i>0.0.14</i> -- tag the release
+						p <kbd>--clone</kbd> <i>/tmp/clone</i> -- The dir to clone the repo
+						p <kbd>--user</kbd> <i>username</i> -- The username credentials
+						p <kbd>--email</kbd> <i>joe@tld.com</i> -- The email credentials
+						p Only <kbd style="background-color:#802404">--repo</kbd> is required
+						p default <kbd>--branch src</kbd>
+						p default <kbd>--clone ./dev/.gh-pages-development</kbd>
+					pre.language-javascript.
+						<code>
+						  // build then push to development
+						  // REQUIRED ...  --repo your_repo
+						  // optional ...  --clone /dir
+						  // optional ...  --branch master (default is src)
+						  gulp.task('dev-deploy', function (callback) {
+							  if(Args.repo && Args.repo !== '') {
+								  runSequence('build', 'dev-push', callback);
+							  } else {
+								  console.log('------------------------------------------------------------------------------')
+								  console.log('------------------------------------------------------------------------------')
+								  console.log('-- You must add the --repo option or add your dev repo in gulpfile.js');
+								  console.log('------------------------------------------------------------------------------')
+								  console.log('------------------------------------------------------------------------------')
+							  }
+							  return
+						  });
+						</code>
+				h3 Alternate Push
+				blockquote
+					.code-header
+						h4 gulp dev-push
+						p This will publish the site to the repo and branch you specify via command line.
+						p <kbd style="background-color:#802404">--repo</kbd> <i>https://github.com/snowkeeper/snowkeeper.githug.io.git</i>
+						p <kbd>--branch</kbd> <i>master</i> -- The branch of the repo to push to
+						p <kbd>--tag</kbd>  <i>0.2.12</i> -- you can tag the release
+						p <kbd>--clone</kbd> <i>/tmp/clone</i> -- The dir to clone the repo
+						p <kbd>--user</kbd> <i>username</i> -- The username credentials
+						p <kbd>--email</kbd> <i>joe@tld.com</i> -- The email credentials
+					pre.language-js.
+						<code> 
+						  // push to any other repo
+						  // REQUIRED ...  --repo your_repo
+						  // optional ...  --clone /dir
+						  // optional ...  --branch master (default is src)
+						  gulp.task('dev-push', function () {
+							  if(Args.repo && Args.repo !== '') {
+								ghpages.publish(
+									  path.join(__dirname, 'build'),
+									  {
+										  logger: function(message) {
+											  gutil.log(message);
+											},
+											branch: Args.branch,
+											repo: Args.repo,
+											clone: Args.clone,
+										  tag: Args.tag,
+										  user: Args.user && Args.email ? { user: Args.user, email: Args.email } : null
+									  },
+									  function() {
+										  gutil.log('-------------------------------------')
+										  gutil.log('published to:')
+										  gutil.log('repo: ' + Args.repo + '')
+										  gutil.log('branch:  ' + Args.branch + '')
+										  gutil.log('cloned to:  ' + Args.clone + '')
+										  gutil.log('It may take a few minutes for the server to refresh.')
+										  gutil.log('-------------------------------------')
+									  }
+								  );
+							  } else {
+								  console.log('------------------------------------------------------------------------------')
+								  console.log('------------------------------------------------------------------------------')
+								  console.log('-- You must add the --repo option or add your dev repo in gulpfile.js');
+								  console.log('------------------------------------------------------------------------------')
+								  console.log('------------------------------------------------------------------------------')
+							  }
+							  return
+						  });
+						</code>		
+					
+					
+					
+											
+
