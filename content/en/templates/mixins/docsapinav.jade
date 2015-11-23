@@ -3,10 +3,10 @@ mixin docsnav(docssection)
 		li
 			a(href='/docs').nav-heading Docs
 		if (docssection.value == 'classapi' )
-			li(class=docssection.version == '0.3.x' ? 'active' : null): a(href='/docs/api/current/class').nav-heading Current
-			li(class=docssection.version == '0.4.x' ? 'active' : null): a(href='/docs/api/incoming/class').nav-heading Incoming
+			li(class=docssection.version == '0.4.x' ? 'active' : null): a(href='/docs/api/current/class').nav-heading Current
+			li(class=docssection.version == '0.3.x' ? 'active' : null): a(href='/docs/api/0.3.x/class').nav-heading 0.3.x
 			li(class=docssection.version == '0.2.x' ? 'active' : null): a(href='/docs/api/0.2.x/class').nav-heading 0.2.x	
-			if docssection.version == '0.4.x'
+			if (docssection.version == '0.4.x')
 				li
 					a(href='/docs/api/current/endpoint').nav-heading Api
 		if (docssection.value == 'endpointapi' )
@@ -36,8 +36,8 @@ mixin docsnav(docssection)
 			li
 				a(href='/docs').nav-heading Docs Home
 			if (docssection.value == 'classapi' )
-				li(class=docssection.version == '0.3.x' ? 'active' : null): a(href='/docs/api/current/class').nav-heading Current
-				li(class=docssection.version == '0.4.x' ? 'active' : null): a(href='/docs/api/incoming/class').nav-heading Incoming
+				li(class=docssection.version == '0.4.x' ? 'active' : null): a(href='/docs/api/current/class').nav-heading Current
+				li(class=docssection.version == '0.3.x' ? 'active' : null): a(href='/docs/api/0.3.x/class').nav-heading 0.3.x
 				li(class=docssection.version == '0.2.x' ? 'active' : null): a(href='/docs/api/0.2.x/class').nav-heading 0.2.x
 				if docssection.version == '0.4.x'	
 					li
