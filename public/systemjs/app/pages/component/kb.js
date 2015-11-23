@@ -80,64 +80,7 @@ let debug = Debug('keystone:pages:component:kb');
 							debug('new tag-search options', options)
 						})
 					}
-				});				
-				/*
-				let i = 0
-				let thisComponent = this
-				
-				
-				if(this._stopInterval) {
-					return;
-				}
-				
-				// create anchor links from <H(n)> elements
-				let addAnchors = function() {
-					return '<a class="anchor"  href="#top"><i class="entypo entypo-up"></i></a><a class="anchor" name="' + $(this)[0].id + '" href="#' + $(this)[0].id + '"><i class="entypo entypo-link"></i></a>'
-				}
-				
-				// it takes a moment for the page to render, so run an interval looking for results
-				// then craete the links and trigger a menu render
-				let _interval = setInterval(function() {
-					i++;
-					let $hs = $(".create-anchor-links").find('h5, h4, h3, h2');
-					if($hs.length > 0 || i > 20) {
-						// hack here, someone can fix it for me
-						// interval was calling an extra time after clearInterval,
-						// or maybe before clearInterval could be called, so use a stop bit for now
-						// maybe a better solution would fit
-						if(!thisComponent._stopInterval) {
-							endInterval($hs)
-						}
-					}
-				},500)
-				
-				function endInterval($hs) {
-					// kill the interval
-					clearInterval(_interval)
-					thisComponent._stopInterval = true
-					
-					// add the anchors
-					$hs.before(addAnchors)
-					
-					// update the anchor menu
-					if(i <= 20) {
-						Gab.emit('tag-search:update', {
-							nameFromNextTag: true,
-							nameFromTag: ["H2", "H3", "H4", "H5"],
-							nameFromTagAttr: 'innerHTML',
-							contextTextUntilTag: 'h*',
-							useLocation: false,
-							skipHistory: true,
-							classes: {
-								'li:a': '',
-							}
-						})
-						Gab.once('tag-search:options', (options) => {
-							debug('new tag-search options', options)
-						})
-					}
-				}
-				* */
+				});
 			}
 			render() {
 				if('function' === typeof this.state.html) {
