@@ -15,7 +15,6 @@
     "async": "^1.4.2",
     "errorhandler": "^1.3.6",
     "express": "^4.12.3",
-    "fs-extra": "^0.18.3",
     "github": "^0.2.4",
     "jade": "^1.9.2",
     "jstransformer-marked": "^1.0.1",
@@ -25,11 +24,32 @@
     "morgan": "^1.5.3",
     "serve-favicon": "^2.2.1"
   },
+  "devDependencies": {
+    "fs.extra": "^1.3.2",
+    "gh-pages": "^0.4.0",
+    "gulp": "^3.9.0",
+    "gulp-concat-css": "^2.2.0",
+    "gulp-copy": "0.0.2",
+    "gulp-if": "^2.0.0",
+    "gulp-insert": "^0.5.0",
+    "gulp-jade": "^1.1.0",
+    "gulp-less": "^3.0.3",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-util": "^3.0.7",
+    "less": "^2.5.3",
+    "minimist": "^1.2.0",
+    "resolve": "^1.1.6",
+    "run-sequence": "^1.1.4",
+    "striptags": "^2.0.4",
+    "vinyl-source-stream": "^1.1.0"
+  },
   "bugs": {
     "url": "https://github.com/keystonejs/keystonejs-site/issues"
   },
   "scripts": {
-    "build": "node build.js",
+    "build": "gulp build",
+    "deploy": "gulp deploy",
     "start": "node index.js"
   },
   "engines": {
