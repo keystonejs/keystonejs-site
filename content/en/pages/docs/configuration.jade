@@ -192,6 +192,12 @@ block content
 				tr
 					td <code>file limit</code> <code class="data-type">Number</code>
 					td Add a file limit to the Express body parser.
+				tr
+					td <code>allowed ip ranges</code> <code class="data-type">String</code>
+					td Comma (,) seperated string of IP ranges specified using CIDR format. <br />
+						| <code class="default-value">::ffff:0/64, 127.0.0.0/8, 192.168.0.0/16</code> <br />  
+						| Any request from an IP not in a valid range is returned 503.
+				
 			.code-header
 				h4 Alternate View Engines
 				p By default, Keystone uses the <strong>Jade</strong> template engine for your views. Here's how you would set up a different engine, e.g. <strong>Swig</strong>.
