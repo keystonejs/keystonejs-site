@@ -784,6 +784,13 @@ block content
 					| item._.email.gravatarUrl(); // "//www.gravatar.com/avatar/74a0071e5f3a7107b570b7d4a1a7619d?s=80&d=identicon&r=g"
 					| item._.email.gravatarUrl(200,'mm','r'); // "//www.gravatar.com/avatar/74a0071e5f3a7107b570b7d4a1a7619d?s=200&d=mm&r=r"
 			
+			a(name="fieldtypes-geopoint")
+			h3 <code>GeoPoint</code>
+			h4 <code class="data-type">Array</code> &mdash; Displayed as latitude and longitude number fields in the Admin UI
+			pre: code.language-javascript { type: Types.GeoPoint }
+			p.note Adds a <strong>2dsphere</strong> index.
+				
+						
 			a(name="fieldtypes-html")
 			h3 <code>Html</code>
 			h4 <code class="data-type">String</code> &mdash; Displayed as a text field or WYSIWYG Editor in the Admin UI.
@@ -930,10 +937,6 @@ block content
 				p <code>format(string)</code> - formats the stored value using <a href="http://numeraljs.com" target="_blank">numeraljs</a>. Set to <code class="default-value">false</code> to disable automatic formatting.
 				p Format string defaults to <code class="default-value">0,0[.][000000000000]</code>
 		
-
-			
-
-			
 			
 			a(name="fieldtypes-password")
 			h3 <code>Password</code>
