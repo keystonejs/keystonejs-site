@@ -1170,7 +1170,7 @@ block content
 					|	return item._id + require('path').extname(filename);
 					|} }
 				p <code>containerFormatter</code> <code class="data-type">Callback</code> - 以当前模型和客户端文件名为参数的函数，返回新的容器名(容器是Azure存储账号中的根文件夹)。
-				pre: code.language-javascript { type: Types.AzureFile, containerFormatter: containerFormatter: function(item, filename) {
+				pre: code.language-javascript { type: Types.AzureFile, containerFormatter: function(item, filename) {
 					|	return item.modelProperty;
 					|} }
 				

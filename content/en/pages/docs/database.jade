@@ -1082,7 +1082,7 @@ block content
 					|	return item._id + require('path').extname(filename);
 					|} }
 				p <code>containerFormatter</code> <code class="data-type">Callback</code> - function with arguments current model and client file name to return the new container name (container are a root folder in Azure Storage Account).
-				pre: code.language-javascript { type: Types.AzureFile, containerFormatter: containerFormatter: function(item, filename) {
+				pre: code.language-javascript { type: Types.AzureFile, containerFormatter: function(item, filename) {
 					|	return item.modelProperty;
 					|} }
 				
