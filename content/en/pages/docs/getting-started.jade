@@ -243,7 +243,7 @@ block content
 			
 			p For example, if you have routes in <code>routes/index.js</code>: 
 
-			pre: code.language-javascript
+			pre.language-javascript
 				| import React from 'react';
 				| import { Route } from 'react-router';
 				| import createTeams from 'components/teams';
@@ -251,8 +251,8 @@ block content
 				| const Teams = createTeams(React);
 				| 
 				| export default (
-				|     <Route path='/teams' component={ Teams }>
-				|     </Route>
+				|     &lt;Route path='/teams' component={ Teams }&gt;
+				|     &lt;/Route&gt;
 				| );
 
 			p You could can use it by importing it into your <code>Keystone.js</code> file:

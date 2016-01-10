@@ -517,15 +517,29 @@ block content
 					td Displays an <strong>+ <u>add</u></strong> link in the admin UI when the field has no value. Will completely hide field UI when <code>noedit</code> is also set to true, when the field has no value
 				tr
 					td: a(name='dependsOn') <code>dependsOn</code> <code class="data-type">Object</code>
-					td: p The field or header will only be displayed when the paths specified in the object match the current data for the item.
-						p You can target multiple values per path using an Array.
+					td: p Conditionally display the field or header.  Accepts plain <code>key:value</code> pairs and expression objects. 
+						p Available expressions: <code>$and, $or, $any, $not, $eq, $ne, $gt, $gte, $lt, $lte, $regex</code>
+						p You can target multiple simple values per path using an Array, which is equal to an <code>$any</code> search.
 						.code-header: h4 Example
 						pre: code.language-javascript
-							| first: { type: String },
-							| // Will show if first === "value1", "1" or "2"
-							| second: { type: String, dependsOn: { first: ['value1', '1', 2] } },
-							| // Will show if first == "value1"
-							| third: { type: String, dependsOn: { first: 'value1' } }
+							| var patterns = {
+							|     And: { $and:[ { str1:'earth' } , { check1:true } ] },
+							|     Multiple: { $gt:[{num1:1}], $and:[{str1:'1'}, {sel1:['first', 'third']}, {num2:{$lt:4}}] }
+							|     Regex: { sel1:'second',str3: { $regex: 'fir.*/i'} }
+							| }
+							| TestCollection.add('Depends On', {
+							|     And: { type: Boolean, dependsOn: patterns.And },
+							|     Multiple: { type: Boolean, dependsOn: patterns.Multiple },
+							|     Regex: { type: Boolean, dependsOn: patterns.Regex }
+							| }, 'Test Against', {
+							|     check1: { type:  Types.Boolean },
+							|     sel1: { type: Types.Select, options: 'first, second, third', emptyOption: true },
+							|     str1: String,
+							|     str2: String,
+							|     str3: String,
+							|     num1: { type: Types.Number },
+							|     num2: { type: Types.Number }
+							| });
 
 			
 			a(name="fields-watching")
