@@ -181,8 +181,11 @@ block content
 					td A <code>List:relationship</code> pair to control when drag and drop sorting is available in the Admin UI
 
 				tr
-					td <code>sortable</code> <code class="data-type">Boolean</code>
-					td Adds a hidden field <code>sortOrder</code> to the schema, and enables drag and drop sorting in the Admin UI
+					td <code>sortable</code> <code class="data-type">Boolean or String</code>
+					td 
+						p Adds a hidden field <code>sortOrder</code> to the schema, and enables drag and drop sorting in the Admin UI.
+						p When set to <code class="data-type">true</code> new documents are added as the last item.
+						p When set to <code class="data-type">unshift</code> new documents are added as the first item.
 
 				tr
 					td <code>track</code> <code class="data-type">Boolean or Object</code>
