@@ -11,7 +11,7 @@ this.filters = options.filters;
 this._defaultSize = 'full';
 this._nativeType = keystone.mongoose.Schema.Types.ObjectId;
 this._underscoreMethods = ['format'];
-this._properties = ['isValid', 'many', 'filters'];</code></pre>
+this._properties = ['isValid', 'many', 'filters', 'createInline'];</code></pre>
 
 <div class="code-header addGitHubLink" data-file="fields/types/relationship/RelationshipType.js"> <a href="#" class="loadCode"> code</a></div><pre class=" language-javascript hideCode api"></pre> 
 
