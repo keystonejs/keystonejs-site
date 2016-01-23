@@ -277,6 +277,14 @@ block content
 				|     next();
 				| });
 			
+			p To use any <a href="http://mongoosejs.com/docs/plugins.html" target="_blank">mongoose plugin</a>, simplify add it to your schema before the call to <code>.register</code>. For example, to add the <a href="https://www.npmjs.com/package/mongoosastic">mongoosastic</a> plugin:
+			
+			pre: code.language-javacript
+				| var mongoosastic = require('mongoosastic');
+				| 
+				| Post.schema.plugin(mongoosastic);
+				| Post.register();
+            
 			
 			a(name='lists-querying')
 			h3 Querying Data
