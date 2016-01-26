@@ -351,9 +351,11 @@ block content
 				|  Post.paginate({
 				|		page: req.query.page || 1,
 				|		perPage: 10,
-				|		maxPages: 10
+				|		maxPages: 10,
+				|		filter: {
+				|			'state': 'published'
+				|		}
 				|	})
-				|	.where('state', 'published')
 				|	.sort('-publishedDate')
 				|	.populate('author categories')
 				|	.exec(function(err, results) {
