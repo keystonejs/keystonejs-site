@@ -530,8 +530,7 @@ block content
 					td: a(name='dependsOn') <code>dependsOn</code> <code class="data-type">Object</code>
 					td: p Conditionally display the field or header.  Accepts plain <code>key:value</code> pairs and expression objects. 
 						p Available expressions: <code>$and, $or, $any, $not, $eq, $ne, $gt, $gte, $lt, $lte, $regex</code>
-						p You can target multiple simple values per path using an Array, which is equal to an <code>$any</code> search.
-						.note When a field includes <code>dependsOn</code> and <code>required: true</code>, validation will only occur if the <code>dependsOn</code> value(s) are met.  
+						.note When a field includes <code>dependsOn</code> and <code>required: true</code>, validation for <code>required</code> will only occur if the <code>dependsOn</code> value(s) are met.  
 							| This applies when using the Admin UI as well as using <code>keystone.List('MyList').model</code> directly.
 						.code-header: h4 Example
 						pre: code.language-javascript
