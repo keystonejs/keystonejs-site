@@ -530,12 +530,16 @@ block content
 					td: a(name='dependsOn') <code>dependsOn</code> <code class="data-type">Object</code>
 					td: p Conditionally display the field or header.  Accepts plain <code>key:value</code> pairs and expression objects. 
 						p Available expressions: <code>$and, $or, $any, $not, $eq, $ne, $gt, $gte, $lt, $lte, $regex</code>
-						p You can target multiple simple values per path using an Array, which is equal to an <code>$any</code> search.
+						.note When a field includes <code>dependsOn</code> and <code>required: true</code>, validation for <code>required</code> will only occur if the <code>dependsOn</code> value(s) are met.  
+							| This applies when using the Admin UI as well as using <code>keystone.List('MyList').model</code> directly.
 						.code-header: h4 Example
 						pre: code.language-javascript
 							| var patterns = {
 							|     And: { $and:[ { str1:'earth' } , { check1:true } ] },
-							|     Multiple: { $gt:[{num1:1}], $and:[{str1:'1'}, {sel1:['first', 'third']}, {num2:{$lt:4}}] }
+							|     Multiple: {    
+							|         $gt: [{num1:1}],
+							|         $and: [{str1:'1'},{sel1: ['first', 'third']}, {num2:{$lt:4}}]
+							|     },     
 							|     Regex: { sel1:'second',str3: { $regex: 'fir.*/i'} }
 							| }
 							| TestCollection.add('Depends On', {
@@ -544,7 +548,7 @@ block content
 							|     Regex: { type: Boolean, dependsOn: patterns.Regex }
 							| }, 'Test Against', {
 							|     check1: { type:  Types.Boolean },
-							|     sel1: { type: Types.Select, options: 'first, second, third', emptyOption: true },
+							|     sel1: { type: Types.Select, options: 'first, second, third' },
 							|     str1: String,
 							|     str2: String,
 							|     str3: String,
@@ -587,7 +591,8 @@ block content
 							| }
 						.code-header: h4 Example (asynchronous)
 						pre: code.language-javascript
-							| function (callback) { // BEWARE: MUST be called "callback" to allow asynchronous execution
+							| function (callback) { 
+							|   // BEWARE: MUST be called "callback" to allow asynchronous execution
 							|	list.model.findById(this.createdBy).exec(function(err, user){
 							|		callback(err, user.name + "-" + Date.now());
 							|	});
@@ -740,7 +745,8 @@ block content
 				h5 Options
 				p <code>height</code> <code class="data-type">Number</code> - the height of the field (in pixels). Default: 180
 				p <code>language</code> <code class="data-type">String</code> - the language in the code field.
-				| Supported Languages: <code>c++, objectivec, css, asp, c, vb, xml, php, html, ini, js, java, coffee, lisp, perl, python, sql, json, less, sass, sh, ruby, jsp, tpl, jade</code>
+				| Supported Languages: <code>c++, objectivec, css, asp, c, vb, xml, php, html, ini, js, java, coffee</code>
+				| <code> lisp, perl, python, sql, json, less, sass, sh, ruby, jsp, tpl, jade</code>
 			
 			
 			a(name="fieldtypes-color")
