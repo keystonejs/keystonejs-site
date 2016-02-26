@@ -988,7 +988,7 @@ block content
 					li <code>callback(err, result)</code> - <strong>result</strong> is <code class="default-value">true</code> if the candidate matches the stored password, or <code class="default-value">false</code> if it doesn't
 				
 				h5 Special paths
-				p <code>{path}_compare</code> - when provided to the <strong>updateHandler</strong>, it will be checked against <code>{path}</code> and validation will fail if they don't match.
+				p <code>{path}_confirm</code> - must be provided to the <strong>updateHandler</strong> when setting a password, it will be checked against <code>{path}</code> and validation will fail if they don't match.
 			
 			
 			a(name="fieldtypes-select")
