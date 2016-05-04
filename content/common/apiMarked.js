@@ -19,7 +19,6 @@ module.exports = {
 			
 		}
 		function recur(ref, callback) {
-			
 			async.forEachOf(ref, function(list, key, finished) {
 				addDir(list, language, version, key, list.list);
 				if(list.add) {
@@ -50,7 +49,8 @@ module.exports = {
 				}
 				fs.readdir(dir, function (err, files) {
 					if (err) {
-						next(err);
+						console.log(err)
+						next();
 					} else {
 						async.eachSeries(files, function(file, done) {
 							file =  path.join(dir, file);

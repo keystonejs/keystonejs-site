@@ -50,6 +50,9 @@ block content
 					td <code>brand</code> <code class="data-type">String</code>
 					td Displayed in the top left hand corner of the Admin UI
 				tr
+					td <code>admin path</code> <code class="data-type">String</code>
+					td The uri of the Admin UI. Defaults to <code>/keystone</code> 
+				tr
 					td <code>module root</code> <code class="data-type">String</code>
 					td
 						p This setting tells Keystone the root path of your app. By default, <code>module root</code> points to the path of the first script that required Keystone within your app. This default may be undesireable at times.
@@ -136,6 +139,55 @@ block content
 					td
 						p This option is passed through to Express, and controls whether compiled view templates are cached between requests.
 						p It defaults to <code class="default-value">true</code> in production, or <code class="default-value">false</code> otherwise so there is rarely any reason to set it explicitly.
+
+				tr
+					td <code>language options</code> <code class="data-type">Object</code>
+					td
+						p The optional <code>language options</code> object contains your language support preferences. Defaults to all default values and <code>en-US</code> as the only supported language.
+
+				tr
+					td <code>laungage options: supported languages</code> <code class="data-type">Array</code>
+					td
+						p A list of supported languages. Preferred languages come first. Language tags must comply with BCP47 standard:
+						p <code>language[-script][-region]</code>
+						ol
+							li Language subtag (e.g. <code>en</code>, <code>zh</code>).
+							li Script subtag (optional, e.g. <code>Hant</code>, <code>Latn</code>).
+							li Region subtag (optional, e.g. <code>US</code>, <code>CN</code>).
+						p Examples: <code>en</code>, <code>en-US</code> and <code>zh-Hant-TW</code>.
+						p Defaults to <code>['en-US']</code>.
+
+				tr
+					td <code>language options: language cookie</code> <code class="data-type">String</code>
+					td
+						p Name of the language cookie. It will store the current language tag of the user's session and remain until <code>maxAge</code> expires or until it is changed using the browser URL overrides.
+						p Defaults to <code>'language'</code>.
+
+				tr
+					td <code>language options: language cookie options</code> <code class="data-type">Object</code>
+					td
+						p Optional. Options for the language cookie. This is passed through to express. See the <a href="http://expressjs.com/en/4x/api.html#res.cookie">Express cookie options</a> for details.
+
+				tr
+					td <code>language options: language select url</code> <code class="data-type">String</code>
+					td
+						p An optional URL used to change language preferences. It will redirect back to the origin URL if you send a referrer header and default to <code>/</code> if it don't send a referrer header.
+						p <b>Usage:</b>
+						p <code>/languages/{language}</code>
+						p E.g., visiting <code>/languages/en-US</code> will set your language preference to <code>'en-US'</code>.
+						p Defaults to <code>'/language/{language}'</code>.
+
+				tr
+					td <code>language options: language query name</code> <code class="data-type">String</code>
+					td
+						p You can optionally set the language on any page without a redirect using a query string. This option allows you to set the name of the query parameter that triggers the language setting. The default value is <code>'language'</code>.
+						p E.g., if you set language query name to <code>'locale'</code>, adding <code>?locale=zh-CN</code> to any URL path will set the language to <code>'zh-CN'</code>. Use the special language value, <code>'default'</code> to unset the language preference and fall back on the default setting as if you are a first-time visitor.
+
+				tr
+					td <code>language options: disable</code> <code class="data-type">Boolean</code>
+					td
+						p Disable the language middleware. Defaults to <code>false</code>.
+
 				tr
 					td <code>locals</code> <code class="data-type">Object</code>
 					td
@@ -487,7 +539,7 @@ block content
 								|  + ' charmap ltr rtl pagebreak paste, forecolor backcolor,'
 								|  +' emoticons media, preview print ',
 								| 'wysiwyg additional plugins': 'example, table, advlist, anchor,'
-								|  + ' autolink, autosave, bbcode, charmap, contextmenu, '
+								|  + ' autolink, autosave, charmap, contextmenu, '
 								|  + ' directionality, emoticons, fullpage, hr, media, pagebreak,'
 								|  + ' paste, preview, print, searchreplace, textcolor,'
 								|  + ' visualblocks, visualchars, wordcount',
@@ -672,7 +724,7 @@ block content
 
 			a(name='services-mandrill')
 			h3 Mandrill
-			p <a href="http://mandrill.com" target="_blank">Mandrill</a> is a scalable and affordable email infrastructure service that allows you to send emails easily. They offer a free plan for up to 12,000 emails per month.
+			p <a href="http://mandrill.com" target="_blank">Mandrill</a> is a scalable and affordable email infrastructure service that allows you to send emails easily. They offer a free trial with 2,000 free emails on new accounts.
 
 			p To configure KeystoneJS to support the Mandrill API, simply <a href="https://mandrill.com/signup/">sign up for an account</a>, get your api key, and set both the <code>mandrill api key</code> and <code>mandrill username</code> options.
 			

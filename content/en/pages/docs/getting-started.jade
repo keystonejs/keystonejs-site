@@ -68,7 +68,7 @@ block content
 				|   "version": "0.0.1",
 				|   "private": true,
 				|   "dependencies": {
-				|     "keystone": "latest",
+				|     "keystone": "^0.3",
 				|     "underscore": "latest"
 				|   },
 				|   "engines": {
@@ -234,6 +234,40 @@ block content
 
 			a(name="routesviews")
 			h2 Routes &amp; Views
+
+			p Keystone supports <b>Universal JavaScript</b> routing and rendering using React and React Router. Alternatively, you can use any view engine supported by Express.
+
+			h3 Universal Route &amp; Render with React
+
+			p For Universal JavaScript projects, simply pass your React Routes into your <code>Keystone.init()</code> configuration with the <code>react routes</code> option.
+			
+			p For example, if you have routes in <code>routes/index.js</code>: 
+
+			pre.language-javascript
+				| import React from 'react';
+				| import { Route } from 'react-router';
+				| import createTeams from 'components/teams';
+				| 
+				| const Teams = createTeams(React);
+				| 
+				| export default (
+				|     &lt;Route path='/teams' component={ Teams }&gt;
+				|     &lt;/Route&gt;
+				| );
+
+			p You could can use it by importing it into your <code>Keystone.js</code> file:
+
+			pre: code.language-javascript
+				| import componentRoutes from 'routes/component-routes';
+
+			p And in your <code>Keystone.init()</code> block:
+
+			pre: code.language-javascript
+				| keystone.init({
+				|     'react routes': componentRoutes,
+				|     // ...
+
+			h3 Routing &amp; Views with Express View Engines
 			
 			p Usually, the easiest and clearest way to configure the logic for different routes (or views) in your application is to set up all the bindings single file, then put any common logic (or middleware) in another file.
 			p Then, the controller for each route you bind goes in its own file, organised similarly to the template that renders the view.
@@ -645,7 +679,7 @@ block content
 			h3 Starting Keystone
 			
 			p Now you're ready to run your application, so execute the following in your project's main folder:
-			p: code node web
+			p: code node keystone
 			
 			p Keystone will automatically apply the update, and then start a web server on the default port, 3000.
 			
