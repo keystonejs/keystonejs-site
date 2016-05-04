@@ -1156,7 +1156,8 @@ block content
 				pre: code.language-javascript { type: Types.CloudinaryImage, select : true }
 				p <code>selectPrefix</code> <code class="data-type">String</code> specifies the the prefix of the images that will be available for selection when <code>select</code> option is <code class="default-value">true</code>.
 				pre: code.language-javascript { type: Types.CloudinaryImage, select: true, selectPrefix: 'path/to/images' }
-
+				p <code>filenameAsPublicID</code> <code class="data-type">String</code> name of the file to be used without suffix as the default Cloudinary<code class="data-type">public_id</code>.
+				pre: code.language-javascript { type: Types.CloudinaryImage, filenameAsPublicID: 'filename.suffix' }
 				h5 Schema
 				p <code>public_id</code> <code class="data-type">String</code>
 				p <code>version</code> <code class="data-type">Number</code>
