@@ -724,7 +724,7 @@ block content
 
 			a(name='services-mandrill')
 			h3 Mandrill
-			p <a href="http://mandrill.com" target="_blank">Mandrill</a> is a scalable and affordable email infrastructure service that allows you to send emails easily. They offer a free trial with 2,000 free emails on new accounts.
+			p <a href="http://mandrill.com" target="_blank">Mandrill</a> is a scalable and affordable email infrastructure service that allows you to send emails easily. To use Mandrill you need a paid Mailchimp Membership.
 
 			p To configure KeystoneJS to support the Mandrill API, simply <a href="https://mandrill.com/signup/">sign up for an account</a>, get your api key, and set both the <code>mandrill api key</code> and <code>mandrill username</code> options.
 			
@@ -734,6 +734,18 @@ block content
 				| keystone.set('mandrill api key', 'your-key');
 				| keystone.set('mandrill username', 'your-username');
 
+			a(name='services-mailgun')
+			h3 Mailgun
+			p <a href="http://mailgun.com" target="_blank">Mailgun</a> is another scalable and affordable email infrastructure service that allows you to send emails easily. There is a free plan that includes 10,000 mails/month.
+
+			p To configure KeystoneJS to support the Mailgun API, simply <a href="https://www.mailgun.com/signup">sign up for an account</a>, get your api key, and set your<code>mailgun api key</code> and <code>mail domain</code> options.
+			
+			p Mailgun is supported from KeystoneJS version 0.3.19 an up.
+						
+			pre: code.language-javascript
+				| keystone.set('email transport', 'mailgun');
+				| keystone.set('mailgun api key', 'key-xxxxxxxxxxx');
+				| keystone.set('mailgun domain', 'example.com');
 
 			
 			
