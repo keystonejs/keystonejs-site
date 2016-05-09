@@ -359,6 +359,11 @@ block content
 						p The encryption key to use for your cookies. Passed to Express's cookie parser.
 						p It's a really good idea to set this to a long, random string.
 				tr
+					td <code>cookie signin</code> <code class="data-type">String</code>
+					td
+						p Through cookie signin, the cookie will be alive for the current Session 
+						p The session will expire upon closing the browser.
+				tr
 					td <code>session store</code> <code class="data-type">String</code> or <code class="data-type">Function</code>
 					td
 						p Set this to <code class="default-value">mongo</code> to use your MongoDB database to persist session data.
