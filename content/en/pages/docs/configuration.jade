@@ -432,6 +432,18 @@ block content
 						p <code>href</code> to use for the 'back to (site name)' link in the header of the Admin UI
 						p Defaults to <code class="default-value">/</code>
 				tr
+					td <code>signin logo</code> <code class="data-type">String</code> or <code class="data-type">Array</code>
+					td
+						p Publicly accessible <code>url</code> for your logo asset, and optionally the image dimensions
+						pre: code.language-javascript
+							| keystone.set('signin logo', '../logo.png');
+							| 
+							| keystone.init({
+							|	...
+							|	'signin logo': ['../logo.png', 200, 100]
+							| });
+						p Defaults to the KeystoneJS logo
+				tr
 					td <code>signin url</code> <code class="data-type">String</code>
 					td
 						p <code>href</code> to bounce visitors to when they fail the default auth check (e.g. not signed in)
