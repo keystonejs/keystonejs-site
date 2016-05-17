@@ -108,6 +108,9 @@ block content
 						| <em>Autokey paths are automatically indexed; you may also want to include them in compound indexes.</em>
 				
 				tr
+					td <code>autocreate</code> <code class="data-type">Boolean</code>
+					td If a list doesn't have any initial fields, the create button / action should immediately create a new item and navigate to it without displaying the modal. Having this option set will ignore any initial fields, it's an override.
+				tr
 					td <code>defaultColumns</code> <code class="data-type">String</code>
 					td A comma-delimited list of default columns to display in the Admin UI List View.
 						|  You can specify width in either pixels or percent after a <code>|</code> pipe character.
