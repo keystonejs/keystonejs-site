@@ -106,6 +106,10 @@ block content
 							li <code>unique</code> <code class="data-type">Boolean</code> - whether the key should be unique or not
 							li <code>fixed</code> <code class="data-type">Boolean</code> - the key should be kept if it exists and it's non-empty. Defaults to <code class="data-type">false</code>.
 						| <em>Autokey paths are automatically indexed; you may also want to include them in compound indexes.</em>
+
+				tr
+					td <code>autocreate</code> <code class="data-type">Boolean</code>
+					td If a list doesn't have any initial fields, the create button / action should immediately create a new item and navigate to it without displaying the modal. Having this option set will ignore any initial fields, it's an override.
 				
 				tr
 					td <code>defaultColumns</code> <code class="data-type">String</code>
