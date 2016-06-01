@@ -220,7 +220,7 @@ block content
 				tr
 					td <code>sass options</code> <code class="data-type">Object</code>
 					td
-						p Optional config options that will be passed to the <code>sass</code> middleware; see <a href="https://github.com/sass/node-sass#options" target="_blank">github.com/sass/node-sass</a> for more information.
+						p Optional config options that will be passed to the <code>sass</code> middleware; see <a href="https://github.com/sass/node-sass-middleware#options" target="_blank">github.com/sass/node-sass-middleware</a> for more information.
 						p.note To enable complation of <strong>.sass</strong> files pass <code>{ indentedSyntax: true }</code>
 				tr
 					td <code>favicon</code> <code class="data-type">String</code>
@@ -359,6 +359,11 @@ block content
 						p The encryption key to use for your cookies. Passed to Express's cookie parser.
 						p It's a really good idea to set this to a long, random string.
 				tr
+					td <code>cookie signin</code> <code class="data-type">String</code>
+					td
+						p Through cookie signin, the cookie will be alive for the current Session 
+						p The session will expire upon closing the browser.
+				tr
 					td <code>session store</code> <code class="data-type">String</code> or <code class="data-type">Function</code>
 					td
 						p Set this to <code class="default-value">mongo</code> to use your MongoDB database to persist session data.
@@ -426,6 +431,18 @@ block content
 					td
 						p <code>href</code> to use for the 'back to (site name)' link in the header of the Admin UI
 						p Defaults to <code class="default-value">/</code>
+				tr
+					td <code>signin logo</code> <code class="data-type">String</code> or <code class="data-type">Array</code>
+					td
+						p Publicly accessible <code>url</code> for your logo asset, and optionally the image dimensions
+						pre: code.language-javascript
+							| keystone.set('signin logo', '../logo.png');
+							| 
+							| keystone.init({
+							|	...
+							|	'signin logo': ['../logo.png', 200, 100]
+							| });
+						p Defaults to the KeystoneJS logo
 				tr
 					td <code>signin url</code> <code class="data-type">String</code>
 					td
@@ -539,7 +556,7 @@ block content
 								|  + ' charmap ltr rtl pagebreak paste, forecolor backcolor,'
 								|  +' emoticons media, preview print ',
 								| 'wysiwyg additional plugins': 'example, table, advlist, anchor,'
-								|  + ' autolink, autosave, bbcode, charmap, contextmenu, '
+								|  + ' autolink, autosave, charmap, contextmenu, '
 								|  + ' directionality, emoticons, fullpage, hr, media, pagebreak,'
 								|  + ' paste, preview, print, searchreplace, textcolor,'
 								|  + ' visualblocks, visualchars, wordcount',
@@ -724,7 +741,7 @@ block content
 
 			a(name='services-mandrill')
 			h3 Mandrill
-			p <a href="http://mandrill.com" target="_blank">Mandrill</a> is a scalable and affordable email infrastructure service that allows you to send emails easily. They offer a free trial with 2,000 free emails on new accounts.
+			p <a href="http://mandrill.com" target="_blank">Mandrill</a> is a scalable and affordable email infrastructure service that allows you to send emails easily. To use Mandrill you need a paid Mailchimp Membership.
 
 			p To configure KeystoneJS to support the Mandrill API, simply <a href="https://mandrill.com/signup/">sign up for an account</a>, get your api key, and set both the <code>mandrill api key</code> and <code>mandrill username</code> options.
 			
@@ -734,6 +751,18 @@ block content
 				| keystone.set('mandrill api key', 'your-key');
 				| keystone.set('mandrill username', 'your-username');
 
+			a(name='services-mailgun')
+			h3 Mailgun
+			p <a href="http://mailgun.com" target="_blank">Mailgun</a> is another scalable and affordable email infrastructure service that allows you to send emails easily. There is a free plan that includes 10,000 mails/month.
+
+			p To configure KeystoneJS to support the Mailgun API, simply <a href="https://www.mailgun.com/signup">sign up for an account</a>, get your api key, and set your<code>mailgun api key</code> and <code>mail domain</code> options.
+			
+			p Mailgun is supported from KeystoneJS version 0.3.19 an up.
+						
+			pre: code.language-javascript
+				| keystone.set('email transport', 'mailgun');
+				| keystone.set('mailgun api key', 'key-xxxxxxxxxxx');
+				| keystone.set('mailgun domain', 'example.com');
 
 			
 			

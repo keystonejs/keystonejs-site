@@ -106,6 +106,10 @@ block content
 							li <code>unique</code> <code class="data-type">Boolean</code> - whether the key should be unique or not
 							li <code>fixed</code> <code class="data-type">Boolean</code> - the key should be kept if it exists and it's non-empty. Defaults to <code class="data-type">false</code>.
 						| <em>Autokey paths are automatically indexed; you may also want to include them in compound indexes.</em>
+
+				tr
+					td <code>autocreate</code> <code class="data-type">Boolean</code>
+					td If a list doesn't have any initial fields, the create button / action should immediately create a new item and navigate to it without displaying the modal. Having this option set will ignore any initial fields, it's an override.
 				
 				tr
 					td <code>defaultColumns</code> <code class="data-type">String</code>
@@ -163,7 +167,7 @@ block content
 					td The plural label for the items in the list. Used in the Admin UI, defaults to a plural form of <code class="default-value">singular</code>
 
 				tr
-					td <code>schema</code> <code class="data-type">String</code>
+					td <code>schema</code> <code class="data-type">Object</code>
 					td
 						p Options for the Mongoose Schema for the List. Among other things, this option lets you specify a custom name for the <strong>collection</strong>. See the <a href="http://mongoosejs.com/docs/guide.html#options" target="_blank">mongoose schema docs</a> for a list of available options.
 						p: em Warning: do not modify the <code>id</code> or <code>_id</code> schema options; the default behaviour is required by Keystone
@@ -186,7 +190,10 @@ block content
 						p Adds a hidden field <code>sortOrder</code> to the schema, and enables drag and drop sorting in the Admin UI.
 						p When set to <code class="data-type">true</code> new documents are added as the last item.
 						p When set to <code class="data-type">unshift</code> new documents are added as the first item.
-
+				tr
+					td <code>history</code> <code class="data-type">Boolean</code>
+					td Saves revisions of documents when they are created,updated or removed.
+	
 				tr
 					td <code>track</code> <code class="data-type">Boolean or Object</code>
 					td
@@ -570,7 +577,7 @@ block content
 				li The value of any other field (or fields) changes
 				li The value of any other field (or fields) changes to a specific value
 			
-			p To use the watching functionaliy, set the following two options:
+			p To use the watching functionality, set the following two options:
 				
 			table.table
 				col(width=210)
@@ -792,7 +799,7 @@ block content
 			.options
 				
 				h5 Options:
-				p <code>format</code> <code class="data-type">string</code> - the default format pattern to use, defaults to <code class="default-value">Do MMM YYYY hh:mm:ss a</code>
+				p <code>format</code> <code class="data-type">string</code> - the default format pattern to use, defaults to <code class="default-value">YYYY-MM-DD h:m:s a</code>
 				p See the <a href="http://momentjs.com/docs/#/displaying/format/" target="_blank">momentjs format docs</a> for information on the supported formats and options.
 				
 				h5 Underscore methods:
@@ -991,7 +998,7 @@ block content
 					li <code>callback(err, result)</code> - <strong>result</strong> is <code class="default-value">true</code> if the candidate matches the stored password, or <code class="default-value">false</code> if it doesn't
 				
 				h5 Special paths
-				p <code>{path}_compare</code> - when provided to the <strong>updateHandler</strong>, it will be checked against <code>{path}</code> and validation will fail if they don't match.
+				p <code>{path}_confirm</code> - must be provided to the <strong>updateHandler</strong> when setting a password, it will be checked against <code>{path}</code> and validation will fail if they don't match.
 			
 			
 			a(name="fieldtypes-select")
@@ -1159,7 +1166,8 @@ block content
 				pre: code.language-javascript { type: Types.CloudinaryImage, select : true }
 				p <code>selectPrefix</code> <code class="data-type">String</code> specifies the the prefix of the images that will be available for selection when <code>select</code> option is <code class="default-value">true</code>.
 				pre: code.language-javascript { type: Types.CloudinaryImage, select: true, selectPrefix: 'path/to/images' }
-
+				p <code>filenameAsPublicID</code> <code class="data-type">String</code> name of the file to be used without suffix as the default Cloudinary<code class="data-type">public_id</code>.
+				pre: code.language-javascript { type: Types.CloudinaryImage, filenameAsPublicID: 'filename.suffix' }
 				h5 Schema
 				p <code>public_id</code> <code class="data-type">String</code>
 				p <code>version</code> <code class="data-type">Number</code>
@@ -1303,14 +1311,24 @@ block content
 			.options
 				
 				h5 Options
-				p <code>s3path</code> <code class="data-type">String</code> - the path to store uploaded files under in the S3 bucket
+				p <code>s3path</code> <code class="data-type">String</code> - the path to store uploaded files under in the S3 bucket. Adds a trailing / to all values.
 				p <code>datePrefix</code> <code class="data-type">String</code> - if set, prefixes the file name with the current date in this format (see <a href="http://momentjs.com" target="_blank">moment.js</a> for format options)
-				p <code>allowedTypes</code> <code class="data-type">Array</code> of <code class="data-type">String</code> - optional white-list of allowed mime types for uploaded files
-				p <code>filename</code> <code class="data-type">Function</code> - function with arguments current model and client file name to return the new filename to upload.
+				p <code>allowedTypes</code> <code class="data-type">Array</code> or <code class="data-type">String</code> - optional white-list of allowed mime types for uploaded files
+				p <code>path</code> <code class="data-type">Function</code> - function with two arguments - the current model and the current upload path - that returns a modified upload path for the S3 File. You must specify the trailing / when using this function. 
 					pre: code.language-javascript.
 						{
 							type: Types.S3File,
-							filename: function(item, filename){
+							path: function(item, path){
+								// set dynamic bucket path based on item name
+								return path + '/' + item.name + '/';
+							}
+						}
+				p.note Providing a <code>path</code> function will overwrite any value set using the <code>s3path</code> field.
+				p <code>filename</code> <code class="data-type">Function</code> - function with three arguments - the current model, the current file name, and the original file name - to return the new file name to upload.  The original file name is the name of the file at upload time, or the current name of the file if you are modifying an S3 File.
+					pre: code.language-javascript.
+						{
+							type: Types.S3File,
+							filename: function(item, filename, originalname){
 								// prefix file name with object id
 								return item._id + '-' + filename;
 							}
