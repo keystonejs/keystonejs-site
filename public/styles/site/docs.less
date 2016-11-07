@@ -23,7 +23,7 @@ h1 {
 	// font-weight: 200;
 	line-height: 36px;
 	margin: 0 0 40px;
-	
+
 	& + h2 {
 		margin-top: 50px;
 	}
@@ -93,7 +93,7 @@ h2:first-child {
 			.anchor i, .anchor span {
 				display: inline-block;
 			}
-		}	
+		}
 	}
 }
 
@@ -113,11 +113,11 @@ h2:first-child {
 	.list-unstyled();
 	margin-bottom: 2em;
 	padding-left: 1.5em;
-	
+
 	> li {
 		margin-bottom: .5em;
 		padding-left: 1.5em;
-		
+
 		> ul {
 			margin-bottom: .5em;
 			margin-top: .5em;
@@ -142,7 +142,7 @@ h2:first-child {
 // Options list
 // a light dash in place of the regular bullet
 .docs-content ul.options {
-	
+
 	> li {
 		margin-bottom: .75em;
 		padding-left: 2em;
@@ -167,7 +167,7 @@ h2:first-child {
 .docs-content ol.fancy-list,
 .docs-content ul.fancy-list {
 	padding-left: 0;
-	
+
 	> li {
 		counter-increment: list;
 		list-style: none;
@@ -208,7 +208,7 @@ h2:first-child {
 		height: 100%;
 		color: #5797DF;
 	}
-	
+
 }
 
 
@@ -216,14 +216,14 @@ h2:first-child {
 .docs-content {
 	padding: @grid-gutter-width 0 100px;
 	position: relative;
-	
+
 	@media (min-width: @screen-sm-min) {
-		
+
 		&:after {
 			background-color: @gray-lighter;
 			content: "";
 			width: 1px;
-			
+
 			position: absolute;
 			top: 0;
 			left: -@grid-gutter-width;
@@ -231,12 +231,12 @@ h2:first-child {
 			right: 0;
 		}
 	}
-	
+
 	@media (min-width: @screen-lg-min) {
 		padding-left: 5%;
 		padding-right: 5%;
 	}
-	
+
 	blockquote {
 		font-size: @font-size-base;
 	}
@@ -251,7 +251,7 @@ h2:first-child {
 	margin-top: 0;
 	padding-bottom: 30px;
 	padding-top: 30px;
-	
+
 	h1,
 	p,
 	a {
@@ -266,7 +266,7 @@ h2:first-child {
 	}
 	a {
 		border-bottom: 1px dotted white;
-		
+
 		&:hover {
 			border-bottom-style: solid;
 			text-decoration: none;
@@ -275,7 +275,7 @@ h2:first-child {
 	@media (min-width: @screen-sm-min) {
 		padding-bottom: 60px;
 		padding-top: 60px;
-	
+
 		p {
 			font-weight: 100;
 			letter-spacing: 0.02em;
@@ -289,7 +289,7 @@ h2:first-child {
 .page-breadcrumbs {
 	padding-bottom: 10px;
 	padding-top: 10px;
-	
+
 	h1 {
 		font-size: 24px;
 		margin: 0;
@@ -311,7 +311,7 @@ h2:first-child {
 	border-bottom: 1px solid @gray-lighter;
 	line-height: 1;
 	padding: 1em 0;
-	
+
 	p {
 		margin: 0;
 	}
@@ -343,7 +343,7 @@ span.subMethod {
 	padding-left: 1em;
 	padding-top: 20px;
 	position: relative;
-	
+
 	&:before {
 		content: "Note";
 		color: #ccc;
@@ -362,7 +362,7 @@ span.subMethod {
 	margin-top: 2em;
 	padding: 25px 15px;
 	position: relative;
-	
+
 	&:before {
 		content: "Warning";
 		color: #aaa;
@@ -381,7 +381,7 @@ span.subMethod {
 	margin-top: 2em;
 	padding: 25px 15px;
 	position: relative;
-	
+
 	&:before {
 		content: "Caution";
 		color: #aaa;
@@ -400,7 +400,7 @@ span.subMethod {
 	margin-top: 2em;
 	padding: 25px 15px;
 	position: relative;
-	
+
 	&:before {
 		content: "Note";
 		color: #aaa;
@@ -440,7 +440,15 @@ pre.command-line:before {
 		content: "\0024\0020"; // "$ "
 }
 
-
+span.command-line {
+    background-color: @pre-bg;
+	border: 1px solid @pre-border-color;
+	border-radius: @border-radius-base;
+	color: @pre-color;
+	padding: 5px;
+	font-family: @font-family-monospace;
+	font-size: @font-size-medium;
+}
 
 // Pager
 .simple-pager {
@@ -449,7 +457,7 @@ pre.command-line:before {
 	margin-top: 80px;
 	padding: 15px 0;
 	text-align: center;
-	
+
 	.next {
 		float: right;
 	}
@@ -492,11 +500,11 @@ ul.list li {
 .code-header {
 	.border-top-radius( 4px );
 	border: 1px solid darken(@navbar-default-bg, 10%);
-	
+
 	color: @gray;
 	margin: 20px 0 0;
 	padding: 15px;
-	
+
 	p {
 		font-size: @font-size-small;
 		margin: 0;
@@ -504,24 +512,24 @@ ul.list li {
 			margin: 15px 0 0;
 		}
 	}
-	
+
 	h4 {
 		color: mix(black, @brand-primary, 50%);
 		font-size: @font-size-small + 2;
 		font-weight: 400;
 		margin: 0;
-		
+
 		& + p {
 			margin: 15px 0 0;
 		}
 	}
-	
+
 	&.addGitHubLink {
 		@media (max-width: @screen-sm-min) {
 			font-size:11px;
 		}
 	}
-	
+
 	// so you can use PRE on it's own
 	& + pre {
 		border-radius: 0 0 4px 4px;
@@ -568,11 +576,11 @@ code.default-value {
 	margin-top: 2em;
 	margin-right: @grid-gutter-width;
 	padding: 0;
-	
+
 	display: table;
 	table-layout: fixed;
 	width: 100%;
-	
+
 	li {
 		display: table-cell;
 		text-align: center;
@@ -586,7 +594,7 @@ code.default-value {
 		line-height: 2em;
 		padding-left: .5em;
 		padding-right: .5em;
-		
+
 		&:hover {
 			// background-color: @gray-lighter;
 			color: @text-color;
@@ -612,7 +620,7 @@ code.default-value {
 	padding: 0;
 	position: relative;
 	z-index: 2;
-	
+
 	ul {
 		list-style: none;
 		margin: 0;
@@ -626,7 +634,7 @@ code.default-value {
 		color: @text-color;
 		display: block;
 		padding: 5px 5px 5px 0;
-		
+
 		&:hover,
 		&:active,
 		&:focus {
@@ -650,10 +658,10 @@ code.default-value {
 		color: @gray-light;
 		margin-top: 20px;
 		text-transform: uppercase;
-		
+
 		a {
 			color: @gray-light;
-			
+
 			&:hover {
 				color: @link-color;
 			}

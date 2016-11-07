@@ -19,7 +19,7 @@ block content
 					.gs-guide__subtitle
 						p 开始之前先确保你已经安装了<a href="http://nodejs.org/download" target="_blank">Node.js</a> 0.10+ 和<a href="http://www.mongodb.org/downloads" target="_blank">MongoDB</a> v2.4+。
 						p 要使用KeystoneJS，你需要掌握合理的Javascript知识，并熟悉数据库概念之类的基础知识，会用 node / npm 等。
-		
+
 		.gs-guide-figure.gs-guide-figure--prerequisites.hidden-xs
 			//- .text Installed?
 			.column.nodejs
@@ -30,7 +30,7 @@ block content
 				a(href='http://docs.mongodb.org/manual/installation/', target='_blank')
 					.logo: img(src='/images/getting-started/mongodb-logo.png', alt='MongoDB logo', width=294, height=84)
 					span.prerequisite 查阅MongoDB安装指南了解如何在你的操作系统上安装MongoDB。
-				
+
 		.gs-guide-section
 			.container-sm
 				.gs-guide__header
@@ -38,7 +38,7 @@ block content
 						span.gs-guide__title-count 2
 						.gs-guide__title-label 命令
 				h3 安装生成器
-				p 你将要使用由<a href='http://yeoman.io/', target='_blank'>Yeoman</a>制作的<a href='https://github.com/keystonejs/generator-keystone', target='_blank'>KeystoneJS 生成器</a>。在根目录运行：
+				p 你将要使用由<a href='http://yeoman.io/' target='_blank'>Yeoman</a>制作的<a href='https://github.com/keystonejs/generator-keystone' target='_blank'>KeystoneJS 生成器</a>。在根目录运行：
 				pre.command-line npm install -g generator-keystone
 				
 				h3 给项目创建一个文件夹
@@ -97,7 +97,7 @@ block content
 					p 在生产/共享环境中，你可能希望带着sudo前缀重新运行npm命令：
 
 					pre sudo npm install -g generator-keystone
-					p 要了解更多信息，请参阅Isaac Schulueter写的Intro to npm中的<a href='http://foohack.com/2010/08/intro-to-npm/#what_no_sudo', target='_blank'>"什么, 没sudo?"</a>章节。
+					p 要了解更多信息，请参阅Isaac Schulueter写的Intro to npm中的<a href='http://foohack.com/2010/08/intro-to-npm/#what_no_sudo' target='_blank'>"什么, 没sudo?"</a>章节。
 
 					h3 你说找不到我的数据库是什么意思？
 					p 默认情况下，KeystoneJS会在localhost的默认端口下连接运行中的MongoDB服务器。如果你遇到跟MongoDB连接相关的错误，请确保MongoDB服务器运行着。

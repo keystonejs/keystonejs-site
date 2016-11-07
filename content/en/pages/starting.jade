@@ -19,7 +19,7 @@ block content
 					.gs-guide__subtitle
 						p Before you begin, make sure you have <a href="http://nodejs.org/download" target="_blank">Node.js</a> 0.10+ installed and <a href="http://www.mongodb.org/downloads" target="_blank">MongoDB</a> v2.4+ installed and running.
 						p You'll need a reasonable working knowledge of Javascript to use KeystoneJS, as well as familiarity with basics such as database concepts, and using node / npm etc.
-		
+
 		.gs-guide-figure.gs-guide-figure--prerequisites.hidden-xs
 			//- .text Installed?
 			.column.nodejs
@@ -30,7 +30,7 @@ block content
 				a(href='http://docs.mongodb.org/manual/installation/', target='_blank')
 					.logo: img(src='/images/getting-started/mongodb-logo.png', alt='MongoDB logo', width=294, height=84)
 					span.prerequisite See the MongoDB installation guide for how to install MongoDB on your operating system.
-				
+
 		.gs-guide-section
 			.container-sm
 				.gs-guide__header
@@ -38,16 +38,22 @@ block content
 						span.gs-guide__title-count 2
 						.gs-guide__title-label Commands
 				h3 Install the generator
-				p You'll be using the <a href='https://github.com/keystonejs/generator-keystone', target='_blank'>KeystoneJS generator</a> made with <a href='http://yeoman.io/', target='_blank'>Yeoman</a>. In your root directory run:
-				pre.command-line npm install -g generator-keystone
-				
+				p You'll be using the <a href='https://github.com/keystonejs/generator-keystone' target='_blank'>KeystoneJS generator</a> made with <a href='http://yeoman.io/' target='_blank'>Yeoman</a>. 
+
+				p If you don't have Yeoman installed&mdash;or you just want to be sure&mdash;go to your root directory on the command line and run:
+				pre.command-line npm install -g yo generator-keystone
+
+				p If you're sure Yeoman's installed, feel free to omit the <span class='command-line'>yo</span>.
+
+				p But remember npm has your back, and it won't do any harm to be safe and run that first command.
+
 				h3 Create a folder for your project
 				p Create your project wherever you want:
 				pre.command-line mkdir my-test-project
 				
 				p Than make sure you're in your new project:
 				pre.command-line cd my-test-project
-				
+
 				h3 Run the generator
 				pre.command-line yo keystone
 				p The generator will ask you a few questions about what features you'd like to include, then configure and copy all the files you'll need into your project.
@@ -97,7 +103,7 @@ block content
 					p For a production/shared environment you may wish to re-run the npm command with the sudo prefix:
 
 					pre sudo npm install -g generator-keystone
-					p For more information, see the <a href='http://foohack.com/2010/08/intro-to-npm/#what_no_sudo', target='_blank'>"What, no sudo?"</a> of the Intro to npm by Isaac Schulueter.
+					p For more information, see the <a href='http://foohack.com/2010/08/intro-to-npm/#what_no_sudo' target='_blank'>"What, no sudo?"</a> of the Intro to npm by Isaac Schulueter.
 
 					h3 What do you mean it couldn't find my Database?
 					p By default, KeystoneJS will look for a MongoDB server running on localhost on the default port, and connect to it. If you're getting errors related to the MongoDB connection, make sure your MongoDB server is running.
