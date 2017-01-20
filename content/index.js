@@ -7,13 +7,13 @@ module.exports = {
 			},
 			"links": {
 				"home": "/",
-				"starting": "/getting-started",
+				"starting": "/quick-start",
 				"docs": "/docs",
 				"examples": "/examples"
 			},
 			"primarynav": [
 				{ "section": "home",                "path": "/",                      "label": "Home" },
-				{ "section": "starting",            "path": "/getting-started",       "label": "Getting Started" },
+				{ "section": "starting",            "path": "/quick-start",       "label": "Quick Start" },
 				{ "section": "docs",                "path": "/docs",                  "label": "Documentation" },
 				{ "section": "examples",            "path": "/examples",              "label": "Examples" }
 			],
@@ -32,13 +32,13 @@ module.exports = {
 			},
 			"links": {
 				"home": "/zh",
-				"starting": "/zh/getting-started",
+				"starting": "/zh/quick-start",
 				"docs": "/zh/docs",
 				"examples": "/zh/examples"
 			},
 			"primarynav": [
 				{ "section": "home",                "path": "/zh",                       "label": "首页" },
-				{ "section": "starting",            "path": "/zh/getting-started",       "label": "入门指南" },
+				{ "section": "starting",            "path": "/zh/quick-start",       "label": "入门指南" },
 				{ "section": "docs",                "path": "/zh/docs",                  "label": "文档" },
 				{ "section": "examples",            "path": "/zh/examples",              "label": "范例" }
 			],
@@ -66,7 +66,14 @@ module.exports = {
 			"language": "en",
 			"template": "starting",
 			"section": "starting",
-			"title": "Getting started"
+			"title": "Quick Start"
+		},
+		{
+			"path": "/quick-start",
+			"language": "en",
+			"template": "starting",
+			"section": "starting",
+			"title": "Quick Start"
 		},
 		{
 			"path": "/examples",
@@ -274,6 +281,13 @@ module.exports = {
 		},
 		{
 			"path": "/zh/getting-started",
+			"language": "zh",
+			"template": "starting",
+			"section": "starting",
+			"title": "入门"
+		},
+		{
+			"path": "/zh/quick-start",
 			"language": "zh",
 			"template": "starting",
 			"section": "starting",
