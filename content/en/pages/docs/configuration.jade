@@ -281,7 +281,7 @@ block content
 						p Whether to start the SSL Server. Defaults to <code class="default-value">false</code>.
 						p When set to <code class="default-value">true</code>, both http and https servers will be started. If <code>ssl key</code> or <code>ssl cert</code> are invalid, just the http server will be started.
 						p When set to <code class="default-value">"only"</code>, only the https server will be started. If <code>ssl key</code> or <code>ssl cert</code> are invalid, KeystoneJS will not start.
-						
+						p When set to <code class="default-value">"force"</code>, there will be the same result as if <code>true</code> was given except all requests to http will be redirected to https		
 				tr
 					td <code>ssl key</code> <code class="data-type">Path</code>
 					td
@@ -299,9 +299,37 @@ block content
 					td
 						p The port to start the SSL Server on. Defaults to <code class="default-value">3001</code>.
 				tr
+					td <code>ssl public port</code> <code class="data-type">Number</code>
+					td
+						p The public-facing port to send https requests to (Eg: for https redirects). Defaults to the value of the <code class="default-value">ssl port</code> option.
+				tr
 					td <code>ssl host</code> <code class="data-type">String</code>
 					td
 						p The ip address to listen for request on. Defaults to <code class="default-value">process.env.SSL_IP</code> or the value of the <code>host</code> option.
+				tr
+					td <code>letsencrypt</code> <code class="data-type">Object</code>
+					td
+						p Configuration object used with <code>letsencrypt-express</code> to configure automatic SSL certificate registration (properties of this object found below)
+				tr
+					td <code>letsencrypt.email</code> <code class="data-type">String</code>
+					td
+						p The email registered as an admin email with letsencrypt. (Corresponds to letsencrypt-express <code>email</code> property)
+				tr
+					td <code>letsencrypt.domains</code> <code class="data-type">String</code>or<code class="data-type">Array</code>
+					td
+						p The domains to register under the letsencrypt certificate. (Corresponds to letsencrypt-express <code>approveDomains</code> property)
+				tr
+					td <code>letsencrypt.register</code> <code class="data-type">Boolean</code>
+					td
+						p Whether to automatically register/ renew the letsencrypt certificate
+				tr
+					td <code>letsencrypt.tos</code> <code class="data-type">Boolean</code>
+					td
+						p Whether or not you agree to the Terms of Service. (Corresponds to letsencrypt-express <code>agreeTos</code> attribute)
+				tr
+					td <code>letsencrypt.production</code> <code class="data-type">Boolean</code>
+					td
+						p Whether or not to use the letsencrypt production server to issue the certificate (versus using the staging server). To avoid hitting rate limits, set the value to <code>false</code> during setup to use the staging server.
 				tr
 					td(colspan="2"): p Exposes <code class="">onHttpsServerCreated</code> event during <code class="language-javascript">keystone.start()</code>
 				
