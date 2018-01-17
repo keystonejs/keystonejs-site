@@ -42,7 +42,9 @@ block content
 				col
 				tr
 					td <code>name</code> <code class="data-type">String</code>
-					td KeystoneJS程序的名称
+					td 
+						p KeystoneJS程序的名称
+						p.note 如果没有设定<code>mongo</code>参数，Keystone会用<code>name</code>作为数据库名。
 				tr
 					td <code>brand</code> <code class="data-type">String</code>
 					td 在管理界面的左上角显示
@@ -133,6 +135,54 @@ block content
 						p 这个参数是传给Express的，用来控制是否在请求间缓存编译的视图模板。
 						p 在生产环境中默认是<code class="default-value">true</code>，否则是<code class="default-value">false</code>，所以几乎不用特意设定它。
 				tr
+					td <code>language options</code> <code class="data-type">Object</code>
+					td
+						p 可选的<code>language options</code>对象包含了语言支持偏好。默认为所有默认值，并仅支持<code>en-US</code>。
+
+				tr
+					td <code>laungage options: supported languages</code> <code class="data-type">Array</code>
+					td
+						p 已支持语言的列表。首先是偏好的语言。语言标签必须符合BCP47标准：
+						p <code>language[-script][-region]</code>
+						ol
+							li 语言子标签 (比如 <code>en</code>, <code>zh</code>).
+							li 变体子标签 (可选, 比如 <code>Hant</code>, <code>Latn</code>).
+							li 地区子标签 (可选, 比如 <code>US</code>, <code>CN</code>).
+						p 例子: <code>en</code>, <code>en-US</code> 和 <code>zh-Hant-TW</code>.
+						p 默认为 <code>['en-US']</code>.
+
+				tr
+					td <code>language options: language cookie</code> <code class="data-type">String</code>
+					td
+						p 语言cookie的名称。它会保存用户会话的当前语言标签，直到<code>maxAge</code>超期，或直到被浏览器的URL覆盖掉。 
+						p 默认为<code>'language'</code>.
+
+				tr
+					td <code>language options: language cookie options</code> <code class="data-type">Object</code>
+					td
+						p 可选。语言cookie的参数。这会传给express。参见<a href="http://expressjs.com/en/4x/api.html#res.cookie">Express cookie 参数</a>了解详情。
+
+				tr
+					td <code>language options: language select url</code> <code class="data-type">String</code>
+					td
+						p 一个可选的URL，可以用来改变语言偏好。如果发送了referrer头，它会重定向会原来的URL中，如果没有指定referrer，默认重定向到<code>/</code>。
+						p <b>用法：</b>
+						p <code>/languages/{language}</code>
+						p 比如说，访问<code>/languages/en-US</code> 会将你的语言偏好设为<code>'en-US'</code>。
+						p 默认为<code>'/language/{language}'</code>。
+
+				tr
+					td <code>language options: language query name</code> <code class="data-type">String</code>
+					td
+						p 或者，你也可以用查询字符串在任一页面上设定语言，而无需转到其它URL。用这个参数可以设定查询参数的名称，由它来触发语言设定。默认值为<code>'language'</code>。
+						p 比如说，如果将language query name 设为 <code>'locale'</code>，添加 <code>?locale=zh-CN</code> 到任一URL路径上都将会把语言设为<code>'zh-CN'</code>。使用特殊的语言值<code>'default'</code>可以重置语言偏好，重用默认的设置，就像你是第一次访问一样。
+
+				tr
+					td <code>language options: disable</code> <code class="data-type">Boolean</code>
+					td
+						p 禁用语言中间件。默认为<code>false</code>。
+
+				tr
 					td <code>locals</code> <code class="data-type">Object</code>
 					td
 						p 传给视图模板的默认local变量。
@@ -175,11 +225,22 @@ block content
 					td 将这个参数设为<code class="default-value">true</code>以启用HTTP压缩。这会引入<code>express.compress</code>中间件(<a href="http://expressjs.com/api.html#compress" target="_blank">相关文档</a>).
 				tr
 					td <code>logger</code> <code class="data-type">String</code>
-					td 设定这个会引入<code>express.logger</code>中间件。它的值会传给中间件去做初始化(<a href="http://www.senchalabs.org/connect/logger.html" target="_blank">相关文档</a>)。 设为<code class="default-value">false</code>可以一并禁用日志。
-
+					td 设定该参数以引入<code>morgan</code>中间件。该参数的值会传给<code>morgan</code>做初始化(<a href="https://github.com/expressjs/morgan" target="_blank">相关文档</a>)。将该参数值设为<code class="default-value">false</code> 会禁用日志。默认为<code class="default-value">:method :url :status :response-time ms</code>。
+				tr
+					td <code>logger options</code> <code class="data-type">Object</code>
+					td
+						p 可选的配置参数，将会传给<code>morgan</code>中间件。参见<a href="https://github.com/expressjs/morgan" target="_blank">github.com/expressjs/morgan</a> 了解详情。
 				tr
 					td <code>trust proxy</code> <code class="data-type">Boolean</code>
 					td 设定这个启用HTTP请求头<code>X-Forwarded-For</code>。提取出来的IP地址会放在数组<code>req.ips</code> (<a href="http://expressjs.com/api.html#req.ips">相关文档</a>)。
+				tr
+					td <code>file limit</code> <code class="data-type">Number</code>
+					td 为Express body parser添加文件限制。
+				tr
+					td <code>allowed ip ranges</code> <code class="data-type">String</code>
+					td 逗号(,)分隔的IP范围字符串，遵循CIDR格式。 <br />
+						| <code class="default-value">::ffff:0/64, 127.0.0.0/8, 192.168.0.0/16</code> <br />  
+						| 所有非有效范围内IP发起的请求都会得到503响应。
 			
 			
 			.code-header
@@ -364,7 +425,36 @@ block content
 			
 			p 关于Keystone数据库模型设置和使用的更多信息，请参见<a href="/zh/docs/database">数据库指南</a>。
 
-
+			a(name='options-email')
+			h3 Email 设定
+			
+			p 使用Keystone.Email的参数
+			
+			table.table
+				col(width=210)
+				col
+				tr
+					td <code>emails</code> <code class="data-type">String</code>
+					td
+						p 存放email模板的文件夹
+				
+				tr
+					td <code>email locals</code> <code class="data-type">Object</code>
+					td
+						p 为email设置通用的locals。Keystone的默认email模板需要这个。如果你用自己的模板，可以忽略这个参数。
+				tr
+					td <code>email rules</code> <code class="data-type">Object</code>
+					td
+						p 为emails设置替换规则，自动处理development和production之间的差异。
+				tr
+					td <code>mandrill api key</code> <code class="data-type">String</code>
+					td
+						p Mandrill API key
+				tr
+					td <code>mandrill username</code> <code class="data-type">String</code>
+					td
+						p Mandrill 用户名
+					
 			a(name='options-ui')
 			h3 管理界面参数
 			
@@ -403,6 +493,12 @@ block content
 					td
 						p 显示wysiwyg编辑器的菜单栏。默认为<code class="data-type">false</code>.
 						p 参见<a href="http://www.tinymce.com/wiki.php/Configuration:menubar">http://www.tinymce.com/wiki.php/Configuration:menubar</a>了解详情。
+				tr
+					td <code>wysiwyg importcss</code> <code class="data-type">String</code>
+					td
+						p 为 TinyMCE 设定<code class="data-type">content_css</code> 并配置<code class="data-type">importcss</code> 插件。
+						p 参见 <a href="http://www.tinymce.com/wiki.php/Configuration:content_css">http://www.tinymce.com/wiki.php/Configuration:content_css</a> 了解详情。
+				
 				tr
 					td <code>wysiwyg skin</code> <code class="data-type">String</code>
 					td
@@ -615,7 +711,18 @@ block content
 				| keystone.set('mandrill api key', 'your-key');
 				| keystone.set('mandrill username', 'your-username');
 
+			a(name='services-mailgun')
+			h3 Mailgun
+			p <a href="http://mailgun.com" target="_blank">Mailgun</a>是另一种可伸缩的，并且价格也很实惠的email基础设施，用它可以轻松发送email。它有一个每月10,000封email的免费方案。
 
+			p 要配置KeystoneJS支持Mailgun API，只需要<a href="https://www.mailgun.com/signup">注册一个账号</a>，得到你的api key，并设定好<code>mailgun api key</code>和<code>mail domain</code>参数。
+			
+			p KeystoneJS 0.3.19及以后的版本支持Mailgun。
+						
+			pre: code.language-javascript
+				| keystone.set('email transport', 'mailgun');
+				| keystone.set('mailgun api key', 'key-xxxxxxxxxxx');
+				| keystone.set('mailgun domain', 'example.com');
 			
 			
 			//- h2 Error Handling

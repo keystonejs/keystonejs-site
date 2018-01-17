@@ -26,17 +26,17 @@ block content
 			
 			p 在KeystoneJS中，数据模式和模型是由<strong>列表</strong>控制的，并且数据库中的文档经常被称为<strong>条目</strong>。
 			
-			p 要定义数据模型，你要创建一个<code>new keystone.List</code>，然后传给它<a href="#lists-options">列表参数</a>。
+			p 要定义数据模型，你要创建一个<code>new keystone.List</code>，并把<a href="#lists-options">列表参数</a>传给它。
 			
-			p 然后向列表中<code>add</code>域。在底层，Keystone List会创建一个<a href="http://mongoosejs.com/docs/guide.html" target="_blank">mongoose模式</a>，并为你添加的域给它定义恰当的路径。
+			p 然后用<code>add</code>向列表中添加域。Keystone列表会在底层创建一个<a href="http://mongoosejs.com/docs/guide.html" target="_blank">mongoose模式</a>，并将你添加的域定义为模式中相应的路径。
 			
-			p 你可以访问<code>schema</code>，插入其它mongoose功能，比如虚拟域、方法和前置/后置钩子。
+			p 这个<code>schema</code>是可访问的，允许你插入其它mongoose功能，比如虚拟域、方法和前置/后置钩子。
 			
-			p 完成列表的设置后，调用<code>list.register()</code>初始化它，并用Keystone注册。
+			p 完成列表的设置后，要调用<code>list.register()</code>初始化，并用Keystone注册它。
 			
-			p 查询数据用<code>list.model</code> (这是一个<a href="http://mongoosejs.com/docs/models.html" target="_blank">mongoose 模型</a>)。
+			p 要查询数据，可以用<code>list.model</code> (这是一个<a href="http://mongoosejs.com/docs/models.html" target="_blank">mongoose 模型</a>)。
 			
-			p 列表条目是<a href="http://mongoosejs.com/docs/documents.html" target"_blank">mongoose 文档</a>。用<code>new list.model()</code>创建新条目，当准备好保存它时(或者将修改保存到已有条目上)调用<code>item.save()</code>。
+			p 列表条目是<a href="http://mongoosejs.com/docs/documents.html" target"_blank">mongoose 文档</a>。你可以用<code>new list.model()</code>创建新条目，然后调用<code>item.save()</code>保存它(修改已有条目后也是用这个方法保存)。
 			
 			a(name='lists')
 			h2 列表
@@ -81,10 +81,13 @@ block content
 				| 
 				| Post.defaultColumns = 'title, state|20%, author, publishedAt|15%'
 				| Post.register();
-			
-			p.note 这个例子使用了可选的<code>map</code>、<code>autokey</code>和<code>defaultSort</code>参数，描述见下文。
-			p.note 它还指定<code>title</code>、<code>state</code>、<code>author</code>和<code>publishedAt</code>作为管理界面中默认显示的列，state和publishedAt还给定了列宽度。
-			p.note <code>author</code>域是<code>Post</code>跟<code>User</code>模型的关系，在<a href="/zh/guide#models_users">入门指南</a>中介绍过。
+				
+			.contextual-note
+				h4 说明
+				p 这个例子使用了可选的<code>map</code>、<code>autokey</code>和<code>defaultSort</code>参数，描述见下文。
+				p 在显示列表数据时，管理界面会首先找<code>map: { name: 'FieldFromDoc'}</code> ，然后是文档域<code>name</code>，如果这两个都没有，就用<code>doc._id</code>作为默认列。
+				p 这个例子还指定了 <code>title</code>、<code>state</code>、<code>author</code> 和 <code>publishedAt</code>作为默认列显示在管理界面中，还给出了state 和 publishedAt 的列宽。 
+				p <code>author</code>域是跟<code>User</code>模型的关系，在 <a href="#relationships">关系</a> 部分有说明。
 			
 			a(name='lists-options')
 			h3 参数
@@ -95,57 +98,105 @@ block content
 				col(width=210)
 				col
 				tr
-					td <code>label</code> <code class="data-type">String</code>
-					td 列表在管理界面中用的标签。默认为<code class="default-value">key</code>的友善格式。 
-				tr
-					td <code>path</code> <code class="data-type">String</code>
-					td 列表在管理界面中的路径。默认为<code class="default-value">key</code>的缩略名格式。
-				t
-					td <code>singular</code> <code class="data-type">String</code>
-					td 列表中条目的单数标签。用在管理界面中，默认为<code class="default-value">label</code>的单数格式。
-				tr
-					td <code>plural</code> <code class="data-type">String</code>
-					td 列表中条目的复数标签。用在管理界面中，默认为<code class="default-value">label</code>的复数格式。
-				tr
-					td <code>schema</code> <code class="data-type">String</code>
-					td
-						p 列表的Mongoose模式的参数。 除了其他方面外，这个参数可以给<strong>集合</strong>指定一个定制的名称。参见<a href="http://mongoosejs.com/docs/guide.html#options" target="_blank">mongoose模式的文档</a>查看可用参数的清单。
-						p: em 警告: 不要修改模式参数<code>id</code>或<code>_id</code>；这是Keystone要求的默认行为。
-				tr
-					td <code>drilldown</code> <code class="data-type">String</code>
-					td 以空格分隔的关系清单，在管理界面中显示为下钻项。
-				tr
-					td <code>sortable</code> <code class="data-type">Boolean</code>
-					td 给模式添加一个隐藏的<code>sortOrder</code>域，并在管理界面中启用拖拽式的排序。
-				tr
-					td <code>sortContext</code> <code class="data-type">String</code>
-					td 管理界面中有拖拽式排序时用来控制的<code>List:relationship</code>对。
-				tr
-					td <code>searchFields</code> <code class="data-type">String</code>
-					td 在管理界面中用于搜索的路径清单，用空格分隔。
-				tr
-					td <code>defaultSort</code> <code class="data-type">String</code>
-					td 管理界面中用于排序的默认列或路径。
-				tr
-					td <code>defaultColumns</code> <code class="data-type">String</code>
-					td 在管理界面的列表视图中默认显示的列清单，用逗号分隔。
-						|  你可以在管道符<code>|</code>后面用像素或百分比指定宽度。
-				tr
-					td <code>map</code> <code class="data-type">Object</code>
-					td 将域映射到特定<strong>列表</strong>路径上的对象。如果添加了带那个键的域，则每个路径都默认为它的键。映射路径包括
-						ul.options
-							li <code>name</code> - 包含条目名称的域，显示在管理界面中
-				tr
 					td <code>autokey</code> <code class="data-type">Object</code>
-					td 在列表上添加一个插件，文档保存时自动基于另一个域或路径为它生成一个键。这个参数的值应该是带有如下键的对象：
+					td 在列表上添加一个插件，文档保存时自动基于另一个域或路径为它生成一个键值。这个参数的值应该是带有如下键的对象：
 						ul.options
 							li <code>from</code> <code class="data-type">String</code> - 用于生成键值的域或路径，可以是用空格分开的域清单
 							li <code>path</code> <code class="data-type">String</code> - 存储键的路径
 							li <code>unique</code> <code class="data-type">Boolean</code> - 键是否应该有唯一性
 							li <code>fixed</code> <code class="data-type">Boolean</code> - 如果键存在并且非空，应该保留。默认为<code class="data-type">false</code>。
 						| <em>路径Autokey是自动索引的；你可能还想把它放在复合索引中。</em>
+
 				tr
-					td <code>track</code> <code class="data-type">Boolean or Object</code>
+					td <code>autocreate</code> <code class="data-type">Boolean</code>
+					td 如果列表没有任何初始化域，新建 按钮/动作应该立即创建一个新条目，并转到该条目页面，不会显示模态对话框。设定该参数后，所有初始化域都会被忽略，它的优先级更高。
+
+				tr
+					td <code>defaultColumns</code> <code class="data-type">String</code>
+					td 在管理界面的列表视图中默认显示的列清单，用逗号分隔。
+						|  你可以在管道符<code>|</code>后面用像素或百分比指定宽度。
+
+				tr
+					td <code>defaultSort</code> <code class="data-type">String</code>
+					td 在管理界面中作为默认排序的列或路径。
+
+				tr
+					td <code>drilldown</code> <code class="data-type">String</code>
+					td 以空格分隔的关系清单，在管理界面中显示为下钻项。
+
+				tr
+					td <code>hidden</code> <code class="data-type">Boolean</code>
+					td 在Keystone管理界面中隐藏这个列表。
+					
+				tr
+					td <code>inherits</code> <code class="data-type">List</code>
+					td 你想要从中继承的域列表。
+					
+				tr
+					td <code>label</code> <code class="data-type">String</code>
+					td 列表在管理界面中用的标签。默认为<code class="default-value">key</code>的友善格式。 
+
+				tr
+					td <code>map</code> <code class="data-type">Object</code>
+					td 将域映射到特定<strong>列表</strong>路径上的对象。如果添加了带那个键的域，则每个路径都默认为它的键。映射路径包括
+						ul.options
+							li <code>name</code> - 包含条目名称的域，显示在管理界面中
+				
+				tr
+					td <code>nocreate</code> <code class="data-type">Boolean</code>
+					td 禁止在Keystone管理界面中创建列表的新条目。
+
+				tr
+					td <code>nodelete</code> <code class="data-type">Boolean</code>
+					td 禁止在Keystone管理界面中删除列表中的条目。
+
+				tr
+					td <code>noedit</code> <code class="data-type">Boolean</code>
+					td 禁止在Keystone管理界面中编辑列表中的条目。
+				
+				tr
+					td <code>path</code> <code class="data-type">String</code>
+					td 列表在管理界面中的路径。默认为<code class="default-value">key</code>的缩略名格式。
+
+				tr
+					td <code>perPage</code> <code class="data-type">Number</code>
+					td 列表页面中每页显示的条目数。默认为50。
+
+				tr
+					td <code>plural</code> <code class="data-type">String</code>
+					td 列表中条目的复数形式标签。用在管理界面中，默认为<code class="default-value">singular</code>的复数形式。
+				
+				tr
+					td <code>schema</code> <code class="data-type">String</code>
+					td
+						p 列表的Mongoose模式的参数。 除了其他方面外，这个参数可以给<strong>集合</strong>指定一个定制的名称。参见<a href="http://mongoosejs.com/docs/guide.html#options" target="_blank">mongoose模式的文档</a>查看可用参数的清单。
+						p: em 警告: 不要修改模式参数<code>id</code>或<code>_id</code>；这是Keystone要求的默认行为。
+
+				tr
+					td <code>searchFields</code> <code class="data-type">String</code>
+					td 在管理界面中用于搜索的路径清单，用逗号分隔。
+
+				tr
+					td <code>singular</code> <code class="data-type">String</code>
+					td 列表中条目的单数形式标签。用在管理界面中，默认为<code class="default-value">label</code>的单数形式。
+
+				tr
+					td <code>sortContext</code> <code class="data-type">String</code>
+					td 管理界面中有拖拽式排序时用来控制的<code>List:relationship</code>对。
+
+				tr
+					td <code>sortable</code> <code class="data-type">Boolean或String</code>
+					td 
+						p 给模式添加一个隐藏的<code>sortOrder</code>域，并在管理界面中启用拖拽式的排序。
+						p 设为<code class="data-type">true</code>时，新文档将作为列表最后一项。
+						p 设为<code class="data-type">unshift</code>时，新文档将作为列表第一项。
+
+				tr
+					td <code>history</code> <code class="data-type">Boolean</code>
+					td 当文档被创建、更新或移除时，保存它们的修订。
+
+				tr
+					td <code>track</code> <code class="data-type">Boolean 或 Object</code>
 					td 
 						p 在列表上添加一个插件，追踪谁在什么时候（比如哪个Keystone用户）创建和最后修改了一个条目。
 						p 设为<code class="data-type">true</code>时，所有追踪域都是用它们的默认名称启用的。 
@@ -161,18 +212,6 @@ block content
 							| item.set({ field1: 'value1', field2: 'value2' });
 							| item._req_user = req.user;
 							| item.save();
-				tr
-					td <code>noedit</code> <code class="data-type">Boolean</code>
-					td 禁止在Keystone管理界面中编辑列表中的条目。
-				tr
-					td <code>nocreate</code> <code class="data-type">Boolean</code>
-					td 禁止在Keystone管理界面中创建列表的新条目。
-				tr
-					td <code>nodelete</code> <code class="data-type">Boolean</code>
-					td 禁止在Keystone管理界面中删除列表中的条目。
-				tr
-					td <code>hidden</code> <code class="data-type">Boolean</code>
-					td 在Keystone管理界面中隐藏这个列表。
 			
 			p.note 如果你想知道如何控制被分类列表在管理界面中的导航区域，请查看<a href="/zh/docs/configuration/#options-project">KeystoneJS配置</a>文档中的<code>nav</code>参数。
 			
@@ -182,7 +221,7 @@ block content
 			
 			p 默认情况下，下钻只会显示该条目所属的列表。
 			
-			p 然而你可以将它设为模式中的<code>Relationship</code>域，它就会显示当前存储在那个关系域中的条目。
+			p 然而，你可以将它设为模式中的<code>Relationship</code>域，它就会显示当前存储在那个关系域中的条目。
 			
 			p 如果有几个要在下钻清单中显示的相关关系，可以用空格把它们分开。
 			
@@ -194,12 +233,38 @@ block content
 				|     defaultSort: '-createdAt',
 				|     drilldown: 'author' // 在上面的例子中，author被定义为一个Relationship域
 				| });
+
+			h4 继承示例
+
+			p 设定继承参数，可以让列表用Mongoose的<a href="http://mongoosejs.com/docs/3.7.x/docs/api.html#model_Model.discriminator">模型辨识器</a>从另一个列表中继承它的域。
+
+			p 父列表本身不需要是继承自其它列表的。
+
+			.code-header: h4 示例: 从其它列表中继承列表中的域
+			pre: code.language-javascript
+				|var keystone = require('keystone');
+				| 
+				|var BasePage = new keystone.List('BasePage', {
+				|    map: { name: 'title' },
+				|	    autokey: { path: 'slug', from: 'title', unique: true },
+				|	});
+				|BasePage.add(
+				|	{
+				|		title: { type: String, required: true },
+				|		slug: { type: String, readonly: true },
+				|	}
+				|);
+				|BasePage.register();
+				| 
+				|var ChildPage = new keystone.List('ChildPage', { inherits: BasePage });
+				|ChildPage.add({ child_content: { type: String, readonly: true } });
+				|ChildPage.register();
 			
 			
 			a(name='lists-plugins')
 			h3 模式插件
 			
-			p 你可以用<code>schema</code>指定<strong>列表</strong>的<a href="http://mongoosejs.com/docs/guide.html" target="_blank"><strong>虚拟域</strong>、<strong>方法</strong>、<strong>静态域</strong></a>和<a href="http://mongoosejs.com/docs/middleware.html" target="_blank"><strong>前置</strong>和<strong>后置</strong>钩子</a>。你也可以用<a href="http://plugins.mongoosejs.com" target="_blank">插件网站</a>上的<a href="http://mongoosejs.com/docs/plugins.html" target="_blank">mongoose插件</a>。
+			p 你可以用<code>schema</code>指定<strong>列表</strong>的<a href="http://mongoosejs.com/docs/guide.html" target="_blank"><strong>虚拟域</strong>、<strong>方法</strong>、<strong>静态域</strong></a>和<a href="http://mongoosejs.com/docs/middleware.html" target="_blank"><strong>前置</strong>和<strong>后置</strong>钩子</a>。你也可以使用<a href="http://plugins.mongoosejs.com" target="_blank">插件网站</a>上的<a href="http://mongoosejs.com/docs/plugins.html" target="_blank">mongoose插件</a>。
 			
 			p 比如说，在上面的<strong>Post</strong>列表中，我们可能想在<code>state</code>被改成<code>published</code>后自动设定<code>publishedAt</code>的值(但仅在它还没被设定过时)。
 			
@@ -225,7 +290,7 @@ block content
 			
 			p 要查询数据，你可以在<code>list.model</code>上使用任何<a href="http://mongoosejs.com/docs/queries.html" target="_blank">mongoose查询</a>方法。
 			
-			p <strong>比如说：</strong>要加载最新5条状态为<code>published</code>的<code>posts</code>，并组装可链接的<code>author</code>，按发布日期的降序排列：
+			p <strong>比如说：</strong>要加载最新5条状态为<code>published</code>的<code>posts</code>，并组装相连接的<code>author</code>，按发布日期的降序排列：
 			
 			.code-header: h4 加载Posts
 			pre: code.language-javascript
@@ -243,7 +308,7 @@ block content
 
 			p <strong>Promises</strong>
 
-			p 还有一种处理mongoose查询中的事件的方法。除了传给<a href="http://mongoosejs.com/docs/api.html#query_Query-exec" target="_blank">exec</a>方法一个<a href="http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/" target="_blank">回调函数</a>，我们还可以用它的返回结果：<a href="http://www.html5rocks.com/en/tutorials/es6/promises/" target="_blank">Promise</a>。对于带有错误传播的整洁事件链，Promise非常实用。
+			p 还有一种处理mongoose查询中的事件的方法。除了传给<a href="http://mongoosejs.com/docs/api.html#query_Query-exec" target="_blank">exec</a>方法一个<a href="http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/" target="_blank">回调函数</a>，我们还可以用它的返回结果：<a href="http://www.html5rocks.com/en/tutorials/es6/promises/" target="_blank">Promise</a>。如果要清理传播错误的事件链，Promise非常实用。
 
 			p <strong>比如说：</strong>加载100条 <code>posts</code>，然后异步做些处理，然后再对其结果做些处理：
 			
@@ -329,8 +394,8 @@ block content
 				| });
 			
 			.contextual-note
-				h4 自动键
-				p 因为我们在<code>Post</code>列表中设定了<code>autokey</code>参数，它会在post被保存到数据库中之前基于<code>title</code>生成一个唯一的键。
+				h4 自动生成键值
+				p 因为我们在<code>Post</code>列表中设定了<code>autokey</code>参数，所以在post被保存到数据库中之前，它会基于<code>title</code>生成一个唯一的键值。
 				pre
 					| newPost.slug == 'new-post';
 			
@@ -355,7 +420,7 @@ block content
 			a(name='headings')
 			h2 标题
 				
-			p 定义标题以区分文档流程。标题可以定义为 <code>String</code> 或者 <code>Object</code> 以及 <a href="#dependsOn">依赖于</a> 其他域的值。
+			p 定义显示在文档流中的标题。标题可以定义为 <code>String</code> 或者 <code>Object</code> ，并且可以 <a href="#dependsOn">依赖于</a> 其他域的值。
 			
 			pre: code.language-javascript
 				| Person.add(
@@ -375,7 +440,7 @@ block content
 				
 				h5 参数
 				p <code>heading</code> <code class="data-type">String</code> -  标题显示的文字
-				p <code>dependsOn</code> <code class="data-type">Object</code> - 标题只会在当前对象指定路径和数据项匹配时候显示。 <a href="#dependsOn">dependsOn</a> 
+				p <code>dependsOn</code> <code class="data-type">Object</code> - 标题只会在当前对象指定路径和数据项匹配时显示。 <a href="#dependsOn">dependsOn</a> 
 
 				
 			a(name='fields')
@@ -448,6 +513,9 @@ block content
 				tr
 					td <code>hidden</code> <code class="data-type">Boolean</code>
 					td 如果设为<code class="default-value">true</code>，则该域在管理界面中一直是隐藏域。
+				tr
+					td <code>size</code> <code class="data-type">String</code>
+					td 设定该域在管理界面中的大小。有效的参数是small, medium, large, 和 full
 			
 			h3 条件域
 			
@@ -460,17 +528,36 @@ block content
 					td <code>collapse</code> <code class="data-type">Boolean</code>
 					td 该域没有值时在管理界面中显示一个<strong>+ <u>添加</u></strong>链接。当<code>noedit</code>也被设为<code class="default-value">true</code>时，该域没值时则完全隐藏。
 				tr
-					td <code>dependsOn</code> <code class="data-type">Object</code>
+					td: a(name='dependsOn') <code>dependsOn</code> <code class="data-type">Object</code>
 					td: p 只有对象中指定的路径跟条目的当前数据匹配时才会显示
-						p 你可以在每个路径上用数组对准多个值。
+						p 可用的表达式: <code>$and, $or, $any, $not, $eq, $ne, $gt, $gte, $lt, $lte, $regex</code>
+						.note 当一个域中包含 <code>dependsOn</code> 和 <code>required: true</code>时，只有<code>dependsOn</code>的值满足要求时才会验证是否符合<code>required</code>条件。 
+							| 不管是用管理界面设定，还是在<code>keystone.List('MyList').model</code>中直接设定，都是这样的。
 						.code-header: h4 示例
 						pre: code.language-javascript
-							| first: { type: String },
-							| // 如果first === "value1", "1" 或 "2" 时将会显示
-							| second: { type: String, dependsOn: { first: ['value1', '1', 2] } },
-							| // 如果 first == "value1" 时会显示
-							| third: { type: String, dependsOn: { first: 'value1' } }
-
+							| var patterns = {
+							|     And: { $and:[ { str1:'earth' } , { check1:true } ] },
+							|     Multiple: {    
+							|         $gt: [{num1:1}],
+							|         $and: [{str1:'1'},{sel1: ['first', 'third']}, {num2:{$lt:4}}]
+							|     },     
+							|     Regex: { sel1:'second',str3: { $regex: 'fir.*/i'} }
+							| }
+							| TestCollection.add('Depends On', {
+							|     And: { type: Boolean, dependsOn: patterns.And },
+							|     Multiple: { type: Boolean, dependsOn: patterns.Multiple },
+							|     Regex: { type: Boolean, dependsOn: patterns.Regex }
+							| }, 'Test Against', {
+							|     check1: { type:  Types.Boolean },
+							|     sel1: { type: Types.Select, options: 'first, second, third' },
+							|     str1: String,
+							|     str2: String,
+							|     str3: String,
+							|     num1: { type: Types.Number },
+							|     num2: { type: Types.Number }
+							| });
+			
+			a(name="fields-watching")			
 			h3 生成的值及观测域
 			
 			p Keystone的域可以用简单的语法配置动态更新的域。你可以将一个域设置为在下面这些情况下更新它的值：
@@ -640,65 +727,18 @@ block content
 			h4 <code class="data-type">Boolean</code> &mdash; 在管理界面中显示为一个检查框
 			pre: code.language-javascript { type: Types.Boolean }
 			
-			
-			a(name="fieldtypes-text")
-			h3 <code>Text</code>
-			h4 <code class="data-type">String</code> &mdash; 在管理界面中显示为一个文本控件
-			pre: code.language-javascript { type: Types.Text }
-			
-			
-			a(name="fieldtypes-textarea")
-			h3 <code>Textarea</code>
-			h4 <code class="data-type">String</code> &mdash; 在管理界面中显示为一个文本框
-			pre: code.language-javascript { type: Types.Textarea }
+			a(name="fieldtypes-code")
+			h3 <code>Code</code>
+			h4 <code class="data-type">String</code> &mdash; 在管理界面中用CodeMirror显示。
+			pre: code.language-javascript { type: Types.Code, height: 180, language: 'json' }
 			.options
 				
 				h5 参数
-				p <code>height</code> <code class="data-type">Number</code> - 文本框的高度(以像素为单位)
+				p <code>height</code> <code class="data-type">Number</code> - 该域的高度 (像素)。 默认: 180
+				p <code>language</code> <code class="data-type">String</code> - 代码域中的语言。
+				| 目前支持的语言包括: <code>c++, objectivec, css, asp, c, vb, xml, php, html, ini, js, java, coffee</code>
+				| <code> lisp, perl, python, sql, json, less, sass, sh, ruby, jsp, tpl, jade</code>
 			
-			
-			a(name="fieldtypes-email")
-			h3 <code>Email</code>
-			h4 <code class="data-type">String</code> &mdash; 在管理界面中显示为一个文本控件
-			p.note 输入看起来必须像一个有效的email地址(如果不是必填项，可以为空)
-			pre: code.language-javascript { type: Types.Email, displayGravatar: true }
-			.options
-				
-				h5 参数
-				p <code>displayGravatar</code> <code class="data-type">Boolean</code> - 是否在管理界面中显示gravatar图片
-				
-				h5 Underscore方法：
-				p <code>gravatarUrl(input, size, defaultImage, rating)</code> - 生成一个gravatar图片的请求url
-				pre: code.language-javascript
-					| item.email = "demo@keystonejs.com";
-					| item._.email.gravatarUrl(); // "//www.gravatar.com/avatar/74a0071e5f3a7107b570b7d4a1a7619d?s=80&d=identicon&r=g"
-					| item._.email.gravatarUrl(200,'mm','r'); // "//www.gravatar.com/avatar/74a0071e5f3a7107b570b7d4a1a7619d?s=200&d=mm&r=r"
-			
-			
-			a(name="fieldtypes-url")
-			h3 <code>Url</code>
-			h4 <code class="data-type">String</code> &mdash; 在管理界面中显示为一个文本控件
-			pre: code.language-javascript { type: Types.Url }
-			.options
-				
-				h5 Underscore方法：
-				p <code>format()</code> - 去掉存储的值前面的协议(如果有的话)
-				pre: code.language-javascript
-					| item.url = "http://keystonejs.com";
-					| item._.url.format(); // "keystonejs.com"
-			
-			
-			a(name="fieldtypes-html")
-			h3 <code>Html</code>
-			h4 <code class="data-type">String</code> &mdash; 在管理界面中显示为一个文本控件或WYSIWYG编辑器。
-			pre: code.language-javascript { type: Types.Html, wysiwyg: true }
-			.options
-				
-				h5 参数
-				p <code>wysiwyg</code> <code class="data-type">Boolean</code> - 在管理界面中是否显示WYSIWYG编辑器 - 要定制编辑器请参见<a href="/zh/docs/configuration/#options-ui">管理界面参数</a>。
-				p <code>height</code> <code class="data-type">Number</code> - 输入域的高度(以像素为单位)
-			
-			p 参见<a href="/zh/docs/configuration#options-ui">管理界面参数</a>了解用于定制WYSIWYG编辑器的全局配置参数。
 			
 			a(name="fieldtypes-color")
 			h3 <code>Color</code>
@@ -748,6 +788,41 @@ block content
 				p <code>parse(input, format, ...)</code> - 用<a href="http://momentjs.com" target="_blank">momentjs</a>解析input，将该域的值设为返回的moment对象
 				p 参见<a href="http://momentjs.com/docs/#/parsing/" target="_blank">momentjs解析文档</a>了解所支持的格式和<code>parse</code>方法的参数。
 			
+			a(name="fieldtypes-email")
+			h3 <code>Email</code>
+			h4 <code class="data-type">String</code> &mdash; 在管理界面中显示为一个文本控件
+			p.note 输入看起来必须像一个有效的email地址(如果不是必填项，可以为空)
+			pre: code.language-javascript { type: Types.Email, displayGravatar: true }
+			.options
+				
+				h5 参数
+				p <code>displayGravatar</code> <code class="data-type">Boolean</code> - 是否在管理界面中显示gravatar图片
+				
+				h5 Underscore方法：
+				p <code>gravatarUrl(input, size, defaultImage, rating)</code> - 生成一个gravatar图片的请求url
+				pre: code.language-javascript
+					| item.email = "demo@keystonejs.com";
+					| item._.email.gravatarUrl(); // "//www.gravatar.com/avatar/74a0071e5f3a7107b570b7d4a1a7619d?s=80&d=identicon&r=g"
+					| item._.email.gravatarUrl(200,'mm','r'); // "//www.gravatar.com/avatar/74a0071e5f3a7107b570b7d4a1a7619d?s=200&d=mm&r=r"
+
+			a(name="fieldtypes-geopoint")
+			h3 <code>GeoPoint</code>
+			h4 <code class="data-type">Array</code> &mdash; 在管理界面中显示为经纬度的数字域。
+			pre: code.language-javascript { type: Types.GeoPoint }
+			p.note 添加一个<strong>2dsphere</strong> 索引。
+						
+			a(name="fieldtypes-html")
+			h3 <code>Html</code>
+			h4 <code class="data-type">String</code> &mdash; 在管理界面中显示为一个文本控件或WYSIWYG编辑器。
+			pre: code.language-javascript { type: Types.Html, wysiwyg: true }
+			.options
+				
+				h5 参数
+				p <code>wysiwyg</code> <code class="data-type">Boolean</code> - 在管理界面中是否显示WYSIWYG编辑器 - 要定制编辑器请参见<a href="/zh/docs/configuration/#options-ui">管理界面参数</a>。
+				p <code>height</code> <code class="data-type">Number</code> - 输入域的高度(以像素为单位)
+			
+			p 参见<a href="/zh/docs/configuration#options-ui">管理界面参数</a>了解用于定制WYSIWYG编辑器的全局配置参数。
+			
 			
 			a(name="fieldtypes-key")
 			h3 <code>Key</code>
@@ -758,167 +833,6 @@ block content
 				
 				h5 参数
 				p <code>separator</code> <code class="data-type">String</code> - 用来替换输入中空格的分隔符；默认为<code class="default-value">-</code>
-			
-			
-			a(name="fieldtypes-number")
-			h3 <code>Number</code>
-			h4 <code class="data-type">Number</code> &mdash; 在管理界面中显示为一个数字输入控件
-			p 输入或者是有效的<strong>Number</strong>，或者是可以转换为数字的字符串(除非为必填项，否则可以为空)
-			pre: code.language-javascript { type: Types.Number }
-			.options
-				
-				h5 Underscore方法：
-				p <code>format(string)</code> - 用<a href="http://numeraljs.com" target="_blank">numeraljs</a>格式化存储的值。设为<code class="default-value">false</code>可以禁用自动格式化。
-				p 格式化字符串默认为<code class="default-value">0,0[.][000000000000]</code>
-			
-			
-			a(name="fieldtypes-money")
-			h3 <code>Money</code>
-			h4 <code class="data-type">Number</code> &mdash; 在管理界面中显示为一个数字输入控件
-			p 输入或者是有效的<strong>Number</strong>，或者是可以转换为数字的字符串(可以有前置符号；除非为必填项，否则可以为空)。金额控件不能识别币种。
-			pre: code.language-javascript { type: Types.Money }
-			.options
-				
-				h5 Underscore方法：
-				p <code>format(string)</code> - 用<a href="http://numeraljs.com" target="_blank">numeraljs</a>格式化存储的值。设为<code class="default-value">false</code>可以禁用自动格式化。
-				p 格式化字符串默认为<code class="default-value">$0,0.00</code>
-			
-			
-			a(name="fieldtypes-select")
-			h3 <code>Select</code>
-			h4 <code class="data-type">String</code>或<code class="data-type">Number</code> &mdash; 在管理界面中显示为选择输入控件
-			p.note 类似于其他框架中的 <code>Enum</code>.
-			pre: code.language-javascript { type: Types.Select, options: 'first, second, third' }
-			.options
-				
-				h5 参数
-				p <code>numeric</code> <code class="data-type">Boolean</code> 为<code class="default-value">true</code>时，会将该域的值存为<code class="data-type">Number</code>而不是<code class="data-type">String</code>
-				pre: code.language-javascript { type: Types.Select, numeric: true, options: [{ value: 1, label: 'One' }, { value: 2, label: 'Two' }] }
-				p <code>emptyOption</code> <code class="data-type">Boolean</code> 为<code class="default-value">undefined || true</code>时，会添加一个空白的选择项<code>&lt;select&gt;</code>作为输入控件中的第一项
-				pre: code.language-javascript { type: Types.Select, required: true, options: 'first, second', emptyOption: false }
-				p <code>options</code> <code class="data-type">String</code>或<code class="data-type">Array</code> - 选择输入控件的选择项
-				p 选择项的值可以是用逗号分隔的<code class="data-type">String</code>值列表，其中的字符串会被分割为<code class="data-type">Array</code>。
-				p 对于选择项<code class="data-type">Array</code>，每个选择项或者是
-				ul
-					li 表示选择项的<code>value</code>的<code class="data-type">String</code>；<code>label</code>是自动生成的
-					li 带有<code>value</code>和<code>label</code> <code class="data-type">String</code>属性的<code class="data-type">Object</code>
-				p 你可以在<code>options</code> <code class="data-type">Array</code>中混合<code class="data-type">String</code>和<code class="data-type">Object</code>条目：
-				pre: code.language-javascript { type: Types.Select, options: ['first', 'second', { value: 'third', label: 'The third one' }] }
-				p <code class="data-type">Object</code>选择项可以有额外的属性，可以在获取当前选择项的数据，或域参数时访问到。
-				pre: code.language-javascript
-					| { type: Types.Select, options: [
-					|     { value: 'first', label: 'The first option', custom: 'value' },
-					|     { value: 'second', label: 'Second' }
-					| ]}
-				
-				h5 属性
-				p <code>ops</code> <code class="data-type">Array</code> - 输入控件的<strong>options</strong>数组
-				p <code>values</code> <code class="data-type">Array</code> - 全部<code>option.value</code>属性
-				p <code>labels</code> <code class="data-type">Object</code> - 全部<code>option.label</code>属性，以<code>option.value</code>为键
-				p <code>map</code> <code class="data-type">Object</code> - options的映射，以<code>option.value</code>为键
-				
-				h5 模式
-				p 当前选择项的值会存在<code>{path}</code>上。此外还会提供这些虚拟域：
-				p <code>pathLabel</code> <code class="data-type">String</code> - 当前选择的<strong>option</strong>的标签
-				p <code>pathData</code> <code class="data-type">Object</code> - 当前选择的<strong>option</strong>，包含所有定制的属性
-				p <code>pathOptions</code> <code class="data-type">Array</code> - 输入域的<strong>options</strong>数组
-				p <code>pathOptionsMap</code> <code class="data-type">Object</code> - options的映射，以<code>option.value</code>为键
-				
-				h5 Underscore方法：
-				p <code>pluck(property, default)</code> - 返回当前选择的<strong>option</strong>的<code>property</code> 值，或者<code>default</code>。用于跟options的定制属性合并时。
-				
-				pre: code.language-javascript
-					| MyList.add({ state: { type: Types.Select, options: 'draft, published, archived', default: 'draft' });
-					| 
-					| MyList.fields.state.values == 'draft,published,archived';
-					| MyList.fields.state.labels == { draft: 'Draft', published: 'Published', archived: 'Archived' };
-					| MyList.fields.state.ops == [
-					|     { value: 'draft', label: 'Draft' },
-					|     { value: 'published', label: 'Published' },
-					|     { value: 'archived', label: 'Archived' }
-					| ];
-					| MyList.fields.state.map == {
-					|     draft: { value: 'draft', label: 'Draft' },
-					|     published: { value: 'published', label: 'Published' },
-					|     archived: { value: 'archived', label: 'Archived' }
-					| };
-					| 
-					| var item = new MyList.model();
-					| item.state == 'draft';
-					| item.stateLabel == 'Draft';
-					| item.stateData == { value: 'draft', label: 'Draft' };
-					| item.stateOptions == MyList.fields.state.ops;
-					| item.stateOptionsMap == MyList.fields.state.map;
-			
-			
-			a(name="fieldtypes-markdown")
-			h3 <code>Markdown</code>
-			h4 <code class="data-type">Object</code> &mdash; 在管理界面中显示为一个文本框
-			pre: code.language-javascript { type: Types.Markdown }
-			.options
-				
-				h5 参数
-				p <code>height</code> <code class="data-type">Number</code> - 定义 markdown 编辑器高度；默认高度为 <code class="default-value">90</code>.
-				pre: code.language-javascript
-					| { type: Types.Markdown, height: 200 }
-				p <code>toolbarOptions</code> <code class="data-type">Object</code> - 可以定制工具栏。
-				p <code>toolbarOptions.hiddenButtons</code> <code class="data-type">String</code> - 要隐藏的按钮清单，用逗号分隔。
-				pre: code.language-javascript
-					| { type: Types.Markdown, toolbarOptions: { hiddenButtons: 'H1,H6,Code' } }
-
-				h5 模式
-				p 当<code>md</code>属性发生变化时，markdown输入域会自动将markdown转换为html，这是通过<code>md</code>路径上的设定器完成的。
-				p <code>md</code> <code class="data-type">String</code> - markdown源文本
-				p <code>html</code> <code class="data-type">String</code> - 生成的html代码
-				pre: code.language-javascript
-					| Page.add({ content: Types.Markdown });
-					| 
-					| var page = new Page.model();
-					| page.content.md = "# Hello World";
-					| page.content.html == "&lt;h1&gt;Hello World&lt;/h1&gt;";
-					| 
-					| // 或者...
-					| 
-					| Page.fields.content.updateItem(page, "* list item");
-					| page.fields.content.format(page) == "&lt;ul&gt;&lt;li&gt;list item&lt;/ul&gt;&lt;/li&gt;";
-			
-			a(name="fieldtypes-name")
-			h3 <code>Name</code>
-			h4 <code class="data-type">Object</code> &mdash; 在管理界面中显示为<strong>firstname</strong> <strong>lastname</strong>输入控件
-			pre: code.language-javascript { type: Types.Name }
-			.options
-				
-				h5 模式
-				p name域在模式上添加了<code>first</code>和<code>last</code> <code class="data-type">String</code>路径，还有虚拟域<code>full</code>的getter和setter。
-				p <code>first</code> <code class="data-type">String</code> - 姓氏
-				p <code>last</code> <code class="data-type">String</code> - 名字
-				
-				h5 虚拟域
-				p <code>full</code> <code class="data-type">String</code> - 姓和名，中间加空格合并(如果两个都有值)。
-				p <code>name.full</code> setter在第一个空格处分割输入值。
-			
-			
-			a(name="fieldtypes-password")
-			h3 <code>Password</code>
-			h4 <code class="data-type">String</code> &mdash; 在管理界面中显示为一个密码域，带有一个'修改'按钮。
-			
-			p 密码是自动用bcrypt加密的，并且会输出一个方法用于把一个字符串跟加密的哈希值进行比较。
-			p.note 加密是添加在<strong>模式</strong>上的一个<strong>保存前钩子</strong>完成的，所以密码直到条目保存到数据库中时才会加密。
-			pre: code.language-javascript { type: Types.Password }
-			.options
-				
-				h5 参数
-				p <code>workFactor</code> <code class="data-type">Number</code> - 生成哈希值时用的加密因子，数值越大越慢，但也更安全(默认为<code class="default-value">10</code>)
-				
-				h5 Underscore方法：
-				p <code>compare(candidate, callback)</code> - 对候选值加密，并跟已加密的哈希值进行比较
-				ul
-					li <code>candidate</code> 要比较的<code class="data-type">String</code>
-					li <code>callback(err, result)</code> - 如果候选值跟保存的密码相配，则<strong>result</strong>为<code class="default-value">true</code>，否则为<code class="default-value">false</code>。
-				
-				h5 特殊路径
-				p <code>{path}_compare</code> - 提供给<strong>updateHandler</strong>时，它会对照<code>{path}</code>进行检查，如果不匹配则验证会失败。
-			
 			
 			a(name="fieldtypes-location")
 			h3 <code>Location</code>
@@ -953,6 +867,240 @@ block content
 				p 使用谷歌Geocoding API要受到每天不超过2,500 geolocation请求的限制，除非有企业许可。
 				p Geocoding API只能用于谷歌地图；geocoding结果必须在地图上显示。请确保你的Keystone程序遵守谷歌地图API的许可。
 			
+				
+			a(name="fieldtypes-markdown")
+			h3 <code>Markdown</code>
+			h4 <code class="data-type">Object</code> &mdash; 在管理界面中显示为一个文本框
+			pre: code.language-javascript { type: Types.Markdown }
+			.options
+				
+				h5 参数
+				p <code>height</code> <code class="data-type">Number</code> - 定义 markdown 编辑器高度；默认高度为 <code class="default-value">90</code>.
+				pre: code.language-javascript
+					| { type: Types.Markdown, height: 200 }
+				p <code>toolbarOptions</code> <code class="data-type">Object</code> - 可以定制工具栏。
+				p <code>toolbarOptions.hiddenButtons</code> <code class="data-type">String</code> - 要隐藏的按钮清单，用逗号分隔。
+				pre: code.language-javascript
+					| { type: Types.Markdown, toolbarOptions: { hiddenButtons: 'H1,H6,Code' } }
+
+				h5 模式
+				p 当<code>md</code>属性发生变化时，markdown输入域会自动将markdown转换为html，这是通过<code>md</code>路径上的设定器完成的。
+				p <code>md</code> <code class="data-type">String</code> - markdown源文本
+				p <code>html</code> <code class="data-type">String</code> - 生成的html代码
+				pre: code.language-javascript
+					| Page.add({ content: Types.Markdown });
+					| 
+					| var page = new Page.model();
+					| page.content.md = "# Hello World";
+					| page.content.html == "&lt;h1&gt;Hello World&lt;/h1&gt;";
+					| 
+					| // 或者...
+					| 
+					| Page.fields.content.updateItem(page, "* list item");
+					| page.fields.content.format(page) == "&lt;ul&gt;&lt;li&gt;list item&lt;/ul&gt;&lt;/li&gt;";
+
+				a(name="fieldtypes-money")
+				h3 <code>Money</code>
+				h4 <code class="data-type">Number</code> &mdash; 在管理界面中显示为一个数字输入控件
+				p 输入或者是有效的<strong>Number</strong>，或者是可以转换为数字的字符串(可以有前置符号；除非为必填项，否则可以为空)。金额控件不能识别币种。
+				pre: code.language-javascript { type: Types.Money }
+				.options
+					
+					h5 Underscore方法：
+					p <code>format(string)</code> - 用<a href="http://numeraljs.com" target="_blank">numeraljs</a>格式化存储的值。设为<code class="default-value">false</code>可以禁用自动格式化。
+					p 格式化字符串默认为<code class="default-value">$0,0.00</code>
+					
+				a(name="fieldtypes-name")
+				h3 <code>Name</code>
+				h4 <code class="data-type">Object</code> &mdash; 在管理界面中显示为<strong>firstname</strong> <strong>lastname</strong>输入控件
+				pre: code.language-javascript { type: Types.Name }
+				.options
+					
+					h5 模式
+					p name域在模式上添加了<code>first</code>和<code>last</code> <code class="data-type">String</code>路径，还有虚拟域<code>full</code>的getter和setter。
+					p <code>first</code> <code class="data-type">String</code> - 姓氏
+					p <code>last</code> <code class="data-type">String</code> - 名字
+					
+					h5 虚拟域
+					p <code>full</code> <code class="data-type">String</code> - 姓和名，中间加空格合并(如果两个都有值)。
+					p <code>name.full</code> setter在第一个空格处分割输入值。
+					
+				a(name="fieldtypes-number")
+				h3 <code>Number</code>
+				h4 <code class="data-type">Number</code> &mdash; 在管理界面中显示为一个数字输入控件
+				p 输入或者是有效的<strong>Number</strong>，或者是可以转换为数字的字符串(除非为必填项，否则可以为空)
+				pre: code.language-javascript { type: Types.Number }
+				.options
+					
+					h5 Underscore方法：
+					p <code>format(string)</code> - 用<a href="http://numeraljs.com" target="_blank">numeraljs</a>格式化存储的值。设为<code class="default-value">false</code>可以禁用自动格式化。
+					p 格式化字符串默认为<code class="default-value">0,0[.][000000000000]</code>
+					
+				a(name="fieldtypes-numberarray")
+				h3 <code>Numberarray</code>
+				h4 <code class="data-type">Array</code> &mdash; 在管理界面中显示为一系列的数字域
+				pre: code.language-javascript { type: Types.Numberarray }
+				.options
+					
+					h5 Underscore方法
+					p <code>format(string)</code> - 用<a href="http://numeraljs.com" target="_blank">numeraljs</a>格式化存储的值。设为<code class="default-value">false</code>则禁用自动格式化。
+					p 默认的格式化字符串为<code class="default-value">0,0[.][000000000000]</code>
+
+				a(name="fieldtypes-password")
+				h3 <code>Password</code>
+				h4 <code class="data-type">String</code> &mdash; 在管理界面中显示为一个密码域，带有一个'修改'按钮。
+				
+				p 密码是自动用bcrypt加密的，并且会输出一个方法用于把一个字符串跟加密的哈希值进行比较。
+				p.note 加密是添加在<strong>模式</strong>上的一个<strong>保存前钩子</strong>完成的，所以密码直到条目保存到数据库中时才会加密。
+				pre: code.language-javascript { type: Types.Password }
+				.options
+					
+					h5 参数
+					p <code>workFactor</code> <code class="data-type">Number</code> - 生成哈希值时用的加密因子，数值越大越慢，但也更安全(默认为<code class="default-value">10</code>)
+					
+					h5 Underscore方法：
+					p <code>compare(candidate, callback)</code> - 对候选值加密，并跟已加密的哈希值进行比较
+					ul
+						li <code>candidate</code> 要比较的<code class="data-type">String</code>
+						li <code>callback(err, result)</code> - 如果候选值跟保存的密码相配，则<strong>result</strong>为<code class="default-value">true</code>，否则为<code class="default-value">false</code>。
+					
+					h5 特殊路径
+					p <code>{path}_compare</code> - 提供给<strong>updateHandler</strong>时，它会对照<code>{path}</code>进行检查，如果不匹配则验证会失败。
+
+				a(name="fieldtypes-select")
+				h3 <code>Select</code>
+				h4 <code class="data-type">String</code>或<code class="data-type">Number</code> &mdash; 在管理界面中显示为选择输入控件
+				p.note 类似于其他框架中的 <code>Enum</code>.
+				pre: code.language-javascript { type: Types.Select, options: 'first, second, third' }
+				.options
+					
+					h5 参数
+					p <code>numeric</code> <code class="data-type">Boolean</code> 为<code class="default-value">true</code>时，会将该域的值存为<code class="data-type">Number</code>而不是<code class="data-type">String</code>
+					pre: code.language-javascript { type: Types.Select, numeric: true, options: [{ value: 1, label: 'One' }, { value: 2, label: 'Two' }] }
+					p <code>emptyOption</code> <code class="data-type">Boolean</code> 为<code class="default-value">undefined || true</code>时，会添加一个空白的选择项<code>&lt;select&gt;</code>作为输入控件中的第一项
+					pre: code.language-javascript { type: Types.Select, required: true, options: 'first, second', emptyOption: false }
+					p <code>options</code> <code class="data-type">String</code>或<code class="data-type">Array</code> - 选择输入控件的选择项
+					p 选择项的值可以是用逗号分隔的<code class="data-type">String</code>值列表，其中的字符串会被分割为<code class="data-type">Array</code>。
+					p 对于选择项<code class="data-type">Array</code>，每个选择项或者是
+					ul
+						li 表示选择项的<code>value</code>的<code class="data-type">String</code>；<code>label</code>是自动生成的
+						li 带有<code>value</code>和<code>label</code> <code class="data-type">String</code>属性的<code class="data-type">Object</code>
+					p 你可以在<code>options</code> <code class="data-type">Array</code>中混合<code class="data-type">String</code>和<code class="data-type">Object</code>条目：
+					pre: code.language-javascript { type: Types.Select, options: ['first', 'second', { value: 'third', label: 'The third one' }] }
+					p <code class="data-type">Object</code>选择项可以有额外的属性，可以在获取当前选择项的数据，或域参数时访问到。
+					pre: code.language-javascript
+						| { type: Types.Select, options: [
+						|     { value: 'first', label: 'The first option', custom: 'value' },
+						|     { value: 'second', label: 'Second' }
+						| ]}
+					
+					h5 属性
+					p <code>ops</code> <code class="data-type">Array</code> - 输入控件的<strong>options</strong>数组
+					p <code>values</code> <code class="data-type">Array</code> - 全部<code>option.value</code>属性
+					p <code>labels</code> <code class="data-type">Object</code> - 全部<code>option.label</code>属性，以<code>option.value</code>为键
+					p <code>map</code> <code class="data-type">Object</code> - options的映射，以<code>option.value</code>为键
+					
+					h5 模式
+					p 当前选择项的值会存在<code>{path}</code>上。此外还会提供这些虚拟域：
+					p <code>pathLabel</code> <code class="data-type">String</code> - 当前选择的<strong>option</strong>的标签
+					p <code>pathData</code> <code class="data-type">Object</code> - 当前选择的<strong>option</strong>，包含所有定制的属性
+					p <code>pathOptions</code> <code class="data-type">Array</code> - 输入域的<strong>options</strong>数组
+					p <code>pathOptionsMap</code> <code class="data-type">Object</code> - options的映射，以<code>option.value</code>为键
+					
+					h5 Underscore方法：
+					p <code>pluck(property, default)</code> - 返回当前选择的<strong>option</strong>的<code>property</code> 值，或者<code>default</code>。用于跟options的定制属性合并时。
+					
+					pre: code.language-javascript
+						| MyList.add({ state: { type: Types.Select, options: 'draft, published, archived', default: 'draft' });
+						| 
+						| MyList.fields.state.values == 'draft,published,archived';
+						| MyList.fields.state.labels == { draft: 'Draft', published: 'Published', archived: 'Archived' };
+						| MyList.fields.state.ops == [
+						|     { value: 'draft', label: 'Draft' },
+						|     { value: 'published', label: 'Published' },
+						|     { value: 'archived', label: 'Archived' }
+						| ];
+						| MyList.fields.state.map == {
+						|     draft: { value: 'draft', label: 'Draft' },
+						|     published: { value: 'published', label: 'Published' },
+						|     archived: { value: 'archived', label: 'Archived' }
+						| };
+						| 
+						| var item = new MyList.model();
+						| item.state == 'draft';
+						| item.stateLabel == 'Draft';
+						| item.stateData == { value: 'draft', label: 'Draft' };
+						| item.stateOptions == MyList.fields.state.ops;
+						| item.stateOptionsMap == MyList.fields.state.map;
+							
+			a(name="fieldtypes-text")
+			h3 <code>Text</code>
+			h4 <code class="data-type">String</code> &mdash; 在管理界面中显示为一个文本控件
+			pre: code.language-javascript { type: Types.Text }
+			
+			
+			a(name="fieldtypes-textarea")
+			h3 <code>Textarea</code>
+			h4 <code class="data-type">String</code> &mdash; 在管理界面中显示为一个文本框
+			pre: code.language-javascript { type: Types.Textarea }
+			.options
+				
+				h5 参数
+				p <code>height</code> <code class="data-type">Number</code> - 文本框的高度(以像素为单位)
+
+			a(name="fieldtypes-textarray")
+			h3 <code>Textarray</code>
+			h4 <code class="data-type">Array</code> &mdash; 在管理界面中显示为一系列的文本框
+			pre: code.language-javascript { type: Types.Textarray }
+		
+									
+			a(name="fieldtypes-url")
+			h3 <code>Url</code>
+			h4 <code class="data-type">String</code> &mdash; 在管理界面中显示为一个文本控件
+			pre: code.language-javascript { type: Types.Url }
+			.options
+				
+				h5 Underscore方法：
+				p <code>format()</code> - 去掉存储的值前面的协议(如果有的话)
+				pre: code.language-javascript
+					| item.url = "http://keystonejs.com";
+					| item._.url.format(); // "keystonejs.com"
+			
+			a(name="fieldtypes-azurefile")
+			h3 <code>AzureFile</code>
+			h4 <code class="data-type">Object</code> &mdash; 在管理界面中显示为一个文件上传控件。
+			p 自动管理存在<a href="http://www.windowsazure.com/" target="_blank">Windows Azure Storage</a>中的文件，包括上传和删除。
+			pre: code.language-javascript { type: Types.AzureFile }
+			.options
+				
+				h5 参数
+				p <code>filenameFormatter</code> <code class="data-type">Callback</code> - 以当前模型和客户端文件名为参数的函数，返回要上传文件的新文件名。
+				pre: code.language-javascript { type: Types.AzureFile, filenameFormatter: function(item, filename) {
+					|	return item._id + require('path').extname(filename);
+					|} }
+				p <code>containerFormatter</code> <code class="data-type">Callback</code> - 以当前模型和客户端文件名为参数的函数，返回新的容器名(容器是Azure存储账号中的根文件夹)。
+				pre: code.language-javascript { type: Types.AzureFile, containerFormatter: function(item, filename) {
+					|	return item.modelProperty;
+					|} }
+				
+				h5 模式
+				p <code>filename</code> <code class="data-type">String</code>
+				p <code>type</code> <code class="data-type">String</code>
+				p <code>filesize</code> <code class="data-type">Number</code>
+				p <code>url</code> <code class="data-type">String</code>
+				p <code>etag</code> <code class="data-type">String</code>
+				
+				h5 虚拟域
+				<code>exists</code> <code class="data-type">Boolean</code> - 是否保存了这样一个文件
+				
+				h5 Underscore方法：
+				p <code>uploadFile(file, update, callback)</code> - 将文件上传到Azure存储账号，在该域中保存文件细节信息，并将文件数据提供给回调函数。
+				ul
+					li <code>file</code> <code class="data-type">File</code> 文件上传时应该是由express提供的文件，即<code class="default-value">req.files.path</code>
+					li <code>update</code> <code class="data-type">Boolean</code> 文件上传完后是否用文件的细节信息更新该域。
+					li <code>callback(err, fileData)</code> - 传递将会存储在该域中的对象(见上面的模式)
+												
+												
 			a(name="fieldtypes-cloudinaryimage")
 			h3 <code>CloudinaryImage</code>
 			h4 <code class="data-type">Object</code> &mdash; 在管理界面中显示为一个图片上传控件。
@@ -1020,8 +1168,40 @@ block content
 				p <code>folder</code> <code class="data-type">String</code> 当<code class="default-value">cloudinary folders</code>设为<code class="default-value">true</code>时，用来为Cloudinary图片<code class="data-type">public_id</code>指定文件夹/前缀。
 				pre: code.language-javascript { type: Types.CloudinaryImages, folder: 'path/to/image' }
 				p.note 如果你希望 Cloudinary 在 <code>cloudinary folders</code> 设置为 <code class="default-value">true</code>  的时候自动创建文件夹， 确认已经在你的 Cloudinary 账户中启用 "Auto-create folders"。
+	
+		a(name="fieldtypes-embedly")
+		h3 <code>Embedly</code>
+		h4 <code class="data-type">Object</code> &mdash; 在管理界面中显示为只读数据。
+		p 自动从<a href="http://embed.ly" target="_blank">Embedly</a> API获取跟另一个域的值相关的信息(由<code>from</code> 参数指定)。
+		p 它存储获取的数据(包括提供者、媒体类型、完整的URL、HTML嵌入代码、宽度、高度、缩略图及更多信息)。
+		p 获取数据的api调用是作为保存前置钩子实现的，并且只在<strong>from路径</strong>的值发生变化时才会触发。
+		p 参见<a href="/zh/docs/configuration#services-embedly">Embed.ly配置文档</a>了解如何在KeystoneJS中设置Embed.ly的详细介绍。 
+		pre: code.language-javascript { type: Types.Embedly, from: 'path' }
+		.options
 			
+			h5 参数
+			p <code>from</code> <code class="data-type">String</code> - 模式中传给Embedly API的另一个域的路径。另一个域中必须包含一个<code class="data-type">String</code>值。
+			p <code>options</code> <code class="data-type">Object</code> (optional) - 跟<code>from</code>域的值一起作为参数传给embedly API。
+			p 参见<a href="http://embed.ly/docs/embed/api/endpoints/1/oembed" target="_blank">Embedly的oEmbed API 文档</a>了解参数及返回数据的更多信息。
 			
+			h5 模式
+			p <code>exists</code> <code class="data-type">Boolean</code>
+			p <code>type</code> <code class="data-type">String</code>
+			p <code>title</code> <code class="data-type">String</code>
+			p <code>url</code> <code class="data-type">String</code>
+			p <code>width</code> <code class="data-type">Number</code>
+			p <code>height</code> <code class="data-type">Number</code>
+			p <code>version</code> <code class="data-type">String</code>
+			p <code>description</code> <code class="data-type">String</code>
+			p <code>html</code> <code class="data-type">String</code>
+			p <code>authorName</code> <code class="data-type">String</code>
+			p <code>authorUrl</code> <code class="data-type">String</code>
+			p <code>providerName</code> <code class="data-type">String</code>
+			p <code>providerUrl</code> <code class="data-type">String</code>
+			p <code>thumbnailUrl</code> <code class="data-type">String</code>
+			p <code>thumbnailWidth</code> <code class="data-type">Number</code>
+			p <code>thumbnailHeight</code> <code class="data-type">Number</code>
+						
 			a(name="fieldtypes-localfile")
 			h3 <code>LocalFile</code>
 			.alert.alert-warning 这个域类型跟Heroku之类的PAAS Hosts不兼容，因为它要依赖本地文件系统。
@@ -1156,74 +1336,6 @@ block content
 					li <code>update</code> <code class="data-type">Boolean</code> 文件上传完后是否用文件的细节信息更新该域。
 					li <code>callback(err, fileData)</code> - 传递将会存储在该域中的对象(见上面的模式)
 
-
-			a(name="fieldtypes-azurefile")
-			h3 <code>AzureFile</code>
-			h4 <code class="data-type">Object</code> &mdash; 在管理界面中显示为一个文件上传控件。
-			p 自动管理存在<a href="http://www.windowsazure.com/" target="_blank">Windows Azure Storage</a>中的文件，包括上传和删除。
-			pre: code.language-javascript { type: Types.AzureFile }
-			.options
-				
-				h5 参数
-				p <code>filenameFormatter</code> <code class="data-type">Callback</code> - 以当前模型和客户端文件名为参数的函数，返回要上传文件的新文件名。
-				pre: code.language-javascript { type: Types.AzureFile, filenameFormatter: function(item, filename) {
-					|	return item._id + require('path').extname(filename);
-					|} }
-				p <code>containerFormatter</code> <code class="data-type">Callback</code> - 以当前模型和客户端文件名为参数的函数，返回新的容器名(容器是Azure存储账号中的根文件夹)。
-				pre: code.language-javascript { type: Types.AzureFile, containerFormatter: function(item, filename) {
-					|	return item.modelProperty;
-					|} }
-				
-				h5 模式
-				p <code>filename</code> <code class="data-type">String</code>
-				p <code>type</code> <code class="data-type">String</code>
-				p <code>filesize</code> <code class="data-type">Number</code>
-				p <code>url</code> <code class="data-type">String</code>
-				p <code>etag</code> <code class="data-type">String</code>
-				
-				h5 虚拟域
-				<code>exists</code> <code class="data-type">Boolean</code> - 是否保存了这样一个文件
-				
-				h5 Underscore方法：
-				p <code>uploadFile(file, update, callback)</code> - 将文件上传到Azure存储账号，在该域中保存文件细节信息，并将文件数据提供给回调函数。
-				ul
-					li <code>file</code> <code class="data-type">File</code> 文件上传时应该是由express提供的文件，即<code class="default-value">req.files.path</code>
-					li <code>update</code> <code class="data-type">Boolean</code> 文件上传完后是否用文件的细节信息更新该域。
-					li <code>callback(err, fileData)</code> - 传递将会存储在该域中的对象(见上面的模式)
-						
-			
-			a(name="fieldtypes-embedly")
-			h3 <code>Embedly</code>
-			h4 <code class="data-type">Object</code> &mdash; 在管理界面中显示为只读数据。
-			p 自动从<a href="http://embed.ly" target="_blank">Embedly</a> API获取跟另一个域的值相关的信息(由<code>from</code> 参数指定)。
-			p 它存储获取的数据(包括提供者、媒体类型、完整的URL、HTML嵌入代码、宽度、高度、缩略图及更多信息)。
-			p 获取数据的api调用是作为保存前置钩子实现的，并且只在<strong>from路径</strong>的值发生变化时才会触发。
-			p 参见<a href="/zh/docs/configuration#services-embedly">Embed.ly配置文档</a>了解如何在KeystoneJS中设置Embed.ly的详细介绍。 
-			pre: code.language-javascript { type: Types.Embedly, from: 'path' }
-			.options
-				
-				h5 参数
-				p <code>from</code> <code class="data-type">String</code> - 模式中传给Embedly API的另一个域的路径。另一个域中必须包含一个<code class="data-type">String</code>值。
-				p <code>options</code> <code class="data-type">Object</code> (optional) - 跟<code>from</code>域的值一起作为参数传给embedly API。
-				p 参见<a href="http://embed.ly/docs/embed/api/endpoints/1/oembed" target="_blank">Embedly的oEmbed API 文档</a>了解参数及返回数据的更多信息。
-				
-				h5 模式
-				p <code>exists</code> <code class="data-type">Boolean</code>
-				p <code>type</code> <code class="data-type">String</code>
-				p <code>title</code> <code class="data-type">String</code>
-				p <code>url</code> <code class="data-type">String</code>
-				p <code>width</code> <code class="data-type">Number</code>
-				p <code>height</code> <code class="data-type">Number</code>
-				p <code>version</code> <code class="data-type">String</code>
-				p <code>description</code> <code class="data-type">String</code>
-				p <code>html</code> <code class="data-type">String</code>
-				p <code>authorName</code> <code class="data-type">String</code>
-				p <code>authorUrl</code> <code class="data-type">String</code>
-				p <code>providerName</code> <code class="data-type">String</code>
-				p <code>providerUrl</code> <code class="data-type">String</code>
-				p <code>thumbnailUrl</code> <code class="data-type">String</code>
-				p <code>thumbnailWidth</code> <code class="data-type">Number</code>
-				p <code>thumbnailHeight</code> <code class="data-type">Number</code>
 			
 			h2 更多范例
 			p 参见项目的<a href="/zh/examples">范例</a>页面，了解各种列表参数和域类型的真实用法。
